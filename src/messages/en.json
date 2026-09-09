@@ -101,6 +101,14 @@
     "experiencesDesc": "Tours, food tours and activities.",
     "servicesDesc": "Transfers, taxis, cleaning, photographers and other services."
   },
+  "pillarIntro": {
+    "stay": "Thessaloniki has welcomed travellers, traders and pilgrims for centuries — and today its places to stay are as varied as the city itself. From elegant hotels overlooking the Thermaic Gulf and boutique stays inside the historic centre, to modern apartments in the student and creative quarters, there's something for every style and budget.\n\nFor a first visit, the centre around Aristotelous and Tsimiski puts you within walking distance of the sights, the food and the seafront. If you prefer a quieter base, the Upper Town (Ano Poli) offers views and picturesque lanes, while the Nea Paralia is perfect for strolls by the sea.",
+    "eat": "In Thessaloniki, food isn't just a meal — it's identity. Widely considered Greece's gastronomic capital, the city's cuisine is rooted in the refugees of Asia Minor and Pontus, layered with Balkan and Sephardic influences. Breakfast begins with bougatsa and koulouri, lunch drifts along on mezedes and tsipouro, and dinner stretches across tables that last for hours.\n\nFrom the historic tavernas of Ladadika and the Modiano and Kapani markets to modern restaurants and all-day cafés, the choices are endless. Here we gather the places worth your time, organised by area and style, so you can eat like a local.",
+    "drink": "Thessaloniki's nightlife is legendary — and for good reason. As Greece's largest student city, it buzzes with energy every day of the week: cafés that turn into bars at dusk, rooftops looking out over the Thermaic Gulf, award-winning cocktail bars and live-music venues for every taste.\n\nLadadika and Valaoritou are the beating heart of going out, while the seafront and the Upper Town offer more relaxed spots for a drink with a view. Here you'll find where to drink — from the first espresso to the last cocktail of the night.",
+    "discover": "Few cities in the world pack so much history into such a small radius. Thessaloniki is a living open-air museum: the White Tower, the Rotunda and the Arch of Galerius, the Byzantine walls of the Upper Town, and fifteen Palaeochristian and Byzantine monuments inscribed on the UNESCO World Heritage list.\n\nAlongside the ancient, world-class museums — Archaeological, Byzantine Culture, MOMus — and contemporary art spaces make a city that honours its past while always looking ahead. Here you'll find what's worth seeing, with real information for every sight.",
+    "experiences": "Thessaloniki doesn't just want to be seen — it wants to be lived. Guided walks through its Byzantine monuments and Jewish heritage, food tours of the historic markets, boat trips on the Thermaic Gulf and day trips into wider Macedonia add depth to any visit.\n\nWhether it's your first time here or you've known the city for years, organised experiences reveal sides of it you'd struggle to find on your own. Here we gather the activities and tours worth your time.",
+    "services": "A trip or a move to Thessaloniki is easier with the right professionals beside you. From transfers to and from Makedonia Airport and taxi services, to photographers, cleaning and other practical needs, here you'll find services for visitors and residents alike.\n\nOur aim is to connect people with trusted local providers — so you can focus on your trip, not the logistics."
+  },
   "service": {
     "passengers": "passengers"
   },
@@ -166,6 +174,7 @@
   "events": {
     "title": "Events in Thessaloniki",
     "subtitle": "Concerts, festivals and happenings across the city.",
+    "intro": "Thessaloniki lives to the rhythm of events all year round. From the International Film Festival and the TIF trade fair to concerts, theatre, art exhibitions and open-air neighbourhood celebrations, there's always something on. Here we gather the city's calendar — kept up to date, so you don't miss what matters to you.",
     "when": "When",
     "where": "Where",
     "price": "Price",

@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui";
 import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { MarkdownBody } from "@/components/MarkdownBody";
 import { buildMetadata } from "@/lib/seo";
 import { getUpcomingEvents } from "@/lib/repo";
 
@@ -38,9 +39,12 @@ export default async function EventsPage({
         locale={locale}
         items={[{ label: t("common.home"), href: "/" }, { label: t("events.title") }]}
       />
-      <header className="mb-8 max-w-2xl">
+      <header className="mb-8 max-w-3xl">
         <h1 className="text-3xl font-extrabold sm:text-4xl">{t("events.title")}</h1>
         <p className="mt-3 text-lg text-muted">{t("events.subtitle")}</p>
+        <div className="mt-5">
+          <MarkdownBody>{t("events.intro")}</MarkdownBody>
+        </div>
       </header>
       <div className="grid gap-4 sm:grid-cols-2">
         {events.map((e) => (

@@ -83,9 +83,12 @@ export async function PillarIndex({
           { label },
         ]}
       />
-      <header className="mb-8 max-w-2xl">
+      <header className="mb-8 max-w-3xl">
         <h1 className="text-3xl font-extrabold sm:text-4xl">{label} — Θεσσαλονίκη</h1>
         <p className="mt-3 text-lg text-muted">{t(`pillars.${pillar}Desc`)}</p>
+        <div className="mt-5">
+          <MarkdownBody>{t(`pillarIntro.${pillar}`)}</MarkdownBody>
+        </div>
       </header>
 
       {collections.length ? (
