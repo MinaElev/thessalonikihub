@@ -339,7 +339,14 @@ export async function PlaceDetail({
                     {service.coverageAreas
                       .map((c) => {
                         const a = getArea(c);
-                        return a ? pick(a.name, locale) : c;
+                        if (a) return pick(a.name, locale);
+                        if (c === "all-greece")
+                          return locale === "el" ? "Όλη η Ελλάδα" : "All of Greece";
+                        if (c === "all-thessaloniki")
+                          return locale === "el"
+                            ? "Όλη η Θεσσαλονίκη"
+                            : "All of Thessaloniki";
+                        return c;
                       })
                       .join(", ")}
                   </Fact>
