@@ -134,25 +134,6 @@ export default async function HomePage({
         </Container>
       </section>
 
-      {/* Why Thessaloniki — original editorial intro */}
-      <section className="border-b border-slate-100 bg-white py-14">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-600">
-              {t("home.aboutKicker")}
-            </p>
-            <h2 className="text-2xl font-bold text-ink sm:text-3xl">
-              {t("home.aboutTitle")}
-            </h2>
-            <div className="mt-5 space-y-4 text-lg leading-relaxed text-slate-600">
-              <p>{t("home.aboutP1")}</p>
-              <p>{t("home.aboutP2")}</p>
-              <p>{t("home.aboutP3")}</p>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* Pillars */}
       <section className="py-14">
         <Container>
@@ -172,6 +153,25 @@ export default async function HomePage({
                 </span>
               </Link>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Why Thessaloniki — original editorial intro */}
+      <section className="border-y border-slate-100 bg-white py-14">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-600">
+              {t("home.aboutKicker")}
+            </p>
+            <h2 className="text-2xl font-bold text-ink sm:text-3xl">
+              {t("home.aboutTitle")}
+            </h2>
+            <div className="mt-5 space-y-4 text-lg leading-relaxed text-slate-600">
+              <p>{t("home.aboutP1")}</p>
+              <p>{t("home.aboutP2")}</p>
+              <p>{t("home.aboutP3")}</p>
+            </div>
           </div>
         </Container>
       </section>
