@@ -51,6 +51,10 @@ const pillarImages: Partial<Record<(typeof pillarOrder)[number], string>> = {
   stay: "/pillars/stay.webp",
   eat: "/pillars/eat.webp",
   drink: "/pillars/drink.webp",
+  discover: "/pillars/discover.webp",
+  events: "/pillars/events.webp",
+  experiences: "/pillars/experiences.webp",
+  services: "/pillars/services.webp",
 };
 
 export default async function HomePage({
