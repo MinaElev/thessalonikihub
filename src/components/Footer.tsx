@@ -32,6 +32,21 @@ export function Footer() {
           <p className="mt-2 max-w-sm text-sm text-muted">
             {t("footer.tagline")}
           </p>
+          <div className="mt-4">
+            <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
+              {t("footer.sisterSite")}
+            </p>
+            <a
+              href="https://chalkidikihub.gr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold transition hover:opacity-80"
+            >
+              <span className="text-brand-700">Chalkidiki</span>
+              <span className="text-accent-600">Hub</span>
+              <span className="font-normal text-muted">· chalkidikihub.gr</span>
+            </a>
+          </div>
         </div>
 
         <div>
