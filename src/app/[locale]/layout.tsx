@@ -7,6 +7,8 @@ import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SiteJsonLd } from "@/components/SiteJsonLd";
+import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin", "greek"], variable: "--font-inter" });
@@ -28,6 +30,14 @@ export const metadata: Metadata = {
   },
   description:
     "Discover where to stay, eat, drink and what to do in Thessaloniki. Hotels, restaurants, bars, attractions, events and experiences — all in one place.",
+  applicationName: site.name,
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
+};
+
+export const viewport = {
+  themeColor: "#128788",
 };
 
 export default async function LocaleLayout({
@@ -46,6 +56,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${sora.variable}`}>
       <body className="flex min-h-screen flex-col">
+        <SiteJsonLd />
+        <AdSenseScript />
         <NextIntlClientProvider>
           <a
             href="#main"

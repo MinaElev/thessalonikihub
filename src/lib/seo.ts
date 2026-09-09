@@ -39,6 +39,11 @@ export function buildMetadata({
   const fullTitle =
     title === site.name ? site.name : `${title} | ${site.name}`;
 
+  // Fall back to the site's default social image when a page has none.
+  const ogImages = (images && images.length ? images : [`${site.url}/hero-thessaloniki.jpg`]).map(
+    (url) => (url.startsWith("http") ? url : `${site.url}${url}`),
+  );
+
   return {
     // Absolute title bypasses the root layout's "%s | ThessalonikiHub" template
     // (fullTitle already includes the site name where appropriate).
@@ -55,13 +60,13 @@ export function buildMetadata({
       siteName: site.name,
       locale: locale === "el" ? "el_GR" : "en_US",
       type,
-      images: images?.map((url) => ({ url })),
+      images: ogImages.map((url) => ({ url })),
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images,
+      images: ogImages,
     },
   };
 }

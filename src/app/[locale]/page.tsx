@@ -9,7 +9,6 @@ import { Container, SectionHeading } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { EventCard } from "@/components/EventCard";
 import { GuideCard } from "@/components/GuideCard";
-import { JsonLd } from "@/components/JsonLd";
 import { pillars, site } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { cityHref, collectionHref, pillarHref } from "@/lib/links";
@@ -64,16 +63,6 @@ export default async function HomePage({
 
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: site.name,
-          url: site.url,
-          inLanguage: locale,
-        }}
-      />
-
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-900 text-white">
         <Image
