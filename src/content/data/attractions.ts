@@ -25,11 +25,52 @@ export const attractions: Place[] = [
       en: "Thessaloniki's symbol on the waterfront — a 15th-century tower with a museum and city views.",
     },
     description: {
-      el: "Ο Λευκός Πύργος είναι το πιο αναγνωρίσιμο μνημείο της Θεσσαλονίκης. Χτίστηκε τον 15ο αιώνα στα χρόνια της Οθωμανικής περιόδου στη θέση παλαιότερου βυζαντινού οχυρού και χρησιμοποιήθηκε ως φρούριο και φυλακή. Σήμερα στεγάζει μόνιμη έκθεση για την ιστορία της πόλης, ενώ από την κορυφή του προσφέρει πανοραμική θέα στον Θερμαϊκό κόλπο και τη Νέα Παραλία.",
-      en: "The White Tower is Thessaloniki's most recognisable monument. Built in the 15th century during the Ottoman period on the site of an earlier Byzantine fortification, it served as a fortress and prison. Today it houses a permanent exhibition on the city's history, and its top offers a panoramic view over the Thermaic Gulf and the waterfront.",
+      el: `Ο **Λευκός Πύργος** είναι το σήμα κατατεθέν της Θεσσαλονίκης — το κτίριο που ταυτίζεται με την πόλη σε κάθε καρτ ποστάλ. Στέκει στην αρχή της Νέας Παραλίας και είναι το ιδανικό σημείο για να ξεκινήσεις τη γνωριμία σου με την πόλη.
+
+## Ιστορία
+Χτίστηκε τον **15ο αιώνα**, στα πρώτα χρόνια της Οθωμανικής περιόδου, στη θέση παλαιότερου βυζαντινού οχυρού, ως μέρος της οχύρωσης του λιμανιού. Χρησιμοποιήθηκε ως φρουρά και φυλακή· η φήμη του ως τόπου εκτελέσεων του χάρισε παλιότερα το προσωνύμιο «Πύργος του Αίματος», ώσπου ασβεστώθηκε και έμεινε ως «Λευκός».
+
+## Τι θα δεις
+Στο εσωτερικό, μια **μόνιμη έκθεση** για την ιστορία της Θεσσαλονίκης ξεδιπλώνεται σε έξι ορόφους, γύρω από την κυκλική εσωτερική σκάλα. Στην κορυφή σε περιμένει **πανοραμική θέα** στον Θερμαϊκό, τη Νέα Παραλία και την πόλη.
+
+## Καλό να ξέρεις
+Βρίσκεται δίπλα στο **Αρχαιολογικό Μουσείο**, το **Μουσείο Βυζαντινού Πολιτισμού** και τις «Ομπρέλες» — μπορείς να τα συνδυάσεις σε έναν περίπατο στη Νέα Παραλία.`,
+      en: `The **White Tower** is Thessaloniki's signature landmark — the building that stands for the city on every postcard. It rises at the start of the waterfront and is the perfect place to begin exploring.
+
+## History
+It was built in the **15th century**, in the early Ottoman period, on the site of an earlier Byzantine fortification, as part of the harbour's defences. It served as a garrison and prison; its grim reputation once earned it the name "Tower of Blood", until it was whitewashed and became the "White" Tower.
+
+## What you'll see
+Inside, a **permanent exhibition** on the history of Thessaloniki unfolds across six floors around the circular internal staircase. At the top awaits a **panoramic view** of the gulf, the waterfront and the city.
+
+## Good to know
+It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture** and the "Umbrellas" — you can combine them into one waterfront walk.`,
     },
     type: "landmark",
     tags: ["landmark", "museum", "views", "history", "family"],
+    faqs: [
+      {
+        question: { el: "Τι είναι σήμερα ο Λευκός Πύργος;", en: "What is the White Tower today?" },
+        answer: {
+          el: "Λειτουργεί ως μουσείο με μόνιμη έκθεση για την ιστορία της Θεσσαλονίκης, ενώ από την κορυφή του έχει πανοραμική θέα.",
+          en: "It is a museum with a permanent exhibition on the history of Thessaloniki, and its top offers a panoramic view.",
+        },
+      },
+      {
+        question: { el: "Πού βρίσκεται;", en: "Where is it?" },
+        answer: {
+          el: "Στην αρχή της Νέας Παραλίας, στη Λεωφόρο Νίκης, σε απόσταση περιπάτου από την Πλατεία Αριστοτέλους.",
+          en: "At the start of the waterfront on Nikis Avenue, within walking distance of Aristotelous Square.",
+        },
+      },
+      {
+        question: { el: "Αξίζει να ανέβω στην κορυφή;", en: "Is it worth going to the top?" },
+        answer: {
+          el: "Ναι — η θέα στον Θερμαϊκό και την πόλη είναι από τις καλύτερες και η ανάβαση σύντομη.",
+          en: "Yes — the view over the gulf and the city is among the best, and the climb is short.",
+        },
+      },
+    ],
     geo: {
       lat: 40.6264,
       lng: 22.9483,
@@ -56,11 +97,45 @@ export const attractions: Place[] = [
       en: "An imposing 4th-century Roman rotunda, a UNESCO monument with early-Christian mosaics.",
     },
     description: {
-      el: "Η Ροτόντα κατασκευάστηκε στις αρχές του 4ου αιώνα στα χρόνια του αυτοκράτορα Γαλερίου, πιθανότατα ως μαυσωλείο ή ναός. Μετατράπηκε σε χριστιανικό ναό (Άγιος Γεώργιος) με εξαιρετικά παλαιοχριστιανικά ψηφιδωτά και αργότερα σε τζαμί επί Οθωμανών. Είναι ένα από τα 15 Παλαιοχριστιανικά και Βυζαντινά Μνημεία της Θεσσαλονίκης που εντάχθηκαν στον Κατάλογο Μνημείων Παγκόσμιας Κληρονομιάς της UNESCO το 1988.",
-      en: "The Rotunda was built in the early 4th century under Emperor Galerius, most likely as a mausoleum or temple. It was converted into a Christian church (St George) with outstanding early-Christian mosaics and later into a mosque under Ottoman rule. It is one of the 15 Paleochristian and Byzantine Monuments of Thessaloniki inscribed on the UNESCO World Heritage List in 1988.",
+      el: `Η **Ροτόντα** είναι ένα από τα πιο επιβλητικά μνημεία της Θεσσαλονίκης: ένα τεράστιο κυκλικό οικοδόμημα που στέκει σχεδόν αναλλοίωτο εδώ και **17 αιώνες**, μάρτυρας κάθε εποχής της πόλης.
+
+## Ιστορία
+Κατασκευάστηκε στις **αρχές του 4ου αιώνα**, στα χρόνια του αυτοκράτορα **Γαλερίου**, πιθανότατα ως μαυσωλείο ή ναός, ως μέρος του ανακτορικού του συγκροτήματος μαζί με την Αψίδα. Μετατράπηκε σε χριστιανικό ναό (**Άγιος Γεώργιος**) και αργότερα σε τζαμί επί Οθωμανών — ο μιναρές του σώζεται ακόμη δίπλα.
+
+## Τι θα δεις
+Ξεχωρίζουν τα σπάνια **παλαιοχριστιανικά ψηφιδωτά** στον τρούλο, με χρυσό βάθος και παραστάσεις αγίων και αρχιτεκτονημάτων — από τα σημαντικότερα του είδους τους παγκοσμίως.
+
+## UNESCO
+Ανήκει στα **15 Παλαιοχριστιανικά και Βυζαντινά Μνημεία** της Θεσσαλονίκης, ενταγμένα στον Κατάλογο Παγκόσμιας Κληρονομιάς της UNESCO από το 1988. Βρίσκεται μόλις λίγα μέτρα πάνω από την Αψίδα του Γαλερίου.`,
+      en: `The **Rotunda** is one of Thessaloniki's most imposing monuments: a vast circular building that has stood almost unchanged for **17 centuries**, a witness to every era of the city.
+
+## History
+It was built in the **early 4th century** under Emperor **Galerius**, most likely as a mausoleum or temple, as part of his palace complex together with the Arch. It became a Christian church (**St George**) and later a mosque under the Ottomans — its minaret still survives beside it.
+
+## What you'll see
+The highlight is the rare **early-Christian mosaics** in the dome, with a gold ground and figures of saints and architecture — among the most important of their kind in the world.
+
+## UNESCO
+It is one of the **15 Paleochristian and Byzantine Monuments** of Thessaloniki on the UNESCO World Heritage List since 1988. It stands just metres above the Arch of Galerius.`,
     },
     type: "landmark",
     tags: ["landmark", "unesco", "roman", "byzantine", "history", "culture"],
+    faqs: [
+      {
+        question: { el: "Γιατί είναι σημαντική η Ροτόντα;", en: "Why is the Rotunda important?" },
+        answer: {
+          el: "Είναι ρωμαϊκό μνημείο του 4ου αιώνα με σπάνια παλαιοχριστιανικά ψηφιδωτά και ανήκει στα Μνημεία UNESCO της πόλης.",
+          en: "It is a 4th-century Roman monument with rare early-Christian mosaics and is one of the city's UNESCO monuments.",
+        },
+      },
+      {
+        question: { el: "Τι υπάρχει κοντά;", en: "What is nearby?" },
+        answer: {
+          el: "Βρίσκεται ακριβώς πάνω από την Αψίδα του Γαλερίου (Καμάρα), σε απόσταση περιπάτου από τη Ροτόντα προς το κέντρο.",
+          en: "It sits right above the Arch of Galerius (Kamara), a short walk from the centre.",
+        },
+      },
+    ],
     geo: {
       lat: 40.6333,
       lng: 22.9531,
@@ -81,11 +156,38 @@ export const attractions: Place[] = [
       en: "A 4th-century Roman triumphal arch and the city's classic central meeting point.",
     },
     description: {
-      el: "Η Αψίδα του Γαλερίου, γνωστή στους Θεσσαλονικείς ως «Καμάρα», χτίστηκε στις αρχές του 4ου αιώνα για να τιμήσει τις νίκες του αυτοκράτορα Γαλερίου κατά των Περσών. Διατηρεί εντυπωσιακές ανάγλυφες παραστάσεις και αποτελεί ένα από τα πιο κλασικά σημεία συνάντησης στο κέντρο της πόλης, πάνω στην πορεία προς τη Ροτόντα.",
-      en: "The Arch of Galerius, known to locals as \"Kamara\", was built in the early 4th century to commemorate Emperor Galerius' victories over the Persians. It preserves striking relief sculptures and is one of the most classic meeting points in the city centre, on the axis leading up to the Rotunda.",
+      el: `Η **Αψίδα του Γαλερίου** — η θρυλική **«Καμάρα»** — είναι το πιο κλασικό ραντεβού της Θεσσαλονίκης. «Θα σε δω στην Καμάρα» λένε οι ντόπιοι εδώ και γενιές.
+
+## Ιστορία
+Χτίστηκε στις **αρχές του 4ου αιώνα** για να τιμήσει τις νίκες του αυτοκράτορα **Γαλερίου** κατά των Περσών. Ήταν μέρος του μεγάλου ανακτορικού συγκροτήματος που περιλάμβανε τη Ροτόντα και τα Ανάκτορα.
+
+## Τι θα δεις
+Οι σωζόμενοι πεσσοί διατηρούν εντυπωσιακές **ανάγλυφες παραστάσεις** των πολεμικών εκστρατειών — σκηνές μαχών, θριάμβου και τελετών, από τα σημαντικότερα δείγματα ρωμαϊκής γλυπτικής στην πόλη.
+
+## Καλό να ξέρεις
+Βρίσκεται πάνω στην Εγνατία, ελεύθερη επίσκεψη 24/7, στον άξονα που ανηφορίζει προς τη **Ροτόντα** — δες τα μαζί.`,
+      en: `The **Arch of Galerius** — the legendary **"Kamara"** — is Thessaloniki's most classic meeting point. "See you at Kamara" locals have said for generations.
+
+## History
+It was built in the **early 4th century** to commemorate Emperor **Galerius'** victories over the Persians. It was part of the great palace complex that included the Rotunda and the Palace.
+
+## What you'll see
+The surviving pillars preserve striking **relief sculptures** of the military campaigns — scenes of battle, triumph and ceremony, among the finest examples of Roman sculpture in the city.
+
+## Good to know
+It stands on Egnatia Street, free to visit 24/7, on the axis climbing up to the **Rotunda** — see them together.`,
     },
     type: "landmark",
     tags: ["landmark", "roman", "history", "free", "culture"],
+    faqs: [
+      {
+        question: { el: "Τι είναι η «Καμάρα»;", en: "What is \"Kamara\"?" },
+        answer: {
+          el: "Είναι το λαϊκό όνομα της Αψίδας του Γαλερίου και ένα από τα πιο γνωστά σημεία συνάντησης της πόλης.",
+          en: "It's the popular name for the Arch of Galerius and one of the city's best-known meeting points.",
+        },
+      },
+    ],
     geo: {
       lat: 40.6323,
       lng: 22.9516,
@@ -142,11 +244,47 @@ export const attractions: Place[] = [
       en: "The city's largest church, dedicated to its patron saint — a UNESCO monument.",
     },
     description: {
-      el: "Ο Ναός του Αγίου Δημητρίου είναι αφιερωμένος στον πολιούχο της Θεσσαλονίκης. Η μεγάλη πεντάκλιτη βασιλική χτίστηκε αρχικά τον 5ο–7ο αιώνα στη θέση παλαιότερου λουτρού όπου, κατά την παράδοση, μαρτύρησε ο άγιος. Ξεχωρίζει για τα σωζόμενα ψηφιδωτά και την υπόγεια κρύπτη. Ανήκει στα Μνημεία Παγκόσμιας Κληρονομιάς της UNESCO.",
-      en: "The Church of Saint Demetrios is dedicated to the patron saint of Thessaloniki. This large five-aisled basilica was originally built in the 5th–7th centuries on the site of an earlier Roman bath where, by tradition, the saint was martyred. It is renowned for its surviving mosaics and its underground crypt, and forms part of the UNESCO World Heritage listing.",
+      el: `Ο **Ναός του Αγίου Δημητρίου** είναι το σημαντικότερο θρησκευτικό μνημείο της Θεσσαλονίκης, αφιερωμένο στον **πολιούχο** της πόλης. Η μεγαλύτερη εκκλησία της Θεσσαλονίκης, με βαθιά ιστορία και ζωντανή λατρευτική παρουσία.
+
+## Ιστορία
+Η μεγάλη **πεντάκλιτη βασιλική** χτίστηκε αρχικά τον 5ο–7ο αιώνα, στη θέση παλαιότερου ρωμαϊκού λουτρού όπου, κατά την παράδοση, φυλακίστηκε και μαρτύρησε ο άγιος. Καταστράφηκε από την πυρκαγιά του 1917 και αναστηλώθηκε με σεβασμό στην αρχική μορφή.
+
+## Τι θα δεις
+- Τα σωζόμενα **ψηφιδωτά** του 7ου αιώνα, γύρω από το ιερό.
+- Την υπόγεια **κρύπτη**, στον χώρο του μαρτυρίου, με εκθέματα και το αγίασμα.
+
+## UNESCO & πρακτικά
+Ανήκει στα **Μνημεία UNESCO** της πόλης. Είναι ενεργός ναός — η μεγάλη γιορτή του αγίου (26 Οκτωβρίου) συμπίπτει με τα «Δημήτρια» και την απελευθέρωση της πόλης.`,
+      en: `The **Church of Saint Demetrios** is Thessaloniki's most important religious monument, dedicated to the city's **patron saint**. It is the largest church in Thessaloniki, with a deep history and a living devotional life.
+
+## History
+This large **five-aisled basilica** was originally built in the 5th–7th centuries on the site of an earlier Roman bath where, by tradition, the saint was imprisoned and martyred. It was damaged in the 1917 fire and carefully restored to its original form.
+
+## What you'll see
+- The surviving 7th-century **mosaics** around the sanctuary.
+- The underground **crypt** on the site of the martyrdom, with exhibits and a holy spring.
+
+## UNESCO & practical
+It is one of the city's **UNESCO monuments**. It is an active church — the saint's feast (26 October) coincides with the "Dimitria" festival and the city's liberation day.`,
     },
     type: "church",
     tags: ["church", "unesco", "byzantine", "history", "culture"],
+    faqs: [
+      {
+        question: { el: "Ποιος είναι ο Άγιος Δημήτριος;", en: "Who is Saint Demetrios?" },
+        answer: {
+          el: "Είναι ο πολιούχος άγιος της Θεσσαλονίκης· ο ναός είναι χτισμένος στον τόπο του μαρτυρίου του.",
+          en: "He is the patron saint of Thessaloniki; the church is built on the site of his martyrdom.",
+        },
+      },
+      {
+        question: { el: "Μπορώ να επισκεφθώ την κρύπτη;", en: "Can I visit the crypt?" },
+        answer: {
+          el: "Ναι, η υπόγεια κρύπτη είναι επισκέψιμη και φιλοξενεί εκθέματα από την ιστορία του ναού.",
+          en: "Yes, the underground crypt is open to visitors and houses exhibits on the church's history.",
+        },
+      },
+    ],
     geo: {
       lat: 40.6389,
       lng: 22.9476,
@@ -293,11 +431,45 @@ export const attractions: Place[] = [
       en: "The old town's walls and the finest view over Thessaloniki — a UNESCO monument.",
     },
     description: {
-      el: "Τα τείχη της Θεσσαλονίκης, με καταβολές από τον 4ο αιώνα, περιέβαλλαν την πόλη και σώζονται σε μεγάλο μήκος στην Άνω Πόλη. Ο περίπατος κατά μήκος τους προσφέρει μια από τις ωραιότερες θέες στην πόλη και τον Θερμαϊκό. Αποτελούν μέρος των Μνημείων Παγκόσμιας Κληρονομιάς της UNESCO.",
-      en: "The walls of Thessaloniki, with origins in the 4th century, once encircled the city and survive for a great length in the Upper Town. Walking along them offers one of the finest views over the city and the gulf. They form part of the UNESCO World Heritage listing.",
+      el: `Τα **Βυζαντινά Τείχη** είναι ο περίπατος-σύμβολο της Άνω Πόλης και ένα από τα καλύτερα «σημεία θέας» της Θεσσαλονίκης — δωρεάν και ανοιχτό όλο το εικοσιτετράωρο.
+
+## Ιστορία
+Με καταβολές από τον **4ο αιώνα** και ενισχύσεις στη βυζαντινή περίοδο, τα τείχη περιέβαλλαν ολόκληρη την πόλη, από τη θάλασσα ως την ακρόπολη. Σώζονται σε μεγάλο μήκος στην Άνω Πόλη, μαζί με πύργους και πύλες.
+
+## Γιατί αξίζει
+Ο περίπατος κατά μήκος τους —ιδίως γύρω από τον **Πύργο Τριγωνίου**— χαρίζει πανοραμική θέα σε όλη την πόλη και τον Θερμαϊκό. Είναι το αγαπημένο σημείο των ντόπιων για **ηλιοβασίλεμα**.
+
+## Καλό να ξέρεις
+Μέρος των **Μνημείων UNESCO**. Συνδύασέ τα με τη Μονή Βλατάδων και το Επταπύργιο σε μια βόλτα στην Άνω Πόλη· φόρα άνετα παπούτσια για τα καλντερίμια.`,
+      en: `The **Byzantine Walls** are the signature walk of the Upper Town and one of Thessaloniki's finest viewpoints — free and open around the clock.
+
+## History
+With origins in the **4th century** and reinforcements in the Byzantine period, the walls once encircled the entire city, from the sea to the acropolis. They survive for a great length in the Upper Town, along with towers and gates.
+
+## Why it's worth it
+Walking along them — especially around the **Trigoniou Tower** — gives a panoramic view over the whole city and the gulf. It is the locals' favourite spot for **sunset**.
+
+## Good to know
+Part of the **UNESCO monuments**. Combine them with Vlatades Monastery and the Heptapyrgion on an Ano Poli walk; wear comfortable shoes for the cobbles.`,
     },
     type: "landmark",
     tags: ["landmark", "unesco", "byzantine", "views", "free", "history"],
+    faqs: [
+      {
+        question: { el: "Χρειάζεται εισιτήριο;", en: "Is there an entrance fee?" },
+        answer: {
+          el: "Όχι· ο περίπατος στα τείχη της Άνω Πόλης είναι ελεύθερος και ανοιχτός συνεχώς.",
+          en: "No; the walk along the Upper Town walls is free and open at all times.",
+        },
+      },
+      {
+        question: { el: "Ποιο είναι το καλύτερο σημείο για θέα;", en: "Where's the best viewpoint?" },
+        answer: {
+          el: "Ο Πύργος Τριγωνίου προσφέρει την πιο πανοραμική θέα στην πόλη και τον Θερμαϊκό, ιδανική στο ηλιοβασίλεμα.",
+          en: "The Trigoniou Tower offers the most panoramic view over the city and the gulf, ideal at sunset.",
+        },
+      },
+    ],
     geo: {
       lat: 40.6410,
       lng: 22.9560,
@@ -348,8 +520,26 @@ export const attractions: Place[] = [
       en: "The city's emblematic square, opening onto the sea.",
     },
     description: {
-      el: "Η Πλατεία Αριστοτέλους είναι η κεντρική και πιο γνωστή πλατεία της Θεσσαλονίκης, σχεδιασμένη στο πλαίσιο του πολεοδομικού σχεδίου του Ernest Hébrard μετά τη μεγάλη πυρκαγιά του 1917. Πλαισιωμένη από νεοκλασικά κτίρια και ανοιχτή προς τον Θερμαϊκό, φιλοξενεί εκδηλώσεις, συναυλίες και είναι αγαπημένο σημείο συνάντησης.",
-      en: "Aristotelous Square is the central and best-known square of Thessaloniki, laid out as part of Ernest Hébrard's urban plan after the great fire of 1917. Framed by neoclassical buildings and open toward the gulf, it hosts events and concerts and is a beloved meeting point.",
+      el: `Η **Πλατεία Αριστοτέλους** είναι η καρδιά της Θεσσαλονίκης — η μεγάλη πλατεία που ανοίγει σαν αγκαλιά προς τον Θερμαϊκό και σε καλωσορίζει στην πόλη.
+
+## Ιστορία & αρχιτεκτονική
+Σχεδιάστηκε από τον Γάλλο πολεοδόμο **Ernest Hébrard**, στο πλαίσιο της ανασυγκρότησης μετά τη **μεγάλη πυρκαγιά του 1917**. Τα επιβλητικά νεοκλασικά κτίρια που την πλαισιώνουν (όπως το ξενοδοχείο Electra Palace) της δίνουν τη μνημειακή της αίσθηση.
+
+## Τι να κάνεις
+Καφές στα ιστορικά καφέ, βόλτα προς την παραλία και τον Λευκό Πύργο, ψώνια στην Τσιμισκή. Είναι ο τόπος κάθε μεγάλης **εκδήλωσης, συναυλίας και γιορτής** της πόλης.
+
+## Καλό να ξέρεις
+Ελεύθερη πρόσβαση, ιδανικό σημείο εκκίνησης για την πρώτη σου βόλτα στο κέντρο.`,
+      en: `**Aristotelous Square** is the heart of Thessaloniki — the grand square that opens like an embrace toward the gulf and welcomes you into the city.
+
+## History & architecture
+It was designed by the French planner **Ernest Hébrard** as part of the reconstruction after the **great fire of 1917**. The imposing neoclassical buildings framing it (such as the Electra Palace hotel) give it its monumental feel.
+
+## What to do
+Coffee at the historic cafés, a walk down to the seafront and the White Tower, shopping on Tsimiski. It is the stage for every major **event, concert and celebration** in the city.
+
+## Good to know
+Free to access and the ideal starting point for your first walk through the centre.`,
     },
     type: "landmark",
     tags: ["landmark", "free", "views", "family"],
@@ -403,11 +593,39 @@ export const attractions: Place[] = [
       en: "Finds from Thessaloniki and Macedonia, from prehistory to late antiquity.",
     },
     description: {
-      el: "Το Αρχαιολογικό Μουσείο Θεσσαλονίκης παρουσιάζει ευρήματα από την πόλη και την ευρύτερη Μακεδονία, με μόνιμες εκθέσεις που καλύπτουν όλες τις όψεις της ιδιωτικής και δημόσιας ζωής στην αρχαιότητα. Βρίσκεται στο κέντρο, κοντά στη Νέα Παραλία και το HELEXPO.",
-      en: "The Archaeological Museum of Thessaloniki presents finds from the city and the wider region of Macedonia, with permanent exhibitions covering all aspects of private and public life in antiquity. It is located centrally, near the waterfront and HELEXPO.",
+      el: `Το **Αρχαιολογικό Μουσείο Θεσσαλονίκης** είναι το κορυφαίο μουσείο για την αρχαία Μακεδονία και ιδανικό «πρώτο βήμα» για να καταλάβεις την ιστορία της πόλης και της περιοχής.
+
+## Τι θα δεις
+Μόνιμες εκθέσεις που καλύπτουν όλες τις όψεις της ζωής στην αρχαιότητα — από την **προϊστορία** ως την ύστερη αρχαιότητα. Ξεχωρίζουν τα **χρυσά ευρήματα** και τα κτερίσματα από μακεδονικούς τάφους, καθώς και η ενότητα για τη ρωμαϊκή Θεσσαλονίκη.
+
+## Καλό να ξέρεις
+Βρίσκεται στην αρχή της Νέας Παραλίας, δίπλα στο **Μουσείο Βυζαντινού Πολιτισμού** και κοντά στον Λευκό Πύργο — μπορείς να δεις και τα δύο μουσεία την ίδια μέρα. Για ώρες και εισιτήρια δες τον επίσημο ιστότοπο.`,
+      en: `The **Archaeological Museum of Thessaloniki** is the leading museum for ancient Macedonia and an ideal "first step" to understand the history of the city and the region.
+
+## What you'll see
+Permanent exhibitions covering every aspect of life in antiquity — from **prehistory** to late antiquity. Highlights include the **gold finds** and grave goods from Macedonian tombs, and the section on Roman Thessaloniki.
+
+## Good to know
+It stands at the start of the waterfront, next to the **Museum of Byzantine Culture** and near the White Tower — you can see both museums in one day. Check the official site for hours and tickets.`,
     },
     type: "museum",
     tags: ["museum", "history", "culture", "family"],
+    faqs: [
+      {
+        question: { el: "Τι θα δω στο μουσείο;", en: "What will I see in the museum?" },
+        answer: {
+          el: "Ευρήματα από τη Θεσσαλονίκη και τη Μακεδονία, με έμφαση στα χρυσά κτερίσματα και τη ρωμαϊκή περίοδο.",
+          en: "Finds from Thessaloniki and Macedonia, with an emphasis on gold grave goods and the Roman period.",
+        },
+      },
+      {
+        question: { el: "Συνδυάζεται με άλλο μουσείο;", en: "Can I combine it with another museum?" },
+        answer: {
+          el: "Ναι — το Μουσείο Βυζαντινού Πολιτισμού είναι δίπλα, ιδανικό για την ίδια επίσκεψη.",
+          en: "Yes — the Museum of Byzantine Culture is right next door, ideal for the same visit.",
+        },
+      },
+    ],
     geo: {
       lat: 40.6215,
       lng: 22.9550,
@@ -434,8 +652,20 @@ export const attractions: Place[] = [
       en: "An award-winning museum dedicated to Byzantine and post-Byzantine culture.",
     },
     description: {
-      el: "Το Μουσείο Βυζαντινού Πολιτισμού είναι ένα από τα σημαντικότερα μουσεία της Ελλάδας, αφιερωμένο στον βυζαντινό και μεταβυζαντινό πολιτισμό. Οι μόνιμες εκθέσεις του παρουσιάζουν την καθημερινή ζωή, την τέχνη και τη θρησκεία του Βυζαντίου. Βρίσκεται στη λεωφόρο Στρατού, απέναντι από το Πεδίον του Άρεως.",
-      en: "The Museum of Byzantine Culture is one of Greece's most important museums, dedicated to Byzantine and post-Byzantine culture. Its permanent exhibitions present daily life, art and religion of Byzantium. It stands on Stratou Avenue, opposite the Pedion tou Areos park.",
+      el: `Το **Μουσείο Βυζαντινού Πολιτισμού** είναι ένα από τα σημαντικότερα μουσεία της Ελλάδας — βραβευμένο (Βραβείο Μουσείου του Συμβουλίου της Ευρώπης) και ιδανικό συμπλήρωμα των βυζαντινών μνημείων της πόλης.
+
+## Τι θα δεις
+Οι μόνιμες εκθέσεις ξεδιπλώνουν την **καθημερινή ζωή, την τέχνη και τη θρησκεία** του Βυζαντίου: ψηφιδωτά, τοιχογραφίες, εικόνες, νομίσματα και αντικείμενα καθημερινής χρήσης, με σαφή, σύγχρονη μουσειογραφία.
+
+## Καλό να ξέρεις
+Στη Λεωφόρο Στρατού, δίπλα στο **Αρχαιολογικό Μουσείο** και κοντά στη Νέα Παραλία. Ιδανικό για να «διαβάσεις» τα μνημεία UNESCO της πόλης πριν ή μετά την επίσκεψή τους.`,
+      en: `The **Museum of Byzantine Culture** is one of Greece's most important museums — award-winning (Council of Europe Museum Prize) and the perfect complement to the city's Byzantine monuments.
+
+## What you'll see
+Permanent exhibitions unfold the **daily life, art and religion** of Byzantium: mosaics, frescoes, icons, coins and everyday objects, with clear, modern curation.
+
+## Good to know
+On Stratou Avenue, next to the **Archaeological Museum** and near the waterfront. Ideal for "reading" the city's UNESCO monuments before or after visiting them.`,
     },
     type: "museum",
     tags: ["museum", "byzantine", "history", "culture", "family"],
