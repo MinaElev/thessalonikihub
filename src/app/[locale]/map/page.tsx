@@ -30,7 +30,7 @@ export default async function MapPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
-  const points = getMapPoints(locale);
+  const points = await getMapPoints(locale);
 
   return (
     <Container className="py-8">

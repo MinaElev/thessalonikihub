@@ -27,7 +27,7 @@ import {
  * discover the hreflang cluster. Only real, indexable pages are included —
  * never arbitrary filtered combinations.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Always-present pages.
   const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan"]);
   // /today is intentionally excluded: it is a dynamic daily page.
@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Only index a pillar (and its city/collection pages) once it has real
   // content — empty pillars would otherwise be thin pages.
   for (const pillar of pillars) {
-    const places = getPlaces(pillar);
+    const places = await getPlaces(pillar);
     if (!places.length) continue;
     paths.add(pillarHref(pillar));
     paths.add(cityHref(pillar));
@@ -55,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const p of places) paths.add(placeHref(p));
   }
 
-  const events = getEvents();
+  const events = await getEvents();
   if (events.length) {
     paths.add("/events");
     for (const e of events) paths.add(eventHref(e));

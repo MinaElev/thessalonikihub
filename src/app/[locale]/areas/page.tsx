@@ -9,7 +9,6 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
 import { areaHref } from "@/lib/links";
 import { areas } from "@/content/data/areas";
-import { getPlacesInArea } from "@/lib/repo";
 
 export async function generateMetadata({
   params,
@@ -48,7 +47,6 @@ export default async function AreasPage({
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {areas.map((a) => {
-          const count = getPlacesInArea(a.slug).length;
           return (
             <Link
               key={a.slug}

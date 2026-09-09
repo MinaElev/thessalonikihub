@@ -24,6 +24,7 @@ enum Pillar {
   DRINK
   DISCOVER
   EXPERIENCES
+  SERVICES
 }
 
 enum ListingStatus {

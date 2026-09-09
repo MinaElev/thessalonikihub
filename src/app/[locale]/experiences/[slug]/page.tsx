@@ -5,11 +5,11 @@ import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { PlaceDetail } from "@/components/pages/place-detail";
 import { placeMetadata } from "@/lib/page-meta";
-import { getPlace, getPlaces } from "@/lib/repo";
+import { getFilePlaces, getPlace } from "@/lib/repo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    getPlaces("experiences").map((p) => ({ locale, slug: p.slug })),
+    getFilePlaces("experiences").map((p) => ({ locale, slug: p.slug })),
   );
 }
 
@@ -29,7 +29,7 @@ export default async function Page({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const place = getPlace("experiences", slug);
+  const place = await getPlace("experiences", slug);
   if (!place) notFound();
   return <PlaceDetail place={place} locale={locale} />;
 }

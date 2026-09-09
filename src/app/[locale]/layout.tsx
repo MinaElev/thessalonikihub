@@ -16,6 +16,10 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// Re-render pages from the database at most every 5 minutes (ISR), so approved
+// submissions and imported events appear without a rebuild.
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {

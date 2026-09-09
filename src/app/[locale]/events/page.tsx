@@ -30,7 +30,7 @@ export default async function EventsPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
-  const events = getUpcomingEvents(60);
+  const events = await getUpcomingEvents(60);
 
   return (
     <Container>

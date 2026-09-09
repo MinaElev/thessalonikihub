@@ -16,7 +16,7 @@ export interface MapPoint {
 }
 
 /** All mappable entities (places of every pillar + events), name-localized. */
-export function getMapPoints(locale: Locale): MapPoint[] {
+export async function getMapPoints(locale: Locale): Promise<MapPoint[]> {
   const pillars: Exclude<Pillar, "events">[] = [
     "stay",
     "eat",
@@ -27,7 +27,7 @@ export function getMapPoints(locale: Locale): MapPoint[] {
   ];
   const points: MapPoint[] = [];
   for (const pillar of pillars) {
-    for (const p of getPlaces(pillar)) {
+    for (const p of await getPlaces(pillar)) {
       points.push({
         id: p.slug,
         kind: p.kind,
@@ -39,7 +39,7 @@ export function getMapPoints(locale: Locale): MapPoint[] {
       });
     }
   }
-  for (const e of getEvents()) {
+  for (const e of await getEvents()) {
     points.push({
       id: e.slug,
       kind: "events",

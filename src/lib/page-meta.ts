@@ -22,7 +22,7 @@ export async function pillarIndexMetadata(
     title: `${label} — Θεσσαλονίκη`,
     description: t(`pillars.${pillar}Desc`),
     // Don't index a pillar with no content yet.
-    index: getPlaces(pillar).length > 0,
+    index: (await getPlaces(pillar)).length > 0,
   });
 }
 
@@ -37,7 +37,7 @@ export async function cityMetadata(
     path: cityHref(pillar),
     title: `${label} — ${t("listing.allIn")}`,
     description: t(`pillars.${pillar}Desc`),
-    index: getPlaces(pillar).length > 0,
+    index: (await getPlaces(pillar)).length > 0,
   });
 }
 
@@ -61,7 +61,7 @@ export async function placeMetadata(
   slug: string,
   locale: Locale,
 ): Promise<Metadata> {
-  const place = getPlace(pillar, slug);
+  const place = await getPlace(pillar, slug);
   if (!place) return {};
   return buildMetadata({
     locale,

@@ -15,11 +15,11 @@ import { buildMetadata } from "@/lib/seo";
 import { eventHref, mapsHref } from "@/lib/links";
 import { formatDistance, formatEventWhen } from "@/lib/format";
 import { absoluteUrl } from "@/lib/site";
-import { getEvent, getEvents, getNearbyPlaces } from "@/lib/repo";
+import { getEvent, getFileEvents, getNearbyPlaces } from "@/lib/repo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    getEvents().map((e) => ({ locale, slug: e.slug })),
+    getFileEvents().map((e) => ({ locale, slug: e.slug })),
   );
 }
 
@@ -29,7 +29,7 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const event = getEvent(slug);
+  const event = await getEvent(slug);
   if (!event) return {};
   return buildMetadata({
     locale,
@@ -49,7 +49,7 @@ export default async function EventPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
-  const event = getEvent(slug);
+  const event = await getEvent(slug);
   if (!event) notFound();
 
   const photo = event.photos[0];

@@ -51,9 +51,9 @@ export default async function GuidePage({
   const guide = getGuide(slug);
   if (!guide) notFound();
 
-  const related = (guide.relatedPlaces ?? [])
-    .map((s) => getPlaceBySlug(s))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const related = (
+    await Promise.all((guide.relatedPlaces ?? []).map((s) => getPlaceBySlug(s)))
+  ).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
     <>

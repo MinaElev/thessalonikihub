@@ -55,10 +55,10 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const attractions = getPlaces("discover").slice(0, 6);
+  const attractions = (await getPlaces("discover")).slice(0, 6);
   const guides = getGuides().slice(0, 2);
-  const eventsToday = getEventsOnDay();
-  const upcoming = getUpcomingEvents(10);
+  const eventsToday = await getEventsOnDay();
+  const upcoming = await getUpcomingEvents(10);
   const todayList = (eventsToday.length ? eventsToday : upcoming).slice(0, 4);
   const quickIntents = getCollections().filter((c) => c.featured).slice(0, 6);
 

@@ -61,12 +61,15 @@ export default async function AreaHub({
   if (!area) notFound();
 
   const name = pick(area.name, locale);
-  const points = getMapPoints(locale).filter((p) => p.area === slug);
-  const events = getEventsInArea(slug);
-  const sections = PILLARS.map((pillar) => ({
-    pillar,
-    places: getPlaces(pillar).filter((p) => p.geo.area === slug),
-  })).filter((s) => s.places.length > 0);
+  const points = (await getMapPoints(locale)).filter((p) => p.area === slug);
+  const events = await getEventsInArea(slug);
+  const sectionsRaw = await Promise.all(
+    PILLARS.map(async (pillar) => ({
+      pillar,
+      places: (await getPlaces(pillar)).filter((p) => p.geo.area === slug),
+    })),
+  );
+  const sections = sectionsRaw.filter((s) => s.places.length > 0);
   const nearby = area.nearby
     .map((s) => getArea(s))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));

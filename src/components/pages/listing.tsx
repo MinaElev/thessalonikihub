@@ -72,7 +72,7 @@ export async function PillarIndex({
   const t = await getTranslations({ locale });
   const label = pick(pillars[pillar].label, locale);
   const collections = getCollections(pillar);
-  const places = getPlaces(pillar);
+  const places = await getPlaces(pillar);
 
   return (
     <Container>
@@ -128,7 +128,7 @@ export async function CityListing({
   const t = await getTranslations({ locale });
   const label = pick(pillars[pillar].label, locale);
   const collections = getCollections(pillar);
-  const places = getPlaces(pillar);
+  const places = await getPlaces(pillar);
 
   return (
     <Container>
@@ -181,7 +181,7 @@ export async function CollectionListing({
   const collection = getCollection(pillar, slug);
   if (!collection) return null;
   const label = pick(pillars[pillar].label, locale);
-  const members = getCollectionMembers(collection);
+  const members = await getCollectionMembers(collection);
 
   return (
     <Container>

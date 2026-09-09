@@ -38,11 +38,11 @@ export default async function TodayPage({
   const t = await getTranslations({ locale });
 
   const today = new Date();
-  const eventsToday = getEventsOnDay(today);
-  const upcoming = getUpcomingEvents(7).filter(
+  const eventsToday = await getEventsOnDay(today);
+  const upcoming = (await getUpcomingEvents(7)).filter(
     (e) => !eventsToday.some((x) => x.slug === e.slug),
   );
-  const experiences = getPlaces("experiences").slice(0, 3);
+  const experiences = (await getPlaces("experiences")).slice(0, 3);
 
   return (
     <Container>

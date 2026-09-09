@@ -47,7 +47,7 @@ export default async function AudiencePage({
   const a = getAudience(audience);
   if (!a) notFound();
 
-  const places = getPlacesByTags(a.tags, 6);
+  const places = await getPlacesByTags(a.tags, 6);
   const guides = a.guides.map((s) => getGuide(s)).filter(Boolean);
   const collections = a.collections
     .map((ref) => {
