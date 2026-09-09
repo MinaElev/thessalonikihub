@@ -15,6 +15,9 @@
 *.pem
 Thumbs.db
 
+# uncompressed source images (originals kept locally, compressed copies live in public/)
+/image-sources/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -45,6 +45,14 @@ const pillarOrder = [
   "services",
 ] as const;
 
+// Cover photo per pillar (optional). Pillars without one fall back to a
+// branded gradient, so the grid stays uniform as more images are added.
+const pillarImages: Partial<Record<(typeof pillarOrder)[number], string>> = {
+  stay: "/pillars/stay.webp",
+  eat: "/pillars/eat.webp",
+  drink: "/pillars/drink.webp",
+};
+
 export default async function HomePage({
   params,
 }: {
@@ -139,20 +147,35 @@ export default async function HomePage({
         <Container>
           <SectionHeading title={t("home.pillarsTitle")} />
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {pillarOrder.map((p) => (
-              <Link
-                key={p}
-                href={pillarHref(p)}
-                className="group flex flex-col items-start gap-2 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md"
-              >
-                <span className="text-lg font-bold text-brand-700 group-hover:text-brand-800">
-                  {pick(pillars[p].label, locale)}
-                </span>
-                <span className="text-sm text-muted">
-                  {t(`pillars.${p}Desc`)}
-                </span>
-              </Link>
-            ))}
+            {pillarOrder.map((p) => {
+              const image = pillarImages[p];
+              return (
+                <Link
+                  key={p}
+                  href={pillarHref(p)}
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-brand-700 to-brand-900">
+                    {image ? (
+                      <Image
+                        src={image}
+                        alt={pick(pillars[p].label, locale)}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover transition duration-500 group-hover:scale-105"
+                      />
+                    ) : null}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                    <span className="absolute bottom-3 left-4 text-lg font-bold text-white drop-shadow">
+                      {pick(pillars[p].label, locale)}
+                    </span>
+                  </div>
+                  <span className="p-4 text-sm text-muted">
+                    {t(`pillars.${p}Desc`)}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>
