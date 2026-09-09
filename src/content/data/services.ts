@@ -45,8 +45,16 @@ export const services: Place[] = [
       lng: 22.9444,
       area: "center",
     },
-    // No licensed photos supplied yet — the partner can add images later.
-    photos: [],
+    photos: [
+      {
+        url: "/services/tsamakdas.webp",
+        alt: {
+          el: "Επαγγελματική φωτογράφιση ξενοδοχειακού χώρου από τον Γιώργο Τσαμάκδα",
+          en: "Professional hotel interior photography by Georgos Tsamakdas",
+        },
+        credit: "Georgos Tsamakdas",
+      },
+    ],
     contact: {
       website: "https://www.tsamakdas.com/el",
     },
