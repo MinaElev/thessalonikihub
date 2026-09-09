@@ -74,7 +74,7 @@
   "home": {
     "heroKicker": "Thessaloniki's digital guide",
     "heroTitle": "What do you want to do in Thessaloniki?",
-    "heroSubtitle": "Discover where to stay, where to eat, where to drink and what to do — all in one place.",
+    "heroSubtitle": "From the alleys of Ano Poli and the Byzantine walls to Ladadika, the seafront and a morning bougatsa — find where to stay, eat, drink and what to see, all handpicked with care.",
     "searchPlaceholder": "Search for a hotel, restaurant, area...",
     "quickIntents": "Popular searches",
     "pillarsTitle": "Explore the city",
@@ -83,8 +83,14 @@
     "discoverTitle": "Discover Thessaloniki",
     "todayTitle": "What's on today",
     "guidesTitle": "Guides & recommendations",
+    "aboutKicker": "Why Thessaloniki",
+    "aboutTitle": "Two thousand years of history — and a pulse that never stops",
+    "aboutP1": "Thessaloniki isn't a city you simply see — you live it. Founded in 315 BC and a capital of empires for centuries, it stacks Roman, Byzantine, Ottoman and Sephardic layers one on top of the other: the Rotunda and the Arch of Galerius, the walls of the Upper Town (Ano Poli), and the Palaeochristian churches inscribed as UNESCO World Heritage.",
+    "aboutP2": "And right alongside all that, a city fully alive. The White Tower and the Nea Paralia seafront with Zongolopoulos' 'Umbrellas', Aristotelous Square opening onto the Thermaic Gulf, the Ladadika quarter that stays up all night, cafés that turn into bars and bars that turn into dance floors. Greece's largest student city never really sleeps.",
+    "aboutP3": "And then there's the food — perhaps the most honest reason to fall for it. Breakfast of bougatsa and koulouri, lunch of mezedes and tsipouro, dinner rooted in the cuisine the refugees of Asia Minor and Pontus brought with them. We gather it all here — the sights, the stays, the tables, the events — so you don't miss a thing.",
     "forBusiness": "Are you a business?",
-    "forBusinessText": "Get a digital presence inside Thessaloniki's largest discovery ecosystem."
+    "forBusinessText": "Get a digital presence inside Thessaloniki's largest discovery ecosystem.",
+    "forBusinessCta": "List your business"
   },
   "pillars": {
     "stayDesc": "Hotels, apartments and boutique stays.",
