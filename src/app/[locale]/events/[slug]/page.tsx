@@ -16,6 +16,7 @@ import { eventHref, mapsHref } from "@/lib/links";
 import { formatDistance, formatEventWhen } from "@/lib/format";
 import { absoluteUrl } from "@/lib/site";
 import { getEvent, getFileEvents, getNearbyPlaces } from "@/lib/repo";
+import { MiniMapClient } from "@/components/map/MiniMapClient";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -136,6 +137,14 @@ export default async function EventPage({
                 >
                   <MapPin className="h-4 w-4" /> {pick(event.venue, locale)}
                 </a>
+                <div className="mt-3">
+                  <MiniMapClient
+                    lat={event.geo.lat}
+                    lng={event.geo.lng}
+                    label={pick(event.venue, locale)}
+                    color="#db2777"
+                  />
+                </div>
               </div>
               {event.priceInfo ? (
                 <div>

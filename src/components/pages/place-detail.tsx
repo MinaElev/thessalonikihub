@@ -37,6 +37,7 @@ import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { JsonLd } from "@/components/JsonLd";
+import { MiniMapClient } from "@/components/map/MiniMapClient";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
 import { cityHref, mapsHref, pillarHref, areaHref } from "@/lib/links";
@@ -642,6 +643,13 @@ export async function PlaceDetail({
               <h3 className="mb-2 text-sm font-bold text-slate-500">
                 {t("place.location")}
               </h3>
+              <div className="mb-3">
+                <MiniMapClient
+                  lat={place.geo.lat}
+                  lng={place.geo.lng}
+                  label={pick(place.name, locale)}
+                />
+              </div>
               <a
                 href={mapsHref(place.geo)}
                 target="_blank"
