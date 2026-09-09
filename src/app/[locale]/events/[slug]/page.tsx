@@ -1,0 +1,185 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { CalendarDays, MapPin, Ticket } from "lucide-react";
+import type { Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { pick } from "@/lib/types";
+import { Container } from "@/components/ui";
+import { PlaceCard } from "@/components/PlaceCard";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { MarkdownBody } from "@/components/MarkdownBody";
+import { JsonLd } from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { eventHref, mapsHref } from "@/lib/links";
+import { formatDistance, formatEventWhen } from "@/lib/format";
+import { absoluteUrl } from "@/lib/site";
+import { getEvent, getEvents, getNearbyPlaces } from "@/lib/repo";
+
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    getEvents().map((e) => ({ locale, slug: e.slug })),
+  );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const event = getEvent(slug);
+  if (!event) return {};
+  return buildMetadata({
+    locale,
+    path: eventHref(event),
+    title: pick(event.name, locale),
+    description: pick(event.summary, locale),
+    images: event.photos[0] ? [event.photos[0].url] : undefined,
+    type: "article",
+  });
+}
+
+export default async function EventPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale });
+  const event = getEvent(slug);
+  if (!event) notFound();
+
+  const photo = event.photos[0];
+  const nearbyStay = getNearbyPlaces(event.geo, "stay", { limit: 4 });
+  const nearbyEat = getNearbyPlaces(event.geo, "eat", { limit: 4 });
+
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: pick(event.name, locale),
+          description: pick(event.summary, locale),
+          startDate: event.startsAt,
+          endDate: event.endsAt ?? event.startsAt,
+          eventStatus: "https://schema.org/EventScheduled",
+          image: photo?.url,
+          url: absoluteUrl(locale, eventHref(event)),
+          location: {
+            "@type": "Place",
+            name: pick(event.venue, locale),
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: event.geo.lat,
+              longitude: event.geo.lng,
+            },
+          },
+        }}
+      />
+      <Container>
+        <Breadcrumbs
+          locale={locale}
+          items={[
+            { label: t("common.home"), href: "/" },
+            { label: t("events.title"), href: "/events" },
+            { label: pick(event.name, locale) },
+          ]}
+        />
+        <div className="relative mb-6 aspect-[16/9] w-full overflow-hidden rounded-3xl bg-slate-100 sm:aspect-[21/9]">
+          {photo ? (
+            <Image
+              src={photo.url}
+              alt={pick(photo.alt, locale)}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
+          ) : null}
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-[1fr_18rem]">
+          <div>
+            <h1 className="text-3xl font-extrabold sm:text-4xl">
+              {pick(event.name, locale)}
+            </h1>
+            <p className="mt-3 text-lg text-muted">{pick(event.summary, locale)}</p>
+            <div className="mt-6">
+              <MarkdownBody>{pick(event.description, locale)}</MarkdownBody>
+            </div>
+          </div>
+
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="space-y-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+                  {t("events.when")}
+                </p>
+                <p className="mt-1 inline-flex items-center gap-2 font-medium">
+                  <CalendarDays className="h-4 w-4 text-brand-600" />
+                  {formatEventWhen(event.startsAt, event.endsAt, locale)}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+                  {t("events.where")}
+                </p>
+                <a
+                  href={mapsHref(event.geo)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex items-center gap-2 font-medium text-brand-700 hover:underline"
+                >
+                  <MapPin className="h-4 w-4" /> {pick(event.venue, locale)}
+                </a>
+              </div>
+              {event.priceInfo ? (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+                    {t("events.price")}
+                  </p>
+                  <p className="mt-1 inline-flex items-center gap-2 font-medium">
+                    <Ticket className="h-4 w-4 text-brand-600" />
+                    {pick(event.priceInfo, locale)}
+                  </p>
+                </div>
+              ) : null}
+            </div>
+          </aside>
+        </div>
+
+        <section className="mt-10">
+          <h2 className="mb-4 text-xl font-bold">{t("place.nearbyStay")}</h2>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {nearbyStay.map(({ item, meters }) => (
+              <PlaceCard
+                key={item.slug}
+                place={item}
+                locale={locale}
+                distanceLabel={formatDistance(meters, locale)}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="mb-4 text-xl font-bold">{t("place.nearbyEat")}</h2>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {nearbyEat.map(({ item, meters }) => (
+              <PlaceCard
+                key={item.slug}
+                place={item}
+                locale={locale}
+                distanceLabel={formatDistance(meters, locale)}
+              />
+            ))}
+          </div>
+        </section>
+      </Container>
+    </>
+  );
+}

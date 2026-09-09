@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/*
+  ThessalonikiHub design tokens.
+  Brand palette: deep Aegean teal (primary) + warm terracotta (accent),
+  evoking the sea and the city's terracotta rooftops.
+*/
+@theme {
+  --color-brand-50: #eefcfb;
+  --color-brand-100: #d3f6f3;
+  --color-brand-200: #abece8;
+  --color-brand-300: #74ddd8;
+  --color-brand-400: #38c4c1;
+  --color-brand-500: #1ca8a6;
+  --color-brand-600: #128788;
+  --color-brand-700: #136b6d;
+  --color-brand-800: #155658;
+  --color-brand-900: #16484a;
+  --color-brand-950: #06292b;
+
+  --color-accent-50: #fdf5ef;
+  --color-accent-100: #fae7d8;
+  --color-accent-200: #f4ccb0;
+  --color-accent-300: #eda87e;
+  --color-accent-400: #e57d4d;
+  --color-accent-500: #df5f2c;
+  --color-accent-600: #d04921;
+  --color-accent-700: #ad371d;
+  --color-accent-800: #8a2e1e;
+  --color-accent-900: #70281c;
+
+  --color-ink: #16232b;
+  --color-muted: #5a6b74;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+}
+
+/* Rich text (markdown-rendered guide/description bodies). */
+.prose-content {
+  line-height: 1.75;
+}
+.prose-content h2 {
+  font-size: 1.4rem;
+  margin: 1.8rem 0 0.6rem;
+}
+.prose-content h3 {
+  font-size: 1.15rem;
+  margin: 1.4rem 0 0.5rem;
+}
+.prose-content p {
+  margin: 0.75rem 0;
+}
+.prose-content ul {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.prose-content li {
+  margin: 0.35rem 0;
+}
+.prose-content strong {
+  color: var(--color-brand-800);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s ease both;
+}

@@ -1,0 +1,189 @@
+{
+  "nav": {
+    "stay": "Stay",
+    "eat": "Eat",
+    "drink": "Drink",
+    "discover": "Discover",
+    "events": "Events",
+    "experiences": "Experiences",
+    "services": "Services",
+    "today": "Today",
+    "guides": "Guides",
+    "submit": "Add listing",
+    "account": "My account",
+    "map": "Map",
+    "search": "Search",
+    "areas": "Areas",
+    "dayTrips": "Day trips",
+    "plan": "Plan",
+    "forYou": "For you"
+  },
+  "areas": {
+    "title": "Thessaloniki Areas",
+    "subtitle": "Each neighbourhood with its own character — where to stay, eat and what to see.",
+    "nearby": "Nearby areas"
+  },
+  "daytrips": {
+    "title": "Day Trips from Thessaloniki",
+    "subtitle": "The best nearby destinations for one-day excursions.",
+    "fromCity": "from Thessaloniki"
+  },
+  "audiences": {
+    "title": "For Every Traveller",
+    "subtitle": "Pick your profile and see what fits you.",
+    "recommended": "Recommended",
+    "guidesFor": "Guides for you",
+    "all": "All audiences"
+  },
+  "plan": {
+    "title": "Plan Your Trip",
+    "subtitle": "Everything you need to know before you come to Thessaloniki.",
+    "itineraries": "Suggested itineraries"
+  },
+  "map": {
+    "title": "Thessaloniki Map",
+    "subtitle": "See all the places on the map and filter them by category."
+  },
+  "search": {
+    "title": "Search",
+    "subtitle": "Search accommodation, food, attractions, events and services.",
+    "placeholder": "What are you looking for?",
+    "button": "Search",
+    "resultsFor": "{count} results for \"{q}\"",
+    "places": "Places",
+    "events": "Events",
+    "guides": "Guides",
+    "noResults": "No results found. Try another term."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "menu": "Menu",
+    "close": "Close",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "backTo": "Back to",
+    "home": "Home",
+    "nearby": "Nearby",
+    "from": "from",
+    "free": "Free",
+    "meters": "m",
+    "kilometers": "km",
+    "loadingSoon": "Coming soon",
+    "all": "All"
+  },
+  "home": {
+    "heroKicker": "Thessaloniki's digital guide",
+    "heroTitle": "What do you want to do in Thessaloniki?",
+    "heroSubtitle": "Discover where to stay, where to eat, where to drink and what to do — all in one place.",
+    "searchPlaceholder": "Search for a hotel, restaurant, area...",
+    "quickIntents": "Popular searches",
+    "pillarsTitle": "Explore the city",
+    "featuredStays": "Featured stays",
+    "featuredEat": "Where to eat",
+    "discoverTitle": "Discover Thessaloniki",
+    "todayTitle": "What's on today",
+    "guidesTitle": "Guides & recommendations",
+    "forBusiness": "Are you a business?",
+    "forBusinessText": "Get a digital presence inside Thessaloniki's largest discovery ecosystem."
+  },
+  "pillars": {
+    "stayDesc": "Hotels, apartments and boutique stays.",
+    "eatDesc": "Restaurants, meze houses, brunch and cafés.",
+    "drinkDesc": "Bars, rooftops, cocktails and live music.",
+    "discoverDesc": "Attractions, museums and things to do.",
+    "eventsDesc": "Concerts, festivals, exhibitions and events.",
+    "experiencesDesc": "Tours, food tours and activities.",
+    "servicesDesc": "Transfers, taxis, cleaning, photographers and other services."
+  },
+  "service": {
+    "passengers": "passengers"
+  },
+  "today": {
+    "title": "Today in Thessaloniki",
+    "subtitle": "Everything happening in the city today — updated daily.",
+    "eventsToday": "Events today",
+    "noEvents": "No events listed for today. See what's coming up over the next few days.",
+    "upcoming": "Coming up"
+  },
+  "listing": {
+    "collectionsTitle": "Popular categories",
+    "allIn": "All in Thessaloniki",
+    "resultsCount": "{count} listings",
+    "filterNote": "Hand-picked recommendations from our editorial team."
+  },
+  "place": {
+    "about": "About",
+    "amenities": "Amenities",
+    "location": "Location",
+    "contact": "Contact",
+    "offers": "Offers",
+    "faqs": "FAQs",
+    "nearbyEat": "Where to eat nearby",
+    "nearbyDrink": "Drinks nearby",
+    "nearbyDiscover": "Attractions nearby",
+    "nearbyStay": "Where to stay nearby",
+    "nearbyEvents": "Events nearby",
+    "call": "Call",
+    "email": "Email",
+    "website": "Website",
+    "book": "Book",
+    "whatsapp": "WhatsApp",
+    "updated": "Updated",
+    "getDirections": "Directions",
+    "verified": "Verified",
+    "reviews": "reviews",
+    "similar": "Similar",
+    "exploreArea": "Explore the area: {area}"
+  },
+  "stay": {
+    "guests": "guests",
+    "bedrooms": "bedrooms",
+    "beds": "beds",
+    "bathrooms": "bathrooms",
+    "floor": "Floor",
+    "details": "Details & policies",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "checkInMethod": "Check-in method",
+    "cancellation": "Cancellation",
+    "parking": "Parking",
+    "languages": "Languages",
+    "policies": "House rules",
+    "pets": "Pets",
+    "smoking": "Smoking",
+    "children": "Children",
+    "parties": "Parties/events",
+    "quietHours": "Quiet hours",
+    "perNight": "night",
+    "minNights": "Minimum stay {count} nights"
+  },
+  "events": {
+    "title": "Events in Thessaloniki",
+    "subtitle": "Concerts, festivals and happenings across the city.",
+    "when": "When",
+    "where": "Where",
+    "price": "Price",
+    "today": "Today",
+    "thisWeekend": "This weekend",
+    "upcoming": "Upcoming"
+  },
+  "guides": {
+    "title": "Thessaloniki Guides",
+    "subtitle": "Recommendations, itineraries and guides from our editorial team.",
+    "relatedPlaces": "Related places",
+    "publishedOn": "Published",
+    "by": "by"
+  },
+  "footer": {
+    "tagline": "The digital guide to Thessaloniki.",
+    "explore": "Explore",
+    "company": "Platform",
+    "about": "About us",
+    "forBusiness": "For business",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms of use",
+    "rights": "All rights reserved.",
+    "language": "Language"
+  }
+}
