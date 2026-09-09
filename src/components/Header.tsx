@@ -17,6 +17,7 @@ const primaryNav = [
 ] as const;
 
 const moreNav = [
+  { key: "metro", href: "/metro" },
   { key: "areas", href: "/areas" },
   { key: "dayTrips", href: "/day-trips" },
   { key: "map", href: "/map" },

@@ -18,7 +18,8 @@
     "plan": "Plan",
     "forYou": "For you",
     "more": "More",
-    "explore": "Explore"
+    "explore": "Explore",
+    "metro": "Metro"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -203,5 +204,37 @@
     "rights": "All rights reserved.",
     "language": "Language",
     "sisterSite": "Sister site"
+  },
+  "metro": {
+    "title": "Thessaloniki Metro",
+    "subtitle": "A guide to every station: what's around it, where to get off, and how to reach the airport.",
+    "introA": "The metro changed Thessaloniki more than any other project in decades. The main line opened on 30 November 2024, and on 27 August 2026 the Kalamaria extension followed — journeys that once took forty minutes in Egnatia traffic now take ten.",
+    "introB": "It is fully automatic and driverless, with platform screen doors. And because digging beneath a 2,300-year-old city inevitably turns up its history, some stations double as archaeological sites.",
+    "practical": "The basics",
+    "hours": "Hours",
+    "weekend": "Fri–Sat until",
+    "ticket": "Ticket",
+    "dayTicket": "day pass",
+    "network": "Network",
+    "stationsWord": "stations",
+    "airport": "Airport",
+    "airportValue": "Bus X3 from Mikra",
+    "airportNote": "Note: the metro does not reach “Makedonia” Airport. Get off at the Mikra terminus and continue on bus line X3, which carries a special fare of €2.00 — separate from your metro ticket.",
+    "trunk": "Shared section",
+    "branchEast": "Nea Elvetia branch",
+    "branchSouth": "Kalamaria branch",
+    "trunkNote": "From the New Railway Station to 25is Martiou every train follows the same route.",
+    "eastNote": "The eastern branch, after the junction at 25is Martiou.",
+    "southNote": "The extension that opened in August 2026, toward Kalamaria and Mikra.",
+    "disclaimer": "Hours and fares were correct at the time of writing. Check the operator for official announcements.",
+    "stationEyebrow": "Metro station",
+    "nearbyPlaces": "Sights beside this stop",
+    "stationFacts": "Station facts",
+    "branchLabel": "Branch",
+    "openedLabel": "Opened",
+    "connections": "Connections",
+    "approx": "Position is approximate, for orientation only.",
+    "servesArea": "Serves the area",
+    "allStations": "All stations"
   }
 }

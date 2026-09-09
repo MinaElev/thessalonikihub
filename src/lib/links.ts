@@ -62,3 +62,11 @@ export function dayTripHref(slug: string): string {
 export function audienceHref(slug: string): string {
   return `/for/${slug}`;
 }
+
+export function metroHref(): string {
+  return "/metro";
+}
+
+export function metroStationHref(slug: string): string {
+  return `/metro/${slug}`;
+}
