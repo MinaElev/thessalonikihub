@@ -35,3 +35,11 @@ next-env.d.ts
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Local-only: env values prepared for pasting into a hosting dashboard.
+# Never commit. Delete once the variables are set.
+/vercel-env.txt
+/setup-vercel-env.sh
+
+.vercel
+.env*
