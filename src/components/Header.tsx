@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { User, ChevronDown, Menu } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { MenuAutoClose } from "@/components/MenuAutoClose";
 import { Container } from "@/components/ui";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
@@ -60,6 +61,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur">
+      <MenuAutoClose />
       <Container className="flex h-16 items-center gap-4">
         <Link href="/" className="shrink-0 text-lg font-extrabold tracking-tight">
           <span className="text-brand-700">Thessaloniki</span>
@@ -81,9 +83,8 @@ export function Header() {
             </Link>
           ))}
 
-          <details className="group relative [&_summary::-webkit-details-marker]:hidden">
+          <details data-menu className="group relative [&_summary::-webkit-details-marker]:hidden">
             <summary
-              aria-haspopup="true"
               className="flex cursor-pointer list-none items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700 group-open:bg-brand-50 group-open:text-brand-700"
             >
               {t("explore")}
@@ -135,7 +136,7 @@ export function Header() {
 
       {/* Mobile / tablet: one button opening the same grouped structure,
           instead of a long horizontal scroll of every link. */}
-      <details className="group border-t border-slate-100 lg:hidden [&_summary::-webkit-details-marker]:hidden">
+      <details data-menu className="group border-t border-slate-100 lg:hidden [&_summary::-webkit-details-marker]:hidden">
         {/* <summary> must be the first child of <details>, otherwise the
             browser ignores it and renders its own "Details" marker. */}
         <summary className="cursor-pointer list-none">

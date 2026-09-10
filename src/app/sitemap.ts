@@ -38,6 +38,9 @@ import {
  * never arbitrary filtered combinations.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Real modification dates, where a record actually carries one.
+  const lastMod = new Map<string, string>();
+
   // Always-present pages.
   const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals", "/what-to-eat", "/routes", "/thessaloniki-and-chalkidiki"]);
   // /today is intentionally excluded: it is a dynamic daily page.
@@ -67,22 +70,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     paths.add(pillarHref(pillar));
     paths.add(cityHref(pillar));
     for (const c of getCollections(pillar)) paths.add(collectionHref(c));
-    for (const p of places) paths.add(placeHref(p));
+    for (const p of places) {
+      paths.add(placeHref(p));
+      if (p.updatedAt) lastMod.set(placeHref(p), p.updatedAt);
+    }
   }
 
   const events = await getEvents();
   if (events.length) {
     paths.add("/events");
-    for (const e of events) paths.add(eventHref(e));
+    for (const e of events) {
+      // Imported events keep the source feed's wording until an editor rewrites
+      // them, and stay noindex until then — so they stay out of the sitemap.
+      if (e.textRewritten === false) continue;
+      paths.add(eventHref(e));
+      if (e.updatedAt) lastMod.set(eventHref(e), e.updatedAt);
+    }
   }
-  for (const g of getGuides()) paths.add(guideHref(g));
-
-  const now = new Date();
+  for (const g of getGuides()) {
+    paths.add(guideHref(g));
+    if (g.updatedAt) lastMod.set(guideHref(g), g.updatedAt);
+  }
 
   return Array.from(paths).map((path) => ({
     url: absoluteUrl(site.defaultLocale, path),
-    lastModified: now,
-    changeFrequency: "weekly",
+    // `lastModified` is omitted rather than stamped with the build time:
+    // claiming every page changed on every deploy trains crawlers to ignore
+    // the field. Entries with a real date get one from `lastMod` above.
+    ...(lastMod.has(path) ? { lastModified: new Date(lastMod.get(path)!) } : {}),
     priority: path === "/" ? 1 : 0.7,
     alternates: {
       languages: Object.fromEntries(

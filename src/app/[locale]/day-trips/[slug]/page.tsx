@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Clock, MapPin } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { pick } from "@/lib/types";
+import { PhotoCredit } from "@/components/PhotoCredit";
 import { Container } from "@/components/ui";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
@@ -67,19 +68,20 @@ export default async function DayTripPage({
       </div>
 
       {photo ? (
-        <div className="relative my-6 aspect-[16/9] overflow-hidden rounded-3xl bg-slate-100">
-          <Image
-            src={photo.url}
-            alt={pick(photo.alt, locale)}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-          />
-        </div>
-      ) : (
-        <div className="my-6" />
-      )}
+        <>
+          <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-3xl bg-slate-100">
+            <Image
+              src={photo.url}
+              alt={pick(photo.alt, locale)}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+          <PhotoCredit photo={photo} className="mt-2 text-right" />
+        </>
+      ) : null}
 
       <MarkdownBody>{pick(d.description, locale)}</MarkdownBody>
     </Container>

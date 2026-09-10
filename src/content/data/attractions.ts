@@ -13,8 +13,6 @@ import type { Place } from "@/lib/types";
  * the Greek Ministry of Culture.
  */
 
-const WIKI = "Wikimedia Commons";
-
 export const attractions: Place[] = [
   {
     slug: "white-tower",
@@ -79,9 +77,12 @@ It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/9/9e/WhiteTowerThessaloniki_%283%29.JPG",
+        url: "/photos/7250c0b344.webp",
         alt: { el: "Ο Λευκός Πύργος της Θεσσαλονίκης", en: "The White Tower of Thessaloniki" },
-        credit: WIKI,
+        author: "CeeGee",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:WhiteTowerThessaloniki_(3).JPG",
       },
     ],
     contact: { website: "https://lpth.gr/" },
@@ -196,9 +197,12 @@ It stands on Egnatia Street, free to visit 24/7, on the axis climbing up to the 
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ac.galerius2.jpg",
+        url: "/photos/6d192c2d38.webp",
         alt: { el: "Η Αψίδα του Γαλερίου (Καμάρα)", en: "The Arch of Galerius (Kamara)" },
-        credit: WIKI,
+        author: "Adam Carr",
+        license: "CC BY-SA 3.0",
+        licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Ac.galerius2.jpg",
       },
     ],
     contact: {},
@@ -239,9 +243,12 @@ It lies on **Dikastirion Square** in the centre, a short walk from Agios Dimitri
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/The_Roman_forum.jpg",
+        url: "/photos/8a33cd10a5.webp",
         alt: { el: "Η Αρχαία (Ρωμαϊκή) Αγορά της Θεσσαλονίκης", en: "The Roman Forum of Thessaloniki" },
-        credit: WIKI,
+        author: "Leandro Neumann Ciuffo from Rio de Janeiro, Brazil",
+        license: "CC BY 2.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:The_Roman_forum.jpg",
       },
     ],
     contact: {},
@@ -305,9 +312,12 @@ It is one of the city's **UNESCO monuments**. It is an active church — the sai
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/%CE%9D%CE%B1%CF%8C%CF%82_%CE%91%CE%B3%CE%AF%CE%BF%CF%85_%CE%94%CE%B7%CE%BC%CE%B7%CF%84%CF%81%CE%AF%CE%BF%CF%85%2C_%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7_3785.jpg/1920px-%CE%9D%CE%B1%CF%8C%CF%82_%CE%91%CE%B3%CE%AF%CE%BF%CF%85_%CE%94%CE%B7%CE%BC%CE%B7%CF%84%CF%81%CE%AF%CE%BF%CF%85%2C_%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7_3785.jpg",
+        url: "/photos/944690fb79.webp",
         alt: { el: "Ο Ναός του Αγίου Δημητρίου", en: "The Church of Saint Demetrios" },
-        credit: WIKI,
+        author: "C messier",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:%CE%9D%CE%B1%CF%8C%CF%82_%CE%91%CE%B3%CE%AF%CE%BF%CF%85_%CE%94%CE%B7%CE%BC%CE%B7%CF%84%CF%81%CE%AF%CE%BF%CF%85,_%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7_3785.jpg",
       },
     ],
     contact: {},
@@ -363,9 +373,12 @@ One of the **15 UNESCO monuments** of Thessaloniki, on the square of the same na
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/%D0%A5%D1%80%D0%B0%D0%BC_%D0%A1%D0%B2%D1%8F%D1%82%D0%BE%D0%B9_%D0%A1%D0%BE%D1%84%D0%B8%D0%B8_-_panoramio_%281%29.jpg",
+        url: "/photos/b77e380eff.webp",
         alt: { el: "Ο ναός της Αγίας Σοφίας", en: "The Church of Hagia Sophia" },
-        credit: WIKI,
+        author: "Andrew Zorin",
+        license: "CC BY-SA 3.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A5%D1%80%D0%B0%D0%BC_%D0%A1%D0%B2%D1%8F%D1%82%D0%BE%D0%B9_%D0%A1%D0%BE%D1%84%D0%B8%D0%B8_-_panoramio_(1).jpg",
       },
     ],
     contact: {},
@@ -405,9 +418,12 @@ It stands on Chalkeon Street, next to the Kapani market in the centre. It is one
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/3/31/THES_Panaghia_Chalkeon_5944.JPG",
+        url: "/photos/ac884436c2.webp",
         alt: { el: "Ο ναός της Παναγίας Χαλκέων", en: "The Church of Panagia Chalkeon" },
-        credit: WIKI,
+        author: "Konstantinos Stampoulis ( el:User:Geraki )",
+        license: "CC BY-SA 2.5",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/2.5",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:THES_Panaghia_Chalkeon_5944.JPG",
       },
     ],
     contact: {},
@@ -453,9 +469,12 @@ One of the **UNESCO World Heritage monuments**, in the centre near Hagia Sophia.
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Thessaloniki%2C_Panagia_Acheiropoietos_%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%AF%CE%B1_%CE%91%CF%87%CE%B5%CE%B9%CF%81%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%84%CE%BF%CF%82_%285._Jhdt.%29_%2846896510045%29.jpg",
+        url: "/photos/b52ea7c914.webp",
         alt: { el: "Ο ναός της Αχειροποιήτου", en: "The Church of the Acheiropoietos" },
-        credit: WIKI,
+        author: "Herbert Frank from Wien (Vienna), AT",
+        license: "CC BY 2.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Thessaloniki,_Panagia_Acheiropoietos_%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%AF%CE%B1_%CE%91%CF%87%CE%B5%CE%B9%CF%81%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%84%CE%BF%CF%82_(5._Jhdt.)_(46896510045).jpg",
       },
     ],
     contact: {},
@@ -510,9 +529,12 @@ It is one of the **UNESCO monuments**. It is an active monastery, so dress modes
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Monastery_of_the_Vlatades_09.jpg/1920px-Monastery_of_the_Vlatades_09.jpg",
+        url: "/photos/656327a394.webp",
         alt: { el: "Η Μονή Βλατάδων", en: "Vlatades Monastery" },
-        credit: WIKI,
+        author: "Stolbovsky",
+        license: "CC BY-SA 3.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Monastery_of_the_Vlatades_09.jpg",
       },
     ],
     contact: {},
@@ -574,9 +596,12 @@ Part of the **UNESCO monuments**. Combine them with Vlatades Monastery and the H
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/8/87/Saloniki_City_Walls_2.jpg",
+        url: "/photos/601b3f32d6.webp",
         alt: { el: "Τα βυζαντινά τείχη της Θεσσαλονίκης", en: "The Byzantine walls of Thessaloniki" },
-        credit: WIKI,
+        author: "Julian Nyča",
+        license: "CC BY-SA 3.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Saloniki_City_Walls_2.jpg",
       },
     ],
     contact: {},
@@ -674,9 +699,11 @@ Free to access and the ideal starting point for your first walk through the cent
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Aristotelous_Plateia_2006_%28cropped%29.jpg",
+        url: "/photos/a7606f4d25.webp",
         alt: { el: "Η Πλατεία Αριστοτέλους", en: "Aristotelous Square" },
-        credit: WIKI,
+        author: "User:JFKennedy",
+        license: "Public domain",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Aristotelous_Plateia_2006_(cropped).jpg",
       },
     ],
     contact: {},
@@ -788,9 +815,12 @@ It stands at the start of the waterfront, next to the **Museum of Byzantine Cult
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Archaeological_Museum%2C_Thessaloniki%2C_Greece_%287457978664%29.jpg/1920px-Archaeological_Museum%2C_Thessaloniki%2C_Greece_%287457978664%29.jpg",
+        url: "/photos/a4e8af2702.webp",
         alt: { el: "Το Αρχαιολογικό Μουσείο Θεσσαλονίκης", en: "The Archaeological Museum of Thessaloniki" },
-        credit: WIKI,
+        author: "Carole Raddato from FRANKFURT, Germany",
+        license: "CC BY-SA 2.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Archaeological_Museum,_Thessaloniki,_Greece_(7457978664).jpg",
       },
     ],
     contact: { phone: "+302313310201", email: "amth@culture.gr", website: "https://www.amth.gr/" },
@@ -831,9 +861,12 @@ On Stratou Avenue, next to the **Archaeological Museum** and near the waterfront
     },
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Macedonian_Museums-88-Arx_Byz_Thessaloniknhs-391.jpg",
+        url: "/photos/4635086d73.webp",
         alt: { el: "Το Μουσείο Βυζαντινού Πολιτισμού", en: "The Museum of Byzantine Culture" },
-        credit: WIKI,
+        author: "Prof. Vlasis Vlasidis",
+        license: "CC BY-SA 3.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Macedonian_Museums-88-Arx_Byz_Thessaloniknhs-391.jpg",
       },
     ],
     contact: { phone: "+302313306400", email: "mbp@culture.gr", website: "https://www.mbp.gr/" },

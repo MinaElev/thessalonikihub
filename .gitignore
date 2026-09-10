@@ -43,3 +43,7 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Run log from scripts/fetch-photo-credits.mjs; the applied values live
+# inline in the content files.
+src/content/data/photo-credits.json

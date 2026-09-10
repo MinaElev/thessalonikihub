@@ -78,7 +78,7 @@ export default async function HomePage({
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-900 text-white">
         <Image
-          src="/hero-thessaloniki.jpg"
+          src="/hero-thessaloniki.webp"
           alt={
             locale === "el"
               ? "Ο Λευκός Πύργος και η παραλία της Θεσσαλονίκης στο ηλιοβασίλεμα"

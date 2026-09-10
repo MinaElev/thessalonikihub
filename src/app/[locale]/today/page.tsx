@@ -86,14 +86,18 @@ export default async function TodayPage({
         </section>
       ) : null}
 
-      <section>
-        <SectionHeading title={pick({ el: "Εμπειρίες", en: "Experiences" }, locale)} />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {experiences.map((p) => (
-            <PlaceCard key={p.slug} place={p} locale={locale} />
-          ))}
-        </div>
-      </section>
+      {/* The experiences pillar is still empty; the heading only earns its
+          place once there is something under it. */}
+      {experiences.length ? (
+        <section>
+          <SectionHeading title={t("nav.experiences")} />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {experiences.map((p) => (
+              <PlaceCard key={p.slug} place={p} locale={locale} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </Container>
   );
 }

@@ -39,6 +39,9 @@ export async function generateMetadata({
     description: pick(event.summary, locale),
     images: event.photos[0] ? [event.photos[0].url] : undefined,
     type: "article",
+    // Imported events carry the source feed's own words until an editor
+    // rewrites them; republishing that verbatim is duplicate content.
+    index: event.textRewritten !== false,
   });
 }
 
@@ -54,8 +57,9 @@ export default async function EventPage({
   if (!event) notFound();
 
   const photo = event.photos[0];
-  const nearbyStay = getNearbyPlaces(event.geo, "stay", { limit: 4 });
-  const nearbyEat = getNearbyPlaces(event.geo, "eat", { limit: 4 });
+  const venueName = pick(event.venue, locale);
+  const nearbyStay = event.geo ? getNearbyPlaces(event.geo, "stay", { limit: 4 }) : [];
+  const nearbyEat = event.geo ? getNearbyPlaces(event.geo, "eat", { limit: 4 }) : [];
 
   return (
     <>
@@ -65,20 +69,32 @@ export default async function EventPage({
           "@type": "Event",
           name: pick(event.name, locale),
           description: pick(event.summary, locale),
-          startDate: event.startsAt,
-          endDate: event.endsAt ?? event.startsAt,
+          // schema.org accepts a bare date; sending a start time we never knew
+          // would put an invented hour into Google's event rich results.
+          startDate: event.timeKnown === false
+            ? event.startsAt.slice(0, 10)
+            : event.startsAt,
+          ...(event.endsAt ? { endDate: event.endsAt } : {}),
           eventStatus: "https://schema.org/EventScheduled",
           image: photo?.url,
           url: absoluteUrl(locale, eventHref(event)),
-          location: {
-            "@type": "Place",
-            name: pick(event.venue, locale),
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: event.geo.lat,
-              longitude: event.geo.lng,
-            },
-          },
+          ...(venueName
+            ? {
+                location: {
+                  "@type": "Place",
+                  name: venueName,
+                  ...(event.geo
+                    ? {
+                        geo: {
+                          "@type": "GeoCoordinates",
+                          latitude: event.geo.lat,
+                          longitude: event.geo.lng,
+                        },
+                      }
+                    : {}),
+                },
+              }
+            : {}),
         }}
       />
       <Container>
@@ -122,30 +138,42 @@ export default async function EventPage({
                 </p>
                 <p className="mt-1 inline-flex items-center gap-2 font-medium">
                   <CalendarDays className="h-4 w-4 text-brand-600" />
-                  {formatEventWhen(event.startsAt, event.endsAt, locale)}
+                  {formatEventWhen(event.startsAt, event.endsAt, locale, event.timeKnown)}
                 </p>
               </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
-                  {t("events.where")}
-                </p>
-                <a
-                  href={mapsHref(event.geo)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1 inline-flex items-center gap-2 font-medium text-brand-700 hover:underline"
-                >
-                  <MapPin className="h-4 w-4" /> {pick(event.venue, locale)}
-                </a>
-                <div className="mt-3">
-                  <MiniMapClient
-                    lat={event.geo.lat}
-                    lng={event.geo.lng}
-                    label={pick(event.venue, locale)}
-                    color="#db2777"
-                  />
+              {/* Imported feeds often name no venue: show a location only when
+                  one is actually known, and a map only when we have coords. */}
+              {venueName ? (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
+                    {t("events.where")}
+                  </p>
+                  {event.geo ? (
+                    <a
+                      href={mapsHref(event.geo)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-flex items-center gap-2 font-medium text-brand-700 hover:underline"
+                    >
+                      <MapPin className="h-4 w-4" /> {venueName}
+                    </a>
+                  ) : (
+                    <p className="mt-1 inline-flex items-center gap-2 font-medium">
+                      <MapPin className="h-4 w-4 text-brand-600" /> {venueName}
+                    </p>
+                  )}
+                  {event.geo ? (
+                    <div className="mt-3">
+                      <MiniMapClient
+                        lat={event.geo.lat}
+                        lng={event.geo.lng}
+                        label={venueName}
+                        color="#db2777"
+                      />
+                    </div>
+                  ) : null}
                 </div>
-              </div>
+              ) : null}
               {event.priceInfo ? (
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
@@ -161,7 +189,7 @@ export default async function EventPage({
           </aside>
         </div>
 
-        <section className="mt-10">
+        <section className="mt-10" hidden={!nearbyStay.length}>
           <h2 className="mb-4 text-xl font-bold">{t("place.nearbyStay")}</h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {nearbyStay.map(({ item, meters }) => (
@@ -175,7 +203,7 @@ export default async function EventPage({
           </div>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-10" hidden={!nearbyEat.length}>
           <h2 className="mb-4 text-xl font-bold">{t("place.nearbyEat")}</h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {nearbyEat.map(({ item, meters }) => (

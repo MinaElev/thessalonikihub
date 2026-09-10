@@ -136,10 +136,15 @@ model EventItem {
   tags        String[]
   startsAt    DateTime
   endsAt      DateTime?
+  /// False when the source gave only a date; the time in startsAt is padding.
+  timeKnown   Boolean  @default(true)
   venue       Json
-  lat         Float
-  lng         Float
-  area        String
+  /// Null when the source named no venue we can place on a map.
+  lat         Float?
+  lng         Float?
+  area        String?
+  /// False while the text is still the source feed's wording (kept noindex).
+  textRewritten Boolean @default(true)
   photos      Json
   contact     Json
   priceInfo   Json?

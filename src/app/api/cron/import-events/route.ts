@@ -47,11 +47,32 @@ export async function GET(request: Request) {
   let imported = 0;
   for (const e of events) {
     const data = toEventData(e);
-    await prisma.eventItem.upsert({
+    const existing = await prisma.eventItem.findUnique({
       where: { externalId: data.externalId },
-      update: { sourceUrl: data.sourceUrl, updatedAt: new Date() },
-      create: data as never,
+      select: { id: true, textRewritten: true },
     });
+    if (!existing) {
+      await prisma.eventItem.create({ data: data as never });
+    } else if (!existing.textRewritten) {
+      // Refresh the facts the feed owns (a corrected date, a venue added
+      // later). Once an editor has rewritten the row, the importer stops
+      // touching it so moderation is never silently overwritten.
+      await prisma.eventItem.update({
+        where: { id: existing.id },
+        data: {
+          sourceUrl: data.sourceUrl,
+          startsAt: data.startsAt,
+          endsAt: data.endsAt,
+          timeKnown: data.timeKnown,
+          venue: data.venue as never,
+        },
+      });
+    } else {
+      await prisma.eventItem.update({
+        where: { id: existing.id },
+        data: { sourceUrl: data.sourceUrl },
+      });
+    }
     imported++;
   }
 

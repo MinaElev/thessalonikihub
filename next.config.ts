@@ -8,11 +8,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     // Remote image hosts are added here as real listings are onboarded.
-    remotePatterns: [
-      // Real photos of public monuments/museums (Wikimedia Commons).
-      { protocol: "https", hostname: "upload.wikimedia.org" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-    ],
+    // Wikimedia is deliberately absent: its photos are downloaded into
+    // public/photos by scripts/fetch-photo-credits.mjs, because hotlinking
+    // upload.wikimedia.org gets rate-limited (HTTP 429) under real traffic.
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
 };
 

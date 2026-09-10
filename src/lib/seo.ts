@@ -39,7 +39,9 @@ export function buildMetadata({
   const fullTitle =
     title === site.name ? site.name : `${title} | ${site.name}`;
 
-  // Fall back to the site's default social image when a page has none.
+  // Fall back to the site's default social image when a page has none. This
+  // stays a JPEG on purpose — several social scrapers still refuse WebP, while
+  // the page itself loads the smaller /hero-thessaloniki.webp.
   const ogImages = (images && images.length ? images : [`${site.url}/hero-thessaloniki.jpg`]).map(
     (url) => (url.startsWith("http") ? url : `${site.url}${url}`),
   );

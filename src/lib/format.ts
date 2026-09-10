@@ -18,10 +18,15 @@ export function formatDate(iso: string, locale: Locale): string {
   }).format(new Date(iso));
 }
 
+/**
+ * "Σάβ 12 Σεπ, 19:30", or just "Σάβ 12 Σεπ" when the source never stated a
+ * time — printing midnight, or a guessed evening slot, would be a fabrication.
+ */
 export function formatEventWhen(
   startsAt: string,
   endsAt: string | undefined,
   locale: Locale,
+  timeKnown = true,
 ): string {
   const start = new Date(startsAt);
   const dateFmt = new Intl.DateTimeFormat(intlLocale[locale], {
@@ -33,7 +38,9 @@ export function formatEventWhen(
     hour: "2-digit",
     minute: "2-digit",
   });
-  const base = `${dateFmt.format(start)}, ${timeFmt.format(start)}`;
+  const base = timeKnown
+    ? `${dateFmt.format(start)}, ${timeFmt.format(start)}`
+    : dateFmt.format(start);
   if (!endsAt) return base;
   const end = new Date(endsAt);
   const sameDay = start.toDateString() === end.toDateString();

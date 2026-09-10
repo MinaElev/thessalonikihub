@@ -40,6 +40,9 @@ export async function getMapPoints(locale: Locale): Promise<MapPoint[]> {
     }
   }
   for (const e of await getEvents()) {
+    // Events whose source named no venue have no coordinates — leaving them off
+    // the map is honest; dropping them on the city centre is not.
+    if (!e.geo) continue;
     points.push({
       id: e.slug,
       kind: "events",

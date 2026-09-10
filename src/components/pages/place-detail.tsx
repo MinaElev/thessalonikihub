@@ -31,6 +31,7 @@ import {
 import type { Locale } from "@/i18n/routing";
 import type { Pillar, Place } from "@/lib/types";
 import { pick } from "@/lib/types";
+import { PhotoCredit } from "@/components/PhotoCredit";
 import { Container, Badge } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { EventCard } from "@/components/EventCard";
@@ -277,6 +278,7 @@ export async function PlaceDetail({
             />
           ) : null}
         </div>
+        <PhotoCredit photo={photo} className="-mt-4 mb-6 text-right" />
 
         <div className="grid gap-10 lg:grid-cols-[1fr_20rem]">
           {/* Main */}

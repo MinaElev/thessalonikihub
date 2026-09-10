@@ -79,8 +79,14 @@ function rowToEvent(r: any): EventItem {
     tags: r.tags ?? [],
     startsAt: (r.startsAt instanceof Date ? r.startsAt.toISOString() : String(r.startsAt)),
     endsAt: r.endsAt ? (r.endsAt instanceof Date ? r.endsAt.toISOString() : String(r.endsAt)) : undefined,
+    timeKnown: r.timeKnown ?? true,
     venue: r.venue,
-    geo: { lat: r.lat, lng: r.lng, area: r.area },
+    // Coordinates are null for imports whose feed named no venue.
+    geo:
+      typeof r.lat === "number" && typeof r.lng === "number"
+        ? { lat: r.lat, lng: r.lng, area: r.area ?? "center" }
+        : undefined,
+    textRewritten: r.textRewritten ?? true,
     photos: r.photos ?? [],
     contact: r.contact ?? {},
     priceInfo: r.priceInfo ?? undefined,
@@ -236,7 +242,7 @@ export async function getUpcomingEvents(days = 14): Promise<EventItem[]> {
 }
 
 export async function getEventsInArea(area: string): Promise<EventItem[]> {
-  return (await getEvents()).filter((e) => e.geo.area === area);
+  return (await getEvents()).filter((e) => e.geo?.area === area);
 }
 
 // ---- Guides (sync, file/editorial) ----
@@ -251,29 +257,6 @@ export function getGuide(slug: string): Guide | undefined {
 
 // ---- Search (sync, over the file seed) ----
 
-export interface SearchResults {
-  places: Place[];
-  events: EventItem[];
-  guides: Guide[];
-}
-
-export function search(q: string): SearchResults {
-  const needle = q.trim().toLowerCase();
-  if (!needle) return { places: [], events: [], guides: [] };
-  const inLoc = (l: Localized<string>) => `${l.el} ${l.en ?? ""}`.toLowerCase().includes(needle);
-  const places = allFilePlaces.filter(
-    (p) =>
-      inLoc(p.name) ||
-      inLoc(p.summary) ||
-      p.type.toLowerCase().includes(needle) ||
-      p.tags.some((t) => t.toLowerCase().includes(needle)),
-  );
-  const events = allEvents.filter(
-    (e) => inLoc(e.name) || inLoc(e.summary) || e.tags.some((t) => t.toLowerCase().includes(needle)),
-  );
-  const guides = allGuides.filter((g) => inLoc(g.title) || inLoc(g.excerpt));
-  return { places, events, guides };
-}
 
 // ---- Knowledge graph: "nearby" / "similar" (sync, over the file seed) ----
 
@@ -315,7 +298,10 @@ export function getNearbyEvents(
   const now = new Date();
   return allEvents
     .filter((e) => new Date(e.endsAt ?? e.startsAt) >= now)
-    .map((item) => ({ item, meters: distanceMeters(origin, item.geo) }))
+    // "Nearby" needs a location; an event without coordinates has no distance.
+    .flatMap((item) =>
+      item.geo ? [{ item, meters: distanceMeters(origin, item.geo) }] : [],
+    )
     .sort((a, b) => a.meters - b.meters)
     .slice(0, limit);
 }

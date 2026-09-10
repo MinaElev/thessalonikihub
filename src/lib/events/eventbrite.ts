@@ -26,6 +26,8 @@ export async function fetchEventbrite({
       title: e.name?.text ?? "Event",
       description: e.description?.text ?? undefined,
       startsAt: e.start?.utc ?? "",
+      // Eventbrite always publishes a real start time.
+      timeKnown: true,
       endsAt: e.end?.utc ?? undefined,
       location: e.venue?.name ?? undefined,
     }))

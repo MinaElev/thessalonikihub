@@ -47,14 +47,18 @@ function shortHash(s: string): string {
 
 /**
  * Map an external event to the fields of a ThessalonikiHub EventItem row.
- * Imported events default to `center`/city coords and status PENDING — a
- * moderator refines and approves them. Text is stored under `el`; translation
- * happens later with review.
+ *
+ * Imported rows record only what the source actually stated. A feed that names
+ * no venue leaves `venue`/`lat`/`lng` empty rather than getting the city centre
+ * as a stand-in, and text stays flagged as the source's own wording until an
+ * editor rewrites it. Everything lands as PENDING for moderation; translation
+ * happens later, with review.
  */
 export function toEventData(e: ExternalEvent) {
   const desc = (e.description ?? e.title).trim();
   const summary = desc.length > 160 ? `${desc.slice(0, 157)}…` : desc;
   const key = dedupeKey(e);
+  const venue = e.location?.trim();
   return {
     slug: `${slugify(e.title)}-${shortHash(key)}`,
     name: { el: e.title },
@@ -64,10 +68,16 @@ export function toEventData(e: ExternalEvent) {
     tags: [] as string[],
     startsAt: new Date(e.startsAt),
     endsAt: e.endsAt ? new Date(e.endsAt) : null,
-    venue: { el: e.location || "Θεσσαλονίκη" },
-    lat: 40.6401,
-    lng: 22.9444,
-    area: "center",
+    timeKnown: e.timeKnown,
+    // No venue in the feed means no venue on the page. Pinning every import to
+    // Aristotelous Square would put events on the map where they are not.
+    venue: venue ? { el: venue } : {},
+    lat: null,
+    lng: null,
+    area: null,
+    // The description is still the feed's own text: keep it out of the index
+    // until it has been rewritten during moderation.
+    textRewritten: false,
     photos: [] as unknown[],
     contact: e.sourceUrl ? { website: e.sourceUrl } : {},
     source: e.source,

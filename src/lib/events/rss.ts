@@ -52,23 +52,58 @@ function stripAccents(s: string): string {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
-/** Extract an event date from free text (Greek "1 Νοεμβρίου 2026" or dd/mm/yyyy). */
-export function extractDate(text: string): Date | null {
+/** A calendar date, plus the clock time only when the source actually stated one. */
+export interface ExtractedDate {
+  date: Date;
+  timeKnown: boolean;
+}
+
+/**
+ * Find a start time ("19:00", "7.30 μμ") in free text.
+ *
+ * Only accepted when it sits near a time cue, so a price ("12.50") or a street
+ * number cannot be mistaken for a clock reading.
+ */
+function extractTime(norm: string): { h: number; m: number } | null {
+  const m = norm.match(
+    /(?:ωρα|ωρες|ωραριο|start|time|στις)\s*:?\s*(\d{1,2})[:.](\d{2})|(\d{1,2})[:.](\d{2})\s*(?:μμ|πμ|μ\.μ|π\.μ)/,
+  );
+  if (!m) return null;
+  const h = Number(m[1] ?? m[3]);
+  const min = Number(m[2] ?? m[4]);
+  if (h > 23 || min > 59) return null;
+  // "7.30 μμ" means 19:30.
+  const pm = /μμ|μ\.μ/.test(m[0]) && h < 12;
+  return { h: pm ? h + 12 : h, m: min };
+}
+
+/**
+ * Extract an event date from free text (Greek "1 Νοεμβρίου 2026" or dd/mm/yyyy).
+ *
+ * When the text carries no clock time, the returned date sits at midnight and
+ * `timeKnown` is false — callers show the day only. Inventing a plausible
+ * evening slot would put a start time we made up in front of readers and in
+ * schema.org `startDate`.
+ */
+export function extractDate(text: string): ExtractedDate | null {
   const norm = stripAccents(text);
+  const time = extractTime(norm);
+  const at = (y: number, mo: number, d: number): ExtractedDate | null => {
+    const date = new Date(y, mo - 1, d, time?.h ?? 0, time?.m ?? 0, 0);
+    return isNaN(date.getTime()) ? null : { date, timeKnown: time !== null };
+  };
+
   const re = /(\d{1,2})\s+([α-ωa-z]+)\s+(\d{4})/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(norm))) {
     const month = GREEK_MONTHS.find(([re2]) => re2.test(m![2]))?.[1];
     if (month) {
-      const d = new Date(Number(m[3]), month - 1, Number(m[1]), 19, 0, 0);
-      if (!isNaN(d.getTime())) return d;
+      const hit = at(Number(m[3]), month, Number(m[1]));
+      if (hit) return hit;
     }
   }
   const num = norm.match(/(\d{1,2})[/.](\d{1,2})[/.](\d{4})/);
-  if (num) {
-    const d = new Date(Number(num[3]), Number(num[2]) - 1, Number(num[1]), 19, 0, 0);
-    if (!isNaN(d.getTime())) return d;
-  }
+  if (num) return at(Number(num[3]), Number(num[2]), Number(num[1]));
   return null;
 }
 
@@ -85,16 +120,22 @@ export function parseRss(xml: string, source = "rss"): ExternalEvent[] {
     const descText = stripHtml(descHtml);
     const pub = tag(block, "pubDate");
 
-    const eventDate = extractDate(descText) ?? (pub ? new Date(pub) : null);
-    if (!eventDate || isNaN(eventDate.getTime())) continue;
+    // pubDate is when the article was posted, not when the event runs — its
+    // clock time says nothing about the start, so it is never treated as known.
+    const found =
+      extractDate(descText) ??
+      extractDate(decodeEntities(title)) ??
+      (pub ? { date: new Date(pub), timeKnown: false } : null);
+    if (!found || isNaN(found.date.getTime())) continue;
 
     events.push({
-      externalId: guid || link || `${title}-${eventDate.toISOString()}`,
+      externalId: guid || link || `${title}-${found.date.toISOString()}`,
       source,
       sourceUrl: link || undefined,
       title: decodeEntities(title),
       description: descText || undefined,
-      startsAt: eventDate.toISOString(),
+      startsAt: found.date.toISOString(),
+      timeKnown: found.timeKnown,
     });
   }
 

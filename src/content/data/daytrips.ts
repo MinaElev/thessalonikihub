@@ -13,8 +13,6 @@ export interface DayTrip {
   featured?: boolean;
 }
 
-const WIKI = "Wikimedia Commons";
-
 export const dayTrips: DayTrip[] = [
   {
     slug: "vergina",
@@ -50,9 +48,11 @@ It lies about **75 km** (~1 hour) southwest of Thessaloniki. Ideal for a half or
     category: "history",
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Facade_of_Philip_II_tomb_Vergina_Greece.jpg/1280px-Facade_of_Philip_II_tomb_Vergina_Greece.jpg",
+        url: "/photos/658feadad2.webp",
         alt: { el: "Ο τάφος του Φιλίππου Β΄ στη Βεργίνα", en: "The tomb of Philip II at Vergina" },
-        credit: WIKI,
+        author: "Panegyrics of Granovetter (Sarah Murray)",
+        license: "Public domain",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Facade_of_Philip_II_tomb_Vergina_Greece.jpg",
       },
     ],
     featured: true,
@@ -95,9 +95,12 @@ It lies about **90 km** (~1 hr 15 min) away. For a simple stroll/lunch, Litochor
     category: "nature",
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Olympus_National_Park_30.jpg/1280px-Olympus_National_Park_30.jpg",
+        url: "/photos/07da3bf8c1.webp",
         alt: { el: "Ο Όλυμπος", en: "Mount Olympus" },
-        credit: WIKI,
+        author: "kallerna",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Olympus_National_Park_30.jpg",
       },
     ],
     featured: true,
@@ -140,9 +143,12 @@ It lies about **90 km** (~1 hour) to the west. Ideal for a calm one-day family t
     category: "nature",
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/4/44/La_cascata_-_panoramio_%281%29.jpg",
+        url: "/photos/b325d840df.webp",
         alt: { el: "Ο καταρράκτης της Έδεσσας", en: "The Edessa waterfall" },
-        credit: WIKI,
+        author: "Itto Ogami",
+        license: "CC BY 3.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/3.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:La_cascata_-_panoramio_(1).jpg",
       },
     ],
   },
@@ -225,9 +231,12 @@ It is the **most distant** trip on this list — about **230 km** (~2 hr 45 min)
     category: "history",
     photos: [
       {
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Meteora%27s_monastery_2.jpg/1280px-Meteora%27s_monastery_2.jpg",
+        url: "/photos/0e94e9187b.webp",
         alt: { el: "Τα μοναστήρια των Μετεώρων", en: "The monasteries of Meteora" },
-        credit: WIKI,
+        author: "Stathis floros",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Meteora%27s_monastery_2.jpg",
       },
     ],
   },

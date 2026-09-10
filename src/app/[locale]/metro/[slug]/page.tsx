@@ -125,13 +125,25 @@ export default async function MetroStationPage({
             </section>
           ) : null}
 
-          <nav className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-6">
+          {/* Two bare station names gave no clue which way the line runs. */}
+          <nav
+            aria-label={t("metro.allStations")}
+            className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-6"
+          >
             {prev ? (
               <Link
                 href={metroStationHref(prev.slug)}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:gap-3"
+                className="group inline-flex items-center gap-2 text-left"
               >
-                <ArrowLeft className="h-4 w-4" /> {pick(prev.name, locale)}
+                <ArrowLeft className="h-4 w-4 shrink-0 text-brand-700 transition group-hover:-translate-x-0.5" />
+                <span>
+                  <span className="block text-xs uppercase tracking-wide text-muted">
+                    {t("metro.prevStation")}
+                  </span>
+                  <span className="text-sm font-semibold text-brand-700">
+                    {pick(prev.name, locale)}
+                  </span>
+                </span>
               </Link>
             ) : (
               <span />
@@ -139,9 +151,17 @@ export default async function MetroStationPage({
             {next ? (
               <Link
                 href={metroStationHref(next.slug)}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:gap-3"
+                className="group inline-flex items-center gap-2 text-right"
               >
-                {pick(next.name, locale)} <ArrowRight className="h-4 w-4" />
+                <span>
+                  <span className="block text-xs uppercase tracking-wide text-muted">
+                    {t("metro.nextStation")}
+                  </span>
+                  <span className="text-sm font-semibold text-brand-700">
+                    {pick(next.name, locale)}
+                  </span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-brand-700 transition group-hover:translate-x-0.5" />
               </Link>
             ) : (
               <span />

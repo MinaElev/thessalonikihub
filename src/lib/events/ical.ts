@@ -27,10 +27,15 @@ function unescape(v: string): string {
     .replace(/\\\\/g, "\\");
 }
 
+/** True for an all-day value (VALUE=DATE), which states no clock time. */
+function isAllDay(value: string, params: string): boolean {
+  return /VALUE=DATE/i.test(params) || /^\d{8}$/.test(value);
+}
+
 /** Convert an iCal date/time value to an ISO string. */
 function toIso(value: string, params: string): string | null {
   // All-day: VALUE=DATE:20260115
-  if (/VALUE=DATE/i.test(params) || /^\d{8}$/.test(value)) {
+  if (isAllDay(value, params)) {
     const m = value.match(/^(\d{4})(\d{2})(\d{2})/);
     if (m) return new Date(`${m[1]}-${m[2]}-${m[3]}T00:00:00`).toISOString();
   }
@@ -76,6 +81,7 @@ export function parseICal(text: string, source = "ical"): ExternalEvent[] {
               ? unescape(get("DESCRIPTION")!)
               : undefined,
             startsAt: start,
+            timeKnown: !isAllDay(cur["DTSTART"].value, cur["DTSTART"].params),
             endsAt: end ?? undefined,
             location: get("LOCATION") ? unescape(get("LOCATION")!) : undefined,
           });

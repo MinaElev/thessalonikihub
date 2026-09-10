@@ -13,6 +13,11 @@ export interface ExternalEvent {
   description?: string;
   /** ISO 8601 start datetime. */
   startsAt: string;
+  /**
+   * False when only a calendar date could be read from the source. Callers
+   * must not present the time component as if it were the real start.
+   */
+  timeKnown: boolean;
   /** ISO 8601 end datetime, if known. */
   endsAt?: string;
   location?: string;

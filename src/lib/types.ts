@@ -45,7 +45,16 @@ export interface Photo {
   url: string;
   /** Alt text is required for accessibility and image SEO. */
   alt: Localized<string>;
+  /**
+   * Attribution. CC BY / BY-SA require naming the author, the licence and the
+   * source, so these are stored separately rather than as one free-text credit
+   * — and they are rendered, not just recorded.
+   */
   credit?: string;
+  author?: string;
+  license?: string;
+  licenseUrl?: string;
+  sourceUrl?: string;
 }
 
 export interface ContactInfo {
@@ -241,8 +250,20 @@ export interface EventItem {
   /** ISO start/end datetimes (Europe/Athens). */
   startsAt: string;
   endsAt?: string;
+  /**
+   * False when the source gave only a calendar date. The time component of
+   * `startsAt` is then meaningless padding and must never be shown or emitted
+   * as schema.org `startDate` — we do not invent start times.
+   */
+  timeKnown?: boolean;
   venue: Localized<string>;
-  geo: Geo;
+  /** Absent when the source named no venue we can place on a map. */
+  geo?: Geo;
+  /**
+   * False while the text is still the source feed's own wording. Such events
+   * stay `noindex` until an editor rewrites them in our voice.
+   */
+  textRewritten?: boolean;
   photos: Photo[];
   contact: ContactInfo;
   priceInfo?: Localized<string>;

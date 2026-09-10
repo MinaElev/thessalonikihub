@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { pick } from "@/lib/types";
+import { PhotoCredit } from "@/components/PhotoCredit";
 import { Container } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -99,6 +100,7 @@ export default async function GuidePage({
               className="object-cover"
             />
           </div>
+          <PhotoCredit photo={guide.cover} className="-mt-4 mb-6 text-right" />
           <p className="mb-6 text-lg text-muted">{pick(guide.excerpt, locale)}</p>
           <MarkdownBody>{pick(guide.body, locale)}</MarkdownBody>
         </article>

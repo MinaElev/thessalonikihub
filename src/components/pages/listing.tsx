@@ -53,10 +53,30 @@ function Grid({ places, locale }: { places: Place[]; locale: Locale }) {
   );
 }
 
-function EmptyState({ label }: { label: string }) {
+/**
+ * Shown where a pillar has nothing yet. "Coming soon" left the visitor at a
+ * dead end; naming why it is empty and offering the submission form turns the
+ * gap into the one thing that can close it.
+ */
+function EmptyState({
+  title,
+  body,
+  cta,
+}: {
+  title: string;
+  body: string;
+  cta: string;
+}) {
   return (
-    <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-10 text-center text-muted">
-      {label}
+    <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-10 text-center">
+      <p className="font-bold text-ink">{title}</p>
+      <p className="mx-auto mt-2 max-w-md text-sm text-muted">{body}</p>
+      <Link
+        href="/submit"
+        className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
+      >
+        {cta} <ArrowRight className="h-4 w-4" />
+      </Link>
     </div>
   );
 }
@@ -121,18 +141,25 @@ export async function PillarIndex({
       <SectionHeading
         title={t("listing.allIn")}
         action={
-          <Link
-            href={cityHref(pillar)}
-            className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
-          >
-            {t("common.viewAll")} <ArrowRight className="h-4 w-4" />
-          </Link>
+          // Nothing to see all of — the link led to a "0 listings" page.
+          places.length ? (
+            <Link
+              href={cityHref(pillar)}
+              className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
+            >
+              {t("common.viewAll")} <ArrowRight className="h-4 w-4" />
+            </Link>
+          ) : undefined
         }
       />
       {places.length ? (
         <Grid places={places.slice(0, 6)} locale={locale} />
       ) : (
-        <EmptyState label={t("common.loadingSoon")} />
+        <EmptyState
+          title={t("listing.emptyTitle")}
+          body={t("listing.emptyBody")}
+          cta={t("listing.emptyCta")}
+        />
       )}
     </Container>
   );
@@ -179,7 +206,11 @@ export async function CityListing({
       {places.length ? (
         <FilterableGrid places={places} locale={locale} allLabel={t("common.all")} />
       ) : (
-        <EmptyState label={t("common.loadingSoon")} />
+        <EmptyState
+          title={t("listing.emptyTitle")}
+          body={t("listing.emptyBody")}
+          cta={t("listing.emptyCta")}
+        />
       )}
     </Container>
   );

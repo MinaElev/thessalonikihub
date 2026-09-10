@@ -19,6 +19,7 @@ export function PlaceCard({
 }) {
   const photo = place.photos[0];
   const area = getArea(place.geo.area);
+  const name = pick(place.name, locale);
 
   return (
     <Link
@@ -34,7 +35,18 @@ export function PlaceCard({
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition duration-500 group-hover:scale-105"
           />
-        ) : null}
+        ) : (
+          /* Listings we have not photographed yet — an owner's new submission,
+             most of all — would otherwise show an empty grey rectangle. */
+          <div
+            aria-hidden="true"
+            className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-50 via-slate-50 to-brand-100"
+          >
+            <span className="select-none text-5xl font-extrabold text-brand-600/25">
+              {name.trim().charAt(0).toUpperCase()}
+            </span>
+          </div>
+        )}
         {place.featured ? (
           <span className="absolute left-3 top-3">
             <Badge tone="accent">★</Badge>
@@ -56,7 +68,7 @@ export function PlaceCard({
           ) : null}
         </div>
         <h3 className="font-bold leading-snug text-ink group-hover:text-brand-700">
-          {pick(place.name, locale)}
+          {name}
         </h3>
         <p className="mt-1 line-clamp-2 text-sm text-muted">
           {pick(place.summary, locale)}
