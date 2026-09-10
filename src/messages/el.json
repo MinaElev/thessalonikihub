@@ -24,7 +24,13 @@
     "festivals": "Φεστιβάλ",
     "whatToEat": "Τι τρώμε",
     "routes": "Διαδρομές",
-    "combos": "Θεσ/νίκη & Χαλκιδική"
+    "combos": "Θεσ/νίκη & Χαλκιδική",
+    "groupCity": "Η πόλη",
+    "groupWhatsOn": "Τι γίνεται",
+    "groupGuide": "Οδηγός",
+    "groupTrips": "Εκδρομές",
+    "menu": "Μενού",
+    "closeMenu": "Κλείσιμο"
   },
   "areas": {
     "title": "Περιοχές της Θεσσαλονίκης",

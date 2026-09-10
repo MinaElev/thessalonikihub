@@ -24,7 +24,13 @@
     "festivals": "Festivals",
     "whatToEat": "What to eat",
     "routes": "Routes",
-    "combos": "Thess. & Chalkidiki"
+    "combos": "Thess. & Chalkidiki",
+    "groupCity": "The city",
+    "groupWhatsOn": "What's on",
+    "groupGuide": "Guide",
+    "groupTrips": "Day trips",
+    "menu": "Menu",
+    "closeMenu": "Close"
   },
   "areas": {
     "title": "Thessaloniki Areas",

@@ -1,11 +1,14 @@
 import { useTranslations } from "next-intl";
-import { User, ChevronDown } from "lucide-react";
+import { User, ChevronDown, Menu } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-// The seven pillars stay visible; secondary pages move into a "More" menu so
-// the bar doesn't overflow.
+/**
+ * The seven pillars stay on the bar: they are the product's spine and its
+ * commercial surface. Everything else is supporting content, grouped by what
+ * the visitor is trying to do rather than by how the site is built.
+ */
 const primaryNav = [
   { key: "stay", href: "/stay" },
   { key: "eat", href: "/eat" },
@@ -16,23 +19,41 @@ const primaryNav = [
   { key: "services", href: "/services" },
 ] as const;
 
-const moreNav = [
-  { key: "metro", href: "/metro" },
-  { key: "whenToVisit", href: "/when-to-visit" },
-  { key: "festivals", href: "/festivals" },
-  { key: "whatToEat", href: "/what-to-eat" },
-  { key: "routes", href: "/routes" },
-  { key: "areas", href: "/areas" },
-  { key: "dayTrips", href: "/day-trips" },
-  { key: "combos", href: "/thessaloniki-and-chalkidiki" },
-  { key: "map", href: "/map" },
-  { key: "today", href: "/today" },
-  { key: "guides", href: "/guides" },
-  { key: "plan", href: "/plan" },
+const exploreGroups = [
+  {
+    key: "groupCity",
+    items: [
+      { key: "areas", href: "/areas" },
+      { key: "metro", href: "/metro" },
+      { key: "map", href: "/map" },
+      { key: "routes", href: "/routes" },
+    ],
+  },
+  {
+    key: "groupWhatsOn",
+    items: [
+      { key: "today", href: "/today" },
+      { key: "festivals", href: "/festivals" },
+      { key: "whenToVisit", href: "/when-to-visit" },
+    ],
+  },
+  {
+    key: "groupGuide",
+    items: [
+      { key: "guides", href: "/guides" },
+      { key: "whatToEat", href: "/what-to-eat" },
+      { key: "plan", href: "/plan" },
+      { key: "forYou", href: "/for" },
+    ],
+  },
+  {
+    key: "groupTrips",
+    items: [
+      { key: "dayTrips", href: "/day-trips" },
+      { key: "combos", href: "/thessaloniki-and-chalkidiki" },
+    ],
+  },
 ] as const;
-
-// Mobile shows everything in one scrollable row.
-const allNav = [...primaryNav, ...moreNav];
 
 export function Header() {
   const t = useTranslations("nav");
@@ -45,40 +66,51 @@ export function Header() {
           <span className="text-accent-600">Hub</span>
         </Link>
 
+        {/* Desktop: pillars + one grouped mega-menu. */}
         <nav
           aria-label="Primary"
-          className="ml-2 hidden flex-1 items-center gap-1 lg:flex"
+          className="ml-2 hidden flex-1 items-center gap-0.5 lg:flex"
         >
           {primaryNav.map((item) => (
             <Link
               key={item.key}
               href={item.href}
-              className="whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700"
+              className="whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700"
             >
               {t(item.key)}
             </Link>
           ))}
 
-          {/* "More" dropdown — native <details>, no JS. Toggles on click and
-              is keyboard accessible; navigating a link reloads and closes it. */}
           <details className="group relative [&_summary::-webkit-details-marker]:hidden">
             <summary
               aria-haspopup="true"
-              className="flex cursor-pointer list-none items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700 group-open:bg-brand-50 group-open:text-brand-700"
+              className="flex cursor-pointer list-none items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700 group-open:bg-brand-50 group-open:text-brand-700"
             >
-              {t("more")}
+              {t("explore")}
               <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
             </summary>
-            <div className="absolute right-0 top-full z-50 mt-1 w-52 rounded-2xl border border-slate-100 bg-white p-1.5 shadow-lg">
-              {moreNav.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className="block whitespace-nowrap rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700"
-                >
-                  {t(item.key)}
-                </Link>
-              ))}
+            <div className="absolute right-0 top-full z-50 mt-1 w-[min(44rem,calc(100vw-2rem))] rounded-2xl border border-slate-100 bg-white p-5 shadow-lg">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+                {exploreGroups.map((group) => (
+                  <div key={group.key}>
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
+                      {t(group.key)}
+                    </p>
+                    <ul className="space-y-0.5">
+                      {group.items.map((item) => (
+                        <li key={item.key}>
+                          <Link
+                            href={item.href}
+                            className="block rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700"
+                          >
+                            {t(item.key)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </details>
         </nav>
@@ -101,23 +133,67 @@ export function Header() {
         </div>
       </Container>
 
-      {/* Mobile / tablet horizontal nav */}
-      <nav
-        aria-label="Primary mobile"
-        className="border-t border-slate-100 lg:hidden"
-      >
-        <Container className="flex items-center gap-1 overflow-x-auto py-2">
-          {allNav.map((item) => (
+      {/* Mobile / tablet: one button opening the same grouped structure,
+          instead of a long horizontal scroll of every link. */}
+      <details className="group border-t border-slate-100 lg:hidden [&_summary::-webkit-details-marker]:hidden">
+        {/* <summary> must be the first child of <details>, otherwise the
+            browser ignores it and renders its own "Details" marker. */}
+        <summary className="cursor-pointer list-none">
+          <Container className="flex items-center gap-2 py-3 text-sm font-semibold text-slate-700">
+            <Menu className="h-5 w-5 text-brand-600" />
+            {t("menu")}
+            <ChevronDown className="ml-auto h-4 w-4 transition group-open:rotate-180" />
+          </Container>
+        </summary>
+        <nav
+          aria-label="Primary mobile"
+          className="border-t border-slate-100 bg-slate-50"
+        >
+          <Container className="py-4">
+            <ul className="grid grid-cols-2 gap-1 sm:grid-cols-3">
+              {primaryNav.map((item) => (
+                <li key={item.key}>
+                  <Link
+                    href={item.href}
+                    className="block rounded-xl bg-white px-3 py-2.5 text-sm font-semibold text-brand-700 shadow-sm transition hover:bg-brand-50"
+                  >
+                    {t(item.key)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
+              {exploreGroups.map((group) => (
+                <div key={group.key}>
+                  <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-muted">
+                    {t(group.key)}
+                  </p>
+                  <ul className="grid grid-cols-2 gap-0.5">
+                    {group.items.map((item) => (
+                      <li key={item.key}>
+                        <Link
+                          href={item.href}
+                          className="block rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-white hover:text-brand-700"
+                        >
+                          {t(item.key)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
             <Link
-              key={item.key}
-              href={item.href}
-              className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-brand-50 hover:text-brand-700"
+              href="/submit"
+              className="mt-5 block rounded-full bg-accent-600 px-4 py-2.5 text-center text-sm font-semibold text-white sm:hidden"
             >
-              {t(item.key)}
+              + {t("submit")}
             </Link>
-          ))}
-        </Container>
-      </nav>
+          </Container>
+        </nav>
+      </details>
     </header>
   );
 }
