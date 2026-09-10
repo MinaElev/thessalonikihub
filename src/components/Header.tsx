@@ -24,6 +24,7 @@ const moreNav = [
   { key: "routes", href: "/routes" },
   { key: "areas", href: "/areas" },
   { key: "dayTrips", href: "/day-trips" },
+  { key: "combos", href: "/thessaloniki-and-chalkidiki" },
   { key: "map", href: "/map" },
   { key: "today", href: "/today" },
   { key: "guides", href: "/guides" },

@@ -39,7 +39,7 @@ import {
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Always-present pages.
-  const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals", "/what-to-eat", "/routes"]);
+  const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals", "/what-to-eat", "/routes", "/thessaloniki-and-chalkidiki"]);
   // /today is intentionally excluded: it is a dynamic daily page.
   for (const a of areas) paths.add(areaHref(a.slug));
   for (const d of dayTrips) paths.add(dayTripHref(d.slug));

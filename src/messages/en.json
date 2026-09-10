@@ -23,7 +23,8 @@
     "whenToVisit": "When to visit",
     "festivals": "Festivals",
     "whatToEat": "What to eat",
-    "routes": "Routes"
+    "routes": "Routes",
+    "combos": "Thess. & Chalkidiki"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -321,5 +322,16 @@
       "easy": "Easy",
       "moderate": "Moderate"
     }
+  },
+  "combos": {
+    "title": "Thessaloniki & Chalkidiki together",
+    "subtitle": "Combined itineraries for anyone who wants both the city and the sea in one trip.",
+    "introA": "Thessaloniki and Chalkidiki are about an hour apart, and almost nobody visits one without thinking about the other. Yet most guides treat them as two separate destinations.",
+    "introB": "Here are three ready-made plans that bridge them — for three, five or seven days. Each day links into the guide's detailed pages, and the Chalkidiki half is covered in depth by our sister site.",
+    "days": "days",
+    "drivingNote": "Driving times are indicative. Kassandra takes about an hour and Sithonia about an hour and a half, but on summer weekends getting out of the city can add a good deal. You'll need a car for the Chalkidiki days.",
+    "sisterTitle": "For the Chalkidiki half",
+    "sisterText": "chalkidikihub.gr is ThessalonikiHub's sister site, dedicated entirely to Chalkidiki: beaches by peninsula, places to stay, villages and practical information.",
+    "allDayTrips": "See all day trips from Thessaloniki"
   }
 }
