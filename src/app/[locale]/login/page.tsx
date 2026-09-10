@@ -3,12 +3,26 @@ import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui";
 import { LoginForm } from "@/components/auth/LoginForm";
 
+/**
+ * Only same-site paths are accepted as a return target, so a crafted
+ * ?next= cannot bounce someone off to another host after signing in.
+ */
+function safeNext(raw: string | string[] | undefined): string | undefined {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  if (!value) return undefined;
+  if (!value.startsWith("/") || value.startsWith("//")) return undefined;
+  return value;
+}
+
 export default async function LoginPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: Locale }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
+  const { next } = await searchParams;
   setRequestLocale(locale);
   const tt = (el: string, en: string) => (locale === "el" ? el : en);
 
@@ -20,11 +34,11 @@ export default async function LoginPage({
         </h1>
         <p className="mb-6 text-sm text-muted">
           {tt(
-            "Συνδέσου για να καταχωρείς και να διαχειρίζεσαι τις επιχειρήσεις σου.",
-            "Sign in to add and manage your listings.",
+            "Αποθήκευσε μέρη για το ταξίδι σου, ή διαχειρίσου την επιχείρησή σου.",
+            "Save places for your trip, or manage your business listing.",
           )}
         </p>
-        <LoginForm locale={locale} />
+        <LoginForm locale={locale} next={safeNext(next)} />
       </div>
     </Container>
   );

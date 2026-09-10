@@ -306,7 +306,7 @@ export async function PlaceDetail({
                 path={`/${place.kind}/${place.slug}`}
                 label={pick(place.name, locale)}
                 initiallySaved={alreadySaved}
-                loginHref={locale === "el" ? "/login" : `/${locale}/login`}
+                loginHref={`${locale === "el" ? "" : `/${locale}`}/login?next=${encodeURIComponent(`/${place.kind}/${place.slug}`)}`}
                 labels={{
                   save: t("saved.save"),
                   saved: t("saved.savedLabel"),
@@ -629,7 +629,7 @@ export async function PlaceDetail({
               <div className="mt-8">
                 <ClaimBusiness
                   slug={place.slug}
-                  loginHref={locale === "el" ? "/login" : `/${locale}/login`}
+                  loginHref={`${locale === "el" ? "" : `/${locale}`}/login?next=${encodeURIComponent(`/${place.kind}/${place.slug}`)}`}
                   labels={{
                     cta: t("claim.cta"),
                     title: t("claim.title"),
