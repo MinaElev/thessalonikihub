@@ -21,6 +21,14 @@ function GoogleMark() {
   );
 }
 
+/**
+ * OAuth providers must be enabled in the Supabase dashboard before they work.
+ * signInWithOAuth navigates away rather than returning an error, so a provider
+ * that is switched off dumps raw JSON in the user's face — the button is
+ * therefore hidden until this flag is set.
+ */
+const googleEnabled = process.env.NEXT_PUBLIC_ENABLE_GOOGLE_AUTH === "true";
+
 type Mode = "password" | "magic";
 type Status = "idle" | "loading" | "google" | "sent" | "reset-sent" | "error";
 
@@ -66,8 +74,12 @@ export function LoginForm({
   const rateLimited = () =>
     T(
       locale,
-      "Πολλές προσπάθειες. Το Supabase επιτρέπει λίγα email την ώρα — δοκίμασε με κωδικό ή με Google.",
-      "Too many attempts. Supabase allows only a few emails per hour — try a password or Google instead.",
+      googleEnabled
+        ? "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε με κωδικό ή με Google."
+        : "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε σύνδεση με κωδικό.",
+      googleEnabled
+        ? "Too many attempts. Only a few emails per hour are allowed — try a password or Google instead."
+        : "Too many attempts. Only a few emails per hour are allowed — sign in with a password instead.",
     );
 
   /** Password sign-in, or sign-up when the register toggle is on. */
@@ -220,20 +232,24 @@ export function LoginForm({
 
   return (
     <div className="space-y-4">
-      <button
-        type="button"
-        onClick={signInGoogle}
-        disabled={status === "google"}
-        className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 font-medium transition hover:bg-slate-50 disabled:opacity-60"
-      >
-        {status === "google" ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleMark />}
-        {T(locale, "Συνέχεια με Google", "Continue with Google")}
-      </button>
+      {googleEnabled ? (
+        <>
+          <button
+            type="button"
+            onClick={signInGoogle}
+            disabled={status === "google"}
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 font-medium transition hover:bg-slate-50 disabled:opacity-60"
+          >
+            {status === "google" ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleMark />}
+            {T(locale, "Συνέχεια με Google", "Continue with Google")}
+          </button>
 
-      <div className="flex items-center gap-3 text-xs text-slate-400">
-        <span className="h-px flex-1 bg-slate-200" /> {T(locale, "ή", "or")}{" "}
-        <span className="h-px flex-1 bg-slate-200" />
-      </div>
+          <div className="flex items-center gap-3 text-xs text-slate-400">
+            <span className="h-px flex-1 bg-slate-200" /> {T(locale, "ή", "or")}{" "}
+            <span className="h-px flex-1 bg-slate-200" />
+          </div>
+        </>
+      ) : null}
 
       <form onSubmit={mode === "password" ? submitPassword : sendMagicLink} className="space-y-3">
         <div>
