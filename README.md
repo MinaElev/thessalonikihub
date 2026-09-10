@@ -67,6 +67,16 @@ The single source of truth is `src/lib/links.ts`.
 /events  /events/{slug}         events
 /today                          dynamic daily page
 /guides  /guides/{slug}         editorial guides
+/areas   /areas/{slug}          neighbourhood hubs
+/metro   /metro/{station}       metro station guides (18 stations)
+/when-to-visit/{month}          month-by-month guides (12 months)
+/festivals/{slug}               permanent festival anchor pages
+/what-to-eat/{dish}             food monographs
+/routes/{slug}                  self-guided walking routes
+/day-trips/{slug}               day trips from the city
+/thessaloniki-and-chalkidiki    combined itineraries with the sister site
+/for/{audience}                 audience hubs
+/map  /search  /plan  /submit   tools
 ```
 
 English mirrors these under `/en/...`. Every page emits a self-referencing
@@ -84,9 +94,14 @@ canonical plus hreflang alternates for all locales (`src/lib/seo.ts`).
   the site into an interconnected local graph.
 - **Structured data (JSON-LD).** `LodgingBusiness` / `Restaurant` / `BarOrPub` /
   `TouristAttraction`, `Event`, `Article`, `FAQPage`, and `BreadcrumbList`.
-- **No fabricated information.** Sample listings in `src/content/data` are clearly
-  fictional placeholders. Replace them with verified, ideally owner-claimed
-  listings before launch. Never invent reviews, prices, or facts about real places.
+- **No fabricated information.** There are no placeholder listings: everything in
+  `src/content/data` is real and sourced. Attractions, metro facts, festival
+  histories and dish origins were researched and cross-checked, and where a fact
+  is uncertain or an origin is shared the content says so. Business listings are
+  added only with verified public information or details supplied by the owner —
+  never invented phone numbers, prices, hours or reviews. Photos are either
+  properly licensed (Wikimedia Commons) or supplied by the owner; third-party
+  booking-site images are never reused.
 
 ## Adding content
 
@@ -99,6 +114,9 @@ fields via `Localized<T>` (`{ el: "...", en: "..." }`; Greek required).
 - **A curated collection (SEO page)**: add a `Collection` to
   `src/content/data/collections.ts` with a unique `intro`.
 - **A guide**: add a `Guide` to `src/content/data/guides.ts` (markdown body).
+- **A metro station / month / festival / dish / walking route**: add an entry to
+  `metro.ts`, `months.ts`, `festivals.ts`, `dishes.ts` or `routes.ts`. Each is a
+  typed content collection with its own hub and detail pages.
 
 ## Roadmap (mapped to the product vision)
 
