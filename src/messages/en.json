@@ -20,7 +20,8 @@
     "more": "More",
     "explore": "Explore",
     "metro": "Metro",
-    "whenToVisit": "When to visit"
+    "whenToVisit": "When to visit",
+    "festivals": "Festivals"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -263,5 +264,20 @@
       "medium": "Moderate",
       "high": "High"
     }
+  },
+  "festivals": {
+    "title": "Thessaloniki Festivals",
+    "subtitle": "The city's great institutions — what each one is, when it happens and why it matters.",
+    "introA": "Thessaloniki doesn't only count the year in months. It counts it in festivals: the trade fair in September, the Dimitria in October, the Film Festival in November, the Documentary Festival in March. Each has run for decades and has shaped the city's character.",
+    "introB": "Below you'll find what each of these institutions actually is, its history, where it happens and how to experience it. Exact dates change every year — which is why each page links to the official organisers.",
+    "since": "Since",
+    "when": "When",
+    "facts": "At a glance",
+    "official": "Official site",
+    "nearestStation": "Nearest station",
+    "others": "The other festivals",
+    "eventsThatMonth": "Events that month",
+    "inMonth": "Festivals this month",
+    "disclaimer": "Festival dates change every year. Always check the organiser's official site before you travel or book tickets."
   }
 }

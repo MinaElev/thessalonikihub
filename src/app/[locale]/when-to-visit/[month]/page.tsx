@@ -20,9 +20,10 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { monthHref } from "@/lib/links";
+import { festivalHref, monthHref } from "@/lib/links";
 import { getUpcomingEvents } from "@/lib/repo";
 import { cityMonths, getCityMonth, getCityMonths } from "@/content/data/months";
+import { getFestivalsInMonth } from "@/content/data/festivals";
 
 export function generateStaticParams() {
   return cityMonths.map((m) => ({ month: m.slug }));
@@ -95,6 +96,8 @@ export default async function MonthPage({
   const events = upcoming
     .filter((e) => new Date(e.startsAt).getMonth() + 1 === m.number)
     .slice(0, 4);
+
+  const monthFestivals = getFestivalsInMonth(m.number);
 
   const level = (v: "low" | "medium" | "high") => t(`months.level.${v}`);
 
@@ -219,6 +222,30 @@ export default async function MonthPage({
               ))}
             </ul>
           </div>
+
+          {monthFestivals.length ? (
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+              <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-muted">
+                {t("festivals.inMonth")}
+              </h2>
+              <div className="space-y-3">
+                {monthFestivals.map((f) => (
+                  <Link
+                    key={f.slug}
+                    href={festivalHref(f.slug)}
+                    className="block rounded-xl border border-slate-100 p-3 transition hover:border-brand-200"
+                  >
+                    <span className="block text-sm font-semibold text-brand-700">
+                      {pick(f.name, locale)}
+                    </span>
+                    <span className="mt-0.5 block text-xs text-muted">
+                      {t("festivals.since")} {f.founded}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
 
           <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-muted">

@@ -78,3 +78,11 @@ export function whenToVisitHref(): string {
 export function monthHref(slug: string): string {
   return `/when-to-visit/${slug}`;
 }
+
+export function festivalsHref(): string {
+  return "/festivals";
+}
+
+export function festivalHref(slug: string): string {
+  return `/festivals/${slug}`;
+}
