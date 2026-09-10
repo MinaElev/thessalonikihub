@@ -33,7 +33,7 @@ export interface MetroStation {
   area?: string;
   /** Slugs of places within walking distance, for cross-linking. */
   nearbyPlaces?: string[];
-  /** Onward connections (rail, bus) — only where publicly documented. */
+  /** Onward connections (rail, bus), only where publicly documented. */
   connections?: Localized<string>;
   featured?: boolean;
 }
@@ -46,14 +46,14 @@ export const metroStations: MetroStation[] = [
     order: 1,
     opened: "2024-11-30",
     blurb: {
-      el: "Το δυτικό τέρμα της γραμμής, κάτω από τον κεντρικό σιδηροδρομικό σταθμό — η πρώτη επαφή με την πόλη αν φτάνεις με τρένο.",
-      en: "The western terminus, beneath the main railway station — your first contact with the city if you arrive by train.",
+      el: "Το δυτικό τέρμα της γραμμής, κάτω από τον κεντρικό σιδηροδρομικό σταθμό. Η πρώτη επαφή με την πόλη αν φτάνεις με τρένο.",
+      en: "The western terminus, beneath the main railway station, your first contact with the city if you arrive by train.",
     },
     long: {
       el: `Ο δυτικός τερματικός σταθμός του δικτύου βρίσκεται ακριβώς δίπλα στον **κεντρικό σιδηροδρομικό σταθμό** της Θεσσαλονίκης. Αν φτάνεις με τρένο από την Αθήνα, τη Λάρισα, την Έδεσσα ή τις Σέρρες, κατεβαίνεις από το βαγόνι και μπαίνεις στο μετρό χωρίς να βγεις στον δρόμο.
 
 ## Πού σε βγάζει
-Στο δυτικό άκρο του κέντρου, στην περιοχή του **Βαρδάρη**. Δεν είναι τουριστική γειτονιά — είναι η πρακτική πύλη της πόλης, με υπεραστικά λεωφορεία, εμπορικά καταστήματα και έντονο πολυπολιτισμικό χαρακτήρα.
+Στο δυτικό άκρο του κέντρου, στην περιοχή του **Βαρδάρη**. Δεν είναι τουριστική γειτονιά· είναι η πρακτική πύλη της πόλης, με υπεραστικά λεωφορεία, εμπορικά καταστήματα και έντονο πολυπολιτισμικό χαρακτήρα.
 
 ## Κατέβα εδώ για
 - **Τρένα** προς και από την υπόλοιπη Ελλάδα.
@@ -64,7 +64,7 @@ export const metroStations: MetroStation[] = [
       en: `The network's western terminus sits directly beside Thessaloniki's **main railway station**. If you arrive by train from Athens, Larissa, Edessa or Serres, you step off the carriage and into the metro without going out to the street.
 
 ## Where it puts you
-At the western edge of the centre, in the **Vardaris** district. This isn't a tourist neighbourhood — it's the city's practical gateway, with intercity buses, shops and a strongly multicultural character.
+At the western edge of the centre, in the **Vardaris** district. This isn't a tourist neighbourhood; it's the city's practical gateway, with intercity buses, shops and a strongly multicultural character.
 
 ## Get off here for
 - **Trains** to and from the rest of Greece.
@@ -87,14 +87,14 @@ The historic centre is only 3–4 stops away. If you're carrying luggage, the me
     order: 2,
     opened: "2024-11-30",
     blurb: {
-      el: "Η Πλατεία Δημοκρατίας — εκεί όπου βρισκόταν η δυτική πύλη της οχυρωμένης πόλης, και η πιο κοντινή στάση στα Λαδάδικα από τα δυτικά.",
-      en: "Dimokratias Square — the site of the fortified city's western gate, and the closest western stop to Ladadika.",
+      el: "Η Πλατεία Δημοκρατίας: εκεί όπου βρισκόταν η δυτική πύλη της οχυρωμένης πόλης, και η πιο κοντινή στάση στα Λαδάδικα από τα δυτικά.",
+      en: "Dimokratias Square: the site of the fortified city's western gate, and the closest western stop to Ladadika.",
     },
     long: {
       el: `Ο σταθμός βγάζει στην **Πλατεία Δημοκρατίας**, γνωστή σε όλους ως Βαρδάρης. Εδώ ξεκινά η Εγνατία, ο δρόμος που διασχίζει την πόλη από άκρη σε άκρη ακολουθώντας τη ρωμαϊκή χάραξη.
 
 ## Πού σε βγάζει
-Στο δυτικό όριο του ιστορικού κέντρου. Στο σημείο αυτό βρισκόταν η **δυτική πύλη των τειχών** — η «Χρυσή Πύλη» απ' όπου έμπαιναν όσοι έρχονταν από τη Ρώμη μέσω της Εγνατίας Οδού.
+Στο δυτικό όριο του ιστορικού κέντρου. Στο σημείο αυτό βρισκόταν η **δυτική πύλη των τειχών**. Η «Χρυσή Πύλη» απ' όπου έμπαιναν όσοι έρχονταν από τη Ρώμη μέσω της Εγνατίας Οδού.
 
 ## Κατέβα εδώ για
 - **Λαδάδικα**: περίπου 10 λεπτά με τα πόδια προς τη θάλασσα.
@@ -106,7 +106,7 @@ The historic centre is only 3–4 stops away. If you're carrying luggage, the me
       en: `The station opens onto **Dimokratias Square**, known to everyone as Vardaris. This is where Egnatia Street begins, the road that crosses the city end to end along the Roman alignment.
 
 ## Where it puts you
-At the western edge of the historic centre. This was the site of the **western gate in the walls** — the "Golden Gate" through which travellers arriving from Rome along the Via Egnatia entered the city.
+At the western edge of the historic centre. This was the site of the **western gate in the walls**. The "Golden Gate" through which travellers arriving from Rome along the Via Egnatia entered the city.
 
 ## Get off here for
 - **Ladadika**: about a 10-minute walk toward the sea.
@@ -127,7 +127,7 @@ The area is busy by day and quieter at night. For an evening out in Ladadika, mo
     opened: "2024-11-30",
     blurb: {
       el: "Ο σταθμός-μουσείο: η ρωμαϊκή Decumanus Maximus διατηρημένη στη θέση της, ο πρώτος ανοιχτός αρχαιολογικός χώρος μέσα σε σταθμό μετρό στον κόσμο.",
-      en: "The museum station: the Roman Decumanus Maximus preserved in place — the world's first open archaeological site inside a metro station.",
+      en: "The museum station: the Roman Decumanus Maximus preserved in place. The world's first open archaeological site inside a metro station.",
     },
     long: {
       el: `Αν κατεβείς σε έναν μόνο σταθμό του μετρό για τον ίδιο τον σταθμό, αυτός είναι. Στη Βενιζέλου, η ανασκαφή δεν μεταφέρθηκε και δεν καλύφθηκε: **έμεινε εκεί που τη βρήκαν**.
@@ -144,7 +144,7 @@ The area is busy by day and quieter at night. For an evening out in Ladadika, mo
 - Την **Πλατεία Αριστοτέλους** και τα **Λαδάδικα**, λίγα λεπτά προς τη θάλασσα.
 
 ## Καλό να ξέρεις
-Η θέαση των αρχαίων γίνεται μέσα από τον χώρο του σταθμού, στη διαδρομή προς τις αποβάθρες. Δεν χρειάζεσαι ξεχωριστό εισιτήριο μουσείου — αρκεί το εισιτήριο του μετρό.`,
+Η θέαση των αρχαίων γίνεται μέσα από τον χώρο του σταθμού, στη διαδρομή προς τις αποβάθρες. Δεν χρειάζεσαι ξεχωριστό εισιτήριο μουσείου, αρκεί το εισιτήριο του μετρό.`,
       en: `If you get off at one metro station for the station itself, this is the one. At Venizelou the excavation was neither moved nor covered over: **it stayed exactly where it was found**.
 
 ## What you'll see
@@ -159,7 +159,7 @@ The station was designed so passengers **walk above the antiquities**, with susp
 - **Aristotelous Square** and **Ladadika**, a few minutes toward the sea.
 
 ## Good to know
-You view the antiquities from inside the station, on the way to the platforms. No separate museum ticket is needed — your metro ticket is enough.`,
+You view the antiquities from inside the station, on the way to the platforms. No separate museum ticket is needed, your metro ticket is enough.`,
     },
     center: { lat: 40.6376, lng: 22.941 },
     area: "center",
@@ -215,14 +215,14 @@ It's the handiest station for shopping in the centre, because it leaves you betw
     order: 5,
     opened: "2024-11-30",
     blurb: {
-      el: "Η στάση της Ροτόντας και της Καμάρας — και η πύλη προς τη φοιτητική Ναυαρίνου.",
-      en: "The stop for the Rotunda and Kamara — and the gateway to student Navarinou.",
+      el: "Η στάση της Ροτόντας και της Καμάρας, και η πύλη προς τη φοιτητική Ναυαρίνου.",
+      en: "The stop for the Rotunda and Kamara, and the gateway to student Navarinou.",
     },
     long: {
       el: `Στην Πλατεία Σιντριβανίου το κέντρο αρχίζει να δίνει τη θέση του στην πανεπιστημιούπολη. Είναι ο σταθμός με τη μεγαλύτερη πυκνότητα ρωμαϊκών μνημείων γύρω του.
 
 ## Κατέβα εδώ για
-- Τη **Ροτόντα**, το επιβλητικό κυκλικό οικοδόμημα του 4ου αιώνα με τα ψηφιδωτά — μνημείο UNESCO.
+- Τη **Ροτόντα**, το επιβλητικό κυκλικό οικοδόμημα του 4ου αιώνα με τα ψηφιδωτά, μνημείο UNESCO.
 - Την **Αψίδα του Γαλερίου**, την **Καμάρα**, το κλασικό ραντεβού της πόλης.
 - Την **Πλατεία Ναυαρίνου** με τα ερείπια του ανακτόρου του Γαλερίου και τα φοιτητικά καφέ γύρω της.
 - Τον πεζόδρομο της **Δημητρίου Γούναρη**, που κατηφορίζει προς τη θάλασσα.
@@ -231,11 +231,11 @@ It's the handiest station for shopping in the centre, because it leaves you betw
 Ανάμεσα στο ιστορικό κέντρο και τη νεανική γειτονιά της Ροτόντας. Είναι η καλύτερη αφετηρία αν θέλεις να δεις το ρωμαϊκό συγκρότημα του Γαλερίου συνολικά: αψίδα, ανάκτορο και Ροτόντα ήταν μέρη του ίδιου αυτοκρατορικού σχεδίου.
 
 ## Καλό να ξέρεις
-Η περιοχή είναι ζωντανή κάθε μέρα της εβδομάδας, όχι μόνο τα σαββατοκύριακα — είναι φοιτητική γειτονιά.`,
+Η περιοχή είναι ζωντανή κάθε μέρα της εβδομάδας, όχι μόνο τα σαββατοκύριακα· είναι φοιτητική γειτονιά.`,
       en: `At Sintrivani Square the centre begins to give way to the university district. This is the station with the greatest concentration of Roman monuments around it.
 
 ## Get off here for
-- The **Rotunda**, the imposing 4th-century circular building with its mosaics — a UNESCO monument.
+- The **Rotunda**, the imposing 4th-century circular building with its mosaics. A UNESCO monument.
 - The **Arch of Galerius**, **Kamara**, the city's classic meeting point.
 - **Navarinou Square**, with the ruins of the Palace of Galerius and the student cafés around it.
 - The **Dimitriou Gounari** pedestrian street, running down toward the sea.
@@ -244,7 +244,7 @@ It's the handiest station for shopping in the centre, because it leaves you betw
 Between the historic centre and the youthful Rotunda neighbourhood. It's the best starting point if you want to see the Galerian complex as a whole: the arch, the palace and the Rotunda were all part of the same imperial plan.
 
 ## Good to know
-The area is lively every day of the week, not just at weekends — this is a student neighbourhood.`,
+The area is lively every day of the week, not just at weekends; this is a student neighbourhood.`,
     },
     center: { lat: 40.633, lng: 22.952 },
     area: "navarinou",
@@ -258,8 +258,8 @@ The area is lively every day of the week, not just at weekends — this is a stu
     order: 6,
     opened: "2024-11-30",
     blurb: {
-      el: "Ο σταθμός των μουσείων, του ΑΠΘ και της ΔΕΘ — και η πιο βολική πρόσβαση στον Λευκό Πύργο και τη Νέα Παραλία.",
-      en: "The station for the museums, the university and the trade fair — and the easiest access to the White Tower and the seafront.",
+      el: "Ο σταθμός των μουσείων, του ΑΠΘ και της ΔΕΘ, και η πιο βολική πρόσβαση στον Λευκό Πύργο και τη Νέα Παραλία.",
+      en: "The station for the museums, the university and the trade fair, and the easiest access to the White Tower and the seafront.",
     },
     long: {
       el: `Λίγοι σταθμοί εξυπηρετούν τόσα διαφορετικά πράγματα. Εδώ συναντιούνται η πανεπιστημιούπολη, ο εκθεσιακός χώρος της πόλης και δύο από τα σημαντικότερα μουσεία της Ελλάδας.
@@ -303,8 +303,8 @@ During the **TIF** trade fair in September the station gets very busy. If you're
     order: 7,
     opened: "2024-11-30",
     blurb: {
-      el: "Καθημερινή ανατολική γειτονιά, εκτός τουριστικών διαδρομών — εδώ ζει η πόλη μακριά από το κέντρο.",
-      en: "An everyday eastern neighbourhood off the tourist trail — where the city lives away from the centre.",
+      el: "Καθημερινή ανατολική γειτονιά, εκτός τουριστικών διαδρομών, εδώ ζει η πόλη μακριά από το κέντρο.",
+      en: "An everyday eastern neighbourhood off the tourist trail, where the city lives away from the centre.",
     },
     long: {
       el: `Μετά το Πανεπιστήμιο η γραμμή αφήνει το ιστορικό κέντρο και μπαίνει στις πυκνοκατοικημένες ανατολικές συνοικίες. Η Παπάφη είναι η πρώτη από αυτές.
@@ -451,7 +451,7 @@ This is the last station on the shared section. From the next stop, **25is Marti
       en: "The network's junction: here the Nea Elvetia branch and the Kalamaria branch divide.",
     },
     long: {
-      el: `Ο πιο σημαντικός σταθμός του δικτύου από πλευράς λειτουργίας — και ο μόνος όπου πρέπει να προσέξεις ποιον συρμό παίρνεις.
+      el: `Ο πιο σημαντικός σταθμός του δικτύου από πλευράς λειτουργίας, και ο μόνος όπου πρέπει να προσέξεις ποιον συρμό παίρνεις.
 
 ## Ο κόμβος
 Μέχρι εδώ όλοι οι συρμοί ακολουθούν την ίδια διαδρομή από τον Νέο Σιδηροδρομικό Σταθμό. Από την 25ης Μαρτίου και μετά το δίκτυο χωρίζεται σε **δύο κλάδους**:
@@ -464,7 +464,7 @@ This is the last station on the shared section. From the next stop, **25is Marti
 
 ## Πού σε βγάζει
 Σε πυκνοκατοικημένη ανατολική περιοχή, στα όρια ανάμεσα στις συνοικίες της Τούμπας και της Ανάληψης.`,
-      en: `Operationally the most important station on the network — and the only one where you need to check which train you're boarding.
+      en: `Operationally the most important station on the network, and the only one where you need to check which train you're boarding.
 
 ## The junction
 Up to this point every train follows the same route from the New Railway Station. From 25is Martiou onward the network divides into **two branches**:
@@ -488,8 +488,8 @@ In a densely populated eastern area, on the boundary between the Toumba and Anal
     order: 12,
     opened: "2024-11-30",
     blurb: {
-      el: "Στον κλάδο της Νέας Ελβετίας, στην πλευρά της Τούμπας — η στάση των ημερών αγώνα.",
-      en: "On the Nea Elvetia branch, on the Toumba side — the stop for match days.",
+      el: "Στον κλάδο της Νέας Ελβετίας, στην πλευρά της Τούμπας. Η στάση των ημερών αγώνα.",
+      en: "On the Nea Elvetia branch, on the Toumba side. The stop for match days.",
     },
     long: {
       el: `Ο σταθμός βρίσκεται στον ανατολικό κλάδο, στην περιοχή που κατεβαίνει προς την **Τούμπα**.
@@ -536,7 +536,7 @@ In a densely populated, strongly working-class neighbourhood, largely built by r
 - Πρόσβαση προς τον περιφερειακό και τα μεγάλα εμπορικά κέντρα της Πυλαίας.
 
 ## Καλό να ξέρεις
-Αν έρχεσαι από τα ανατολικά προάστια με αυτοκίνητο ή λεωφορείο, η Νέα Ελβετία είναι το φυσικό σημείο να αφήσεις τον δρόμο και να μπεις στο μετρό — γλιτώνεις την κίνηση της Εγνατίας και το παρκάρισμα στο κέντρο.
+Αν έρχεσαι από τα ανατολικά προάστια με αυτοκίνητο ή λεωφορείο, η Νέα Ελβετία είναι το φυσικό σημείο να αφήσεις τον δρόμο και να μπεις στο μετρό, γλιτώνεις την κίνηση της Εγνατίας και το παρκάρισμα στο κέντρο.
 
 ## Πού σε βγάζει
 Στο ανατολικό όριο του πυκνού αστικού ιστού, εκεί όπου η πόλη αρχίζει να ανοίγει προς την Πυλαία και τον περιφερειακό.`,
@@ -547,7 +547,7 @@ In a densely populated, strongly working-class neighbourhood, largely built by r
 - Access to the ring road and Pylaia's large shopping centres.
 
 ## Good to know
-If you're coming in from the eastern suburbs by car or bus, Nea Elvetia is the natural place to leave the road and take the metro — you skip Egnatia's traffic and the parking problem downtown.
+If you're coming in from the eastern suburbs by car or bus, Nea Elvetia is the natural place to leave the road and take the metro; you skip Egnatia's traffic and the parking problem downtown.
 
 ## Where it puts you
 At the eastern edge of the dense urban fabric, where the city begins to open toward Pylaia and the ring road.`,
@@ -569,7 +569,7 @@ At the eastern edge of the dense urban fabric, where the city begins to open tow
       el: `Ο πρώτος από τους πέντε νέους σταθμούς που άνοιξαν στις **27 Αυγούστου 2026** με την επέκταση προς την Καλαμαριά.
 
 ## Πού σε βγάζει
-Στην περιοχή όπου βρίσκονται τα κτίρια της **Περιφέρειας Κεντρικής Μακεδονίας** — από εκεί και το όνομα, που κρατά από την εποχή της Νομαρχίας. Είναι ζώνη γραφείων και δημόσιων υπηρεσιών, στα όρια ανάμεσα στον Δήμο Θεσσαλονίκης και την Καλαμαριά.
+Στην περιοχή όπου βρίσκονται τα κτίρια της **Περιφέρειας Κεντρικής Μακεδονίας**: από εκεί και το όνομα, που κρατά από την εποχή της Νομαρχίας. Είναι ζώνη γραφείων και δημόσιων υπηρεσιών, στα όρια ανάμεσα στον Δήμο Θεσσαλονίκης και την Καλαμαριά.
 
 ## Κατέβα εδώ για
 - Δημόσιες υπηρεσίες και γραφεία της Περιφέρειας.
@@ -580,7 +580,7 @@ At the eastern edge of the dense urban fabric, where the city begins to open tow
       en: `The first of the five new stations that opened on **27 August 2026** with the extension toward Kalamaria.
 
 ## Where it puts you
-In the area of the **Central Macedonia regional authority** buildings — hence the name, which survives from the old prefecture. This is a zone of offices and public services, on the boundary between the Municipality of Thessaloniki and Kalamaria.
+In the area of the **Central Macedonia regional authority** buildings: hence the name, which survives from the old prefecture. This is a zone of offices and public services, on the boundary between the Municipality of Thessaloniki and Kalamaria.
 
 ## Get off here for
 - Public services and regional authority offices.
@@ -598,8 +598,8 @@ With the extension open, journeys that once needed a transfer and half an hour i
     order: 15,
     opened: "2026-08-27",
     blurb: {
-      el: "Το κέντρο της Καλαμαριάς, πλέον λίγα λεπτά από την Αριστοτέλους — η μεγαλύτερη αλλαγή που έφερε η επέκταση.",
-      en: "The centre of Kalamaria, now minutes from Aristotelous — the biggest change the extension brought.",
+      el: "Το κέντρο της Καλαμαριάς, πλέον λίγα λεπτά από την Αριστοτέλους. Η μεγαλύτερη αλλαγή που έφερε η επέκταση.",
+      en: "The centre of Kalamaria, now minutes from Aristotelous. The biggest change the extension brought.",
     },
     long: {
       el: `Η Καλαμαριά είναι ένας από τους μεγαλύτερους δήμους του πολεοδομικού συγκροτήματος, και μέχρι το 2026 η σύνδεσή της με το κέντρο περνούσε αποκλειστικά από τη μόνιμη κίνηση της παραλιακής και της Βασιλίσσης Όλγας.
@@ -638,8 +638,8 @@ It's one of the most useful stops for visitors staying east: the trip to the his
     order: 16,
     opened: "2026-08-27",
     blurb: {
-      el: "Η στάση της μαρίνας — το πιο ήρεμο ηλιοβασίλεμα της πόλης, πλέον με μετρό.",
-      en: "The marina stop — the city's calmest sunset, now reachable by metro.",
+      el: "Η στάση της μαρίνας: το πιο ήρεμο ηλιοβασίλεμα της πόλης, πλέον με μετρό.",
+      en: "The marina stop: the city's calmest sunset, now reachable by metro.",
     },
     long: {
       el: `Ένας από τους πιο ελκυστικούς νέους σταθμούς για επισκέπτες, γιατί σε αφήνει κοντά στη θάλασσα χωρίς αυτοκίνητο.
@@ -650,7 +650,7 @@ It's one of the most useful stops for visitors staying east: the trip to the his
 - Καφέ και ψαροταβέρνες με θέα προς τον Θερμαϊκό και τον **Όλυμπο** απέναντι.
 
 ## Καλό να ξέρεις
-Το ηλιοβασίλεμα εδώ πέφτει πίσω από τον Όλυμπο και είναι από τα πιο όμορφα σημεία της πόλης γι' αυτό — και μέχρι πρόσφατα ήταν δύσκολα προσβάσιμο χωρίς αυτοκίνητο.
+Το ηλιοβασίλεμα εδώ πέφτει πίσω από τον Όλυμπο και είναι από τα πιο όμορφα σημεία της πόλης γι' αυτό, και μέχρι πρόσφατα ήταν δύσκολα προσβάσιμο χωρίς αυτοκίνητο.
 
 ## Πού σε βγάζει
 Στη Νέα Κρήνη και την Αρετσού, τη θαλάσσια πλευρά της Καλαμαριάς, με έντονο μεσογειακό χαρακτήρα.`,
@@ -662,7 +662,7 @@ It's one of the most useful stops for visitors staying east: the trip to the his
 - Cafés and fish tavernas looking across the Thermaic Gulf to **Mount Olympus**.
 
 ## Good to know
-The sun sets behind Olympus here, which makes it one of the finest spots in the city for it — and until recently it was hard to reach without a car.
+The sun sets behind Olympus here, which makes it one of the finest spots in the city for it, and until recently it was hard to reach without a car.
 
 ## Where it puts you
 In Nea Krini and Aretsou, the seaward side of Kalamaria, with a distinctly Mediterranean feel.`,
@@ -692,7 +692,7 @@ In Nea Krini and Aretsou, the seaward side of Kalamaria, with a distinctly Medit
 - Ταβέρνες και καφέ γειτονιάς με θέα στη θάλασσα.
 
 ## Καλό να ξέρεις
-Μαζί με την Αρετσού συνθέτουν τη θαλάσσια πλευρά της Καλαμαριάς. Και οι δύο σταθμοί εξυπηρετούν την ίδια παραλιακή ζώνη — διάλεξε ανάλογα με το πού ακριβώς θέλεις να βγεις.`,
+Μαζί με την Αρετσού συνθέτουν τη θαλάσσια πλευρά της Καλαμαριάς. Και οι δύο σταθμοί εξυπηρετούν την ίδια παραλιακή ζώνη, διάλεξε ανάλογα με το πού ακριβώς θέλεις να βγεις.`,
       en: `Nea Krini takes its name from **Krini (Çeşme)** in Asia Minor, home of the refugees who built it after 1922.
 
 ## Where it puts you
@@ -703,7 +703,7 @@ In a quiet seaside neighbourhood of Kalamaria, with low buildings, small squares
 - Neighbourhood tavernas and cafés looking out to sea.
 
 ## Good to know
-Together with Aretsou it makes up the seaward side of Kalamaria. Both stations serve the same coastal strip — pick whichever suits where exactly you want to come out.`,
+Together with Aretsou it makes up the seaward side of Kalamaria. Both stations serve the same coastal strip, pick whichever suits where exactly you want to come out.`,
     },
     center: { lat: 40.571, lng: 22.945 },
     area: "aretsou",
@@ -715,14 +715,14 @@ Together with Aretsou it makes up the seaward side of Kalamaria. Both stations s
     order: 18,
     opened: "2026-08-27",
     blurb: {
-      el: "Το νότιο τέρμα και η στάση για το αεροδρόμιο — από εδώ η γραμμή Χ3 σε πάει στο «Μακεδονία».",
-      en: "The southern terminus and the airport stop — bus X3 runs from here to Makedonia Airport.",
+      el: "Το νότιο τέρμα και η στάση για το αεροδρόμιο, από εδώ η γραμμή Χ3 σε πάει στο «Μακεδονία».",
+      en: "The southern terminus and the airport stop, bus X3 runs from here to Makedonia Airport.",
     },
     long: {
       el: `Το νότιο τέρμα του δικτύου και ο σταθμός με τη μεγαλύτερη πρακτική σημασία για όποιον ταξιδεύει αεροπορικώς.
 
 ## Το αεροδρόμιο
-**Το μετρό δεν φτάνει στο αεροδρόμιο.** Η σύνδεση γίνεται με τη λεωφορειακή γραμμή **Χ3**, που ξεκινά από τον σταθμό Μίκρα και καταλήγει στο αεροδρόμιο **«Μακεδονία»**. Η γραμμή τέθηκε σε λειτουργία μαζί με την επέκταση, στις 27 Αυγούστου 2026, και έχει ειδικό κόμιστρο **2,00 €** — διαφορετικό από το κανονικό εισιτήριο του μετρό.
+**Το μετρό δεν φτάνει στο αεροδρόμιο.** Η σύνδεση γίνεται με τη λεωφορειακή γραμμή **Χ3**, που ξεκινά από τον σταθμό Μίκρα και καταλήγει στο αεροδρόμιο **«Μακεδονία»**. Η γραμμή τέθηκε σε λειτουργία μαζί με την επέκταση, στις 27 Αυγούστου 2026, και έχει ειδικό κόμιστρο **2,00 €**, διαφορετικό από το κανονικό εισιτήριο του μετρό.
 
 Η διαδρομή Μίκρα – κέντρο διαρκεί περίπου **15 λεπτά**, ενώ μέχρι τον Νέο Σιδηροδρομικό Σταθμό υπολογίζονται περίπου **24 έως 26 λεπτά**.
 
@@ -734,7 +734,7 @@ Together with Aretsou it makes up the seaward side of Kalamaria. Both stations s
       en: `The southern terminus, and the station that matters most to anyone flying.
 
 ## The airport
-**The metro does not reach the airport.** The link is bus line **X3**, which runs from Mikra station to **"Makedonia" Airport**. The line began operating alongside the extension on 27 August 2026 and carries a special fare of **€2.00** — different from the standard metro ticket.
+**The metro does not reach the airport.** The link is bus line **X3**, which runs from Mikra station to **"Makedonia" Airport**. The line began operating alongside the extension on 27 August 2026 and carries a special fare of **€2.00**, different from the standard metro ticket.
 
 The trip from Mikra to the centre takes about **15 minutes**, while the New Railway Station is roughly **24 to 26 minutes** away.
 

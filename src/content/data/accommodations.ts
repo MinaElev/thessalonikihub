@@ -4,7 +4,7 @@ import type { Place } from "@/lib/types";
  * Accommodations (STAY pillar).
  *
  * Real listings are added only with verified PUBLIC information (name, area,
- * category, official/booking link and publicly listed facilities) — never
+ * category, official/booking link and publicly listed facilities), never
  * invented phone numbers, prices or hours. Photos are left empty until the
  * owner provides properly licensed images (third-party booking-site photos are
  * not free to reuse); owners can add them via "Claim your business".

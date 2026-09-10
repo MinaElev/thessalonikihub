@@ -7,7 +7,7 @@ import type { Place } from "@/lib/types";
  * information. Photos are real images of each monument from Wikimedia Commons
  * (see `photo.credit`); confirm licensing/attribution before commercial launch.
  * Opening hours and ticket prices change and are deliberately NOT hard-coded
- * here — link users to the official source instead.
+ * here; link users to the official source instead.
  *
  * Sources: UNESCO WHC list 456, Wikipedia, the Municipality of Thessaloniki and
  * the Greek Ministry of Culture.
@@ -19,11 +19,11 @@ export const attractions: Place[] = [
     kind: "discover",
     name: { el: "Λευκός Πύργος", en: "White Tower" },
     summary: {
-      el: "Το σύμβολο της Θεσσαλονίκης στην παραλία — πύργος του 15ου αιώνα με μουσείο και θέα.",
-      en: "Thessaloniki's symbol on the waterfront — a 15th-century tower with a museum and city views.",
+      el: "Το σύμβολο της Θεσσαλονίκης στην παραλία: πύργος του 15ου αιώνα με μουσείο και θέα.",
+      en: "Thessaloniki's symbol on the waterfront: a 15th-century tower with a museum and city views.",
     },
     description: {
-      el: `Ο **Λευκός Πύργος** είναι το σήμα κατατεθέν της Θεσσαλονίκης — το κτίριο που ταυτίζεται με την πόλη σε κάθε καρτ ποστάλ. Στέκει στην αρχή της Νέας Παραλίας και είναι το ιδανικό σημείο για να ξεκινήσεις τη γνωριμία σου με την πόλη.
+      el: `Ο **Λευκός Πύργος** είναι το σήμα κατατεθέν της Θεσσαλονίκης, το κτίριο που ταυτίζεται με την πόλη σε κάθε καρτ ποστάλ. Στέκει στην αρχή της Νέας Παραλίας και είναι το ιδανικό σημείο για να ξεκινήσεις τη γνωριμία σου με την πόλη.
 
 ## Ιστορία
 Χτίστηκε τον **15ο αιώνα**, στα πρώτα χρόνια της Οθωμανικής περιόδου, στη θέση παλαιότερου βυζαντινού οχυρού, ως μέρος της οχύρωσης του λιμανιού. Χρησιμοποιήθηκε ως φρουρά και φυλακή· η φήμη του ως τόπου εκτελέσεων του χάρισε παλιότερα το προσωνύμιο «Πύργος του Αίματος», ώσπου ασβεστώθηκε και έμεινε ως «Λευκός».
@@ -32,8 +32,8 @@ export const attractions: Place[] = [
 Στο εσωτερικό, μια **μόνιμη έκθεση** για την ιστορία της Θεσσαλονίκης ξεδιπλώνεται σε έξι ορόφους, γύρω από την κυκλική εσωτερική σκάλα. Στην κορυφή σε περιμένει **πανοραμική θέα** στον Θερμαϊκό, τη Νέα Παραλία και την πόλη.
 
 ## Καλό να ξέρεις
-Βρίσκεται δίπλα στο **Αρχαιολογικό Μουσείο**, το **Μουσείο Βυζαντινού Πολιτισμού** και τις «Ομπρέλες» — μπορείς να τα συνδυάσεις σε έναν περίπατο στη Νέα Παραλία.`,
-      en: `The **White Tower** is Thessaloniki's signature landmark — the building that stands for the city on every postcard. It rises at the start of the waterfront and is the perfect place to begin exploring.
+Βρίσκεται δίπλα στο **Αρχαιολογικό Μουσείο**, το **Μουσείο Βυζαντινού Πολιτισμού** και τις «Ομπρέλες», οπότε μπορείς να τα συνδυάσεις σε έναν περίπατο στη Νέα Παραλία.`,
+      en: `The **White Tower** is Thessaloniki's signature landmark, the building that stands for the city on every postcard. It rises at the start of the waterfront and is the perfect place to begin exploring.
 
 ## History
 It was built in the **15th century**, in the early Ottoman period, on the site of an earlier Byzantine fortification, as part of the harbour's defences. It served as a garrison and prison; its grim reputation once earned it the name "Tower of Blood", until it was whitewashed and became the "White" Tower.
@@ -42,7 +42,7 @@ It was built in the **15th century**, in the early Ottoman period, on the site o
 Inside, a **permanent exhibition** on the history of Thessaloniki unfolds across six floors around the circular internal staircase. At the top awaits a **panoramic view** of the gulf, the waterfront and the city.
 
 ## Good to know
-It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture** and the "Umbrellas" — you can combine them into one waterfront walk.`,
+It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture** and the "Umbrellas", so you can combine them into one waterfront walk.`,
     },
     type: "landmark",
     tags: ["landmark", "museum", "views", "history", "family"],
@@ -64,8 +64,8 @@ It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture
       {
         question: { el: "Αξίζει να ανέβω στην κορυφή;", en: "Is it worth going to the top?" },
         answer: {
-          el: "Ναι — η θέα στον Θερμαϊκό και την πόλη είναι από τις καλύτερες και η ανάβαση σύντομη.",
-          en: "Yes — the view over the gulf and the city is among the best, and the climb is short.",
+          el: "Ναι. Η θέα στον Θερμαϊκό και την πόλη είναι από τις καλύτερες και η ανάβαση σύντομη.",
+          en: "Yes. The view over the gulf and the city is among the best, and the climb is short.",
         },
       },
     ],
@@ -101,20 +101,20 @@ It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture
       el: `Η **Ροτόντα** είναι ένα από τα πιο επιβλητικά μνημεία της Θεσσαλονίκης: ένα τεράστιο κυκλικό οικοδόμημα που στέκει σχεδόν αναλλοίωτο εδώ και **17 αιώνες**, μάρτυρας κάθε εποχής της πόλης.
 
 ## Ιστορία
-Κατασκευάστηκε στις **αρχές του 4ου αιώνα**, στα χρόνια του αυτοκράτορα **Γαλερίου**, πιθανότατα ως μαυσωλείο ή ναός, ως μέρος του ανακτορικού του συγκροτήματος μαζί με την Αψίδα. Μετατράπηκε σε χριστιανικό ναό (**Άγιος Γεώργιος**) και αργότερα σε τζαμί επί Οθωμανών — ο μιναρές του σώζεται ακόμη δίπλα.
+Κατασκευάστηκε στις **αρχές του 4ου αιώνα**, στα χρόνια του αυτοκράτορα **Γαλερίου**, πιθανότατα ως μαυσωλείο ή ναός, ως μέρος του ανακτορικού του συγκροτήματος μαζί με την Αψίδα. Μετατράπηκε σε χριστιανικό ναό (**Άγιος Γεώργιος**) και αργότερα σε τζαμί επί Οθωμανών· ο μιναρές του σώζεται ακόμη δίπλα.
 
 ## Τι θα δεις
-Ξεχωρίζουν τα σπάνια **παλαιοχριστιανικά ψηφιδωτά** στον τρούλο, με χρυσό βάθος και παραστάσεις αγίων και αρχιτεκτονημάτων — από τα σημαντικότερα του είδους τους παγκοσμίως.
+Ξεχωρίζουν τα σπάνια **παλαιοχριστιανικά ψηφιδωτά** στον τρούλο, με χρυσό βάθος και παραστάσεις αγίων και αρχιτεκτονημάτων, από τα σημαντικότερα του είδους τους παγκοσμίως.
 
 ## UNESCO
 Ανήκει στα **15 Παλαιοχριστιανικά και Βυζαντινά Μνημεία** της Θεσσαλονίκης, ενταγμένα στον Κατάλογο Παγκόσμιας Κληρονομιάς της UNESCO από το 1988. Βρίσκεται μόλις λίγα μέτρα πάνω από την Αψίδα του Γαλερίου.`,
       en: `The **Rotunda** is one of Thessaloniki's most imposing monuments: a vast circular building that has stood almost unchanged for **17 centuries**, a witness to every era of the city.
 
 ## History
-It was built in the **early 4th century** under Emperor **Galerius**, most likely as a mausoleum or temple, as part of his palace complex together with the Arch. It became a Christian church (**St George**) and later a mosque under the Ottomans — its minaret still survives beside it.
+It was built in the **early 4th century** under Emperor **Galerius**, most likely as a mausoleum or temple, as part of his palace complex together with the Arch. It became a Christian church (**St George**) and later a mosque under the Ottomans; its minaret still survives beside it.
 
 ## What you'll see
-The highlight is the rare **early-Christian mosaics** in the dome, with a gold ground and figures of saints and architecture — among the most important of their kind in the world.
+The highlight is the rare **early-Christian mosaics** in the dome, with a gold ground and figures of saints and architecture, among the most important of their kind in the world.
 
 ## UNESCO
 It is one of the **15 Paleochristian and Byzantine Monuments** of Thessaloniki on the UNESCO World Heritage List since 1988. It stands just metres above the Arch of Galerius.`,
@@ -157,26 +157,26 @@ It is one of the **15 Paleochristian and Byzantine Monuments** of Thessaloniki o
       en: "A 4th-century Roman triumphal arch and the city's classic central meeting point.",
     },
     description: {
-      el: `Η **Αψίδα του Γαλερίου** — η θρυλική **«Καμάρα»** — είναι το πιο κλασικό ραντεβού της Θεσσαλονίκης. «Θα σε δω στην Καμάρα» λένε οι ντόπιοι εδώ και γενιές.
+      el: `Η **Αψίδα του Γαλερίου**, η θρυλική **«Καμάρα»**, είναι το πιο κλασικό ραντεβού της Θεσσαλονίκης. «Θα σε δω στην Καμάρα» λένε οι ντόπιοι εδώ και γενιές.
 
 ## Ιστορία
 Χτίστηκε στις **αρχές του 4ου αιώνα** για να τιμήσει τις νίκες του αυτοκράτορα **Γαλερίου** κατά των Περσών. Ήταν μέρος του μεγάλου ανακτορικού συγκροτήματος που περιλάμβανε τη Ροτόντα και τα Ανάκτορα.
 
 ## Τι θα δεις
-Οι σωζόμενοι πεσσοί διατηρούν εντυπωσιακές **ανάγλυφες παραστάσεις** των πολεμικών εκστρατειών — σκηνές μαχών, θριάμβου και τελετών, από τα σημαντικότερα δείγματα ρωμαϊκής γλυπτικής στην πόλη.
+Οι σωζόμενοι πεσσοί διατηρούν εντυπωσιακές **ανάγλυφες παραστάσεις** των πολεμικών εκστρατειών: σκηνές μαχών, θριάμβου και τελετών, από τα σημαντικότερα δείγματα ρωμαϊκής γλυπτικής στην πόλη.
 
 ## Καλό να ξέρεις
-Βρίσκεται πάνω στην Εγνατία, ελεύθερη επίσκεψη 24/7, στον άξονα που ανηφορίζει προς τη **Ροτόντα** — δες τα μαζί.`,
-      en: `The **Arch of Galerius** — the legendary **"Kamara"** — is Thessaloniki's most classic meeting point. "See you at Kamara" locals have said for generations.
+Βρίσκεται πάνω στην Εγνατία, ελεύθερη επίσκεψη 24/7, στον άξονα που ανηφορίζει προς τη **Ροτόντα**, οπότε δες τα μαζί.`,
+      en: `The **Arch of Galerius**, the legendary **"Kamara"**, is Thessaloniki's most classic meeting point. "See you at Kamara" locals have said for generations.
 
 ## History
 It was built in the **early 4th century** to commemorate Emperor **Galerius'** victories over the Persians. It was part of the great palace complex that included the Rotunda and the Palace.
 
 ## What you'll see
-The surviving pillars preserve striking **relief sculptures** of the military campaigns — scenes of battle, triumph and ceremony, among the finest examples of Roman sculpture in the city.
+The surviving pillars preserve striking **relief sculptures** of the military campaigns: scenes of battle, triumph and ceremony, among the finest examples of Roman sculpture in the city.
 
 ## Good to know
-It stands on Egnatia Street, free to visit 24/7, on the axis climbing up to the **Rotunda** — see them together.`,
+It stands on Egnatia Street, free to visit 24/7, on the axis climbing up to the **Rotunda**, so see them together.`,
     },
     type: "landmark",
     tags: ["landmark", "roman", "history", "free", "culture"],
@@ -218,17 +218,17 @@ It stands on Egnatia Street, free to visit 24/7, on the axis climbing up to the 
       en: "The Roman administrative heart of the ancient city, with an odeon and an on-site museum.",
     },
     description: {
-      el: `Η **Αρχαία Αγορά** ήταν η «πλατεία» της ρωμαϊκής Θεσσαλονίκης — το διοικητικό, εμπορικό και κοινωνικό κέντρο της πόλης για αιώνες.
+      el: `Η **Αρχαία Αγορά** ήταν η «πλατεία» της ρωμαϊκής Θεσσαλονίκης: το διοικητικό, εμπορικό και κοινωνικό κέντρο της πόλης για αιώνες.
 
 ## Τι θα δεις
-Ο χώρος ήταν οργανωμένος σε **δύο επίπεδα** γύρω από μια μεγάλη πλατεία. Σώζονται στοές, το **ωδείο** (μικρό θέατρο για μουσικές και θεατρικές εκδηλώσεις) και η **κρυπτοστοά** — μια υπόγεια στοά που σήμερα στεγάζει μουσείο για την ιστορία του χώρου.
+Ο χώρος ήταν οργανωμένος σε **δύο επίπεδα** γύρω από μια μεγάλη πλατεία. Σώζονται στοές, το **ωδείο** (μικρό θέατρο για μουσικές και θεατρικές εκδηλώσεις) και η **κρυπτοστοά**, μια υπόγεια στοά που σήμερα στεγάζει μουσείο για την ιστορία του χώρου.
 
 ## Καλό να ξέρεις
 Βρίσκεται στην **πλατεία Δικαστηρίων**, στο κέντρο, σε απόσταση περιπάτου από τον Άγιο Δημήτριο και την αγορά. Ελεύθερα ορατή από την πλατεία· για ώρες και μουσείο δες την επίσημη πηγή.`,
-      en: `The **Ancient Agora** was the "town square" of Roman Thessaloniki — the city's administrative, commercial and social heart for centuries.
+      en: `The **Ancient Agora** was the "town square" of Roman Thessaloniki: the city's administrative, commercial and social heart for centuries.
 
 ## What you'll see
-The site was laid out on **two levels** around a large square. Its porticoes, the **odeon** (a small theatre for music and performances) and the **cryptoporticus** — an underground gallery now housing a museum on the site's history — survive.
+The site was laid out on **two levels** around a large square. Its porticoes survive, along with the **odeon** (a small theatre for music and performances) and the **cryptoporticus**, an underground gallery that now houses a museum on the site's history.
 
 ## Good to know
 It lies on **Dikastirion Square** in the centre, a short walk from Agios Dimitrios and the market. Visible from the square; check the official source for hours and the museum.`,
@@ -259,8 +259,8 @@ It lies on **Dikastirion Square** in the centre, a short walk from Agios Dimitri
     kind: "discover",
     name: { el: "Ναός Αγίου Δημητρίου", en: "Church of Saint Demetrios" },
     summary: {
-      el: "Η μεγαλύτερη εκκλησία της πόλης, αφιερωμένη στον πολιούχο — μνημείο UNESCO.",
-      en: "The city's largest church, dedicated to its patron saint — a UNESCO monument.",
+      el: "Η μεγαλύτερη εκκλησία της πόλης, αφιερωμένη στον πολιούχο. Μνημείο UNESCO.",
+      en: "The city's largest church, dedicated to its patron saint. A UNESCO monument.",
     },
     description: {
       el: `Ο **Ναός του Αγίου Δημητρίου** είναι το σημαντικότερο θρησκευτικό μνημείο της Θεσσαλονίκης, αφιερωμένο στον **πολιούχο** της πόλης. Η μεγαλύτερη εκκλησία της Θεσσαλονίκης, με βαθιά ιστορία και ζωντανή λατρευτική παρουσία.
@@ -273,7 +273,7 @@ It lies on **Dikastirion Square** in the centre, a short walk from Agios Dimitri
 - Την υπόγεια **κρύπτη**, στον χώρο του μαρτυρίου, με εκθέματα και το αγίασμα.
 
 ## UNESCO & πρακτικά
-Ανήκει στα **Μνημεία UNESCO** της πόλης. Είναι ενεργός ναός — η μεγάλη γιορτή του αγίου (26 Οκτωβρίου) συμπίπτει με τα «Δημήτρια» και την απελευθέρωση της πόλης.`,
+Ανήκει στα **Μνημεία UNESCO** της πόλης. Είναι ενεργός ναός· η μεγάλη γιορτή του αγίου (26 Οκτωβρίου) συμπίπτει με τα «Δημήτρια» και την απελευθέρωση της πόλης.`,
       en: `The **Church of Saint Demetrios** is Thessaloniki's most important religious monument, dedicated to the city's **patron saint**. It is the largest church in Thessaloniki, with a deep history and a living devotional life.
 
 ## History
@@ -284,7 +284,7 @@ This large **five-aisled basilica** was originally built in the 5th–7th centur
 - The underground **crypt** on the site of the martyrdom, with exhibits and a holy spring.
 
 ## UNESCO & practical
-It is one of the city's **UNESCO monuments**. It is an active church — the saint's feast (26 October) coincides with the "Dimitria" festival and the city's liberation day.`,
+It is one of the city's **UNESCO monuments**. It is an active church; the saint's feast (26 October) coincides with the "Dimitria" festival and the city's liberation day.`,
     },
     type: "church",
     tags: ["church", "unesco", "byzantine", "history", "culture"],
@@ -329,24 +329,24 @@ It is one of the city's **UNESCO monuments**. It is an active church — the sai
     kind: "discover",
     name: { el: "Αγία Σοφία", en: "Hagia Sophia" },
     summary: {
-      el: "Βυζαντινός ναός του 8ου αι. με σπουδαία ψηφιδωτά — μνημείο UNESCO.",
-      en: "An 8th-century Byzantine church with important mosaics — a UNESCO monument.",
+      el: "Βυζαντινός ναός του 8ου αι. με σπουδαία ψηφιδωτά, μνημείο UNESCO.",
+      en: "An 8th-century Byzantine church with important mosaics, a UNESCO monument.",
     },
     description: {
-      el: `Η **Αγία Σοφία** είναι μια από τις παλαιότερες εκκλησίες της Θεσσαλονίκης που βρίσκονται ακόμη σε λειτουργία — ένα ζωντανό κομμάτι της βυζαντινής κληρονομιάς μέσα στο κέντρο.
+      el: `Η **Αγία Σοφία** είναι μια από τις παλαιότερες εκκλησίες της Θεσσαλονίκης που βρίσκονται ακόμη σε λειτουργία, ένα ζωντανό κομμάτι της βυζαντινής κληρονομιάς μέσα στο κέντρο.
 
 ## Ιστορία & αρχιτεκτονική
-Χρονολογείται στον **8ο αιώνα** και ακολουθεί τον τύπο του **σταυροειδούς εγγεγραμμένου με τρούλο** — πρότυπο που επηρέασε τη μεταγενέστερη βυζαντινή αρχιτεκτονική. Λειτούργησε ως μητροπολιτικός ναός της πόλης και, επί Οθωμανών, ως τζαμί.
+Χρονολογείται στον **8ο αιώνα** και ακολουθεί τον τύπο του **σταυροειδούς εγγεγραμμένου με τρούλο**, πρότυπο που επηρέασε τη μεταγενέστερη βυζαντινή αρχιτεκτονική. Λειτούργησε ως μητροπολιτικός ναός της πόλης και, επί Οθωμανών, ως τζαμί.
 
 ## Τι θα δεις
 Ξεχωρίζουν τα σωζόμενα **ψηφιδωτά**, με κορυφαίο τη σκηνή της **Ανάληψης** στον τρούλο, σε χρυσό βάθος.
 
 ## UNESCO
 Ένα από τα **15 Μνημεία UNESCO** της Θεσσαλονίκης, στην ομώνυμη πλατεία στο κέντρο.`,
-      en: `**Hagia Sophia** is one of the oldest churches in Thessaloniki still in use — a living piece of Byzantine heritage in the city centre.
+      en: `**Hagia Sophia** is one of the oldest churches in Thessaloniki still in use, a living piece of Byzantine heritage in the city centre.
 
 ## History & architecture
-It dates to the **8th century** and follows the **cross-in-square domed** type — a model that influenced later Byzantine architecture. It served as the city's metropolitan church and, under the Ottomans, as a mosque.
+It dates to the **8th century** and follows the **cross-in-square domed** type, a model that influenced later Byzantine architecture. It served as the city's metropolitan church and, under the Ottomans, as a mosque.
 
 ## What you'll see
 The highlight is the surviving **mosaics**, above all the scene of the **Ascension** in the dome, on a gold ground.
@@ -389,21 +389,21 @@ One of the **15 UNESCO monuments** of Thessaloniki, on the square of the same na
     kind: "discover",
     name: { el: "Παναγία Χαλκέων", en: "Church of Panagia Chalkeon" },
     summary: {
-      el: "Πλίνθινος βυζαντινός ναός του 1028 — μνημείο UNESCO κοντά στην αγορά.",
-      en: "A brick-built Byzantine church from 1028 — a UNESCO monument near the market.",
+      el: "Πλίνθινος βυζαντινός ναός του 1028, μνημείο UNESCO κοντά στην αγορά.",
+      en: "A brick-built Byzantine church from 1028, a UNESCO monument near the market.",
     },
     description: {
-      el: `Η **Παναγία Χαλκέων** είναι ένα κομψό «κόσμημα» της μεσοβυζαντινής αρχιτεκτονικής, κρυμμένο δίπλα στην αγορά — εύκολο να το προσπεράσεις, κρίμα να το χάσεις.
+      el: `Η **Παναγία Χαλκέων** είναι ένα κομψό «κόσμημα» της μεσοβυζαντινής αρχιτεκτονικής, κρυμμένο δίπλα στην αγορά: εύκολο να το προσπεράσεις, κρίμα να το χάσεις.
 
 ## Ιστορία & αρχιτεκτονική
-Χτίστηκε το **1028** και ξεχωρίζει γιατί είναι ολόκληρη κατασκευασμένη από **πλίνθους (τούβλα)**, με χαρακτηριστικούς τρούλους — τυπικό δείγμα της «σχολής της Κωνσταντινούπολης». Πήρε το όνομά της από τους **χαλκιάδες** που δούλευαν στην περιοχή (γι' αυτό λέγεται και «Κόκκινη Εκκλησία»).
+Χτίστηκε το **1028** και ξεχωρίζει γιατί είναι ολόκληρη κατασκευασμένη από **πλίνθους (τούβλα)**, με χαρακτηριστικούς τρούλους, τυπικό δείγμα της «σχολής της Κωνσταντινούπολης». Πήρε το όνομά της από τους **χαλκιάδες** που δούλευαν στην περιοχή (γι' αυτό λέγεται και «Κόκκινη Εκκλησία»).
 
 ## Καλό να ξέρεις
 Βρίσκεται στην οδό Χαλκέων, δίπλα στην αγορά Καπάνι, στο κέντρο. Ανήκει στα **Μνημεία UNESCO**.`,
-      en: `**Panagia Chalkeon** is an elegant "jewel" of middle-Byzantine architecture, tucked away next to the market — easy to walk past, a shame to miss.
+      en: `**Panagia Chalkeon** is an elegant "jewel" of middle-Byzantine architecture, tucked away next to the market: easy to walk past, a shame to miss.
 
 ## History & architecture
-Built in **1028**, it stands out for being constructed entirely of **brick**, with characteristic domes — a typical example of the "Constantinople school". It takes its name from the **coppersmiths** (*chalkeis*) who worked in the area (hence its nickname, the "Red Church").
+Built in **1028**, it stands out for being constructed entirely of **brick**, with characteristic domes, a typical example of the "Constantinople school". It takes its name from the **coppersmiths** (*chalkeis*) who worked in the area (hence its nickname, the "Red Church").
 
 ## Good to know
 It stands on Chalkeon Street, next to the Kapani market in the centre. It is one of the **UNESCO monuments**.`,
@@ -434,11 +434,11 @@ It stands on Chalkeon Street, next to the Kapani market in the centre. It is one
     kind: "discover",
     name: { el: "Αχειροποίητος", en: "Church of the Acheiropoietos" },
     summary: {
-      el: "Παλαιοχριστιανική βασιλική του 5ου αι. — από τα παλαιότερα μνημεία UNESCO.",
-      en: "A 5th-century early-Christian basilica — among the oldest UNESCO monuments.",
+      el: "Παλαιοχριστιανική βασιλική του 5ου αι., από τα παλαιότερα μνημεία UNESCO.",
+      en: "A 5th-century early-Christian basilica, among the oldest UNESCO monuments.",
     },
     description: {
-      el: `Η **Αχειροποίητος** είναι μια από τις **παλαιότερες εκκλησίες** της Θεσσαλονίκης — ένα ζωντανό ταξίδι στις απαρχές του χριστιανικού ναού.
+      el: `Η **Αχειροποίητος** είναι μια από τις **παλαιότερες εκκλησίες** της Θεσσαλονίκης: ένα ζωντανό ταξίδι στις απαρχές του χριστιανικού ναού.
 
 ## Ιστορία & αρχιτεκτονική
 Πρόκειται για **τρίκλιτη παλαιοχριστιανική βασιλική** του **5ου αιώνα**, χτισμένη σχεδόν πάνω σε ρωμαϊκά λουτρά. Είναι από τα παλαιότερα σωζόμενα χριστιανικά μνημεία της πόλης, σε καλή κατάσταση.
@@ -448,7 +448,7 @@ It stands on Chalkeon Street, next to the Kapani market in the centre. It is one
 
 ## UNESCO
 Ένα από τα **Μνημεία Παγκόσμιας Κληρονομιάς UNESCO**, στο κέντρο, κοντά στην Αγία Σοφία.`,
-      en: `The **Acheiropoietos** is one of the **oldest churches** in Thessaloniki — a living journey to the origins of the Christian church building.
+      en: `The **Acheiropoietos** is one of the **oldest churches** in Thessaloniki: a living journey to the origins of the Christian church building.
 
 ## History & architecture
 It is a **three-aisled early-Christian basilica** of the **5th century**, built almost on top of Roman baths. It is among the oldest surviving Christian monuments in the city, in good condition.
@@ -485,11 +485,11 @@ One of the **UNESCO World Heritage monuments**, in the centre near Hagia Sophia.
     kind: "discover",
     name: { el: "Μονή Βλατάδων", en: "Vlatades Monastery" },
     summary: {
-      el: "Βυζαντινό μοναστήρι του 14ου αι. στην Άνω Πόλη, με θέα στην πόλη — μνημείο UNESCO.",
-      en: "A 14th-century Byzantine monastery in the Upper Town with city views — a UNESCO monument.",
+      el: "Βυζαντινό μοναστήρι του 14ου αι. στην Άνω Πόλη, με θέα στην πόλη. Μνημείο UNESCO.",
+      en: "A 14th-century Byzantine monastery in the Upper Town with city views. A UNESCO monument.",
     },
     description: {
-      el: `Η **Μονή Βλατάδων** είναι ένα ήσυχο, πράσινο καταφύγιο στην κορυφή της Άνω Πόλης — ιστορία, γαλήνη και μία από τις ωραιότερες θέες της πόλης, όλα μαζί.
+      el: `Η **Μονή Βλατάδων** είναι ένα ήσυχο, πράσινο καταφύγιο στην κορυφή της Άνω Πόλης: ιστορία, γαλήνη και μία από τις ωραιότερες θέες της πόλης, όλα μαζί.
 
 ## Ιστορία
 Ιδρύθηκε τον **14ο αιώνα** και είναι το **μοναδικό βυζαντινό μοναστήρι** της Θεσσαλονίκης που λειτουργεί αδιάκοπα μέχρι σήμερα. Κατά την παράδοση, στον χώρο κήρυξε ο Απόστολος Παύλος.
@@ -498,14 +498,14 @@ One of the **UNESCO World Heritage monuments**, in the centre near Hagia Sophia.
 Το καθολικό διατηρεί σημαντικές **τοιχογραφίες**, ενώ ο περιβάλλων χώρος με τα δέντρα και τα παγόνια προσφέρει πανοραμική **θέα** στην πόλη και τον Θερμαϊκό.
 
 ## UNESCO & πρακτικά
-Ανήκει στα **Μνημεία UNESCO**. Είναι ενεργό μοναστήρι — φρόντισε για ευπρεπή ενδυμασία στην επίσκεψη. Συνδύασέ το με τα βυζαντινά τείχη.`,
-      en: `**Vlatades Monastery** is a quiet, green refuge at the top of the Upper Town — history, calm and one of the city's finest views, all in one.
+Ανήκει στα **Μνημεία UNESCO**. Είναι ενεργό μοναστήρι, οπότε φρόντισε για ευπρεπή ενδυμασία στην επίσκεψη. Συνδύασέ το με τα βυζαντινά τείχη.`,
+      en: `**Vlatades Monastery** is a quiet, green refuge at the top of the Upper Town: history, calm and one of the city's finest views, all in one.
 
 ## History
 Founded in the **14th century**, it is the **only Byzantine monastery** in Thessaloniki in continuous operation to this day. By tradition, the Apostle Paul preached on the site.
 
 ## What you'll see
-The main church preserves important **frescoes**, while the leafy grounds — complete with peacocks — offer a panoramic **view** over the city and the gulf.
+The main church preserves important **frescoes**, while the leafy grounds (complete with peacocks) offer a panoramic **view** over the city and the gulf.
 
 ## UNESCO & practical
 It is one of the **UNESCO monuments**. It is an active monastery, so dress modestly when visiting. Combine it with the Byzantine walls.`,
@@ -516,8 +516,8 @@ It is one of the **UNESCO monuments**. It is an active monastery, so dress modes
       {
         question: { el: "Είναι ενεργό μοναστήρι;", en: "Is it a working monastery?" },
         answer: {
-          el: "Ναι — είναι το μοναδικό βυζαντινό μοναστήρι της πόλης που λειτουργεί συνεχώς· φόρα ευπρεπή ενδυμασία.",
-          en: "Yes — it's the city's only Byzantine monastery in continuous operation; please dress modestly.",
+          el: "Ναι, είναι το μοναδικό βυζαντινό μοναστήρι της πόλης που λειτουργεί συνεχώς· φόρα ευπρεπή ενδυμασία.",
+          en: "Yes, it's the city's only Byzantine monastery in continuous operation; please dress modestly.",
         },
       },
     ],
@@ -545,27 +545,27 @@ It is one of the **UNESCO monuments**. It is an active monastery, so dress modes
     kind: "discover",
     name: { el: "Βυζαντινά Τείχη", en: "Byzantine Walls" },
     summary: {
-      el: "Τα τείχη της παλιάς πόλης και η καλύτερη θέα στη Θεσσαλονίκη — μνημείο UNESCO.",
-      en: "The old town's walls and the finest view over Thessaloniki — a UNESCO monument.",
+      el: "Τα τείχη της παλιάς πόλης και η καλύτερη θέα στη Θεσσαλονίκη. Μνημείο UNESCO.",
+      en: "The old town's walls and the finest view over Thessaloniki. A UNESCO monument.",
     },
     description: {
-      el: `Τα **Βυζαντινά Τείχη** είναι ο περίπατος-σύμβολο της Άνω Πόλης και ένα από τα καλύτερα «σημεία θέας» της Θεσσαλονίκης — δωρεάν και ανοιχτό όλο το εικοσιτετράωρο.
+      el: `Τα **Βυζαντινά Τείχη** είναι ο περίπατος-σύμβολο της Άνω Πόλης και ένα από τα καλύτερα «σημεία θέας» της Θεσσαλονίκης, δωρεάν και ανοιχτό όλο το εικοσιτετράωρο.
 
 ## Ιστορία
 Με καταβολές από τον **4ο αιώνα** και ενισχύσεις στη βυζαντινή περίοδο, τα τείχη περιέβαλλαν ολόκληρη την πόλη, από τη θάλασσα ως την ακρόπολη. Σώζονται σε μεγάλο μήκος στην Άνω Πόλη, μαζί με πύργους και πύλες.
 
 ## Γιατί αξίζει
-Ο περίπατος κατά μήκος τους —ιδίως γύρω από τον **Πύργο Τριγωνίου**— χαρίζει πανοραμική θέα σε όλη την πόλη και τον Θερμαϊκό. Είναι το αγαπημένο σημείο των ντόπιων για **ηλιοβασίλεμα**.
+Ο περίπατος κατά μήκος τους (ιδίως γύρω από τον **Πύργο Τριγωνίου**) χαρίζει πανοραμική θέα σε όλη την πόλη και τον Θερμαϊκό. Είναι το αγαπημένο σημείο των ντόπιων για **ηλιοβασίλεμα**.
 
 ## Καλό να ξέρεις
 Μέρος των **Μνημείων UNESCO**. Συνδύασέ τα με τη Μονή Βλατάδων και το Επταπύργιο σε μια βόλτα στην Άνω Πόλη· φόρα άνετα παπούτσια για τα καλντερίμια.`,
-      en: `The **Byzantine Walls** are the signature walk of the Upper Town and one of Thessaloniki's finest viewpoints — free and open around the clock.
+      en: `The **Byzantine Walls** are the signature walk of the Upper Town and one of Thessaloniki's finest viewpoints, free and open around the clock.
 
 ## History
 With origins in the **4th century** and reinforcements in the Byzantine period, the walls once encircled the entire city, from the sea to the acropolis. They survive for a great length in the Upper Town, along with towers and gates.
 
 ## Why it's worth it
-Walking along them — especially around the **Trigoniou Tower** — gives a panoramic view over the whole city and the gulf. It is the locals' favourite spot for **sunset**.
+Walking along them, especially around the **Trigoniou Tower**, gives a panoramic view over the whole city and the gulf. It is the locals' favourite spot for **sunset**.
 
 ## Good to know
 Part of the **UNESCO monuments**. Combine them with Vlatades Monastery and the Heptapyrgion on an Ano Poli walk; wear comfortable shoes for the cobbles.`,
@@ -617,20 +617,20 @@ Part of the **UNESCO monuments**. Combine them with Vlatades Monastery and the H
       en: "A Byzantine-Ottoman fortress crowning the Upper Town.",
     },
     description: {
-      el: `Το **Επταπύργιο**, γνωστό και ως **Γεντί Κουλέ** (τουρκικά: «επτά πύργοι»), είναι το φρούριο που στέφει την ακρόπολη της Άνω Πόλης — το ψηλότερο σημείο των τειχών.
+      el: `Το **Επταπύργιο**, γνωστό και ως **Γεντί Κουλέ** (τουρκικά: «επτά πύργοι»), είναι το φρούριο που στέφει την ακρόπολη της Άνω Πόλης, το ψηλότερο σημείο των τειχών.
 
 ## Ιστορία
-Βυζαντινής αρχής, ενισχύθηκε στα **οθωμανικά χρόνια** και για μεγάλο μέρος του 20ού αιώνα λειτούργησε ως **φυλακή** — κάτι που άφησε το όνομά του και σε γνωστά ρεμπέτικα τραγούδια. Σήμερα είναι επισκέψιμος αρχαιολογικός χώρος.
+Βυζαντινής αρχής, ενισχύθηκε στα **οθωμανικά χρόνια** και για μεγάλο μέρος του 20ού αιώνα λειτούργησε ως **φυλακή**, κάτι που άφησε το όνομά του και σε γνωστά ρεμπέτικα τραγούδια. Σήμερα είναι επισκέψιμος αρχαιολογικός χώρος.
 
 ## Γιατί αξίζει
 Πέρα από την ιστορία, προσφέρει **θέα σε όλη την πόλη** και τον κόλπο. Είναι το φυσικό «τέρμα» μιας διαδρομής στα τείχη της Άνω Πόλης.
 
 ## Καλό να ξέρεις
 Στην κορυφή της Άνω Πόλης· συνδύασέ το με τα βυζαντινά τείχη και τη Μονή Βλατάδων.`,
-      en: `The **Heptapyrgion**, also known as **Yedi Kule** (Turkish for "seven towers"), is the fortress crowning the acropolis of the Upper Town — the highest point of the walls.
+      en: `The **Heptapyrgion**, also known as **Yedi Kule** (Turkish for "seven towers"), is the fortress crowning the acropolis of the Upper Town, the highest point of the walls.
 
 ## History
-Byzantine in origin, it was reinforced in **Ottoman times** and for much of the 20th century served as a **prison** — a past that even entered famous rebetiko songs. Today it is a visitable archaeological site.
+Byzantine in origin, it was reinforced in **Ottoman times** and for much of the 20th century served as a **prison**, a past that even entered famous rebetiko songs. Today it is a visitable archaeological site.
 
 ## Why it's worth it
 Beyond the history, it offers a **view over the whole city** and the gulf. It is the natural finish to a walk along the Upper Town walls.
@@ -668,7 +668,7 @@ At the top of Ano Poli; combine it with the Byzantine walls and Vlatades Monaste
       en: "The city's emblematic square, opening onto the sea.",
     },
     description: {
-      el: `Η **Πλατεία Αριστοτέλους** είναι η καρδιά της Θεσσαλονίκης — η μεγάλη πλατεία που ανοίγει σαν αγκαλιά προς τον Θερμαϊκό και σε καλωσορίζει στην πόλη.
+      el: `Η **Πλατεία Αριστοτέλους** είναι η καρδιά της Θεσσαλονίκης: η μεγάλη πλατεία που ανοίγει σαν αγκαλιά προς τον Θερμαϊκό και σε καλωσορίζει στην πόλη.
 
 ## Ιστορία & αρχιτεκτονική
 Σχεδιάστηκε από τον Γάλλο πολεοδόμο **Ernest Hébrard**, στο πλαίσιο της ανασυγκρότησης μετά τη **μεγάλη πυρκαγιά του 1917**. Τα επιβλητικά νεοκλασικά κτίρια που την πλαισιώνουν (όπως το ξενοδοχείο Electra Palace) της δίνουν τη μνημειακή της αίσθηση.
@@ -678,7 +678,7 @@ At the top of Ano Poli; combine it with the Byzantine walls and Vlatades Monaste
 
 ## Καλό να ξέρεις
 Ελεύθερη πρόσβαση, ιδανικό σημείο εκκίνησης για την πρώτη σου βόλτα στο κέντρο.`,
-      en: `**Aristotelous Square** is the heart of Thessaloniki — the grand square that opens like an embrace toward the gulf and welcomes you into the city.
+      en: `**Aristotelous Square** is the heart of Thessaloniki: the grand square that opens like an embrace toward the gulf and welcomes you into the city.
 
 ## History & architecture
 It was designed by the French planner **Ernest Hébrard** as part of the reconstruction after the **great fire of 1917**. The imposing neoclassical buildings framing it (such as the Electra Palace hotel) give it its monumental feel.
@@ -719,25 +719,25 @@ Free to access and the ideal starting point for your first walk through the cent
       en: "The redesigned seaside promenade with Zongolopoulos' \"Umbrellas\" sculpture.",
     },
     description: {
-      el: `Η **Νέα Παραλία** είναι ο αγαπημένος περίπατος των Θεσσαλονικέων — ο ανανεωμένος παραλιακός πεζόδρομος όπου χτυπά η καθημερινή καρδιά της πόλης, δίπλα στη θάλασσα.
+      el: `Η **Νέα Παραλία** είναι ο αγαπημένος περίπατος των Θεσσαλονικέων, ο ανανεωμένος παραλιακός πεζόδρομος όπου χτυπά η καθημερινή καρδιά της πόλης, δίπλα στη θάλασσα.
 
 ## Η διαδρομή
 Εκτείνεται από τον **Λευκό Πύργο** ως το **Μέγαρο Μουσικής** και είναι οργανωμένη σε μια σειρά από **θεματικούς κήπους** (Κήπος του Νερού, της Μουσικής, της Μνήμης κ.ά.), με ποδηλατόδρομο σε όλο το μήκος.
 
 ## Τι θα δεις
-- Το εμβληματικό γλυπτό **«Ομπρέλες»** του Γιώργου Ζογγολόπουλου — από τα πιο φωτογραφημένα σημεία της πόλης.
+- Το εμβληματικό γλυπτό **«Ομπρέλες»** του Γιώργου Ζογγολόπουλου, από τα πιο φωτογραφημένα σημεία της πόλης.
 - Το άγαλμα του **Μεγάλου Αλεξάνδρου**.
 - Τα «πλωτά» καφέ-καραβάκια που κάνουν βόλτες στον κόλπο.
 
 ## Καλό να ξέρεις
 Δωρεάν, ανοιχτό πάντα, ιδανικό για **ηλιοβασίλεμα**, τρέξιμο και ποδήλατο. Δίπλα βρίσκονται το Αρχαιολογικό Μουσείο και το Μουσείο Βυζαντινού Πολιτισμού.`,
-      en: `The **waterfront (Nea Paralia)** is the locals' favourite walk — the redesigned seaside promenade where the city's daily heartbeat plays out, right by the sea.
+      en: `The **waterfront (Nea Paralia)** is the locals' favourite walk, the redesigned seaside promenade where the city's daily heartbeat plays out, right by the sea.
 
 ## The route
 It stretches from the **White Tower** to the **Concert Hall** and is organised as a series of **themed gardens** (the Garden of Water, of Music, of Memory and more), with a cycle path along its whole length.
 
 ## What you'll see
-- The iconic **"Umbrellas"** sculpture by George Zongolopoulos — one of the most photographed spots in the city.
+- The iconic **"Umbrellas"** sculpture by George Zongolopoulos, one of the most photographed spots in the city.
 - The statue of **Alexander the Great**.
 - The "floating" café-boats that cruise the gulf.
 
@@ -750,8 +750,8 @@ Free, always open, and ideal for **sunset**, running and cycling. The Archaeolog
       {
         question: { el: "Πού είναι οι «Ομπρέλες»;", en: "Where are the \"Umbrellas\"?" },
         answer: {
-          el: "Πάνω στη Νέα Παραλία, στο ύψος περίπου του Ποσειδωνίου — από τα πιο δημοφιλή σημεία για φωτογραφία, ειδικά στο ηλιοβασίλεμα.",
-          en: "On the waterfront, roughly by the Posidonio — one of the most popular photo spots, especially at sunset.",
+          el: "Πάνω στη Νέα Παραλία, στο ύψος περίπου του Ποσειδωνίου: από τα πιο δημοφιλή σημεία για φωτογραφία, ειδικά στο ηλιοβασίλεμα.",
+          en: "On the waterfront, roughly by the Posidonio: one of the most popular photo spots, especially at sunset.",
         },
       },
     ],
@@ -777,17 +777,17 @@ Free, always open, and ideal for **sunset**, running and cycling. The Archaeolog
       el: `Το **Αρχαιολογικό Μουσείο Θεσσαλονίκης** είναι το κορυφαίο μουσείο για την αρχαία Μακεδονία και ιδανικό «πρώτο βήμα» για να καταλάβεις την ιστορία της πόλης και της περιοχής.
 
 ## Τι θα δεις
-Μόνιμες εκθέσεις που καλύπτουν όλες τις όψεις της ζωής στην αρχαιότητα — από την **προϊστορία** ως την ύστερη αρχαιότητα. Ξεχωρίζουν τα **χρυσά ευρήματα** και τα κτερίσματα από μακεδονικούς τάφους, καθώς και η ενότητα για τη ρωμαϊκή Θεσσαλονίκη.
+Μόνιμες εκθέσεις που καλύπτουν όλες τις όψεις της ζωής στην αρχαιότητα, από την **προϊστορία** ως την ύστερη αρχαιότητα. Ξεχωρίζουν τα **χρυσά ευρήματα** και τα κτερίσματα από μακεδονικούς τάφους, καθώς και η ενότητα για τη ρωμαϊκή Θεσσαλονίκη.
 
 ## Καλό να ξέρεις
-Βρίσκεται στην αρχή της Νέας Παραλίας, δίπλα στο **Μουσείο Βυζαντινού Πολιτισμού** και κοντά στον Λευκό Πύργο — μπορείς να δεις και τα δύο μουσεία την ίδια μέρα. Για ώρες και εισιτήρια δες τον επίσημο ιστότοπο.`,
+Βρίσκεται στην αρχή της Νέας Παραλίας, δίπλα στο **Μουσείο Βυζαντινού Πολιτισμού** και κοντά στον Λευκό Πύργο, οπότε μπορείς να δεις και τα δύο μουσεία την ίδια μέρα. Για ώρες και εισιτήρια δες τον επίσημο ιστότοπο.`,
       en: `The **Archaeological Museum of Thessaloniki** is the leading museum for ancient Macedonia and an ideal "first step" to understand the history of the city and the region.
 
 ## What you'll see
-Permanent exhibitions covering every aspect of life in antiquity — from **prehistory** to late antiquity. Highlights include the **gold finds** and grave goods from Macedonian tombs, and the section on Roman Thessaloniki.
+Permanent exhibitions covering every aspect of life in antiquity, from **prehistory** to late antiquity. Highlights include the **gold finds** and grave goods from Macedonian tombs, and the section on Roman Thessaloniki.
 
 ## Good to know
-It stands at the start of the waterfront, next to the **Museum of Byzantine Culture** and near the White Tower — you can see both museums in one day. Check the official site for hours and tickets.`,
+It stands at the start of the waterfront, next to the **Museum of Byzantine Culture** and near the White Tower, so you can see both museums in one day. Check the official site for hours and tickets.`,
     },
     type: "museum",
     tags: ["museum", "history", "culture", "family"],
@@ -802,8 +802,8 @@ It stands at the start of the waterfront, next to the **Museum of Byzantine Cult
       {
         question: { el: "Συνδυάζεται με άλλο μουσείο;", en: "Can I combine it with another museum?" },
         answer: {
-          el: "Ναι — το Μουσείο Βυζαντινού Πολιτισμού είναι δίπλα, ιδανικό για την ίδια επίσκεψη.",
-          en: "Yes — the Museum of Byzantine Culture is right next door, ideal for the same visit.",
+          el: "Ναι, το Μουσείο Βυζαντινού Πολιτισμού είναι δίπλα, ιδανικό για την ίδια επίσκεψη.",
+          en: "Yes, the Museum of Byzantine Culture is right next door, ideal for the same visit.",
         },
       },
     ],
@@ -836,14 +836,14 @@ It stands at the start of the waterfront, next to the **Museum of Byzantine Cult
       en: "An award-winning museum dedicated to Byzantine and post-Byzantine culture.",
     },
     description: {
-      el: `Το **Μουσείο Βυζαντινού Πολιτισμού** είναι ένα από τα σημαντικότερα μουσεία της Ελλάδας — βραβευμένο (Βραβείο Μουσείου του Συμβουλίου της Ευρώπης) και ιδανικό συμπλήρωμα των βυζαντινών μνημείων της πόλης.
+      el: `Το **Μουσείο Βυζαντινού Πολιτισμού** είναι ένα από τα σημαντικότερα μουσεία της Ελλάδας, βραβευμένο (Βραβείο Μουσείου του Συμβουλίου της Ευρώπης) και ιδανικό συμπλήρωμα των βυζαντινών μνημείων της πόλης.
 
 ## Τι θα δεις
 Οι μόνιμες εκθέσεις ξεδιπλώνουν την **καθημερινή ζωή, την τέχνη και τη θρησκεία** του Βυζαντίου: ψηφιδωτά, τοιχογραφίες, εικόνες, νομίσματα και αντικείμενα καθημερινής χρήσης, με σαφή, σύγχρονη μουσειογραφία.
 
 ## Καλό να ξέρεις
 Στη Λεωφόρο Στρατού, δίπλα στο **Αρχαιολογικό Μουσείο** και κοντά στη Νέα Παραλία. Ιδανικό για να «διαβάσεις» τα μνημεία UNESCO της πόλης πριν ή μετά την επίσκεψή τους.`,
-      en: `The **Museum of Byzantine Culture** is one of Greece's most important museums — award-winning (Council of Europe Museum Prize) and the perfect complement to the city's Byzantine monuments.
+      en: `The **Museum of Byzantine Culture** is one of Greece's most important museums, award-winning (Council of Europe Museum Prize) and the perfect complement to the city's Byzantine monuments.
 
 ## What you'll see
 Permanent exhibitions unfold the **daily life, art and religion** of Byzantium: mosaics, frescoes, icons, coins and everyday objects, with clear, modern curation.

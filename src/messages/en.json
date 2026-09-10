@@ -34,7 +34,7 @@
   },
   "areas": {
     "title": "Thessaloniki Areas",
-    "subtitle": "Each neighbourhood with its own character — where to stay, eat and what to see.",
+    "subtitle": "Each neighbourhood with its own character: where to stay, eat and what to see.",
     "nearby": "Nearby areas"
   },
   "daytrips": {
@@ -95,14 +95,14 @@
     "notFoundTitle": "This page doesn't exist",
     "notFoundBody": "The link may have changed or been mistyped. Search for something specific, or start from a category.",
     "errorTitle": "Something went wrong",
-    "errorBody": "The page failed to load. Try again — if it keeps happening, head back to the homepage.",
+    "errorBody": "The page failed to load. Try again: if it keeps happening, head back to the homepage.",
     "tryAgain": "Try again",
     "popularPages": "Popular pages"
   },
   "home": {
     "heroKicker": "Thessaloniki's digital guide",
     "heroTitle": "What do you want to do in Thessaloniki?",
-    "heroSubtitle": "From the alleys of Ano Poli and the Byzantine walls to Ladadika, the seafront and a morning bougatsa — find where to stay, eat, drink and what to see, all handpicked with care.",
+    "heroSubtitle": "From the alleys of Ano Poli and the Byzantine walls to Ladadika, the seafront and a morning bougatsa: find where to stay, eat, drink and what to see, all handpicked with care.",
     "searchPlaceholder": "Hotel, food, sight…",
     "quickIntents": "Popular searches",
     "pillarsTitle": "Explore the city",
@@ -112,10 +112,10 @@
     "todayTitle": "What's on today",
     "guidesTitle": "Guides & recommendations",
     "aboutKicker": "Why Thessaloniki",
-    "aboutTitle": "Two thousand years of history — and a pulse that never stops",
-    "aboutP1": "Thessaloniki isn't a city you simply see — you live it. Founded in 315 BC and a capital of empires for centuries, it stacks Roman, Byzantine, Ottoman and Sephardic layers one on top of the other: the Rotunda and the Arch of Galerius, the walls of the Upper Town (Ano Poli), and the Palaeochristian churches inscribed as UNESCO World Heritage.",
+    "aboutTitle": "Two thousand years of history, and a pulse that never stops",
+    "aboutP1": "Thessaloniki isn't a city you simply see; you live it. Founded in 315 BC and a capital of empires for centuries, it stacks Roman, Byzantine, Ottoman and Sephardic layers one on top of the other: the Rotunda and the Arch of Galerius, the walls of the Upper Town (Ano Poli), and the Palaeochristian churches inscribed as UNESCO World Heritage.",
     "aboutP2": "And right alongside all that, a city fully alive. The White Tower and the Nea Paralia seafront with Zongolopoulos' 'Umbrellas', Aristotelous Square opening onto the Thermaic Gulf, the Ladadika quarter that stays up all night, cafés that turn into bars and bars that turn into dance floors. Greece's largest student city never really sleeps.",
-    "aboutP3": "And then there's the food — perhaps the most honest reason to fall for it. Breakfast of bougatsa and koulouri, lunch of mezedes and tsipouro, dinner rooted in the cuisine the refugees of Asia Minor and Pontus brought with them. We gather it all here — the sights, the stays, the tables, the events — so you don't miss a thing.",
+    "aboutP3": "And then there's the food, perhaps the most honest reason to fall for it. Breakfast of bougatsa and koulouri, lunch of mezedes and tsipouro, dinner rooted in the cuisine the refugees of Asia Minor and Pontus brought with them. We gather it all here (the sights, the stays, the tables, the events) so you don't miss a thing.",
     "forBusiness": "Are you a business?",
     "forBusinessText": "Get a digital presence inside Thessaloniki's largest discovery ecosystem.",
     "forBusinessCta": "List your business"
@@ -130,19 +130,19 @@
     "servicesDesc": "Transfers, taxis, cleaning, photographers and other services."
   },
   "pillarIntro": {
-    "stay": "Thessaloniki has welcomed travellers, traders and pilgrims for centuries — and today its places to stay are as varied as the city itself. From elegant hotels overlooking the Thermaic Gulf and boutique stays inside the historic centre, to modern apartments in the student and creative quarters, there's something for every style and budget.\n\nFor a first visit, the centre around Aristotelous and Tsimiski puts you within walking distance of the sights, the food and the seafront. If you prefer a quieter base, the Upper Town (Ano Poli) offers views and picturesque lanes, while the Nea Paralia is perfect for strolls by the sea.",
-    "eat": "In Thessaloniki, food isn't just a meal — it's identity. Widely considered Greece's gastronomic capital, the city's cuisine is rooted in the refugees of Asia Minor and Pontus, layered with Balkan and Sephardic influences. Breakfast begins with bougatsa and koulouri, lunch drifts along on mezedes and tsipouro, and dinner stretches across tables that last for hours.\n\nFrom the historic tavernas of Ladadika and the Modiano and Kapani markets to modern restaurants and all-day cafés, the choices are endless. Here we gather the places worth your time, organised by area and style, so you can eat like a local.",
-    "drink": "Thessaloniki's nightlife is legendary — and for good reason. As Greece's largest student city, it buzzes with energy every day of the week: cafés that turn into bars at dusk, rooftops looking out over the Thermaic Gulf, award-winning cocktail bars and live-music venues for every taste.\n\nLadadika and Valaoritou are the beating heart of going out, while the seafront and the Upper Town offer more relaxed spots for a drink with a view. Here you'll find where to drink — from the first espresso to the last cocktail of the night.",
-    "discover": "Few cities in the world pack so much history into such a small radius. Thessaloniki is a living open-air museum: the White Tower, the Rotunda and the Arch of Galerius, the Byzantine walls of the Upper Town, and fifteen Palaeochristian and Byzantine monuments inscribed on the UNESCO World Heritage list.\n\nAlongside the ancient, world-class museums — Archaeological, Byzantine Culture, MOMus — and contemporary art spaces make a city that honours its past while always looking ahead. Here you'll find what's worth seeing, with real information for every sight.",
-    "experiences": "Thessaloniki doesn't just want to be seen — it wants to be lived. Guided walks through its Byzantine monuments and Jewish heritage, food tours of the historic markets, boat trips on the Thermaic Gulf and day trips into wider Macedonia add depth to any visit.\n\nWhether it's your first time here or you've known the city for years, organised experiences reveal sides of it you'd struggle to find on your own. Here we gather the activities and tours worth your time.",
-    "services": "A trip or a move to Thessaloniki is easier with the right professionals beside you. From transfers to and from Makedonia Airport and taxi services, to photographers, cleaning and other practical needs, here you'll find services for visitors and residents alike.\n\nOur aim is to connect people with trusted local providers — so you can focus on your trip, not the logistics."
+    "stay": "Thessaloniki has welcomed travellers, traders and pilgrims for centuries, and today its places to stay are as varied as the city itself. From elegant hotels overlooking the Thermaic Gulf and boutique stays inside the historic centre, to modern apartments in the student and creative quarters, there's something for every style and budget.\n\nFor a first visit, the centre around Aristotelous and Tsimiski puts you within walking distance of the sights, the food and the seafront. If you prefer a quieter base, the Upper Town (Ano Poli) offers views and picturesque lanes, while the Nea Paralia is perfect for strolls by the sea.",
+    "eat": "In Thessaloniki, food isn't just a meal; it's identity. Widely considered Greece's gastronomic capital, the city's cuisine is rooted in the refugees of Asia Minor and Pontus, layered with Balkan and Sephardic influences. Breakfast begins with bougatsa and koulouri, lunch drifts along on mezedes and tsipouro, and dinner stretches across tables that last for hours.\n\nFrom the historic tavernas of Ladadika and the Modiano and Kapani markets to modern restaurants and all-day cafés, the choices are endless. Here we gather the places worth your time, organised by area and style, so you can eat like a local.",
+    "drink": "Thessaloniki's nightlife is legendary, and for good reason. As Greece's largest student city, it buzzes with energy every day of the week: cafés that turn into bars at dusk, rooftops looking out over the Thermaic Gulf, award-winning cocktail bars and live-music venues for every taste.\n\nLadadika and Valaoritou are the beating heart of going out, while the seafront and the Upper Town offer more relaxed spots for a drink with a view. Here you'll find where to drink: from the first espresso to the last cocktail of the night.",
+    "discover": "Few cities in the world pack so much history into such a small radius. Thessaloniki is a living open-air museum: the White Tower, the Rotunda and the Arch of Galerius, the Byzantine walls of the Upper Town, and fifteen Palaeochristian and Byzantine monuments inscribed on the UNESCO World Heritage list.\n\nAlongside the ancient, world-class museums (Archaeological, Byzantine Culture, MOMus) and contemporary art spaces make a city that honours its past while always looking ahead. Here you'll find what's worth seeing, with real information for every sight.",
+    "experiences": "Thessaloniki doesn't just want to be seen, it wants to be lived. Guided walks through its Byzantine monuments and Jewish heritage, food tours of the historic markets, boat trips on the Thermaic Gulf and day trips into wider Macedonia add depth to any visit.\n\nWhether it's your first time here or you've known the city for years, organised experiences reveal sides of it you'd struggle to find on your own. Here we gather the activities and tours worth your time.",
+    "services": "A trip or a move to Thessaloniki is easier with the right professionals beside you. From transfers to and from Makedonia Airport and taxi services, to photographers, cleaning and other practical needs, here you'll find services for visitors and residents alike.\n\nOur aim is to connect people with trusted local providers, so you can focus on your trip, not the logistics."
   },
   "service": {
     "passengers": "passengers"
   },
   "today": {
     "title": "Today in Thessaloniki",
-    "subtitle": "Everything happening in the city today — updated daily.",
+    "subtitle": "Everything happening in the city today, updated daily.",
     "eventsToday": "Events today",
     "noEvents": "No events listed for today. See what's coming up over the next few days.",
     "upcoming": "Coming up"
@@ -216,7 +216,7 @@
   "events": {
     "title": "Events in Thessaloniki",
     "subtitle": "Concerts, festivals and happenings across the city.",
-    "intro": "Thessaloniki lives to the rhythm of events all year round. From the International Film Festival and the TIF trade fair to concerts, theatre, art exhibitions and open-air neighbourhood celebrations, there's always something on. Here we gather the city's calendar — kept up to date, so you don't miss what matters to you.",
+    "intro": "Thessaloniki lives to the rhythm of events all year round. From the International Film Festival and the TIF trade fair to concerts, theatre, art exhibitions and open-air neighbourhood celebrations, there's always something on. Here we gather the city's calendar: kept up to date, so you don't miss what matters to you.",
     "when": "When",
     "where": "Where",
     "price": "Price",
@@ -247,7 +247,7 @@
   "metro": {
     "title": "Thessaloniki Metro",
     "subtitle": "A guide to every station: what's around it, where to get off, and how to reach the airport.",
-    "introA": "The metro changed Thessaloniki more than any other project in decades. The main line opened on 30 November 2024, and on 27 August 2026 the Kalamaria extension followed — journeys that once took forty minutes in Egnatia traffic now take ten.",
+    "introA": "The metro changed Thessaloniki more than any other project in decades. The main line opened on 30 November 2024, and on 27 August 2026 the Kalamaria extension followed, journeys that once took forty minutes in Egnatia traffic now take ten.",
     "introB": "It is fully automatic and driverless, with platform screen doors. And because digging beneath a 2,300-year-old city inevitably turns up its history, some stations double as archaeological sites.",
     "practical": "The basics",
     "hours": "Hours",
@@ -258,7 +258,7 @@
     "stationsWord": "stations",
     "airport": "Airport",
     "airportValue": "Bus X3 from Mikra",
-    "airportNote": "Note: the metro does not reach “Makedonia” Airport. Get off at the Mikra terminus and continue on bus line X3, which carries a special fare of €2.00 — separate from your metro ticket.",
+    "airportNote": "Note: the metro does not reach “Makedonia” Airport. Get off at the Mikra terminus and continue on bus line X3, which carries a special fare of €2.00, separate from your metro ticket.",
     "trunk": "Shared section",
     "branchEast": "Nea Elvetia branch",
     "branchSouth": "Kalamaria branch",
@@ -281,7 +281,7 @@
   "months": {
     "title": "When to visit Thessaloniki",
     "subtitle": "Month by month: weather, events, crowds and what's worth doing.",
-    "introA": "There is no bad season for Thessaloniki — but there is a season that suits what you're after. May and September give the best mix of warmth and calm, October brings the city's great occasions, and August offers empty monuments and low prices in exchange for the heat.",
+    "introA": "There is no bad season for Thessaloniki, but there is a season that suits what you're after. May and September give the best mix of warmth and calm, October brings the city's great occasions, and August offers empty monuments and low prices in exchange for the heat.",
     "introB": "Below you'll find each month on its own: the weather to expect, what's happening in the city, whether you can swim, and what to pack.",
     "rightNow": "We're currently in:",
     "tableTitle": "The year at a glance",
@@ -297,7 +297,7 @@
     "highlights": "What stands out",
     "otherMonths": "Other months",
     "eventsThisMonth": "Events this month",
-    "disclaimer": "Temperatures are climate averages, not a weather forecast. Event dates change each year — check the official organisers before you travel.",
+    "disclaimer": "Temperatures are climate averages, not a weather forecast. Event dates change each year, check the official organisers before you travel.",
     "level": {
       "low": "Low",
       "medium": "Moderate",
@@ -306,9 +306,9 @@
   },
   "festivals": {
     "title": "Thessaloniki Festivals",
-    "subtitle": "The city's great institutions — what each one is, when it happens and why it matters.",
+    "subtitle": "The city's great institutions: what each one is, when it happens and why it matters.",
     "introA": "Thessaloniki doesn't only count the year in months. It counts it in festivals: the trade fair in September, the Dimitria in October, the Film Festival in November, the Documentary Festival in March. Each has run for decades and has shaped the city's character.",
-    "introB": "Below you'll find what each of these institutions actually is, its history, where it happens and how to experience it. Exact dates change every year — which is why each page links to the official organisers.",
+    "introB": "Below you'll find what each of these institutions actually is, its history, where it happens and how to experience it. Exact dates change every year, which is why each page links to the official organisers.",
     "since": "Since",
     "when": "When",
     "facts": "At a glance",
@@ -321,7 +321,7 @@
   },
   "dishes": {
     "title": "What Thessaloniki eats",
-    "subtitle": "The dishes that define the city — where they came from, when they're eaten and why they matter.",
+    "subtitle": "The dishes that define the city: where they came from, when they're eaten and why they matter.",
     "introA": "Thessaloniki is widely considered Greece's gastronomic capital, and the reason isn't any single restaurant. It's the city's own history: a Byzantine city, an Ottoman port, a place of refuge for those who came from Asia Minor and Pontus. Every layer left something on the plate.",
     "introB": "These pages don't recommend shops. They explain the foods themselves — where they come from, their variations and how they're eaten — so you know what you're asking for and why.",
     "more": "See also",
@@ -342,7 +342,7 @@
     "title": "Walking routes",
     "subtitle": "Self-guided: stops in order, distances, and what to notice at each one.",
     "introA": "Thessaloniki is a walkable city. Most of its monuments sit within a few blocks, and distances that look long on a map are covered in minutes on foot.",
-    "introB": "Every route here comes with an order, a map and a note on each stop — what it is and what to look for. You need no guide and no booking; only shoes.",
+    "introB": "Every route here comes with an order, a map and a note on each stop, what it is and what to look for. You need no guide and no booking; only shoes.",
     "walkIt": "See the route",
     "distance": "Distance",
     "duration": "Duration",
@@ -353,7 +353,7 @@
     "otherRoutes": "Other routes",
     "startStation": "Start from",
     "mapNote": "The numbered stops in route order. Tap a point for more.",
-    "disclaimer": "Distances and times are approximate, for an unhurried pace with stops. Monument hours and ticketing change — check before you go.",
+    "disclaimer": "Distances and times are approximate, for an unhurried pace with stops. Monument hours and ticketing change, check before you go.",
     "difficulty": {
       "easy": "Easy",
       "moderate": "Moderate"
@@ -363,7 +363,7 @@
     "title": "Thessaloniki & Chalkidiki together",
     "subtitle": "Combined itineraries for anyone who wants both the city and the sea in one trip.",
     "introA": "Thessaloniki and Chalkidiki are about an hour apart, and almost nobody visits one without thinking about the other. Yet most guides treat them as two separate destinations.",
-    "introB": "Here are three ready-made plans that bridge them — for three, five or seven days. Each day links into the guide's detailed pages, and the Chalkidiki half is covered in depth by our sister site.",
+    "introB": "Here are three ready-made plans that bridge them: for three, five or seven days. Each day links into the guide's detailed pages, and the Chalkidiki half is covered in depth by our sister site.",
     "days": "days",
     "drivingNote": "Driving times are indicative. Kassandra takes about an hour and Sithonia about an hour and a half, but on summer weekends getting out of the city can add a good deal. You'll need a car for the Chalkidiki days.",
     "sisterTitle": "For the Chalkidiki half",
@@ -412,7 +412,7 @@
     "shareOn": "Create a link",
     "shareOff": "Turn off",
     "shareRotate": "New link",
-    "shareHint": "Creates a public link to your list. Anyone with it can view the list — your email is never shown.",
+    "shareHint": "Creates a public link to your list. Anyone with it can view the list, your email is never shown.",
     "shareRotateHint": "A new link revokes the previous one.",
     "sharedTitle": "Trip list",
     "sharedIntro": "A list from ThessalonikiHub.",

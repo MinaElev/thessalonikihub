@@ -6,7 +6,7 @@ import type { Localized } from "@/lib/types";
  * Every stop that corresponds to an existing attraction reuses that entity's
  * exact coordinates and links to its page, so the routes stay consistent with
  * the rest of the site. Distances and times are realistic walking estimates
- * for an unhurried pace with stops — they are labelled as approximate.
+ * for an unhurried pace with stops; they are labelled as approximate.
  */
 export interface RouteStop {
   name: Localized<string>;
@@ -65,8 +65,8 @@ What's striking is that these monuments **aren't scattered**. They sit in a stra
         lng: 22.947,
         placeSlug: "roman-forum",
         note: {
-          el: "Ξεκίνα από το διοικητικό κέντρο της αρχαίας πόλης. Κατέβα στο υπόγειο μουσείο και δες το ωδείο από ψηλά — από εδώ περνούσε η καθημερινή ζωή της ρωμαϊκής Θεσσαλονίκης.",
-          en: "Start at the administrative heart of the ancient city. Go down to the underground museum and look at the odeon from above — the daily life of Roman Thessaloniki passed through here.",
+          el: "Ξεκίνα από το διοικητικό κέντρο της αρχαίας πόλης. Κατέβα στο υπόγειο μουσείο και δες το ωδείο από ψηλά, από εδώ περνούσε η καθημερινή ζωή της ρωμαϊκής Θεσσαλονίκης.",
+          en: "Start at the administrative heart of the ancient city. Go down to the underground museum and look at the odeon from above. The daily life of Roman Thessaloniki passed through here.",
         },
       },
       {
@@ -104,8 +104,8 @@ What's striking is that these monuments **aren't scattered**. They sit in a stra
         lng: 22.9531,
         placeSlug: "rotunda",
         note: {
-          el: "Το φινάλε. Κυκλικό οικοδόμημα του 4ου αι. με τοίχους πάχους έξι μέτρων, που υπήρξε διαδοχικά ναός, εκκλησία και τζαμί — ο μιναρές δίπλα του σώζεται ακόμη. Μνημείο UNESCO.",
-          en: "The finale. A 4th-century circular building with walls six metres thick, successively a temple, a church and a mosque — its minaret still stands beside it. A UNESCO monument.",
+          el: "Το φινάλε. Κυκλικό οικοδόμημα του 4ου αι. με τοίχους πάχους έξι μέτρων, που υπήρξε διαδοχικά ναός, εκκλησία και τζαμί. Ο μιναρές δίπλα του σώζεται ακόμη. Μνημείο UNESCO.",
+          en: "The finale. A 4th-century circular building with walls six metres thick, successively a temple, a church and a mosque, its minaret still stands beside it. A UNESCO monument.",
         },
       },
     ],
@@ -113,7 +113,7 @@ What's striking is that these monuments **aren't scattered**. They sit in a stra
       el: `## Πρακτικά
 - **Αφετηρία:** σταθμός μετρό **Βενιζέλου**· **τερματισμός:** σταθμός **Σιντριβάνι**. Δεν χρειάζεσαι επιστροφή με τα πόδια.
 - Η διαδρομή είναι σχεδόν **επίπεδη** και γίνεται άνετα με καροτσάκι.
-- Τα μνημεία έχουν δικά τους ωράρια λειτουργίας και εισιτήρια — έλεγξέ τα πριν, ιδίως Δευτέρα.
+- Τα μνημεία έχουν δικά τους ωράρια λειτουργίας και εισιτήρια: έλεγξέ τα πριν, ιδίως Δευτέρα.
 - Το καλοκαίρι απόφυγε το μεσημέρι: τα περισσότερα σημεία είναι **ακάλυπτα**.
 
 ## Τι να συνδυάσεις
@@ -121,7 +121,7 @@ What's striking is that these monuments **aren't scattered**. They sit in a stra
       en: `## Practicalities
 - **Start:** **Venizelou** metro station; **finish:** **Sintrivani** station. No need to walk back.
 - The route is almost entirely **flat** and manages fine with a pushchair.
-- The monuments keep their own opening hours and ticketing — check before you go, especially on Mondays.
+- The monuments keep their own opening hours and ticketing: check before you go, especially on Mondays.
 - In summer avoid midday: most of the stops are **unshaded**.
 
 ## What to combine it with
@@ -157,7 +157,7 @@ It is also the only route in this guide with a **real climb**. The reward is tha
         lng: 22.949,
         placeSlug: "acheiropoietos",
         note: {
-          el: "Αφετηρία στο επίπεδο της Εγνατίας. Παλαιοχριστιανική βασιλική του 5ου αιώνα — από τα παλαιότερα μνημεία UNESCO της πόλης. Από εδώ αρχίζει η ανηφόρα.",
+          el: "Αφετηρία στο επίπεδο της Εγνατίας. Παλαιοχριστιανική βασιλική του 5ου αιώνα, από τα παλαιότερα μνημεία UNESCO της πόλης. Από εδώ αρχίζει η ανηφόρα.",
           en: "Start at Egnatia level. A 5th-century basilica and one of the city's oldest UNESCO monuments. The climb begins here.",
         },
       },
@@ -206,19 +206,19 @@ It is also the only route in this guide with a **real climb**. The reward is tha
       el: `## Πρακτικά
 - **Φόρα κανονικά παπούτσια.** Τα καλντερίμια είναι ανώμαλα και απότομα σε σημεία.
 - Η ανηφόρα είναι υπαρκτή αλλά σταδιακή. Υπολόγισε **δύο ώρες** με στάσεις και φωτογραφίες.
-- Για την **κατηφόρα** υπάρχουν αστικά λεωφορεία από την Άνω Πόλη προς το κέντρο — αν τα γόνατα διαμαρτύρονται, μη διστάσεις.
+- Για την **κατηφόρα** υπάρχουν αστικά λεωφορεία από την Άνω Πόλη προς το κέντρο: αν τα γόνατα διαμαρτύρονται, μη διστάσεις.
 - Τα καφενεία στην Άνω Πόλη έχουν από τις καλύτερες θέες της πόλης· η τιμή του καφέ το αντανακλά.
 
 ## Πότε
-Το **φθινόπωρο και την άνοιξη** είναι ιδανικά. Τον Ιούλιο και τον Αύγουστο ξεκίνα το νωρίτερο δύο ώρες πριν τη δύση, όχι νωρίτερα — η ανηφόρα στη ζέστη είναι δυσάρεστη.`,
+Το **φθινόπωρο και την άνοιξη** είναι ιδανικά. Τον Ιούλιο και τον Αύγουστο ξεκίνα το νωρίτερο δύο ώρες πριν τη δύση, όχι νωρίτερα. Η ανηφόρα στη ζέστη είναι δυσάρεστη.`,
       en: `## Practicalities
 - **Wear proper shoes.** The cobbles are uneven and steep in places.
 - The climb is real but gradual. Allow **two hours** with stops and photographs.
-- For the **descent** there are city buses from Ano Poli down to the centre — if your knees object, don't hesitate.
+- For the **descent** there are city buses from Ano Poli down to the centre: if your knees object, don't hesitate.
 - The cafés up in Ano Poli have some of the best views in the city; the price of the coffee reflects it.
 
 ## When
-**Autumn and spring** are ideal. In July and August set off no earlier than two hours before sunset — the climb in the heat is unpleasant.`,
+**Autumn and spring** are ideal. In July and August set off no earlier than two hours before sunset. The climb in the heat is unpleasant.`,
     },
     area: "ano-poli",
     metroStation: "agias-sofias",
@@ -238,10 +238,10 @@ It is also the only route in this guide with a **real climb**. The reward is tha
     intro: {
       el: `Η **Νέα Παραλία** είναι το πιο πετυχημένο σύγχρονο έργο της Θεσσαλονίκης. Ένας πεζόδρομος και ποδηλατόδρομος πέντε χιλιομέτρων δίπλα στο νερό, οργανωμένος σε διαδοχικούς θεματικούς κήπους, που έδωσε ξανά στην πόλη τη θάλασσά της.
 
-Είναι η διαδρομή που κάνουν οι ίδιοι οι Θεσσαλονικείς: τρέχοντας, με ποδήλατο, με καρότσι, ή απλώς περπατώντας μέχρι να νυχτώσει. Δεν έχει αξιοθέατα με εισιτήριο — έχει την ίδια την πόλη σε κίνηση.`,
+Είναι η διαδρομή που κάνουν οι ίδιοι οι Θεσσαλονικείς: τρέχοντας, με ποδήλατο, με καρότσι, ή απλώς περπατώντας μέχρι να νυχτώσει. Δεν έχει αξιοθέατα με εισιτήριο· έχει την ίδια την πόλη σε κίνηση.`,
       en: `The **Nea Paralia** is Thessaloniki's most successful modern project. A five-kilometre pedestrian and cycle promenade beside the water, organised as a sequence of themed gardens, which gave the city back its sea.
 
-It's the walk locals themselves do: running, cycling, pushing a pram, or simply walking until dark. There are no ticketed sights on it — there is the city itself in motion.`,
+It's the walk locals themselves do: running, cycling, pushing a pram, or simply walking until dark. There are no ticketed sights on it; there is the city itself in motion.`,
     },
     stops: [
       {
@@ -260,8 +260,8 @@ It's the walk locals themselves do: running, cycling, pushing a pram, or simply 
         lng: 22.9557,
         placeSlug: "archaeological-museum",
         note: {
-          el: "Μικρή παράκαμψη προς τα μέσα. Τα δύο κορυφαία μουσεία της πόλης βρίσκονται δίπλα-δίπλα — αν βρέξει, εδώ σώζεσαι.",
-          en: "A short detour inland. The city's two leading museums stand side by side — if it rains, this is your refuge.",
+          el: "Μικρή παράκαμψη προς τα μέσα. Τα δύο κορυφαία μουσεία της πόλης βρίσκονται δίπλα-δίπλα: αν βρέξει, εδώ σώζεσαι.",
+          en: "A short detour inland. The city's two leading museums stand side by side: if it rains, this is your refuge.",
         },
       },
       {
@@ -278,8 +278,8 @@ It's the walk locals themselves do: running, cycling, pushing a pram, or simply 
         lat: 40.6098,
         lng: 22.9552,
         note: {
-          el: "Το πιο φωτογραφημένο γλυπτό της πόλης, στημένο μέσα στο νερό. Στη δύση, ο ήλιος περνά ανάμεσα από τις ομπρέλες — γι' αυτό μαζεύεται τόσος κόσμος εδώ.",
-          en: "The city's most photographed sculpture, standing in the water. At sunset the light passes between the umbrellas — which is why so many people gather here.",
+          el: "Το πιο φωτογραφημένο γλυπτό της πόλης, στημένο μέσα στο νερό. Στη δύση, ο ήλιος περνά ανάμεσα από τις ομπρέλες, γι' αυτό μαζεύεται τόσος κόσμος εδώ.",
+          en: "The city's most photographed sculpture, standing in the water. At sunset the light passes between the umbrellas, which is why so many people gather here.",
         },
       },
       {
@@ -295,7 +295,7 @@ It's the walk locals themselves do: running, cycling, pushing a pram, or simply 
     outro: {
       el: `## Πρακτικά
 - **Εντελώς επίπεδη** και προσβάσιμη σε όλο το μήκος της. Ιδανική με καρότσι ή αναπηρικό αμαξίδιο.
-- Υπάρχει **ξεχωριστός ποδηλατόδρομος** — μείνε στη ζώνη των πεζών, οι ποδηλάτες κινούνται γρήγορα.
+- Υπάρχει **ξεχωριστός ποδηλατόδρομος**: μείνε στη ζώνη των πεζών, οι ποδηλάτες κινούνται γρήγορα.
 - Οι κήποι έχουν όνομα και θέμα ο καθένας (Κήπος του Ήχου, της Μεσογείου, του Απογεύματος κ.ά.). Αξίζει να τους προσέξεις.
 - Δεν χρειάζεται να την κάνεις ολόκληρη. Τα πρώτα δύο χιλιόμετρα μέχρι τις Ομπρέλες είναι το πιο πυκνό κομμάτι.
 
@@ -303,7 +303,7 @@ It's the walk locals themselves do: running, cycling, pushing a pram, or simply 
 Λεωφορεία κινούνται παράλληλα με την παραλία προς το κέντρο. Εναλλακτικά, από τα ανατολικά σημεία μπορείς να κόψεις προς τα μέσα και να βρεις τον σταθμό μετρό **Πανεπιστήμιο**.`,
       en: `## Practicalities
 - **Completely flat** and accessible along its whole length. Ideal with a pushchair or wheelchair.
-- There is a **separate cycle lane** — stay in the pedestrian zone, the cyclists move fast.
+- There is a **separate cycle lane**: stay in the pedestrian zone, the cyclists move fast.
 - Each garden has its own name and theme (Garden of Sound, of the Mediterranean, of the Afternoon and others). They're worth noticing.
 - You don't have to do all of it. The first two kilometres to the Umbrellas are the densest stretch.
 

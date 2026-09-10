@@ -1,7 +1,7 @@
 import type { Localized } from "@/lib/types";
 
 /**
- * "Thessaloniki in <month>" pages — weather, what's on, and what to do.
+ * "Thessaloniki in <month>" pages: weather, what's on, and what to do.
  *
  * Climate figures are MONTHLY AVERAGES, rounded, and are labelled as
  * approximate on the page. Anchors cross-checked (Sept 2026): Köppen Cfa;
@@ -32,7 +32,7 @@ export interface CityMonth {
   seaSwimmable: boolean;
   blurb: Localized<string>;
   long: Localized<string>;
-  /** Recurring fixtures this month. No exact dates — they move each year. */
+  /** Recurring fixtures this month. No exact dates, they move each year. */
   highlights: Localized<string>[];
 }
 
@@ -57,7 +57,7 @@ export const cityMonths: CityMonth[] = [
 Ο ψυχρότερος μήνας του χρόνου: μέση μέγιστη γύρω στους **10 °C** και ελάχιστη γύρω στους **3 °C**. Ο Βαρδάρης, ο βόρειος άνεμος που κατεβαίνει από την κοιλάδα του Αξιού, κάνει την αίσθηση αρκετά πιο κρύα από όσο δείχνει το θερμόμετρο. Χιόνι στο κέντρο πέφτει σπάνια, στο Πανόραμα και τα Χορτιάτη πιο συχνά.
 
 ## Τι γίνεται
-Η πόλη ξεκινά με τα **Θεοφάνεια**, όταν ο αγιασμός των υδάτων γίνεται στην παραλία και κολυμβητές βουτούν στον χειμωνιάτικο Θερμαϊκό. Ακολουθούν οι χειμερινές εκπτώσεις και μια πυκνή θεατρική και μουσική σεζόν — ο Ιανουάριος είναι από τους πιο δραστήριους μήνες για παραστάσεις.
+Η πόλη ξεκινά με τα **Θεοφάνεια**, όταν ο αγιασμός των υδάτων γίνεται στην παραλία και κολυμβητές βουτούν στον χειμωνιάτικο Θερμαϊκό. Ακολουθούν οι χειμερινές εκπτώσεις και μια πυκνή θεατρική και μουσική σεζόν. Ο Ιανουάριος είναι από τους πιο δραστήριους μήνες για παραστάσεις.
 
 ## Τι να κάνεις
 Είναι ο ιδανικός μήνας για **μουσεία** χωρίς ουρές: Αρχαιολογικό, Βυζαντινού Πολιτισμού, MOMus. Οι ζεστές μπουγατσαρίες και τα καφενεία λειτουργούν ως καταφύγιο, και η Άνω Πόλη με καθαρό χειμωνιάτικο αέρα δίνει την πιο καθαρή θέα του χρόνου προς τον Όλυμπο.
@@ -68,7 +68,7 @@ export const cityMonths: CityMonth[] = [
 The coldest month of the year: average highs around **10 °C** and lows near **3 °C**. The Vardaris, the northerly wind funnelling down the Axios valley, makes it feel considerably colder than the thermometer suggests. Snow rarely settles in the centre, more often up in Panorama and Chortiatis.
 
 ## What's on
-The year opens with **Epiphany**, when the blessing of the waters takes place on the waterfront and swimmers dive into the winter Thermaic Gulf. The winter sales follow, along with a dense theatre and music season — January is one of the busiest months for performances.
+The year opens with **Epiphany**, when the blessing of the waters takes place on the waterfront and swimmers dive into the winter Thermaic Gulf. The winter sales follow, along with a dense theatre and music season, January is one of the busiest months for performances.
 
 ## What to do
 This is the ideal month for **museums** without queues: the Archaeological, Byzantine Culture and MOMus. Warm bougatsa shops and cafés serve as refuges, and Ano Poli in clear winter air gives the sharpest view of the year toward Mount Olympus.
@@ -102,10 +102,10 @@ A winter coat, a scarf and waterproof shoes. The pavements get slippery in the r
 Ελαφρώς ηπιότερος από τον Ιανουάριο: μέση μέγιστη γύρω στους **12 °C**, ελάχιστη γύρω στους **4 °C**. Εμφανίζονται οι πρώτες καθαρές, ηλιόλουστες μέρες όπου η παραλία γεμίζει κόσμο με παλτά και καφέδες.
 
 ## Τι γίνεται
-Οι **Απόκριες** κυριαρχούν — η ακριβής ημερομηνία αλλάζει κάθε χρόνο γιατί ακολουθεί το Πάσχα. Οι γειτονιές διοργανώνουν παρελάσεις, τα σχολεία μασκαράδες και τα μπαρ θεματικά πάρτι. Στην ευρύτερη Μακεδονία επιβιώνουν αρχαϊκά έθιμα με κουδούνια και μεταμφιέσεις που κρατούν από διονυσιακές τελετές.
+Οι **Απόκριες** κυριαρχούν. Η ακριβής ημερομηνία αλλάζει κάθε χρόνο γιατί ακολουθεί το Πάσχα. Οι γειτονιές διοργανώνουν παρελάσεις, τα σχολεία μασκαράδες και τα μπαρ θεματικά πάρτι. Στην ευρύτερη Μακεδονία επιβιώνουν αρχαϊκά έθιμα με κουδούνια και μεταμφιέσεις που κρατούν από διονυσιακές τελετές.
 
 ## Τι να κάνεις
-Είναι ο μήνας για **τσίπουρο και μεζέδες** σε ζεστά μεζεδοπωλεία, για τα σκεπαστά **Μοδιάνο** και **Καπάνι**, και για μουσεία. Αν πετύχεις ηλιόλουστο Σαββατοκύριακο, η βόλτα στη Νέα Παραλία μέχρι τις «Ομπρέλες» είναι από τις καλύτερες του χρόνου — χωρίς ζέστη και χωρίς πλήθος.
+Είναι ο μήνας για **τσίπουρο και μεζέδες** σε ζεστά μεζεδοπωλεία, για τα σκεπαστά **Μοδιάνο** και **Καπάνι**, και για μουσεία. Αν πετύχεις ηλιόλουστο Σαββατοκύριακο, η βόλτα στη Νέα Παραλία μέχρι τις «Ομπρέλες» είναι από τις καλύτερες του χρόνου, χωρίς ζέστη και χωρίς πλήθος.
 
 ## Τι να πάρεις μαζί
 Ζεστά ρούχα σε στρώσεις: οι μέρες μπορεί να ξεκινούν παγωμένες και να κλείνουν ήπιες.`,
@@ -113,10 +113,10 @@ A winter coat, a scarf and waterproof shoes. The pavements get slippery in the r
 Slightly milder than January: average highs around **12 °C**, lows near **4 °C**. The first clear, sunny days appear, when the seafront fills with people in coats holding coffees.
 
 ## What's on
-**Carnival** dominates — the exact dates shift each year because they follow Easter. Neighbourhoods organise parades, schools dress up and bars run themed parties. Across wider Macedonia, archaic customs with bells and masks survive from Dionysian rites.
+**Carnival** dominates. The exact dates shift each year because they follow Easter. Neighbourhoods organise parades, schools dress up and bars run themed parties. Across wider Macedonia, archaic customs with bells and masks survive from Dionysian rites.
 
 ## What to do
-This is the month for **tsipouro and mezedes** in warm meze houses, for the covered **Modiano** and **Kapani** markets, and for museums. If you catch a sunny weekend, the walk along the Nea Paralia to the "Umbrellas" is one of the year's best — no heat, no crowds.
+This is the month for **tsipouro and mezedes** in warm meze houses, for the covered **Modiano** and **Kapani** markets, and for museums. If you catch a sunny weekend, the walk along the Nea Paralia to the "Umbrellas" is one of the year's best: no heat, no crowds.
 
 ## What to pack
 Warm layers: days can start freezing and end mild.`,
@@ -146,7 +146,7 @@ Warm layers: days can start freezing and end mild.`,
 Απότομη βελτίωση: μέση μέγιστη γύρω στους **16 °C**. Οι μέρες μεγαλώνουν αισθητά και τα τραπεζάκια βγαίνουν ξανά στα πεζοδρόμια, αν και τα βράδια παραμένουν δροσερά και οι βροχές συχνές.
 
 ## Τι γίνεται
-Το **Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης** είναι το μεγάλο γεγονός του μήνα και μετατρέπει το λιμάνι και τις αίθουσες του κέντρου σε τόπο συνάντησης. Η **25η Μαρτίου** φέρνει στρατιωτική παρέλαση στην παραλία, ενώ η **Καθαρά Δευτέρα** — κινητή ημερομηνία — βγάζει τους Θεσσαλονικείς στα υψώματα με χαρταετούς και νηστίσιμο τραπέζι.
+Το **Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης** είναι το μεγάλο γεγονός του μήνα και μετατρέπει το λιμάνι και τις αίθουσες του κέντρου σε τόπο συνάντησης. Η **25η Μαρτίου** φέρνει στρατιωτική παρέλαση στην παραλία, ενώ η **Καθαρά Δευτέρα** (κινητή ημερομηνία) βγάζει τους Θεσσαλονικείς στα υψώματα με χαρταετούς και νηστίσιμο τραπέζι.
 
 ## Τι να κάνεις
 Ιδανικός μήνας για **περπάτημα**: τα βυζαντινά τείχη, η Άνω Πόλη και το Επταπύργιο χωρίς τη ζέστη του καλοκαιριού. Η φύση γύρω από την πόλη ανθίζει, οπότε αξίζει και μια εκδρομή προς τη Βεργίνα ή την Έδεσσα.
@@ -157,7 +157,7 @@ Warm layers: days can start freezing and end mild.`,
 A sharp improvement: average highs around **16 °C**. Days lengthen noticeably and tables return to the pavements, though evenings stay cool and rain is frequent.
 
 ## What's on
-The **Thessaloniki Documentary Festival** is the month's big event, turning the port and the city's cinemas into a meeting place. **25 March** brings a military parade along the waterfront, while **Clean Monday** — a movable date — sends locals up to the hills with kites and a Lenten spread.
+The **Thessaloniki Documentary Festival** is the month's big event, turning the port and the city's cinemas into a meeting place. **25 March** brings a military parade along the waterfront, while **Clean Monday** (a movable date) sends locals up to the hills with kites and a Lenten spread.
 
 ## What to do
 An ideal month for **walking**: the Byzantine walls, Ano Poli and the Heptapyrgion without summer heat. The countryside around the city is in bloom, so a day trip to Vergina or Edessa is well worth it.
@@ -188,10 +188,10 @@ A raincoat and layers. March changes its mind within a single day.`,
     },
     long: {
       el: `## Ο καιρός
-Μέση μέγιστη γύρω στους **19 °C** — ζεστά για περπάτημα, δροσερά για να μη σε κουράζει ο ήλιος. Η θάλασσα είναι ακόμη κρύα για κολύμπι.
+Μέση μέγιστη γύρω στους **19 °C**: ζεστά για περπάτημα, δροσερά για να μη σε κουράζει ο ήλιος. Η θάλασσα είναι ακόμη κρύα για κολύμπι.
 
 ## Τι γίνεται
-Το **ελληνικό Πάσχα** πέφτει συνήθως τον Απρίλιο (η ημερομηνία αλλάζει κάθε χρόνο). Τη Μεγάλη Παρασκευή οι επιτάφιοι βγαίνουν στους δρόμους και η πόλη σιωπά· το Σάββατο τα μεσάνυχτα ανάβουν τα κεριά και ακολουθεί μαγειρίτσα. Πολλά μαγαζιά κλείνουν για μερικές μέρες και οι κάτοικοι φεύγουν στα χωριά — η πόλη γίνεται ασυνήθιστα ήσυχη.
+Το **ελληνικό Πάσχα** πέφτει συνήθως τον Απρίλιο (η ημερομηνία αλλάζει κάθε χρόνο). Τη Μεγάλη Παρασκευή οι επιτάφιοι βγαίνουν στους δρόμους και η πόλη σιωπά· το Σάββατο τα μεσάνυχτα ανάβουν τα κεριά και ακολουθεί μαγειρίτσα. Πολλά μαγαζιά κλείνουν για μερικές μέρες και οι κάτοικοι φεύγουν στα χωριά. Η πόλη γίνεται ασυνήθιστα ήσυχη.
 
 ## Τι να κάνεις
 Ο καλύτερος μήνας για τα **υπαίθρια αξιοθέατα**: Ροτόντα, Αψίδα Γαλερίου, Ρωμαϊκή Αγορά και τα τείχη, όλα χωρίς καύσωνα. Η Νέα Παραλία γεμίζει ποδήλατα και οικογένειες, και τα rooftops ανοίγουν ξανά.
@@ -199,10 +199,10 @@ A raincoat and layers. March changes its mind within a single day.`,
 ## Τι να πάρεις μαζί
 Ελαφριά ρούχα και ένα μπουφάν για το βράδυ. Αν ταξιδεύεις το Πάσχα, κλείσε διαμονή νωρίς.`,
       en: `## The weather
-Average highs around **19 °C** — warm enough for walking, cool enough that the sun never wears you down. The sea is still too cold for swimming.
+Average highs around **19 °C**: warm enough for walking, cool enough that the sun never wears you down. The sea is still too cold for swimming.
 
 ## What's on
-**Greek Easter** usually falls in April (the date moves each year). On Good Friday the epitaphioi are carried through the streets and the city falls silent; at midnight on Saturday candles are lit and magiritsa follows. Many businesses close for a few days and residents leave for their villages — the city turns unusually quiet.
+**Greek Easter** usually falls in April (the date moves each year). On Good Friday the epitaphioi are carried through the streets and the city falls silent; at midnight on Saturday candles are lit and magiritsa follows. Many businesses close for a few days and residents leave for their villages. The city turns unusually quiet.
 
 ## What to do
 The best month for **outdoor sights**: the Rotunda, the Arch of Galerius, the Roman Forum and the walls, all without a heatwave. The Nea Paralia fills with bicycles and families, and the rooftops reopen.
@@ -211,7 +211,7 @@ The best month for **outdoor sights**: the Rotunda, the Arch of Galerius, the Ro
 Light clothes and a jacket for the evening. If you're travelling over Easter, book accommodation early.`,
     },
     highlights: [
-      { el: "Ελληνικό Πάσχα — επιτάφιοι και Ανάσταση (κινητή ημερομηνία)", en: "Greek Easter — epitaphioi and the Resurrection (movable date)" },
+      { el: "Ελληνικό Πάσχα: επιτάφιοι και Ανάσταση (κινητή ημερομηνία)", en: "Greek Easter: epitaphioi and the Resurrection (movable date)" },
       { el: "Πρωτομαγιά στα προάστια (τέλος μήνα)", en: "May Day preparations in the suburbs" },
     ],
   },
@@ -238,7 +238,7 @@ Light clothes and a jacket for the evening. If you're travelling over Easter, bo
 Η **Πρωτομαγιά** βγάζει τον κόσμο στην εξοχή. Ξεκινούν τα υπαίθρια φεστιβάλ και οι συναυλίες, τα rooftops δουλεύουν κάθε βράδυ και η φοιτητική ζωή φτάνει στο τελευταίο της κύμα πριν την εξεταστική.
 
 ## Τι να κάνεις
-Ο ιδανικός μήνας για **βόλτα με σκάφος** στον Θερμαϊκό στο ηλιοβασίλεμα και για τη διαδρομή στη Νέα Παραλία με ποδήλατο. Καλή στιγμή και για την πρώτη εκδρομή προς **Χαλκιδική** — οι παραλίες είναι ακόμη άδειες, αν και η θάλασσα μόλις αρχίζει να ζεσταίνεται.
+Ο ιδανικός μήνας για **βόλτα με σκάφος** στον Θερμαϊκό στο ηλιοβασίλεμα και για τη διαδρομή στη Νέα Παραλία με ποδήλατο. Καλή στιγμή και για την πρώτη εκδρομή προς **Χαλκιδική**: οι παραλίες είναι ακόμη άδειες, αν και η θάλασσα μόλις αρχίζει να ζεσταίνεται.
 
 ## Τι να πάρεις μαζί
 Αντηλιακό και καπέλο. Ο ήλιος του Μαΐου δυναμώνει απότομα.`,
@@ -249,7 +249,7 @@ Average highs around **25 °C**. This is the year's balance point: warm enough f
 **May Day** sends everyone out to the countryside. Open-air festivals and concerts begin, rooftops work every night, and student life reaches its last wave before exams.
 
 ## What to do
-The ideal month for a **boat trip** on the Thermaic Gulf at sunset and for cycling the Nea Paralia. Also a good moment for a first run down to **Chalkidiki** — the beaches are still empty, though the sea is only starting to warm.
+The ideal month for a **boat trip** on the Thermaic Gulf at sunset and for cycling the Nea Paralia. Also a good moment for a first run down to **Chalkidiki**: the beaches are still empty, though the sea is only starting to warm.
 
 ## What to pack
 Sunscreen and a hat. The May sun strengthens abruptly.`,
@@ -282,7 +282,7 @@ Sunscreen and a hat. The May sun strengthens abruptly.`,
 Οι φοιτητές φεύγουν και η πόλη αλλάζει ρυθμό. Ξεκινούν τα **θερινά σινεμά** και οι υπαίθριες συναυλίες, ενώ τα παραλιακά μαγαζιά σε Αρετσού και Περαία δουλεύουν κάθε μέρα.
 
 ## Τι να κάνεις
-Πρώτος μήνας με **κολυμπήσιμη θάλασσα**. Στην ίδια την πόλη δεν κολυμπάς — πας Περαία, Αγία Τριάδα ή Χαλκιδική, μισή ώρα με μία ώρα δρόμο. Τα αξιοθέατα βλέπονται καλύτερα νωρίς το πρωί ή μετά τις 18:00.
+Πρώτος μήνας με **κολυμπήσιμη θάλασσα**. Στην ίδια την πόλη δεν κολυμπάς: πας Περαία, Αγία Τριάδα ή Χαλκιδική, μισή ώρα με μία ώρα δρόμο. Τα αξιοθέατα βλέπονται καλύτερα νωρίς το πρωί ή μετά τις 18:00.
 
 ## Τι να πάρεις μαζί
 Μαγιό, αντηλιακό και ένα μπουκάλι νερό. Το κέντρο έχει βρύσες, αλλά ο ήλιος στα ανοιχτά μνημεία δεν συγχωρεί.`,
@@ -293,7 +293,7 @@ Average highs around **29 °C** and the longest days of the year. Rain thins out
 The students leave and the city changes rhythm. **Open-air cinemas** and outdoor concerts begin, while the seaside places in Aretsou and Peraia work every day.
 
 ## What to do
-The first month with a **swimmable sea**. You don't swim in the city itself — you go to Peraia, Agia Triada or Chalkidiki, thirty minutes to an hour away. Sights are best seen early in the morning or after 18:00.
+The first month with a **swimmable sea**. You don't swim in the city itself; you go to Peraia, Agia Triada or Chalkidiki, thirty minutes to an hour away. Sights are best seen early in the morning or after 18:00.
 
 ## What to pack
 Swimwear, sunscreen and a water bottle. The centre has fountains, but the sun at the open monuments is unforgiving.`,
@@ -359,8 +359,8 @@ A hat, sunscreen, water and cotton or linen. Avoid black.`,
     crowds: "low",
     seaSwimmable: true,
     blurb: {
-      el: "Ο πιο ξηρός μήνας του χρόνου και η πιο άδεια πόλη — φθηνή διαμονή, μηδέν ουρές, πολλή ζέστη.",
-      en: "The driest month and the emptiest city — cheap rooms, no queues, plenty of heat.",
+      el: "Ο πιο ξηρός μήνας του χρόνου και η πιο άδεια πόλη: φθηνή διαμονή, μηδέν ουρές, πολλή ζέστη.",
+      en: "The driest month and the emptiest city: cheap rooms, no queues, plenty of heat.",
     },
     long: {
       el: `## Ο καιρός
@@ -370,7 +370,7 @@ A hat, sunscreen, water and cotton or linen. Avoid black.`,
 Στις **15 Αυγούστου**, τον Δεκαπενταύγουστο, η πόλη φτάνει στο απόλυτο κενό της: κλειστά καταστήματα, άδειοι δρόμοι, μεγάλες γιορτές στα χωριά της Μακεδονίας. Προς το τέλος του μήνα η πόλη αρχίζει να επιστρέφει, καθώς πλησιάζει η ΔΕΘ.
 
 ## Τι να κάνεις
-Παραδόξως, καλός μήνας για επίσκεψη αν αντέχεις τη ζέστη: **μηδέν ουρές** στα μνημεία, φθηνότερη διαμονή και εύκολο παρκάρισμα. Συνδύασέ τον με θάλασσα — από Περαία μέχρι Σιθωνία.
+Παραδόξως, καλός μήνας για επίσκεψη αν αντέχεις τη ζέστη: **μηδέν ουρές** στα μνημεία, φθηνότερη διαμονή και εύκολο παρκάρισμα. Συνδύασέ τον με θάλασσα, από Περαία μέχρι Σιθωνία.
 
 ## Τι να πάρεις μαζί
 Ό,τι και τον Ιούλιο, συν υπομονή για τα κλειστά μαγαζιά γύρω στις 15 του μήνα.`,
@@ -381,13 +381,13 @@ The **driest month** of the year, with rainfall around 35 mm and average highs n
 On **15 August**, the Dekapentavgoustos, the city reaches its emptiest point: shuttered shops, empty streets, and large festivals in the Macedonian villages. Toward month's end the city begins to return as the trade fair approaches.
 
 ## What to do
-Paradoxically a good month to visit if you can take the heat: **no queues** at the monuments, cheaper accommodation and easy parking. Pair it with the sea — from Peraia down to Sithonia.
+Paradoxically a good month to visit if you can take the heat: **no queues** at the monuments, cheaper accommodation and easy parking. Pair it with the sea, from Peraia down to Sithonia.
 
 ## What to pack
 Everything you'd bring in July, plus patience for closed shops around the 15th.`,
     },
     highlights: [
-      { el: "Δεκαπενταύγουστος — γιορτές στη Μακεδονία", en: "15 August — festivals across Macedonia" },
+      { el: "Δεκαπενταύγουστος: γιορτές στη Μακεδονία", en: "15 August: festivals across Macedonia" },
       { el: "Η πιο ήσυχη περίοδος στα αξιοθέατα", en: "The quietest period at the sights" },
     ],
   },
@@ -417,7 +417,7 @@ Everything you'd bring in July, plus patience for closed shops around the 15th.`
 Όλα. Κολύμπι στη Χαλκιδική το πρωί, μνημεία το απόγευμα, συναυλία το βράδυ. Ο σταθμός μετρό **Πανεπιστήμιο** εξυπηρετεί απευθείας τον χώρο της ΔΕΘ.
 
 ## Τι να πάρεις μαζί
-Καλοκαιρινά ρούχα και κάτι ελαφρύ για τα πρώτα δροσερά βράδια. **Κλείσε διαμονή νωρίς** — τις μέρες της ΔΕΘ τα ξενοδοχεία γεμίζουν και οι τιμές ανεβαίνουν.`,
+Καλοκαιρινά ρούχα και κάτι ελαφρύ για τα πρώτα δροσερά βράδια. **Κλείσε διαμονή νωρίς**, τις μέρες της ΔΕΘ τα ξενοδοχεία γεμίζουν και οι τιμές ανεβαίνουν.`,
       en: `## The weather
 Perhaps the **best month of the year**: average highs around **27 °C**, without August's humidity, and a sea still warm from summer.
 
@@ -428,12 +428,12 @@ The **Thessaloniki International Fair (TIF)** dominates. It has been the country
 Everything. Swim in Chalkidiki in the morning, monuments in the afternoon, a concert at night. The **Panepistimio** metro station serves the fairgrounds directly.
 
 ## What to pack
-Summer clothes plus something light for the first cool evenings. **Book early** — during the fair hotels fill up and prices climb.`,
+Summer clothes plus something light for the first cool evenings. **Book early**, during the fair hotels fill up and prices climb.`,
     },
     highlights: [
       { el: "Διεθνής Έκθεση Θεσσαλονίκης (ΔΕΘ)", en: "Thessaloniki International Fair (TIF)" },
       { el: "Πικ Νικ Urban Festival", en: "Pik Nik Urban Festival" },
-      { el: "«Σινεμά στις Γειτονιές» — δωρεάν προβολές", en: "\"Cinema in the Neighbourhoods\" — free screenings" },
+      { el: "«Σινεμά στις Γειτονιές»: δωρεάν προβολές", en: "\"Cinema in the Neighbourhoods\": free screenings" },
     ],
   },
   {
@@ -453,10 +453,10 @@ Summer clothes plus something light for the first cool evenings. **Book early** 
     },
     long: {
       el: `## Ο καιρός
-Ήπιο φθινόπωρο με μέση μέγιστη γύρω στους **22 °C**. Οι βροχές επιστρέφουν αλλά οι ηλιόλουστες μέρες παραμένουν πολλές — από τους καλύτερους μήνες για περπάτημα.
+Ήπιο φθινόπωρο με μέση μέγιστη γύρω στους **22 °C**. Οι βροχές επιστρέφουν αλλά οι ηλιόλουστες μέρες παραμένουν πολλές, από τους καλύτερους μήνες για περπάτημα.
 
 ## Τι γίνεται
-Ο Οκτώβριος είναι ο πιο **θεσσαλονικιώτικος** μήνας του χρόνου. Στις **26 Οκτωβρίου** γιορτάζει ο πολιούχος **Άγιος Δημήτριος** — την ίδια ημερομηνία που το 1912 ο ελληνικός στρατός μπήκε στην πόλη. Δύο μέρες μετά, η **28η Οκτωβρίου** φέρνει τη μεγάλη στρατιωτική παρέλαση στην παραλία, τη σημαντικότερη της χώρας. Γύρω από τη γιορτή του πολιούχου διοργανώνονται παραδοσιακά τα **Δημήτρια**, ο κορυφαίος πολιτιστικός θεσμός της πόλης.
+Ο Οκτώβριος είναι ο πιο **θεσσαλονικιώτικος** μήνας του χρόνου. Στις **26 Οκτωβρίου** γιορτάζει ο πολιούχος **Άγιος Δημήτριος**, την ίδια ημερομηνία που το 1912 ο ελληνικός στρατός μπήκε στην πόλη. Δύο μέρες μετά, η **28η Οκτωβρίου** φέρνει τη μεγάλη στρατιωτική παρέλαση στην παραλία, τη σημαντικότερη της χώρας. Γύρω από τη γιορτή του πολιούχου διοργανώνονται παραδοσιακά τα **Δημήτρια**, ο κορυφαίος πολιτιστικός θεσμός της πόλης.
 
 ## Τι να κάνεις
 Επίσκεψη στον **Άγιο Δημήτριο**, τον μεγαλύτερο ναό της πόλης και μνημείο UNESCO, με την κρύπτη του. Το φθινοπωρινό φως κάνει την Άνω Πόλη και τα τείχη ιδανικά για φωτογραφία.
@@ -464,10 +464,10 @@ Summer clothes plus something light for the first cool evenings. **Book early** 
 ## Τι να πάρεις μαζί
 Ένα ελαφρύ μπουφάν και ομπρέλα. Αν έρχεσαι για την παρέλαση, η παραλία κλείνει και γεμίζει από νωρίς.`,
       en: `## The weather
-A mild autumn with average highs around **22 °C**. Rain returns but sunny days remain plentiful — one of the best months for walking.
+A mild autumn with average highs around **22 °C**. Rain returns but sunny days remain plentiful, one of the best months for walking.
 
 ## What's on
-October is the most **Thessalonian** month of the year. On **26 October** the city honours its patron **Saint Demetrios** — the same date on which, in 1912, the Greek army entered the city. Two days later, **28 October** brings the great military parade along the waterfront, the country's most important. Around the patron saint's feast the city traditionally stages the **Dimitria**, its foremost cultural institution.
+October is the most **Thessalonian** month of the year. On **26 October** the city honours its patron **Saint Demetrios**: the same date on which, in 1912, the Greek army entered the city. Two days later, **28 October** brings the great military parade along the waterfront, the country's most important. Around the patron saint's feast the city traditionally stages the **Dimitria**, its foremost cultural institution.
 
 ## What to do
 Visit **Agios Dimitrios**, the city's largest church and a UNESCO monument, with its crypt. Autumn light makes Ano Poli and the walls ideal for photography.
@@ -479,7 +479,7 @@ A light jacket and an umbrella. If you're coming for the parade, the seafront cl
       { el: "Άγιος Δημήτριος, πολιούχος (26 Οκτωβρίου)", en: "Saint Demetrios, patron saint (26 October)" },
       { el: "Επέτειος απελευθέρωσης της Θεσσαλονίκης (1912)", en: "Anniversary of the city's liberation (1912)" },
       { el: "Στρατιωτική παρέλαση 28ης Οκτωβρίου", en: "28 October military parade" },
-      { el: "Δημήτρια — ο μεγάλος πολιτιστικός θεσμός της πόλης", en: "Dimitria — the city's major cultural festival" },
+      { el: "Δημήτρια: ο μεγάλος πολιτιστικός θεσμός της πόλης", en: "Dimitria: the city's major cultural festival" },
     ],
   },
   {
@@ -494,15 +494,15 @@ A light jacket and an umbrella. If you're coming for the parade, the seafront cl
     crowds: "medium",
     seaSwimmable: false,
     blurb: {
-      el: "Ο μήνας του Φεστιβάλ Κινηματογράφου — βροχερός έξω, γεμάτος αίθουσες και κουβέντες μέσα.",
-      en: "Film festival month — rainy outside, full of cinemas and conversation inside.",
+      el: "Ο μήνας του Φεστιβάλ Κινηματογράφου: βροχερός έξω, γεμάτος αίθουσες και κουβέντες μέσα.",
+      en: "Film festival month: rainy outside, full of cinemas and conversation inside.",
     },
     long: {
       el: `## Ο καιρός
 Το φθινόπωρο σοβαρεύει: μέση μέγιστη γύρω στους **16 °C** και αισθητά περισσότερες βροχές. Νυχτώνει νωρίς και η πόλη μετακομίζει σε εσωτερικούς χώρους.
 
 ## Τι γίνεται
-Το **Φεστιβάλ Κινηματογράφου Θεσσαλονίκης** μεταμορφώνει κάθε Νοέμβριο την πόλη. Για δέκα μέρες οι αποθήκες του λιμανιού και οι αίθουσες του κέντρου γεμίζουν προβολές, σκηνοθέτες και συζητήσεις μέχρι αργά — είναι από τα σημαντικότερα φεστιβάλ της Νοτιοανατολικής Ευρώπης και το πιο χαρακτηριστικό γεγονός της πόλης μετά τη ΔΕΘ.
+Το **Φεστιβάλ Κινηματογράφου Θεσσαλονίκης** μεταμορφώνει κάθε Νοέμβριο την πόλη. Για δέκα μέρες οι αποθήκες του λιμανιού και οι αίθουσες του κέντρου γεμίζουν προβολές, σκηνοθέτες και συζητήσεις μέχρι αργά· είναι από τα σημαντικότερα φεστιβάλ της Νοτιοανατολικής Ευρώπης και το πιο χαρακτηριστικό γεγονός της πόλης μετά τη ΔΕΘ.
 
 ## Τι να κάνεις
 Είναι ο μήνας των **εσωτερικών χώρων**: μουσεία, βιβλιοπωλεία, ζεστά καφέ και μεζεδοπωλεία με τσίπουρο. Η περιοχή του λιμανιού γύρω από το φεστιβάλ αποκτά ξεχωριστή ενέργεια.
@@ -513,7 +513,7 @@ A light jacket and an umbrella. If you're coming for the parade, the seafront cl
 Autumn turns serious: average highs around **16 °C** and noticeably more rain. It gets dark early and the city moves indoors.
 
 ## What's on
-The **Thessaloniki International Film Festival** transforms the city every November. For ten days the port warehouses and downtown cinemas fill with screenings, directors and conversations that run late — it is one of South-Eastern Europe's most important festivals and the city's defining event after the trade fair.
+The **Thessaloniki International Film Festival** transforms the city every November. For ten days the port warehouses and downtown cinemas fill with screenings, directors and conversations that run late; it is one of South-Eastern Europe's most important festivals and the city's defining event after the trade fair.
 
 ## What to do
 This is the month for **interiors**: museums, bookshops, warm cafés and meze houses with tsipouro. The port area around the festival takes on a distinct energy.
@@ -543,7 +543,7 @@ A raincoat, an umbrella and shoes that survive water.`,
     },
     long: {
       el: `## Ο καιρός
-Ο **πιο βροχερός μήνας** του χρόνου, με βροχόπτωση γύρω στα 76 mm. Μέση μέγιστη κοντά στους **11 °C**. Κρύο, υγρό, με σύντομες μέρες — αλλά σπάνια παγωμένο.
+Ο **πιο βροχερός μήνας** του χρόνου, με βροχόπτωση γύρω στα 76 mm. Μέση μέγιστη κοντά στους **11 °C**. Κρύο, υγρό, με σύντομες μέρες, αλλά σπάνια παγωμένο.
 
 ## Τι γίνεται
 Η πόλη στολίζεται. Το χριστουγεννιάτικο δέντρο στην **Πλατεία Αριστοτέλους** και τα φώτα στην Τσιμισκή και τη Νέα Παραλία δίνουν στο κέντρο άλλη όψη. Λειτουργούν χριστουγεννιάτικα χωριά και υπαίθριες αγορές, ενώ η εορταστική αγορά κρατά τα καταστήματα ανοιχτά μέχρι αργά.
@@ -554,7 +554,7 @@ A raincoat, an umbrella and shoes that survive water.`,
 ## Τι να πάρεις μαζί
 Χειμωνιάτικα ρούχα και οπωσδήποτε ομπρέλα. Αν έρχεσαι για Πρωτοχρονιά, κλείσε τραπέζι από νωρίς.`,
       en: `## The weather
-The **wettest month** of the year, with rainfall around 76 mm. Average highs near **11 °C**. Cold, damp and short on daylight — but rarely freezing.
+The **wettest month** of the year, with rainfall around 76 mm. Average highs near **11 °C**. Cold, damp and short on daylight, but rarely freezing.
 
 ## What's on
 The city dresses up. The Christmas tree on **Aristotelous Square** and the lights along Tsimiski and the Nea Paralia give the centre a different face. Christmas villages and open-air markets operate, while the festive shopping season keeps stores open late.

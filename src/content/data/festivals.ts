@@ -1,7 +1,7 @@
 import type { Localized } from "@/lib/types";
 
 /**
- * Thessaloniki's institutional festivals — permanent anchor pages.
+ * Thessaloniki's institutional festivals, permanent anchor pages.
  *
  * These are long-standing fixtures with documented histories, researched and
  * cross-checked (Sept 2026). Each page is a permanent URL that is refreshed
@@ -74,7 +74,7 @@ export const festivals: Festival[] = [
 Ο σταθμός μετρό **Πανεπιστήμιο** εξυπηρετεί απευθείας τον χώρο. Τις μέρες της έκθεσης το μετρό είναι σαφώς η καλύτερη επιλογή: η κίνηση στους γύρω δρόμους είναι έντονη και το παρκάρισμα πρακτικά αδύνατο.
 
 ## Καλό να ξέρεις
-- Οι ημερομηνίες αλλάζουν κάθε χρόνο και ανακοινώνονται από τη HELEXPO — έλεγξε τον επίσημο ιστότοπο πριν προγραμματίσεις.
+- Οι ημερομηνίες αλλάζουν κάθε χρόνο και ανακοινώνονται από τη HELEXPO, έλεγξε τον επίσημο ιστότοπο πριν προγραμματίσεις.
 - **Κλείσε διαμονή νωρίς.** Τις μέρες της ΔΕΘ τα ξενοδοχεία της πόλης γεμίζουν και οι τιμές ανεβαίνουν αισθητά.
 - Ο Σεπτέμβριος έχει από τον καλύτερο καιρό του χρόνου, οπότε συνδύασέ το με βόλτα στην παραλία και τα μουσεία που είναι δίπλα.`,
       en: `If one event defines the year in Thessaloniki, it is the trade fair. Every September the city flips a switch: residents return from the holidays, hotels fill, and for roughly ten days the centre lives to the rhythm of the exhibition.
@@ -98,7 +98,7 @@ At the **HELEXPO** exhibition grounds, in the heart of the city, beside the Aris
 The **Panepistimio** metro station serves the grounds directly. During the fair the metro is clearly the best option: traffic on the surrounding streets is heavy and parking practically impossible.
 
 ## Good to know
-- Dates change every year and are announced by HELEXPO — check the official site before planning.
+- Dates change every year and are announced by HELEXPO, check the official site before planning.
 - **Book accommodation early.** During the fair the city's hotels fill up and prices rise noticeably.
 - September brings some of the year's best weather, so pair it with the seafront and the museums right next door.`,
     },
@@ -128,7 +128,7 @@ The **Panepistimio** metro station serves the grounds directly. During the fair 
 ## Η ιστορία
 Ξεκίνησε το **1960** ως **«1η Εβδομάδα Ελληνικού Κινηματογράφου»**, από τις 20 έως τις 26 Σεπτεμβρίου, στον ιστορικό κινηματογράφο **Ολύμπιον** στην Πλατεία Αριστοτέλους. Ήταν μια γιορτή της ελληνικής παραγωγής σε μια εποχή που ο ελληνικός κινηματογράφος ζούσε τη χρυσή του δεκαετία.
 
-Στα πρώτα χρόνια βραβεύτηκαν ταινίες που σήμερα θεωρούνται κλασικές — *Ο Δράκος*, *Στέλλα*, *Το ξύλο βγήκε από τον Παράδεισο*. Με τα χρόνια ο θεσμός άνοιξε διεθνώς και μετακινήθηκε στον Νοέμβριο, εξελισσόμενος σε ένα από τα σημαντικότερα φεστιβάλ της Νοτιοανατολικής Ευρώπης.
+Στα πρώτα χρόνια βραβεύτηκαν ταινίες που σήμερα θεωρούνται κλασικές: *Ο Δράκος*, *Στέλλα*, *Το ξύλο βγήκε από τον Παράδεισο*. Με τα χρόνια ο θεσμός άνοιξε διεθνώς και μετακινήθηκε στον Νοέμβριο, εξελισσόμενος σε ένα από τα σημαντικότερα φεστιβάλ της Νοτιοανατολικής Ευρώπης.
 
 ## Ο Χρυσός Αλέξανδρος
 Το κορυφαίο βραβείο του φεστιβάλ είναι ο **Χρυσός Αλέξανδρος**, που πήρε το όνομά του από τον Μέγα Αλέξανδρο, γεννημένο στη Μακεδονία. Είναι το βραβείο που κυνηγούν σκηνοθέτες από όλο τον κόσμο και το πιο αναγνωρίσιμο σύμβολο του θεσμού.
@@ -137,13 +137,13 @@ The **Panepistimio** metro station serves the grounds directly. During the fair 
 Σε δύο πόλους που δίνουν στο φεστιβάλ τον χαρακτήρα του:
 
 - Το **Ολύμπιον**, το ιστορικό θέατρο πάνω στην Πλατεία Αριστοτέλους, με την κλασική του αίθουσα.
-- Οι **αποθήκες του παλιού λιμανιού**, βιομηχανικά κτίρια που μετατράπηκαν σε αίθουσες προβολής. Το σκηνικό —τσιμέντο, θάλασσα, γερανοί— είναι από τα πιο ιδιαίτερα φεστιβαλικά τοπία στην Ευρώπη.
+- Οι **αποθήκες του παλιού λιμανιού**, βιομηχανικά κτίρια που μετατράπηκαν σε αίθουσες προβολής. Το σκηνικό (τσιμέντο, θάλασσα, γερανοί) είναι από τα πιο ιδιαίτερα φεστιβαλικά τοπία στην Ευρώπη.
 
 ## Τι να περιμένεις
 Πέρα από τις προβολές, το φεστιβάλ φέρνει masterclasses, αφιερώματα, συζητήσεις με σκηνοθέτες και μια πόλη γεμάτη κόσμο του σινεμά. Η περιοχή του λιμανιού αποκτά ξεχωριστή ενέργεια, με τα μπαρ και τα καφέ γύρω να δουλεύουν μέχρι αργά.
 
 ## Καλό να ξέρεις
-- Οι ακριβείς ημερομηνίες και το πρόγραμμα ανακοινώνονται κάθε χρόνο από τους διοργανωτές — δες τον επίσημο ιστότοπο.
+- Οι ακριβείς ημερομηνίες και το πρόγραμμα ανακοινώνονται κάθε χρόνο από τους διοργανωτές· δες τον επίσημο ιστότοπο.
 - Οι δημοφιλείς προβολές γεμίζουν· αξίζει να κοιτάξεις εισιτήρια από νωρίς.
 - Ο πλησιέστερος σταθμός μετρό για το Ολύμπιον και το λιμάνι είναι η **Βενιζέλου**.
 - Τον Μάρτιο, ο ίδιος οργανισμός διοργανώνει το **Φεστιβάλ Ντοκιμαντέρ** στους ίδιους χώρους.`,
@@ -152,7 +152,7 @@ The **Panepistimio** metro station serves the grounds directly. During the fair 
 ## The history
 It began in **1960** as the **"1st Week of Greek Cinema"**, from 20 to 26 September, at the historic **Olympion** cinema on Aristotelous Square. It was a celebration of Greek production at a time when Greek cinema was living its golden decade.
 
-Its early years honoured films now considered classics of Greek cinema — *O Drakos*, *Stella* and *To xylo vgike apo ton Paradeiso*. Over time the institution opened internationally and moved to November, growing into one of the most important festivals in South-Eastern Europe.
+Its early years honoured films now considered classics of Greek cinema: *O Drakos*, *Stella* and *To xylo vgike apo ton Paradeiso*. Over time the institution opened internationally and moved to November, growing into one of the most important festivals in South-Eastern Europe.
 
 ## The Golden Alexander
 The festival's top award is the **Golden Alexander**, named after Alexander the Great, born in Macedonia. It is the prize directors from around the world compete for, and the institution's most recognisable symbol.
@@ -161,13 +161,13 @@ The festival's top award is the **Golden Alexander**, named after Alexander the 
 Across two poles that give the festival its character:
 
 - The **Olympion**, the historic theatre on Aristotelous Square, with its classic auditorium.
-- The **old port warehouses**, industrial buildings converted into screening rooms. The setting — concrete, sea, cranes — is one of the most distinctive festival landscapes in Europe.
+- The **old port warehouses**, industrial buildings converted into screening rooms. The setting (concrete, sea, cranes) is one of the most distinctive festival landscapes in Europe.
 
 ## What to expect
 Beyond the screenings, the festival brings masterclasses, retrospectives, conversations with directors and a city full of film people. The port area takes on a particular energy, with the surrounding bars and cafés working late.
 
 ## Good to know
-- Exact dates and the programme are announced each year by the organisers — see the official site.
+- Exact dates and the programme are announced each year by the organisers, see the official site.
 - Popular screenings sell out; it's worth looking at tickets early.
 - The nearest metro station for the Olympion and the port is **Venizelou**.
 - In March the same organisation runs the **Documentary Festival** in the same venues.`,
@@ -201,7 +201,7 @@ Beyond the screenings, the festival brings masterclasses, retrospectives, conver
 Στην πρώτη εκείνη διοργάνωση συμμετείχαν το **Κρατικό Θέατρο Βορείου Ελλάδος**, η **Εθνική Λυρική Σκηνή** και το **Λύκειο Ελληνίδων**, ενώ ανάμεσα στους καλλιτέχνες βρέθηκαν ο **Μάνος Κατράκης**, ο **Σπύρος Βασιλείου** και ο **Πολύκλειτος Ρέγκος**. Από τότε ο θεσμός μετρά εξήντα και πλέον διοργανώσεις.
 
 ## Τι είναι σήμερα
-Τα Δημήτρια διοργανώνονται από τον **Δήμο Θεσσαλονίκης** και απλώνονται σε ολόκληρη την πόλη: συναυλίες, θέατρο, χορός, εικαστικά, περφόρμανς και εκδηλώσεις σε γειτονιές. Ο χαρακτήρας τους είναι σκόπιμα ανοιχτός — πολλά από τα δρώμενα είναι δωρεάν και γίνονται σε δημόσιους χώρους.
+Τα Δημήτρια διοργανώνονται από τον **Δήμο Θεσσαλονίκης** και απλώνονται σε ολόκληρη την πόλη: συναυλίες, θέατρο, χορός, εικαστικά, περφόρμανς και εκδηλώσεις σε γειτονιές. Ο χαρακτήρας τους είναι σκόπιμα ανοιχτός, πολλά από τα δρώμενα είναι δωρεάν και γίνονται σε δημόσιους χώρους.
 
 Δεν είναι φεστιβάλ ενός είδους, όπως ο κινηματογράφος ή το ντοκιμαντέρ. Είναι μια ομπρέλα κάτω από την οποία η πόλη παρουσιάζει τι κάνει καλλιτεχνικά μέσα σε μία περίοδο.
 
@@ -223,7 +223,7 @@ The institution returned in **1966**, on the initiative of the Greek tourism org
 That first edition involved the **State Theatre of Northern Greece**, the **Greek National Opera** and the **Lyceum Club of Greek Women**, while the artists included **Manos Katrakis**, **Spyros Vassiliou** and **Polykleitos Rengos**. The institution has since passed sixty editions.
 
 ## What it is today
-The Dimitria is organised by the **Municipality of Thessaloniki** and spreads across the whole city: concerts, theatre, dance, visual arts, performance and neighbourhood events. Its character is deliberately open — many of the events are free and take place in public spaces.
+The Dimitria is organised by the **Municipality of Thessaloniki** and spreads across the whole city: concerts, theatre, dance, visual arts, performance and neighbourhood events. Its character is deliberately open, many of the events are free and take place in public spaces.
 
 It is not a single-genre festival like the film or documentary festivals. It is an umbrella under which the city presents what it is making artistically within one season.
 
@@ -256,7 +256,7 @@ The Dimitria falls in the most Thessalonian month of the year. On **26 October**
       en: "\"Images of the 21st Century\": every March, documentary brings the world to the port warehouses.",
     },
     long: {
-      el: `Αν το Φεστιβάλ Κινηματογράφου είναι η γιορτή της μυθοπλασίας τον Νοέμβριο, το Φεστιβάλ Ντοκιμαντέρ είναι η αντίστοιχη γιορτή της πραγματικότητας τον Μάρτιο — και για πολλούς Θεσσαλονικείς είναι το αγαπημένο τους από τα δύο.
+      el: `Αν το Φεστιβάλ Κινηματογράφου είναι η γιορτή της μυθοπλασίας τον Νοέμβριο, το Φεστιβάλ Ντοκιμαντέρ είναι η αντίστοιχη γιορτή της πραγματικότητας τον Μάρτιο, και για πολλούς Θεσσαλονικείς είναι το αγαπημένο τους από τα δύο.
 
 ## Η ιστορία
 Ιδρύθηκε το **1999** με πρωτοβουλία του **Δημήτρη Εϊπίδη**, ο οποίος παρέμεινε διευθυντής του μέχρι το **2016**. Η πρόταση για τη δημιουργία του έγινε στις **15 Μαρτίου 1999** στο **Ολύμπιον**, στην Πλατεία Αριστοτέλους.
@@ -280,7 +280,7 @@ The Dimitria falls in the most Thessalonian month of the year. On **26 October**
 - Ακριβείς ημερομηνίες και πρόγραμμα ανακοινώνονται κάθε χρόνο από τους διοργανωτές.
 - Πλησιέστερος σταθμός μετρό για Ολύμπιον και λιμάνι: **Βενιζέλου**.
 - Ο ίδιος οργανισμός διοργανώνει τον Νοέμβριο το **Φεστιβάλ Κινηματογράφου**.`,
-      en: `If the Film Festival is November's celebration of fiction, the Documentary Festival is March's celebration of reality — and for many locals it is the favourite of the two.
+      en: `If the Film Festival is November's celebration of fiction, the Documentary Festival is March's celebration of reality, and for many locals it is the favourite of the two.
 
 ## The history
 It was founded in **1999** on the initiative of **Dimitris Eipidis**, who remained its director until **2016**. The proposal to create it was made on **15 March 1999** at the **Olympion** on Aristotelous Square.

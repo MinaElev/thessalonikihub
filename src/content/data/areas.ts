@@ -20,11 +20,11 @@ export const areas: Area[] = [
     slug: "center",
     name: { el: "Κέντρο", en: "City Center" },
     blurb: {
-      el: "Η καρδιά της πόλης, γύρω από την Αριστοτέλους και την Τσιμισκή — αγορές, καφέ και αξιοθέατα σε απόσταση περιπάτου.",
-      en: "The heart of the city around Aristotelous and Tsimiski — shops, cafés and landmarks all within walking distance.",
+      el: "Η καρδιά της πόλης, γύρω από την Αριστοτέλους και την Τσιμισκή. Αγορές, καφέ και αξιοθέατα σε απόσταση περιπάτου.",
+      en: "The heart of the city around Aristotelous and Tsimiski. Shops, cafés and landmarks all within walking distance.",
     },
     long: {
-      el: `Το ιστορικό κέντρο της Θεσσαλονίκης είναι το σημείο όπου συναντιούνται όλες οι εποχές της πόλης — από τα ρωμαϊκά και βυζαντινά μνημεία μέχρι τη μεγάλη πλατεία που ανοίγει στη θάλασσα. Αν έρχεσαι πρώτη φορά, εδώ θα περάσεις τον περισσότερο χρόνο σου, γιατί σχεδόν τα πάντα γίνονται με τα πόδια.
+      el: `Το ιστορικό κέντρο της Θεσσαλονίκης είναι το σημείο όπου συναντιούνται όλες οι εποχές της πόλης: από τα ρωμαϊκά και βυζαντινά μνημεία μέχρι τη μεγάλη πλατεία που ανοίγει στη θάλασσα. Αν έρχεσαι πρώτη φορά, εδώ θα περάσεις τον περισσότερο χρόνο σου, γιατί σχεδόν τα πάντα γίνονται με τα πόδια.
 
 ## Χαρακτήρας & ιστορία
 Η σημερινή μορφή του κέντρου σχεδιάστηκε μετά τη **μεγάλη πυρκαγιά του 1917**, από τον Γάλλο πολεοδόμο **Ernest Hébrard**, που έδωσε στην πόλη φαρδιούς άξονες, νεοκλασικά κτίρια και την ανοιχτή προς τον Θερμαϊκό **Πλατεία Αριστοτέλους**. Παράλληλα, μέσα στον αστικό ιστό «κρύβονται» μνημεία 17 αιώνων.
@@ -42,7 +42,7 @@ export const areas: Area[] = [
 Το κέντρο είναι απόλυτα περπατήσιμο και εξυπηρετείται από το μετρό και πυκνό δίκτυο λεωφορείων. Δεν χρειάζεσαι αυτοκίνητο.
 
 **Ιδανικό για:** πρώτη επίσκεψη, αξιοθέατα, ψώνια και όσους θέλουν να έχουν τα πάντα δίπλα τους.`,
-      en: `Thessaloniki's historic centre is where every era of the city meets — from Roman and Byzantine monuments to the grand square that opens onto the sea. If it's your first visit, you'll spend most of your time here, because almost everything is walkable.
+      en: `Thessaloniki's historic centre is where every era of the city meets: from Roman and Byzantine monuments to the grand square that opens onto the sea. If it's your first visit, you'll spend most of your time here, because almost everything is walkable.
 
 ## Character & history
 The centre's present layout was designed after the **great fire of 1917** by the French planner **Ernest Hébrard**, who gave the city wide avenues, neoclassical buildings and **Aristotelous Square**, opening toward the Thermaic Gulf. Woven into the streets are monuments spanning seventeen centuries.
@@ -51,7 +51,7 @@ The centre's present layout was designed after the **great fire of 1917** by the
 - The **Rotunda** and the **Arch of Galerius** (Kamara), the 4th-century Roman complex.
 - **Agios Dimitrios**, the city's largest church, and **Hagia Sophia**.
 - The **Roman Forum (Ancient Agora)** on Dikastirion Square.
-- The covered **Modiano** and **Kapani** markets — the belly of the city.
+- The covered **Modiano** and **Kapani** markets, the belly of the city.
 
 ## Food, coffee & shopping
 **Tsimiski** is the main shopping street, while the lanes around the markets are full of meze houses and historic cafés. The pedestrian streets around Aristotelous fill with people from morning until late.
@@ -73,14 +73,14 @@ The centre is completely walkable and served by the metro and a dense bus networ
       en: "A historic quarter of cobbled streets, tavernas and buzzing nightlife next to the port.",
     },
     long: {
-      el: `Λίγα βήματα από την Πλατεία Αριστοτέλους και το λιμάνι, τα **Λαδάδικα** είναι μια από τις πιο ατμοσφαιρικές γειτονιές της Θεσσαλονίκης — και το βράδυ, μια από τις πιο ζωντανές.
+      el: `Λίγα βήματα από την Πλατεία Αριστοτέλους και το λιμάνι, τα **Λαδάδικα** είναι μια από τις πιο ατμοσφαιρικές γειτονιές της Θεσσαλονίκης, και το βράδυ μια από τις πιο ζωντανές.
 
 ## Χαρακτήρας & ιστορία
 Το όνομα προέρχεται από τα παλιά εμπορικά και αποθήκες **λαδιού** που στέγαζαν τα χαμηλά κτίρια της περιοχής. Η συνοικία γλίτωσε σε μεγάλο βαθμό από την πυρκαγιά του 1917 και σήμερα είναι διατηρητέα: πλακόστρωτα δρομάκια, χρωματιστές προσόψεις και μια σπάνια αίσθηση παλιάς πόλης.
 
 ## Τι να κάνεις
 - Περπάτησε τα στενά και θαύμασε τα διατηρητέα κτίρια.
-- Βρες τη γωνιά σου για **τσίπουρο και μεζέδες** — η περιοχή είναι γεμάτη ταβέρνες και μεζεδοπωλεία.
+- Βρες τη γωνιά σου για **τσίπουρο και μεζέδες**· η περιοχή είναι γεμάτη ταβέρνες και μεζεδοπωλεία.
 - Μείνε για τη **νυχτερινή ζωή**: μπαρ, ζωντανή μουσική και κόσμος μέχρι αργά.
 
 ## Πού να μείνεις
@@ -90,14 +90,14 @@ The centre is completely walkable and served by the metro and a dense bus networ
 Με τα πόδια από το κέντρο σε λίγα λεπτά· κοντά στο λιμάνι και σε στάσεις μετρό/λεωφορείων.
 
 **Ιδανικό για:** φαγητό, ποτό, νυχτερινή ζωή και ατμόσφαιρα παλιάς πόλης.`,
-      en: `A few steps from Aristotelous Square and the port, **Ladadika** is one of Thessaloniki's most atmospheric quarters — and at night, one of its liveliest.
+      en: `A few steps from Aristotelous Square and the port, **Ladadika** is one of Thessaloniki's most atmospheric quarters, and at night one of its liveliest.
 
 ## Character & history
 The name comes from the old **olive-oil** trade and warehouses that once filled the area's low buildings. The quarter largely survived the 1917 fire and is now listed: cobbled lanes, colourful façades and a rare old-town feel.
 
 ## What to do
 - Wander the alleys and admire the listed buildings.
-- Find your corner for **tsipouro and meze** — the area is full of tavernas and meze houses.
+- Find your corner for **tsipouro and meze**; the area is full of tavernas and meze houses.
 - Stay out for the **nightlife**: bars, live music and crowds until late.
 
 ## Where to stay
@@ -120,7 +120,7 @@ A few minutes on foot from the centre; close to the port and to metro/bus stops.
       en: "The old town above the walls: Byzantine monuments, narrow lanes and the best views over the Thermaic Gulf.",
     },
     long: {
-      el: `Πάνω από τα τείχη, εκεί που η σύγχρονη πόλη δίνει τη θέση της στα καλντερίμια, η **Άνω Πόλη** είναι η ψυχή της παλιάς Θεσσαλονίκης — και το καλύτερο μπαλκόνι της.
+      el: `Πάνω από τα τείχη, εκεί που η σύγχρονη πόλη δίνει τη θέση της στα καλντερίμια, η **Άνω Πόλη** είναι η ψυχή της παλιάς Θεσσαλονίκης, και το καλύτερο μπαλκόνι της.
 
 ## Χαρακτήρας & ιστορία
 Είναι η μόνη περιοχή που **γλίτωσε από τη μεγάλη πυρκαγιά του 1917**, γι' αυτό διατηρεί τον παραδοσιακό της χαρακτήρα: ξύλινα σπίτια με σαχνισιά, μικρές αυλές, βυζαντινές εκκλησίες και τα οθωμανικά ίχνη της πόλης.
@@ -132,13 +132,13 @@ A few minutes on foot from the centre; close to the port and to metro/bus stops.
 - Τον Πύργο Τριγωνίου, με **πανοραμική θέα** σε όλη τη Θεσσαλονίκη και τον Θερμαϊκό.
 
 ## Φαγητό με θέα
-Στα σοκάκια θα βρεις παραδοσιακές ταβέρνες και ουζερί με θέα στη θάλασσα — ιδανικά για αργό μεσημέρι ή ηλιοβασίλεμα.
+Στα σοκάκια θα βρεις παραδοσιακές ταβέρνες και ουζερί με θέα στη θάλασσα, ιδανικά για αργό μεσημέρι ή ηλιοβασίλεμα.
 
 ## Πώς κινείσαι
 Η ανάβαση είναι ανηφορική· μπορείς να ανέβεις με τα πόδια (όμορφη αλλά κουραστική διαδρομή) ή με αστικό λεωφορείο. Φόρα άνετα παπούτσια.
 
 **Ιδανικό για:** θέα, ιστορία, ρομαντικές βόλτες και ηλιοβασιλέματα.`,
-      en: `Above the walls, where the modern city gives way to cobbled lanes, **Ano Poli** is the soul of old Thessaloniki — and its finest balcony.
+      en: `Above the walls, where the modern city gives way to cobbled lanes, **Ano Poli** is the soul of old Thessaloniki, and its finest balcony.
 
 ## Character & history
 It is the only area that **survived the great fire of 1917**, so it keeps its traditional character: timber houses with overhanging *sachnisia*, small courtyards, Byzantine churches and the city's Ottoman traces.
@@ -150,7 +150,7 @@ It is the only area that **survived the great fire of 1917**, so it keeps its tr
 - The Trigoniou Tower, with **panoramic views** over the whole of Thessaloniki and the gulf.
 
 ## Food with a view
-In the lanes you'll find traditional tavernas and ouzeri with sea views — perfect for a slow lunch or sunset.
+In the lanes you'll find traditional tavernas and ouzeri with sea views, perfect for a slow lunch or sunset.
 
 ## Getting around
 The climb is steep; you can walk up (a lovely but tiring route) or take a city bus. Wear comfortable shoes.
@@ -180,7 +180,7 @@ The climb is steep; you can walk up (a lovely but tiring route) or take a city b
 - Επίσκεψη στην περιοχή του **Καραμπουρνακίου** για θέα και ηλιοβασίλεμα.
 
 ## Φαγητό
-Η Καλαμαριά φημίζεται για **ψαροταβέρνες** και για τις μικρασιάτικες γεύσεις — φρέσκο ψάρι και μεζέδες με θέα στη θάλασσα.
+Η Καλαμαριά φημίζεται για **ψαροταβέρνες** και για τις μικρασιάτικες γεύσεις: φρέσκο ψάρι και μεζέδες με θέα στη θάλασσα.
 
 ## Πώς κινείσαι
 Συνδέεται εύκολα με το κέντρο με λεωφορείο και με το δίκτυο του μετρό· βολικό και με αυτοκίνητο.
@@ -197,7 +197,7 @@ It grew largely from **Asia Minor refugees** after 1922, something still felt in
 - Visit the **Karabournaki** area for views and sunset.
 
 ## Food
-Kalamaria is known for its **fish tavernas** and Asia-Minor flavours — fresh fish and meze with a sea view.
+Kalamaria is known for its **fish tavernas** and Asia-Minor flavours: fresh fish and meze with a sea view.
 
 ## Getting around
 Easily connected to the centre by bus and the metro network; convenient by car too.
@@ -211,8 +211,8 @@ Easily connected to the centre by bus and the metro network; convenient by car t
     slug: "waterfront",
     name: { el: "Νέα Παραλία", en: "Waterfront" },
     blurb: {
-      el: "Ο ανανεωμένος πεζόδρομος της παραλίας, από τον Λευκό Πύργο ως το Μέγαρο — περπάτημα, ποδήλατο και ηλιοβασιλέματα.",
-      en: "The redesigned seafront promenade from the White Tower to the Concert Hall — walks, cycling and sunsets.",
+      el: "Ο ανανεωμένος πεζόδρομος της παραλίας, από τον Λευκό Πύργο ως το Μέγαρο. Περπάτημα, ποδήλατο και ηλιοβασιλέματα.",
+      en: "The redesigned seafront promenade from the White Tower to the Concert Hall. Walks, cycling and sunsets.",
     },
     long: {
       el: `Αν η Θεσσαλονίκη έχει ένα σαλόνι, αυτό είναι η **Νέα Παραλία**: ο παραλιακός πεζόδρομος όπου η πόλη περπατά, τρέχει, κάνει ποδήλατο και παρακολουθεί το ηλιοβασίλεμα πάνω από τον Όλυμπο.
@@ -272,7 +272,7 @@ Perfect for walking and cycling (there's a bike path). Sunset here is a must.
 ## Τι να κάνεις
 - Ξεκίνα τη βραδιά σου με **cocktails** σε κάποιο από τα πολλά μπαρ.
 - Ανακάλυψε **street art** στις προσόψεις.
-- Χάσου στα στενά — η περιοχή αλλάζει διαρκώς με νέα σημεία.
+- Χάσου στα στενά· η περιοχή αλλάζει διαρκώς με νέα σημεία.
 
 ## Πότε να έρθεις
 Η Βαλαωρίτου ζει τη νύχτα. Την ημέρα είναι πιο ήσυχη, ιδανική για να δεις τα κτίρια και τα γκράφιτι.
@@ -289,7 +289,7 @@ Once full of textile shops, print houses and small workshops, the area around Va
 ## What to do
 - Start your night with **cocktails** at one of the many bars.
 - Spot **street art** on the façades.
-- Get lost in the lanes — the area constantly changes with new spots.
+- Get lost in the lanes; the area constantly changes with new spots.
 
 ## When to come
 Valaoritou lives at night. By day it's quieter, ideal for taking in the buildings and the graffiti.
@@ -306,11 +306,11 @@ Just a few minutes on foot from Aristotelous and Ladadika.
     slug: "limani",
     name: { el: "Λιμάνι & Φραγκομαχαλάς", en: "Port & Frangomahalas" },
     blurb: {
-      el: "Μουσεία μέσα σε αποθήκες του λιμανιού και αναπαλαιωμένα κτίρια που γέμισαν μπαρ — η πιο δημιουργική γωνιά της πόλης.",
-      en: "Museums inside port warehouses and restored buildings full of bars — the city's most creative corner.",
+      el: "Μουσεία μέσα σε αποθήκες του λιμανιού και αναπαλαιωμένα κτίρια που γέμισαν μπαρ: η πιο δημιουργική γωνιά της πόλης.",
+      en: "Museums inside port warehouses and restored buildings full of bars: the city's most creative corner.",
     },
     long: {
-      el: `Εκεί που το κέντρο συναντά τη θάλασσα, το παλιό λιμάνι έχει μεταμορφωθεί σε πολιτιστικό προορισμό — και δίπλα του ο Φραγκομαχαλάς, η παλιά «φράγκικη» συνοικία, ξαναζωντάνεψε ως ένα από τα πιο ατμοσφαιρικά σημεία εξόδου.
+      el: `Εκεί που το κέντρο συναντά τη θάλασσα, το παλιό λιμάνι έχει μεταμορφωθεί σε πολιτιστικό προορισμό. Δίπλα του ο Φραγκομαχαλάς, η παλιά «φράγκικη» συνοικία, ξαναζωντάνεψε ως ένα από τα πιο ατμοσφαιρικά σημεία εξόδου.
 
 ## Χαρακτήρας & ιστορία
 Ο **Φραγκομαχαλάς**, γύρω από τις οδούς Κατούνη, Συγγρού και Φράγκων, ήταν ιστορικά η συνοικία των δυτικοευρωπαίων εμπόρων. Τα πέτρινα εμπορικά κτίρια που γλίτωσαν από την πυρκαγιά του 1917 αναπαλαιώθηκαν και σήμερα στεγάζουν μπαρ, εστιατόρια και στούντιο.
@@ -321,13 +321,13 @@ Just a few minutes on foot from Aristotelous and Ladadika.
 - Τη βόλτα στην προβλήτα με θέα τον Θερμαϊκό και τον Όλυμπο τις καθαρές μέρες.
 
 ## Έξοδος
-Ο Φραγκομαχαλάς λειτουργεί όλη μέρα: καφές το πρωί, μεσογειακή κουζίνα το βράδυ και μπαρ που κρατούν μέχρι αργά — με πιο χαλαρό, δημιουργικό κοινό απ' ό,τι στα Λαδάδικα.
+Ο Φραγκομαχαλάς λειτουργεί όλη μέρα: καφές το πρωί, μεσογειακή κουζίνα το βράδυ και μπαρ που κρατούν μέχρι αργά, με πιο χαλαρό και δημιουργικό κοινό απ' ό,τι στα Λαδάδικα.
 
 ## Πώς κινείσαι
 Είναι μόλις 10 λεπτά με τα πόδια από την Αριστοτέλους και συνδέεται άνετα με τα Λαδάδικα και το Βαλαωρίτου.
 
 **Ιδανικό για:** τέχνη, φωτογραφία, ατμοσφαιρικό φαγητό και ποτό δίπλα στο νερό.`,
-      en: `Where the centre meets the sea, the old port has been transformed into a cultural destination — and beside it Frangomahalas, the old "Frankish" quarter, has come back to life as one of the city's most atmospheric places to go out.
+      en: `Where the centre meets the sea, the old port has been transformed into a cultural destination. Beside it, Frangomahalas, the old "Frankish" quarter, has come back to life as one of the city's most atmospheric places to go out.
 
 ## Character & history
 **Frangomahalas**, around Katouni, Syngrou and Frangon streets, was historically the quarter of Western European merchants. The stone trading houses that survived the 1917 fire have been restored and now hold bars, restaurants and studios.
@@ -338,7 +338,7 @@ Just a few minutes on foot from Aristotelous and Ladadika.
 - The walk along the pier, looking out over the Thermaic Gulf and, on clear days, Mount Olympus.
 
 ## Going out
-Frangomahalas works all day: coffee in the morning, Mediterranean cooking in the evening and bars that run late — with a more relaxed, creative crowd than Ladadika.
+Frangomahalas works all day: coffee in the morning, Mediterranean cooking in the evening and bars that run late, with a more relaxed and creative crowd than Ladadika.
 
 ## Getting around
 It's a 10-minute walk from Aristotelous and connects easily to Ladadika and Valaoritou.
@@ -353,11 +353,11 @@ It's a 10-minute walk from Aristotelous and connects easily to Ladadika and Vala
     slug: "navarinou",
     name: { el: "Ναυαρίνου & Ροτόντα", en: "Navarinou & Rotonda" },
     blurb: {
-      el: "Η φοιτητική καρδιά της πόλης — ρωμαϊκά ερείπια, πεζόδρομοι με καφέ και κόσμος από το πρωί ως το ξημέρωμα.",
-      en: "The city's student heart — Roman ruins, pedestrian streets full of cafés and people from morning until dawn.",
+      el: "Η φοιτητική καρδιά της πόλης: ρωμαϊκά ερείπια, πεζόδρομοι με καφέ και κόσμος από το πρωί ως το ξημέρωμα.",
+      en: "The city's student heart: Roman ruins, pedestrian streets full of cafés and people from morning until dawn.",
     },
     long: {
-      el: `Ανάμεσα στην Καμάρα και τη θάλασσα απλώνεται η πιο νεανική γειτονιά της Θεσσαλονίκης. Εδώ τα ρωμαϊκά ερείπια δεν είναι πίσω από κάγκελα — είναι το σκηνικό όπου οι φοιτητές πίνουν τον καφέ τους.
+      el: `Ανάμεσα στην Καμάρα και τη θάλασσα απλώνεται η πιο νεανική γειτονιά της Θεσσαλονίκης. Εδώ τα ρωμαϊκά ερείπια δεν είναι πίσω από κάγκελα· είναι το σκηνικό όπου οι φοιτητές πίνουν τον καφέ τους.
 
 ## Χαρακτήρας & ιστορία
 Η **Πλατεία Ναυαρίνου** είναι χτισμένη γύρω από τα ερείπια του **ανακτορικού συγκροτήματος του Γαλερίου** (4ος αι. μ.Χ.), μέρος του ίδιου αυτοκρατορικού σχεδίου με τη Ροτόντα και την Αψίδα. Ο πεζόδρομος της **Δημητρίου Γούναρη** ενώνει τα δύο, κατεβαίνοντας προς την παραλία.
@@ -374,7 +374,7 @@ It's a 10-minute walk from Aristotelous and connects easily to Ladadika and Vala
 Απόλυτα περπατήσιμη, δίπλα στο κέντρο και σε απόσταση αναπνοής από το Αριστοτέλειο Πανεπιστήμιο.
 
 **Ιδανικό για:** νεανική ατμόσφαιρα, οικονομικό φαγητό, ιστορία μέσα στην καθημερινότητα.`,
-      en: `Between Kamara and the sea lies Thessaloniki's most youthful neighbourhood. Here the Roman ruins aren't behind railings — they're the backdrop where students drink their coffee.
+      en: `Between Kamara and the sea lies Thessaloniki's most youthful neighbourhood. Here the Roman ruins aren't behind railings; they're the backdrop where students drink their coffee.
 
 ## Character & history
 **Navarinou Square** is built around the ruins of the **Palace of Galerius** (4th century AD), part of the same imperial plan as the Rotunda and the Arch. The **Dimitriou Gounari** pedestrian street links the two, running down toward the seafront.
@@ -400,8 +400,8 @@ Completely walkable, right beside the centre and a short stroll from the Aristot
     slug: "panorama",
     name: { el: "Πανόραμα", en: "Panorama" },
     blurb: {
-      el: "Το προάστιο στον λόφο με την καλύτερη θέα στον Θερμαϊκό — και το γλυκό που πήρε το όνομά του από εδώ.",
-      en: "The hillside suburb with the best view over the Thermaic Gulf — and the sweet that took its name from here.",
+      el: "Το προάστιο στον λόφο με την καλύτερη θέα στον Θερμαϊκό, και το γλυκό που πήρε το όνομά του από εδώ.",
+      en: "The hillside suburb with the best view over the Thermaic Gulf, and the sweet that took its name from here.",
     },
     long: {
       el: `Ανατολικά του κέντρου, το Πανόραμα κάθεται ψηλά στον λόφο και κοιτάζει ολόκληρη τη Θεσσαλονίκη απλωμένη κάτω από τα πόδια του. Είναι από τα πιο ήσυχα και ακριβά προάστια της πόλης.
@@ -410,7 +410,7 @@ Completely walkable, right beside the centre and a short stroll from the Aristot
 Καθαρά οικιστικό, με μονοκατοικίες, δεντροφυτεμένους δρόμους και αισθητά δροσερότερο αέρα το καλοκαίρι. Οι Θεσσαλονικείς ανεβαίνουν εδώ για βόλτα, καφέ με θέα και για το γλυκό της περιοχής.
 
 ## Τι να δεις & να κάνεις
-- Τη **θέα** από την πλατεία και τους περιφερειακούς δρόμους — ιδιαίτερα εντυπωσιακή στο ηλιοβασίλεμα και τη νύχτα.
+- Τη **θέα** από την πλατεία και τους περιφερειακούς δρόμους, ιδιαίτερα εντυπωσιακή στο ηλιοβασίλεμα και τη νύχτα.
 - Τα **τρίγωνα Πανοράματος**, το τοπικό γλυκό με κρέμα σε τραγανό φύλλο που γεννήθηκε εδώ και έγινε γνωστό σε όλη την Ελλάδα.
 - Περπάτημα και ποδήλατο στους ήσυχους δρόμους και προς τον Χορτιάτη.
 
@@ -418,7 +418,7 @@ Completely walkable, right beside the centre and a short stroll from the Aristot
 Λιγότερες επιλογές από το κέντρο, αλλά πιο ήρεμες: ταβέρνες με θέα και καφέ που γεμίζουν τα σαββατοκύριακα.
 
 ## Πώς κινείσαι
-Χρειάζεσαι αυτοκίνητο ή λεωφορείο — περίπου 20–30 λεπτά από το κέντρο ανάλογα με την κίνηση.
+Χρειάζεσαι αυτοκίνητο ή λεωφορείο: περίπου 20–30 λεπτά από το κέντρο ανάλογα με την κίνηση.
 
 **Ιδανικό για:** θέα, ησυχία, οικογενειακή βόλτα και γλυκό.`,
       en: `East of the centre, Panorama sits high on the hill and looks out over the whole of Thessaloniki spread beneath it. It is one of the city's quietest and most expensive suburbs.
@@ -427,7 +427,7 @@ Completely walkable, right beside the centre and a short stroll from the Aristot
 Strictly residential, with detached houses, tree-lined streets and noticeably cooler air in summer. Locals drive up here for a walk, a coffee with a view, and the sweet the area is famous for.
 
 ## What to see & do
-- The **view** from the square and the surrounding roads — especially striking at sunset and after dark.
+- The **view** from the square and the surrounding roads, especially striking at sunset and after dark.
 - **Trigona Panoramatos**, the local sweet of custard in crisp pastry that was born here and became known across Greece.
 - Walking and cycling on the quiet roads and up toward Chortiatis.
 
@@ -435,7 +435,7 @@ Strictly residential, with detached houses, tree-lined streets and noticeably co
 Fewer options than the centre, but calmer ones: tavernas with a view and cafés that fill up at weekends.
 
 ## Getting around
-You'll need a car or a bus — roughly 20–30 minutes from the centre depending on traffic.
+You'll need a car or a bus: roughly 20–30 minutes from the centre depending on traffic.
 
 **Best for:** views, quiet, a family outing and something sweet.`,
     },
@@ -453,7 +453,7 @@ You'll need a car or a bus — roughly 20–30 minutes from the centre depending
       el: `Η Πυλαία απλώνεται στην ανατολική πλευρά της πόλης, εκεί όπου η Θεσσαλονίκη συναντά τον περιφερειακό δρόμο και τους δρόμους προς Χαλκιδική και αεροδρόμιο. Είναι η πιο «πρακτική» περιοχή της πόλης.
 
 ## Χαρακτήρας
-Συνδυάζει παλιούς οικισμούς στην πλαγιά με σύγχρονες πολυκατοικίες, γραφεία και μεγάλα εμπορικά κέντρα. Δεν είναι τουριστικός προορισμός — είναι όμως εξαιρετικά βολική βάση.
+Συνδυάζει παλιούς οικισμούς στην πλαγιά με σύγχρονες πολυκατοικίες, γραφεία και μεγάλα εμπορικά κέντρα. Δεν είναι τουριστικός προορισμός, είναι όμως εξαιρετικά βολική βάση.
 
 ## Τι υπάρχει εδώ
 - Μεγάλα **εμπορικά κέντρα**, με το Mediterranean Cosmos να είναι το γνωστότερο, με καταστήματα, εστιατόρια και κινηματογράφο.
@@ -470,7 +470,7 @@ You'll need a car or a bus — roughly 20–30 minutes from the centre depending
       en: `Pylaia spreads across the eastern side of the city, where Thessaloniki meets the ring road and the routes toward Halkidiki and the airport. It is the city's most practical district.
 
 ## Character
-It mixes older hillside settlements with modern apartment blocks, offices and large shopping centres. It isn't a tourist destination — but it is an extremely convenient base.
+It mixes older hillside settlements with modern apartment blocks, offices and large shopping centres. It isn't a tourist destination, but it is an extremely convenient base.
 
 ## What's here
 - Large **shopping centres**, the best known being Mediterranean Cosmos, with shops, restaurants and a cinema.
@@ -492,19 +492,19 @@ Best by car; buses also serve the centre, roughly 15–20 minutes outside rush h
     slug: "thermi",
     name: { el: "Θέρμη", en: "Thermi" },
     blurb: {
-      el: "Η περιοχή του αεροδρομίου — βολική βάση για πτήσεις, συνέδρια και εκδρομές προς Χαλκιδική.",
-      en: "The airport area — a convenient base for flights, conferences and trips toward Halkidiki.",
+      el: "Η περιοχή του αεροδρομίου, βολική βάση για πτήσεις, συνέδρια και εκδρομές προς Χαλκιδική.",
+      en: "The airport area, a convenient base for flights, conferences and trips toward Halkidiki.",
     },
     long: {
       el: `Νοτιοανατολικά της πόλης, η Θέρμη είναι το σημείο όπου η Θεσσαλονίκη συνδέεται με τον υπόλοιπο κόσμο. Το αεροδρόμιο «Μακεδονία» βρίσκεται δίπλα, και γύρω του έχει αναπτυχθεί ένας κόμβος από ξενοδοχεία, επιχειρήσεις και τεχνολογικά πάρκα.
 
 ## Χαρακτήρας
-Ένας παλιός οικισμός που μεγάλωσε γρήγορα σε σύγχρονο προάστιο. Ήσυχη, πράσινη και οργανωμένη γύρω από τον αυτοκινητόδρομο — περισσότερο τόπος διαμονής και εργασίας παρά περιήγησης.
+Ένας παλιός οικισμός που μεγάλωσε γρήγορα σε σύγχρονο προάστιο. Ήσυχη, πράσινη και οργανωμένη γύρω από τον αυτοκινητόδρομο, περισσότερο τόπος διαμονής και εργασίας παρά περιήγησης.
 
 ## Τι υπάρχει εδώ
 - Ξενοδοχεία κοντά στο **αεροδρόμιο**, χρήσιμα για πρωινές πτήσεις.
 - Χώροι **συνεδρίων** και επιχειρηματικά πάρκα.
-- Ταβέρνες και καφέ που εξυπηρετούν κυρίως τους κατοίκους — καλή, ανεπιτήδευτη κουζίνα.
+- Ταβέρνες και καφέ που εξυπηρετούν κυρίως τους κατοίκους, με καλή και ανεπιτήδευτη κουζίνα.
 
 ## Γιατί να μείνεις εδώ
 Είναι η λογικότερη επιλογή αν έχεις πτήση νωρίς το πρωί ή αργά το βράδυ, ή αν συνεχίζεις οδικώς προς τη Χαλκιδική χωρίς να θέλεις να μπεις στην πόλη.
@@ -516,12 +516,12 @@ Best by car; buses also serve the centre, roughly 15–20 minutes outside rush h
       en: `Southeast of the city, Thermi is where Thessaloniki connects to the rest of the world. "Makedonia" Airport sits alongside it, and around it has grown a cluster of hotels, businesses and technology parks.
 
 ## Character
-An old settlement that grew quickly into a modern suburb. Quiet, green and organised around the motorway — more a place to stay and work than to sightsee.
+An old settlement that grew quickly into a modern suburb. Quiet, green and organised around the motorway, more a place to stay and work than to sightsee.
 
 ## What's here
 - Hotels close to the **airport**, useful for early flights.
 - **Conference** venues and business parks.
-- Tavernas and cafés serving mainly locals — good, unpretentious cooking.
+- Tavernas and cafés serving mainly locals, with good, unpretentious cooking.
 
 ## Why stay here
 It's the most sensible choice if you have an early-morning or late-night flight, or if you're continuing by road to Halkidiki without wanting to enter the city.
@@ -542,35 +542,35 @@ By car or taxi; the centre is roughly 20–25 minutes away outside traffic.
       en: "An authentic working-class neighbourhood with the loudest football soul in the city.",
     },
     long: {
-      el: `Ανατολικά του κέντρου, η Τούμπα είναι μια από τις πιο πυκνοκατοικημένες και αυθεντικές γειτονιές της Θεσσαλονίκης — μακριά από τις τουριστικές διαδρομές, αλλά με χαρακτήρα που δύσκολα ξεχνιέται.
+      el: `Ανατολικά του κέντρου, η Τούμπα είναι μια από τις πιο πυκνοκατοικημένες και αυθεντικές γειτονιές της Θεσσαλονίκης, μακριά από τις τουριστικές διαδρομές αλλά με χαρακτήρα που δύσκολα ξεχνιέται.
 
 ## Χαρακτήρας & ιστορία
 Η περιοχή χτίστηκε σε μεγάλο βαθμό από πρόσφυγες της Μικράς Ασίας μετά το 1922, και αυτή η καταγωγή φαίνεται ακόμα στην κουζίνα και στον τρόπο που ζει η γειτονιά. Το όνομά της προέρχεται από τον προϊστορικό οικιστικό λόφο (τούμπα) που δεσπόζει στην περιοχή.
 
 ## Τι να δεις & να κάνεις
-- Το **Στάδιο Τούμπας**, έδρα του ΠΑΟΚ και ένα από τα πιο θορυβώδη γήπεδα της Ελλάδας — μια ντόπια εμπειρία από μόνο του.
+- Το **Στάδιο Τούμπας**, έδρα του ΠΑΟΚ και ένα από τα πιο θορυβώδη γήπεδα της Ελλάδας: μια ντόπια εμπειρία από μόνο του.
 - Τον **προϊστορικό λόφο** και τη θέα προς την πόλη.
 - Παραδοσιακά ψητοπωλεία και μεζεδοπωλεία με τιμές γειτονιάς.
 
 ## Γιατί να έρθεις
-Αν θέλεις να δεις πώς ζει πραγματικά η Θεσσαλονίκη — όχι το κέντρο για τους επισκέπτες, αλλά την πόλη των κατοίκων της.
+Αν θέλεις να δεις πώς ζει πραγματικά η Θεσσαλονίκη: όχι το κέντρο για τους επισκέπτες, αλλά την πόλη των κατοίκων της.
 
 ## Πώς κινείσαι
 Εξυπηρετείται καλά από λεωφορεία και βρίσκεται περίπου 10–15 λεπτά από το κέντρο.
 
 **Ιδανικό για:** ποδόσφαιρο, αυθεντικό φαγητό, ατμόσφαιρα γειτονιάς.`,
-      en: `East of the centre, Toumba is one of Thessaloniki's most densely populated and authentic neighbourhoods — well off the tourist trail, but with a character that's hard to forget.
+      en: `East of the centre, Toumba is one of Thessaloniki's most densely populated and authentic neighbourhoods, well off the tourist trail but with a character that's hard to forget.
 
 ## Character & history
 The area was largely built by refugees from Asia Minor after 1922, and that ancestry still shows in its cooking and in the way the neighbourhood lives. Its name comes from the prehistoric settlement mound (toumba) that rises above it.
 
 ## What to see & do
-- **Toumba Stadium**, home of PAOK and one of the loudest grounds in Greece — a local experience in its own right.
+- **Toumba Stadium**, home of PAOK and one of the loudest grounds in Greece: a local experience in its own right.
 - The **prehistoric mound** and the view back over the city.
 - Traditional grill houses and meze places at neighbourhood prices.
 
 ## Why come
-If you want to see how Thessaloniki actually lives — not the centre laid on for visitors, but the city of its residents.
+If you want to see how Thessaloniki actually lives: not the centre laid on for visitors, but the city of its residents.
 
 ## Getting around
 Well served by buses and roughly 10–15 minutes from the centre.
@@ -584,17 +584,17 @@ Well served by buses and roughly 10–15 minutes from the centre.
     slug: "aretsou",
     name: { el: "Αρετσού & Νέα Κρήνη", en: "Aretsou & Nea Krini" },
     blurb: {
-      el: "Η μαρίνα της Καλαμαριάς — ιστιοπλοϊκά, παραθαλάσσια καφέ και το πιο ήρεμο ηλιοβασίλεμα της πόλης.",
-      en: "Kalamaria's marina — sailing boats, seaside cafés and the calmest sunset in the city.",
+      el: "Ιστιοπλοϊκά, παραθαλάσσια καφέ και το πιο ήρεμο ηλιοβασίλεμα της πόλης, στη μαρίνα της Καλαμαριάς.",
+      en: "Sailing boats, seaside cafés and the calmest sunset in the city, at Kalamaria's marina.",
     },
     long: {
       el: `Στο νότιο άκρο της Καλαμαριάς, η Αρετσού είναι το σημείο όπου η πόλη ξαναβρίσκει τη θάλασσα με πιο ήσυχο τρόπο απ' ό,τι στη Νέα Παραλία.
 
 ## Χαρακτήρας & ιστορία
-Η Νέα Κρήνη χτίστηκε από πρόσφυγες που ήρθαν από την Κρήνη (Çeşme) της Μικράς Ασίας — εξ ου και το όνομα. Σήμερα η περιοχή έχει έντονο μεσογειακό, σχεδόν νησιώτικο χαρακτήρα γύρω από τη μαρίνα.
+Η Νέα Κρήνη χτίστηκε από πρόσφυγες που ήρθαν από την Κρήνη (Çeşme) της Μικράς Ασίας· εξ ου και το όνομα. Σήμερα η περιοχή έχει έντονο μεσογειακό, σχεδόν νησιώτικο χαρακτήρα γύρω από τη μαρίνα.
 
 ## Τι να δεις & να κάνεις
-- Τη **μαρίνα Αρετσούς** με τα δεμένα ιστιοπλοϊκά — ιδανική για βραδινή βόλτα.
+- Τη **μαρίνα Αρετσούς** με τα δεμένα ιστιοπλοϊκά, ιδανική για βραδινή βόλτα.
 - Τον **παραλιακό πεζόδρομο**, πιο χαλαρό και οικογενειακό από το κέντρο.
 - Καφέ και ταβέρνες με θέα στον Θερμαϊκό και τον Όλυμπο απέναντι.
 
@@ -605,13 +605,13 @@ Well served by buses and roughly 10–15 minutes from the centre.
 Με λεωφορείο ή αυτοκίνητο από το κέντρο· η Καλαμαριά συνδέεται και με το δίκτυο του μετρό.
 
 **Ιδανικό για:** ηλιοβασίλεμα, θαλασσινό φαγητό, χαλαρή βόλτα δίπλα στο νερό.`,
-      en: `At the southern edge of Kalamaria, Aretsou is where the city meets the sea again — in a quieter way than the Nea Paralia.
+      en: `At the southern edge of Kalamaria, Aretsou is where the city meets the sea again, in a quieter way than the Nea Paralia.
 
 ## Character & history
-Nea Krini was built by refugees who came from Krini (Çeşme) in Asia Minor — hence the name. Today the area has a distinctly Mediterranean, almost island-like feel around the marina.
+Nea Krini was built by refugees who came from Krini (Çeşme) in Asia Minor; hence the name. Today the area has a distinctly Mediterranean, almost island-like feel around the marina.
 
 ## What to see & do
-- **Aretsou Marina** with its moored sailing boats — perfect for an evening stroll.
+- **Aretsou Marina** with its moored sailing boats, perfect for an evening stroll.
 - The **seaside promenade**, more relaxed and family-oriented than the centre.
 - Cafés and tavernas looking across the Thermaic Gulf to Mount Olympus.
 
@@ -637,7 +637,7 @@ By bus or car from the centre; Kalamaria is also connected to the metro network.
       el: `Δυτικά του κέντρου, εκεί όπου η πόλη γίνεται βιομηχανική, τα Σφαγεία είναι η απάντηση της Θεσσαλονίκης στις μεταμορφωμένες βιομηχανικές συνοικίες της Ευρώπης.
 
 ## Χαρακτήρας & ιστορία
-Η περιοχή πήρε το όνομά της από τα παλιά δημοτικά σφαγεία. Καθώς οι δραστηριότητες μετακινήθηκαν, τα μεγάλα κτίρια και οι αποθήκες πέρασαν σε άλλα χέρια — και έγιναν χώροι συναυλιών, κλαμπ και καλλιτεχνικά στούντιο.
+Η περιοχή πήρε το όνομά της από τα παλιά δημοτικά σφαγεία. Καθώς οι δραστηριότητες μετακινήθηκαν, τα μεγάλα κτίρια και οι αποθήκες πέρασαν σε άλλα χέρια και έγιναν χώροι συναυλιών, κλαμπ και καλλιτεχνικά στούντιο.
 
 ## Τι υπάρχει εδώ
 - **Χώροι live μουσικής και κλαμπ** σε βιομηχανικά κελύφη, με προγράμματα που τραβούν κόσμο από όλη την πόλη.
@@ -654,7 +654,7 @@ By bus or car from the centre; Kalamaria is also connected to the metro network.
       en: `West of the centre, where the city turns industrial, Sfageia is Thessaloniki's answer to Europe's converted factory districts.
 
 ## Character & history
-The area takes its name from the old municipal slaughterhouses. As that activity moved away, the large buildings and warehouses passed into other hands — and became concert venues, clubs and artists' studios.
+The area takes its name from the old municipal slaughterhouses. As that activity moved away, the large buildings and warehouses passed into other hands and became concert venues, clubs and artists' studios.
 
 ## What's here
 - **Live music venues and clubs** in industrial shells, with line-ups that draw people from across the city.
@@ -676,8 +676,8 @@ By taxi or car; it's a few minutes from the centre and Ladadika.
     slug: "vardaris",
     name: { el: "Βαρδάρης", en: "Vardaris" },
     blurb: {
-      el: "Η δυτική πύλη της πόλης γύρω από τον σιδηροδρομικό σταθμό — τραχιά, πολυπολιτισμική και βαθιά ιστορική.",
-      en: "The city's western gateway around the railway station — rough-edged, multicultural and deeply historic.",
+      el: "Τραχιά, πολυπολιτισμική και βαθιά ιστορική, η δυτική πύλη της πόλης γύρω από τον σιδηροδρομικό σταθμό.",
+      en: "Rough-edged, multicultural and deeply historic: the city's western gateway around the railway station.",
     },
     long: {
       el: `Ο Βαρδάρης είναι το σημείο απ' όπου η Θεσσαλονίκη υποδεχόταν πάντα τους ταξιδιώτες: εδώ βρίσκεται ο σιδηροδρομικός σταθμός και οι κεντρικοί σταθμοί λεωφορείων προς τη δυτική Μακεδονία.
@@ -691,7 +691,7 @@ By taxi or car; it's a few minutes from the centre and Ladadika.
 - Μικρά μαγαζιά και αγορές που εξυπηρετούν κοινότητες από όλο τον κόσμο.
 
 ## Τι να ξέρεις
-Ο Βαρδάρης δεν είναι τουριστική περιοχή και τη νύχτα μπορεί να είναι πιο ήσυχος και υποβαθμισμένος — άξιζει όμως για την αυθεντικότητά του και για την πρακτική του σημασία αν ταξιδεύεις με τρένο ή λεωφορείο.
+Ο Βαρδάρης δεν είναι τουριστική περιοχή και τη νύχτα μπορεί να είναι πιο ήσυχος και υποβαθμισμένος, αξίζει όμως για την αυθεντικότητά του και για την πρακτική του σημασία αν ταξιδεύεις με τρένο ή λεωφορείο.
 
 ## Πώς κινείσαι
 Κόμβος τρένων και υπεραστικών λεωφορείων· το κέντρο απέχει λίγα λεπτά με τα πόδια ή μία στάση με το μετρό.
@@ -708,7 +708,7 @@ The area around **Dimokratias Square** was one of the fortified city's most impo
 - Small shops and markets serving communities from around the world.
 
 ## What to know
-Vardaris isn't a tourist district and can feel quieter and rougher at night — but it's worth it for its authenticity and its practical importance if you're travelling by train or bus.
+Vardaris isn't a tourist district and can feel quieter and rougher at night, but it's worth it for its authenticity and its practical importance if you're travelling by train or bus.
 
 ## Getting around
 A rail and intercity bus hub; the centre is a few minutes on foot or one metro stop away.
@@ -722,8 +722,8 @@ A rail and intercity bus hub; the centre is a few minutes on foot or one metro s
     slug: "peraia",
     name: { el: "Περαία", en: "Peraia" },
     blurb: {
-      el: "Η παραλιακή πόλη απέναντι από τη Θεσσαλονίκη — μπάνιο, ταβέρνες και δίπλα στο αεροδρόμιο.",
-      en: "The seaside town across the bay from Thessaloniki — swimming, tavernas and next to the airport.",
+      el: "Η παραλιακή πόλη απέναντι από τη Θεσσαλονίκη. Μπάνιο, ταβέρνες και δίπλα στο αεροδρόμιο.",
+      en: "The seaside town across the bay from Thessaloniki. Swimming, tavernas and next to the airport.",
     },
     long: {
       el: `Νότια της πόλης, στην απέναντι πλευρά του Θερμαϊκού, η Περαία είναι εκεί όπου οι Θεσσαλονικείς πηγαίνουν για μπάνιο χωρίς να ταξιδέψουν στη Χαλκιδική.
@@ -733,11 +733,11 @@ A rail and intercity bus hub; the centre is a few minutes on foot or one metro s
 
 ## Τι να δεις & να κάνεις
 - Τη **μεγάλη παραλία** και τον παραλιακό πεζόδρομο με καφέ και beach bars.
-- **Ψαροταβέρνες** με θέα προς τη Θεσσαλονίκη απέναντι — ιδιαίτερα το βράδυ, με τα φώτα της πόλης στο νερό.
+- **Ψαροταβέρνες** με θέα προς τη Θεσσαλονίκη απέναντι, ιδιαίτερα το βράδυ με τα φώτα της πόλης στο νερό.
 - Βόλτες προς τους γειτονικούς οικισμούς κατά μήκος της ακτής.
 
 ## Γιατί να μείνεις εδώ
-Είναι πολύ κοντά στο **αεροδρόμιο** και προσφέρει θάλασσα — συνδυασμός που δεν υπάρχει μέσα στην πόλη. Καλή επιλογή για καλοκαιρινή διαμονή ή για την τελευταία νύχτα πριν την πτήση.
+Είναι πολύ κοντά στο **αεροδρόμιο** και προσφέρει θάλασσα, συνδυασμός που δεν υπάρχει μέσα στην πόλη. Καλή επιλογή για καλοκαιρινή διαμονή ή για την τελευταία νύχτα πριν την πτήση.
 
 ## Πώς κινείσαι
 Με αυτοκίνητο ή λεωφορείο· υπάρχει και θαλάσσια σύνδεση προς το κέντρο τους καλοκαιρινούς μήνες.
@@ -750,11 +750,11 @@ Founded by refugees from Asia Minor, it was a summer resort for decades. Today i
 
 ## What to see & do
 - The **long beach** and the seafront promenade lined with cafés and beach bars.
-- **Fish tavernas** looking back at Thessaloniki across the water — especially at night, with the city lights on the sea.
+- **Fish tavernas** looking back at Thessaloniki across the water, especially at night with the city lights on the sea.
 - Walks along the coast toward the neighbouring settlements.
 
 ## Why stay here
-It's very close to the **airport** and it has a beach — a combination the city itself can't offer. A good choice for a summer stay or for your last night before a flight.
+It's very close to the **airport** and it has a beach, a combination the city itself can't offer. A good choice for a summer stay or for your last night before a flight.
 
 ## Getting around
 By car or bus; there's also a seasonal boat connection to the centre in the summer months.

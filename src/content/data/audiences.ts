@@ -1,7 +1,7 @@
 import type { Localized } from "@/lib/types";
 
 /**
- * Audience landing pages — SEO hubs that gather the right content for each
+ * Audience landing pages, SEO hubs that gather the right content for each
  * kind of visitor. Each pulls matching places (by tag), curated collections
  * and guides, plus a unique editorial intro.
  */
@@ -64,8 +64,8 @@ export const audiences: Audience[] = [
     name: { el: "Για φοιτητές", en: "For students" },
     blurb: { el: "Η φοιτητούπολη της Ελλάδας.", en: "Greece's student city." },
     intro: {
-      el: "Η Θεσσαλονίκη είναι η μεγαλύτερη φοιτητούπολη της χώρας — ζωντανή, οικονομική και με ασταμάτητη νυχτερινή ζωή. Εδώ θα βρεις **δωρεάν** πράγματα να κάνεις, φθηνές γωνιές και τα στέκια της πόλης. *(Στέγη, εκπτώσεις και jobs έρχονται σύντομα.)*",
-      en: "Thessaloniki is Greece's largest student city — lively, affordable and with non-stop nightlife. Here you'll find **free** things to do, cheap spots and the city's hangouts. *(Student housing, discounts and jobs coming soon.)*",
+      el: "Η Θεσσαλονίκη είναι η μεγαλύτερη φοιτητούπολη της χώρας: ζωντανή, οικονομική και με ασταμάτητη νυχτερινή ζωή. Εδώ θα βρεις **δωρεάν** πράγματα να κάνεις, φθηνές γωνιές και τα στέκια της πόλης. *(Στέγη, εκπτώσεις και jobs έρχονται σύντομα.)*",
+      en: "Thessaloniki is Greece's largest student city: lively, affordable and with non-stop nightlife. Here you'll find **free** things to do, cheap spots and the city's hangouts. *(Student housing, discounts and jobs coming soon.)*",
     },
     tags: ["free", "nightlife", "budget"],
     guides: ["free-things-to-do-thessaloniki", "getting-around-thessaloniki"],

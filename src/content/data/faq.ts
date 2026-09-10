@@ -38,8 +38,8 @@ export const planFaqs: FaqItem[] = [
   {
     q: { el: "Χρειάζομαι αυτοκίνητο;", en: "Do I need a car?" },
     a: {
-      el: "Όχι για την πόλη — το κέντρο είναι περπατήσιμο και υπάρχουν μετρό και λεωφορεία. Αυτοκίνητο βοηθά μόνο για εκδρομές εκτός πόλης.",
-      en: "Not for the city — the centre is walkable and there is a metro and buses. A car only helps for day trips outside the city.",
+      el: "Όχι για την πόλη. Το κέντρο είναι περπατήσιμο και υπάρχουν μετρό και λεωφορεία. Αυτοκίνητο βοηθά μόνο για εκδρομές εκτός πόλης.",
+      en: "Not for the city. The centre is walkable and there is a metro and buses. A car only helps for day trips outside the city.",
     },
   },
   {

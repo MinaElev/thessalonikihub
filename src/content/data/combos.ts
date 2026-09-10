@@ -8,7 +8,7 @@ import type { Localized } from "@/lib/types";
  * bridge the two and link onward to chalkidikihub.gr, this site's sister
  * guide, which covers the Chalkidiki half in depth.
  *
- * Driving times are typical, not guaranteed — traffic on the way out of the
+ * Driving times are typical, not guaranteed, traffic on the way out of the
  * city varies a lot, especially on summer weekends.
  */
 export interface ComboDay {
@@ -85,8 +85,8 @@ export const combos: Combo[] = [
       en: "Couples and groups, with a car from day three",
     },
     blurb: {
-      el: "Τρεις μέρες πόλη, δύο νύχτες στη Σιθωνία — ο κλασικός συνδυασμός των ίδιων των Θεσσαλονικέων.",
-      en: "Three days in the city, two nights in Sithonia — the combination locals themselves make.",
+      el: "Τρεις μέρες πόλη, δύο νύχτες στη Σιθωνία. Ο κλασικός συνδυασμός των ίδιων των Θεσσαλονικέων.",
+      en: "Three days in the city, two nights in Sithonia. The combination locals themselves make.",
     },
     days: [
       {
@@ -114,8 +114,8 @@ export const combos: Combo[] = [
         where: { el: "Μετάβαση", en: "Transfer" },
         title: { el: "Προς Σιθωνία", en: "On to Sithonia" },
         detail: {
-          el: "Ξεκίνα νωρίς — περίπου 1.5 ώρα οδήγηση. Στάση για μπάνιο στον δρόμο και τακτοποίηση στο κατάλυμα. Το απόγευμα σε έναν από τους μικρούς όρμους.",
-          en: "Leave early — roughly an hour and a half. Stop for a swim on the way and settle into your base. Spend the afternoon in one of the small coves.",
+          el: "Ξεκίνα νωρίς, περίπου 1.5 ώρα οδήγηση. Στάση για μπάνιο στον δρόμο και τακτοποίηση στο κατάλυμα. Το απόγευμα σε έναν από τους μικρούς όρμους.",
+          en: "Leave early, roughly an hour and a half. Stop for a swim on the way and settle into your base. Spend the afternoon in one of the small coves.",
         },
       },
       {
@@ -123,8 +123,8 @@ export const combos: Combo[] = [
         where: { el: "Χαλκιδική", en: "Chalkidiki" },
         title: { el: "Παραλίες Σιθωνίας", en: "Sithonia's beaches" },
         detail: {
-          el: "Η μέρα της θάλασσας. Η Σιθωνία έχει δεκάδες μικρούς κόλπους — ο ένας μετά τον άλλον κατά μήκος του παραλιακού δρόμου.",
-          en: "The sea day. Sithonia has dozens of small bays — one after another along the coast road.",
+          el: "Η μέρα της θάλασσας. Η Σιθωνία έχει δεκάδες μικρούς κόλπους. Ο ένας μετά τον άλλον κατά μήκος του παραλιακού δρόμου.",
+          en: "The sea day. Sithonia has dozens of small bays, one after another along the coast road.",
         },
       },
       {
@@ -177,8 +177,8 @@ export const combos: Combo[] = [
         where: { el: "Βεργίνα", en: "Vergina" },
         title: { el: "Οι βασιλικοί τάφοι", en: "The royal tombs" },
         detail: {
-          el: "Μονοήμερη στην αρχαία Αιγές και τον τάφο του Φιλίππου Β΄ — μνημείο UNESCO, περίπου μία ώρα δυτικά.",
-          en: "A day trip to ancient Aigai and the tomb of Philip II — a UNESCO site about an hour west.",
+          el: "Μονοήμερη στην αρχαία Αιγές και τον τάφο του Φιλίππου Β΄: μνημείο UNESCO, περίπου μία ώρα δυτικά.",
+          en: "A day trip to ancient Aigai and the tomb of Philip II. A UNESCO site about an hour west.",
         },
         href: "/day-trips/vergina",
       },
