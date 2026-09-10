@@ -350,5 +350,23 @@
     "invalid": "Please check the email address.",
     "error": "Something went wrong. Try again shortly.",
     "privacy": "City events only. Unsubscribe any time."
+  },
+  "claim": {
+    "cta": "This is my business",
+    "title": "Claim this listing",
+    "intro": "Send us a short message so we can confirm you represent the business. Once approved, you'll be able to add photos, opening hours and details.",
+    "placeholder": "For example, your role and a contact detail we can verify.",
+    "submit": "Send request",
+    "cancel": "Cancel",
+    "ok": "Request sent. We'll review it and get back to you.",
+    "duplicate": "You have already sent a request for this listing.",
+    "unauthenticated": "Sign in first to claim this listing.",
+    "error": "Something went wrong. Please try again.",
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "adminTitle": "Ownership requests",
+    "adminEmpty": "No pending requests.",
+    "myClaims": "My requests"
   }
 }

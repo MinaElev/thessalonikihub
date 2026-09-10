@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { ShieldCheck, Check, X } from "lucide-react";
+import { ShieldCheck, Check, X, BadgeCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
@@ -8,6 +8,7 @@ import { Container } from "@/components/ui";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { approveListing, rejectListing } from "@/app/actions/moderate";
+import { approveClaim, rejectClaim } from "@/app/actions/claim";
 
 export default async function AdminPage({
   params,
@@ -30,12 +31,17 @@ export default async function AdminPage({
     );
   }
 
-  const [places, events] = isDbConfigured
+  const [places, events, claims] = isDbConfigured
     ? await Promise.all([
         prisma.place.findMany({ where: { status: "PENDING" }, orderBy: { createdAt: "asc" } }),
         prisma.eventItem.findMany({ where: { status: "PENDING" }, orderBy: { createdAt: "asc" } }),
+        prisma.claim.findMany({
+          where: { status: "PENDING" },
+          orderBy: { createdAt: "asc" },
+          include: { user: { select: { email: true } } },
+        }),
       ])
-    : [[], []];
+    : [[], [], []];
 
   const rows = [
     ...places.map((p) => ({ id: p.id, kind: "place", label: p.kind as string, name: p.name as Localized<string>, summary: p.summary as Localized<string> })),
@@ -58,6 +64,52 @@ export default async function AdminPage({
           {tt("Εισαγωγή events →", "Import events →")}
         </Link>
       </div>
+
+      {claims.length ? (
+        <section className="mb-10">
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
+            <BadgeCheck className="h-5 w-5 text-brand-600" />
+            {tt("Αιτήματα ιδιοκτησίας", "Ownership requests")}
+          </h2>
+          <ul className="space-y-3">
+            {claims.map((c) => (
+              <li
+                key={c.id}
+                className="flex flex-wrap items-start justify-between gap-4 rounded-2xl border border-brand-200 bg-brand-50/40 p-4"
+              >
+                <div className="min-w-0">
+                  <p className="font-semibold">
+                    {c.placeName}{" "}
+                    <span className="ml-1 rounded bg-white px-1.5 py-0.5 text-xs font-normal text-slate-500">
+                      /{c.placeKind}/{c.placeSlug}
+                    </span>
+                  </p>
+                  <p className="text-sm text-muted">{c.user.email}</p>
+                  {c.message ? (
+                    <p className="mt-1 max-w-prose whitespace-pre-line text-sm text-slate-700">
+                      {c.message}
+                    </p>
+                  ) : null}
+                </div>
+                <div className="flex gap-2">
+                  <form action={approveClaim}>
+                    <input type="hidden" name="id" value={c.id} />
+                    <button className="inline-flex items-center gap-1 rounded-full bg-brand-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand-700">
+                      <Check className="h-4 w-4" /> {tt("Έγκριση", "Approve")}
+                    </button>
+                  </form>
+                  <form action={rejectClaim}>
+                    <input type="hidden" name="id" value={c.id} />
+                    <button className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium hover:bg-slate-50">
+                      <X className="h-4 w-4" /> {tt("Απόρριψη", "Reject")}
+                    </button>
+                  </form>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {!isDbConfigured ? (
         <p className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-muted">

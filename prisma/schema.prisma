@@ -111,7 +111,6 @@ model Place {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  claims    Claim[]
 
   @@index([kind, status])
   @@index([area])
@@ -190,15 +189,22 @@ model Guide {
 /// A request by a user to claim ownership of an existing place.
 model Claim {
   id        String      @id @default(cuid())
-  place     Place       @relation(fields: [placeId], references: [id], onDelete: Cascade)
-  placeId   String
+  /// Slug of the claimed listing. Keyed by slug rather than by a Place
+  /// relation, because listings live in content files as well as in the
+  /// database and the repository merges the two by slug.
+  placeSlug String
+  /// Pillar and display name captured when the claim is filed, so the review
+  /// queue reads correctly even for a listing that has no database row yet.
+  placeKind String
+  placeName String
   user      Profile     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
   status    ClaimStatus @default(PENDING)
   message   String?
   createdAt DateTime    @default(now())
 
-  @@unique([placeId, userId])
+  @@unique([placeSlug, userId])
+  @@index([status])
 }
 
 /// Something a signed-in user saved to their personal list.

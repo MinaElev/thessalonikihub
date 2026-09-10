@@ -38,12 +38,13 @@ export default async function DashboardPage({
     );
   }
 
-  const [places, events] = isDbConfigured
+  const [places, events, claims] = isDbConfigured
     ? await Promise.all([
         prisma.place.findMany({ where: { ownerId: user.id }, orderBy: { createdAt: "desc" } }),
         prisma.eventItem.findMany({ where: { ownerId: user.id }, orderBy: { createdAt: "desc" } }),
+        prisma.claim.findMany({ where: { userId: user.id }, orderBy: { createdAt: "desc" } }),
       ])
-    : [[], []];
+    : [[], [], []];
 
   const rows = [
     ...places.map((p) => ({ id: p.id, name: p.name as Localized<string>, status: p.status, kind: p.kind as string })),
@@ -95,6 +96,35 @@ export default async function DashboardPage({
           ))}
         </ul>
       )}
+
+      {claims.length ? (
+        <section className="mt-10">
+          <h2 className="mb-3 text-xl font-bold">
+            {tt("Τα αιτήματά μου", "My requests")}
+          </h2>
+          <ul className="divide-y divide-slate-100 rounded-2xl border border-slate-100">
+            {claims.map((c) => (
+              <li key={c.id} className="flex items-center justify-between gap-4 p-4">
+                <div className="min-w-0">
+                  <p className="font-semibold">{c.placeName}</p>
+                  <p className="truncate text-xs text-muted">
+                    /{c.placeKind}/{c.placeSlug}
+                  </p>
+                </div>
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${statusTone[c.status] ?? ""}`}
+                >
+                  {c.status === "PENDING"
+                    ? tt("Σε αναμονή", "Pending")
+                    : c.status === "APPROVED"
+                      ? tt("Εγκρίθηκε", "Approved")
+                      : tt("Απορρίφθηκε", "Rejected")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </Container>
   );
 }

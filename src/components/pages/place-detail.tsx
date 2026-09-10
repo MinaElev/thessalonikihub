@@ -38,6 +38,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { JsonLd } from "@/components/JsonLd";
 import { MiniMapClient } from "@/components/map/MiniMapClient";
+import { ClaimBusiness } from "@/components/ClaimBusiness";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
 import { cityHref, mapsHref, pillarHref, areaHref } from "@/lib/links";
@@ -548,6 +549,29 @@ export async function PlaceDetail({
                   ))}
                 </div>
               </section>
+            ) : null}
+
+            {/* Owners can claim an unverified listing; approval unlocks
+                photos, hours and edits, which we never invent ourselves. */}
+            {!place.verified ? (
+              <div className="mt-8">
+                <ClaimBusiness
+                  slug={place.slug}
+                  loginHref={locale === "el" ? "/login" : `/${locale}/login`}
+                  labels={{
+                    cta: t("claim.cta"),
+                    title: t("claim.title"),
+                    intro: t("claim.intro"),
+                    placeholder: t("claim.placeholder"),
+                    submit: t("claim.submit"),
+                    cancel: t("claim.cancel"),
+                    ok: t("claim.ok"),
+                    duplicate: t("claim.duplicate"),
+                    unauthenticated: t("claim.unauthenticated"),
+                    error: t("claim.error"),
+                  }}
+                />
+              </div>
             ) : null}
 
             <p className="mt-8 inline-flex items-center gap-1 text-xs text-slate-400">
