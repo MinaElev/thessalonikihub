@@ -17,7 +17,15 @@ import {
 } from "@/components/HomeSections";
 import { pillars, site } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { cityHref, collectionHref, pillarHref } from "@/lib/links";
+import {
+  areasHref,
+  cityHref,
+  collectionHref,
+  metroHref,
+  pillarHref,
+  whatToEatHref,
+  whenToVisitHref,
+} from "@/lib/links";
 import {
   getPlaces,
   getGuides,
@@ -77,7 +85,19 @@ export default async function HomePage({
   const eventsToday = await getEventsOnDay();
   const upcoming = await getUpcomingEvents(10);
   const todayList = (eventsToday.length ? eventsToday : upcoming).slice(0, 4);
-  const quickIntents = getCollections().filter((c) => c.featured).slice(0, 6);
+  const todayHasSomething = todayList.length > 0;
+  // The four chips used to be four DISCOVER collections: one intent, offered
+  // four times. These are the questions people actually arrive with, and each
+  // opens a different part of the site.
+  const unesco = getCollections("discover").find((c) => c.slug === "unesco-monuments");
+  const quickIntents = [
+    ...(todayHasSomething ? [{ href: "/today", label: t("home.intentToday") }] : []),
+    { href: whenToVisitHref(), label: t("home.intentWhen") },
+    { href: areasHref(), label: t("home.intentStay") },
+    { href: metroHref(), label: t("home.intentMetro") },
+    { href: whatToEatHref(), label: t("home.intentEat") },
+    ...(unesco ? [{ href: collectionHref(unesco), label: t("home.intentSee") }] : []),
+  ];
   // Europe/Athens, so the highlighted month matches the city rather than the
   // server's timezone.
   const currentMonth = Number(
@@ -145,13 +165,13 @@ export default async function HomePage({
                 {t("home.quickIntents")}
               </p>
               <div className="flex flex-wrap gap-2">
-                {quickIntents.map((c) => (
+                {quickIntents.map((i) => (
                   <Link
-                    key={`${c.pillar}-${c.slug}`}
-                    href={collectionHref(c)}
+                    key={i.href}
+                    href={i.href}
                     className="rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur transition hover:bg-white/20"
                   >
-                    {pick(c.heading, locale)}
+                    {i.label}
                   </Link>
                 ))}
               </div>
@@ -159,6 +179,31 @@ export default async function HomePage({
           </div>
         </Container>
       </section>
+
+      {/* Today — only shown when there are events */}
+      {todayList.length ? (
+        <section className="py-10">
+          <Container>
+            <SectionHeading
+              kicker={t("nav.today")}
+              title={t("home.todayTitle")}
+              action={
+                <Link
+                  href="/today"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
+                >
+                  {t("common.viewAll")} <ArrowRight className="h-4 w-4" />
+                </Link>
+              }
+            />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {todayList.map((e) => (
+                <EventCard key={e.slug} event={e} locale={locale} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
 
       {/* Pillars */}
       <section className="py-14">
@@ -198,25 +243,6 @@ export default async function HomePage({
         </Container>
       </section>
 
-      {/* Why Thessaloniki — original editorial intro */}
-      <section className="border-y border-slate-100 bg-white py-14">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-600">
-              {t("home.aboutKicker")}
-            </p>
-            <h2 className="text-2xl font-bold text-ink sm:text-3xl">
-              {t("home.aboutTitle")}
-            </h2>
-            <div className="mt-5 space-y-4 text-lg leading-relaxed text-slate-600">
-              <p>{t("home.aboutP1")}</p>
-              <p>{t("home.aboutP2")}</p>
-              <p>{t("home.aboutP3")}</p>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* When to come — the first question a visitor actually has. */}
       <MonthsStrip
         locale={locale}
@@ -229,54 +255,6 @@ export default async function HomePage({
           viewAll,
         }}
       />
-
-      {/* Discover — real attractions & monuments */}
-      <section className="py-6">
-        <Container>
-          <SectionHeading
-            kicker={pick(pillars.discover.label, locale)}
-            title={t("home.discoverTitle")}
-            action={
-              <Link
-                href={cityHref("discover")}
-                className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
-              >
-                {t("common.viewAll")} <ArrowRight className="h-4 w-4" />
-              </Link>
-            }
-          />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {attractions.map((p) => (
-              <PlaceCard key={p.slug} place={p} locale={locale} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Today — only shown when there are events */}
-      {todayList.length ? (
-        <section className="py-10">
-          <Container>
-            <SectionHeading
-              kicker={t("nav.today")}
-              title={t("home.todayTitle")}
-              action={
-                <Link
-                  href="/today"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
-                >
-                  {t("common.viewAll")} <ArrowRight className="h-4 w-4" />
-                </Link>
-              }
-            />
-            <div className="grid gap-4 sm:grid-cols-2">
-              {todayList.map((e) => (
-                <EventCard key={e.slug} event={e} locale={locale} />
-              ))}
-            </div>
-          </Container>
-        </section>
-      ) : null}
 
       {/* Getting around: the metro is the city's newest and most useful change,
           and the station guides are the site's most distinctive writing. */}
@@ -304,6 +282,29 @@ export default async function HomePage({
           viewAll,
         }}
       />
+
+      {/* Discover — real attractions & monuments */}
+      <section className="py-6">
+        <Container>
+          <SectionHeading
+            kicker={pick(pillars.discover.label, locale)}
+            title={t("home.discoverTitle")}
+            action={
+              <Link
+                href={cityHref("discover")}
+                className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
+              >
+                {t("common.viewAll")} <ArrowRight className="h-4 w-4" />
+              </Link>
+            }
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {attractions.map((p) => (
+              <PlaceCard key={p.slug} place={p} locale={locale} />
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <DishesRow
         locale={locale}
@@ -338,6 +339,25 @@ export default async function HomePage({
         </Container>
       </section>
 
+      {/* Why Thessaloniki — original editorial intro */}
+      <section className="border-y border-slate-100 bg-white py-14">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-600">
+              {t("home.aboutKicker")}
+            </p>
+            <h2 className="text-2xl font-bold text-ink sm:text-3xl">
+              {t("home.aboutTitle")}
+            </h2>
+            <div className="mt-5 space-y-4 text-lg leading-relaxed text-slate-600">
+              <p>{t("home.aboutP1")}</p>
+              <p>{t("home.aboutP2")}</p>
+              <p>{t("home.aboutP3")}</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* For business CTA */}
       <section className="py-10">
         <Container>
@@ -357,6 +377,7 @@ export default async function HomePage({
           </div>
         </Container>
       </section>
+
     </>
   );
 }

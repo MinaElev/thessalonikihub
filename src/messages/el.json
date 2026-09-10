@@ -135,7 +135,13 @@
     "dishesKicker": "Στο τραπέζι",
     "dishesTitle": "Τι τρώμε στη Θεσσαλονίκη",
     "dishesIntro": "Τα πιάτα που ορίζουν την πόλη — και πότε τα τρώνε οι ντόπιοι.",
-    "searchButton": "Αναζήτηση"
+    "searchButton": "Αναζήτηση",
+    "intentToday": "Σήμερα στην πόλη",
+    "intentWhen": "Πότε να έρθω",
+    "intentStay": "Πού να μείνω",
+    "intentMetro": "Με το μετρό",
+    "intentEat": "Τι τρώμε",
+    "intentSee": "Μνημεία UNESCO"
   },
   "pillars": {
     "stayDesc": "Ξενοδοχεία, διαμερίσματα και μπουτίκ καταλύματα.",

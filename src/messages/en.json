@@ -135,7 +135,13 @@
     "dishesKicker": "At the table",
     "dishesTitle": "What we eat in Thessaloniki",
     "dishesIntro": "The dishes that define the city — and when locals actually eat them.",
-    "searchButton": "Search"
+    "searchButton": "Search",
+    "intentToday": "On in the city today",
+    "intentWhen": "When to come",
+    "intentStay": "Where to stay",
+    "intentMetro": "By metro",
+    "intentEat": "What to eat",
+    "intentSee": "UNESCO monuments"
   },
   "pillars": {
     "stayDesc": "Hotels, apartments and boutique stays.",
