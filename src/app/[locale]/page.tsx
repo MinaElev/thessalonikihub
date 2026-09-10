@@ -9,6 +9,12 @@ import { Container, SectionHeading } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { EventCard } from "@/components/EventCard";
 import { GuideCard } from "@/components/GuideCard";
+import {
+  MonthsStrip,
+  MetroLine,
+  AreasDirectory,
+  DishesRow,
+} from "@/components/HomeSections";
 import { pillars, site } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { cityHref, collectionHref, pillarHref } from "@/lib/links";
@@ -72,6 +78,14 @@ export default async function HomePage({
   const upcoming = await getUpcomingEvents(10);
   const todayList = (eventsToday.length ? eventsToday : upcoming).slice(0, 4);
   const quickIntents = getCollections().filter((c) => c.featured).slice(0, 6);
+  // Europe/Athens, so the highlighted month matches the city rather than the
+  // server's timezone.
+  const currentMonth = Number(
+    new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Athens", month: "numeric" })
+      .format(new Date()),
+  );
+  const t2 = (k: string) => t(`home.${k}`);
+  const viewAll = t("common.viewAll");
 
   return (
     <>
@@ -103,7 +117,7 @@ export default async function HomePage({
               {t("home.heroSubtitle")}
             </p>
 
-            {/* Search (visual entry point; wires to Discover for now) */}
+            {/* Search — posts to the site-wide /search page. */}
             <form
               action={`/${locale === "el" ? "" : locale + "/"}search`}
               className="mt-8 flex items-center gap-2 rounded-full bg-white p-2 shadow-lg"
@@ -120,7 +134,7 @@ export default async function HomePage({
                 type="submit"
                 className="shrink-0 rounded-full bg-accent-600 px-5 py-2 font-semibold text-white transition hover:bg-accent-700"
               >
-                <span className="hidden sm:inline">{t("common.readMore")}</span>
+                <span className="hidden sm:inline">{t("home.searchButton")}</span>
                 <ArrowRight className="h-5 w-5 sm:hidden" />
               </button>
             </form>
@@ -203,6 +217,19 @@ export default async function HomePage({
         </Container>
       </section>
 
+      {/* When to come — the first question a visitor actually has. */}
+      <MonthsStrip
+        locale={locale}
+        currentMonth={currentMonth}
+        nowLabel={t2("monthsNow")}
+        labels={{
+          kicker: t2("monthsKicker"),
+          title: t2("monthsTitle"),
+          intro: t2("monthsIntro"),
+          viewAll,
+        }}
+      />
+
       {/* Discover — real attractions & monuments */}
       <section className="py-6">
         <Container>
@@ -250,6 +277,43 @@ export default async function HomePage({
           </Container>
         </section>
       ) : null}
+
+      {/* Getting around: the metro is the city's newest and most useful change,
+          and the station guides are the site's most distinctive writing. */}
+      <MetroLine
+        locale={locale}
+        labels={{
+          kicker: t2("metroKicker"),
+          title: t2("metroTitle"),
+          intro: t2("metroIntro"),
+          viewAll,
+        }}
+        branchLabels={{
+          trunk: t2("metroTrunk"),
+          kalamaria: t2("metroKalamaria"),
+          neaElvetia: t2("metroNeaElvetia"),
+        }}
+      />
+
+      <AreasDirectory
+        locale={locale}
+        labels={{
+          kicker: t2("areasKicker"),
+          title: t2("areasTitle"),
+          intro: t2("areasIntro"),
+          viewAll,
+        }}
+      />
+
+      <DishesRow
+        locale={locale}
+        labels={{
+          kicker: t2("dishesKicker"),
+          title: t2("dishesTitle"),
+          intro: t2("dishesIntro"),
+          viewAll,
+        }}
+      />
 
       {/* Guides */}
       <section className="py-10">
