@@ -81,9 +81,16 @@ An award-winning seafood restaurant, built on fresh raw materials and preparatio
         en: "Nikolaou Plastira 3, Nea Krini, Kalamaria 551 32",
       },
     },
-    // The restaurant's own photographs are not ours to reuse; the owner can
-    // supply licensed images via "Claim your business".
-    photos: [],
+    // Supplied by the restaurant.
+    photos: [
+      {
+        url: "/photos/mavri-thalassa.webp",
+        alt: {
+          el: "Η σάλα της Μαύρης Θάλασσας με στρωμένα τραπέζια και την κάβα κρασιών στο βάθος",
+          en: "The dining room at Mavri Thalassa, tables laid and the wine cellar behind",
+        },
+      },
+    ],
     contact: {
       phone: "+302310932542",
       email: "info@mavri-thalassa.gr",

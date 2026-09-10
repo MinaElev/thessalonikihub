@@ -5,9 +5,9 @@ import type { Place } from "@/lib/types";
  *
  * Real listings are added only with verified PUBLIC information (name, area,
  * category, official/booking link and publicly listed facilities), never
- * invented phone numbers, prices or hours. Photos are left empty until the
- * owner provides properly licensed images (third-party booking-site photos are
- * not free to reuse); owners can add them via "Claim your business".
+ * invented phone numbers, prices or hours. Photos appear only once the owner
+ * supplies them; third-party booking-site images are not free to reuse, and
+ * owners can add their own via "Claim your business".
  */
 export const accommodations: Place[] = [
   {
@@ -38,9 +38,31 @@ export const accommodations: Place[] = [
       area: "center",
       address: { el: "Οδός Αγίας Σοφίας, Κέντρο, Θεσσαλονίκη", en: "Agias Sofias St., City Center, Thessaloniki" },
     },
-    // Third-party photos are not free to reuse; the owner can add licensed
-    // images via "Claim your business".
-    photos: [],
+    // Supplied by the owner. Third-party booking-site photos are still not
+    // free to reuse, so anything not provided directly stays out.
+    photos: [
+      {
+        url: "/photos/agias-sofias-luxury-apartments-1.webp",
+        alt: {
+          el: "Το σαλόνι του διαμερίσματος με τον καναπέ, την τραπεζαρία και την μπαλκονόπορτα",
+          en: "The apartment's living room with sofa, dining table and balcony door",
+        },
+      },
+      {
+        url: "/photos/agias-sofias-luxury-apartments-2.webp",
+        alt: {
+          el: "Καθιστικό με σκούρο καναπέ και μπαλκόνι με θέα στο κέντρο της Θεσσαλονίκης",
+          en: "Seating area with a dark sofa and a balcony looking over central Thessaloniki",
+        },
+      },
+      {
+        url: "/photos/agias-sofias-luxury-apartments-3.webp",
+        alt: {
+          el: "Ο ενιαίος χώρος καθιστικού με μαρμάρινο δάπεδο και κρυφό φωτισμό",
+          en: "The open-plan living space with marble floors and recessed lighting",
+        },
+      },
+    ],
     contact: {
       bookingUrl: "https://www.booking.com/hotel/gr/agias-sofias-luxury-apartments.el.html",
     },

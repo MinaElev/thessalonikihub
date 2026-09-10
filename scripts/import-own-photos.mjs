@@ -18,6 +18,14 @@ const ROOT = process.cwd();
 const SRC_DIR = path.join(ROOT, "image-sources");
 const OUT_DIR = path.join(ROOT, "public", "photos");
 const apply = process.argv.includes("--apply");
+/**
+ * `--as <slug>` assigns every loose image whose name does not resolve on its
+ * own to that slug, numbered in filename order. Listing photos arrive from an
+ * owner as a numbered set with no meaningful names, so there is nothing in the
+ * filename to match on.
+ */
+const asIdx = process.argv.indexOf("--as");
+const asSlug = asIdx > -1 ? process.argv[asIdx + 1] : null;
 
 /** Slugs the site knows about, so a mistyped filename is caught not guessed. */
 const KNOWN = new Set([
@@ -26,6 +34,7 @@ const KNOWN = new Set([
   "byzantine-walls", "heptapyrgion", "aristotelous-square", "nea-paralia",
   "archaeological-museum", "museum-of-byzantine-culture",
   "vergina", "mount-olympus", "edessa", "meteora", "chalkidiki",
+  "mavri-thalassa", "boston-karamanli", "agias-sofias-luxury-apartments",
 ]);
 
 /** Greek filenames are common here, so match on a transliterated form too. */
@@ -57,6 +66,9 @@ const GREEK_ALIASES = {
   "έδεσσα": "edessa",
   "μετεωρα": "meteora",
   "μετέωρα": "meteora",
+  "μαυρη θαλασσα": "mavri-thalassa",
+  "μαύρη θάλασσα": "mavri-thalassa",
+  "boston": "boston-karamanli",
   "αρχαιολογικο μουσειο": "archaeological-museum",
   "μουσειο βυζαντινου πολιτισμου": "museum-of-byzantine-culture",
   "νεα παραλια": "nea-paralia",
@@ -119,8 +131,19 @@ async function main() {
   const done = [];
   const skipped = [];
 
+  // Files that resolve on their own, then the unresolved ones under --as.
+  const unresolved = candidates
+    .filter((c) => c.dir === ROOT && !slugFor(c.file))
+    .sort((a, b) => a.file.localeCompare(b.file, "en", { numeric: true }));
+  const multi = new Map();
+  if (asSlug) {
+    unresolved.forEach((c, i) =>
+      multi.set(c.full, `${asSlug}-${i + 1}`),
+    );
+  }
+
   for (const { dir, file, full } of candidates) {
-    const slug = slugFor(file);
+    const slug = multi.get(full) ?? slugFor(file);
     if (!slug) {
       if (dir === ROOT) skipped.push(file);
       continue;
