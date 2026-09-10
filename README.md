@@ -103,6 +103,19 @@ canonical plus hreflang alternates for all locales (`src/lib/seo.ts`).
   properly licensed (Wikimedia Commons) or supplied by the owner; third-party
   booking-site images are never reused.
 
+## Database security (Supabase)
+
+Prisma creates tables with **Row Level Security disabled**, and Supabase exposes
+the `public` schema through PostgREST. With RLS off, anyone holding
+`NEXT_PUBLIC_SUPABASE_ANON_KEY` — which ships to the browser by design — can read
+and write those tables directly, bypassing the app.
+
+`prisma/rls.sql` enables RLS on every table. The app is unaffected: it reads
+through Prisma over `DATABASE_URL` (project owner, bypasses RLS), and uses the
+Supabase client only for auth, which lives in the `auth` schema.
+
+**Re-run `prisma/rls.sql` after adding a model or resetting the database.**
+
 ## Adding content
 
 Everything is typed — the compiler guides you. Each entity supports per-locale
