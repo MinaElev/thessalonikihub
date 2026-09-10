@@ -31,6 +31,8 @@ export function placeToDbData(place: Place) {
     service: (place.service ?? null) as never,
     rating: (place.rating ?? null) as never,
     hours: (place.hours ?? null) as never,
+    seoTitle: (place.seoTitle ?? null) as never,
+    seoDescription: (place.seoDescription ?? null) as never,
     featured: place.featured ?? false,
     status: "PUBLISHED" as never,
   };

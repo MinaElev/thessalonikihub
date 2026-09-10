@@ -105,6 +105,9 @@ model Place {
   rating     Json? // Rating { average, count } — from moderated reviews
   /// Opening hours per weekday, supplied by the owner. Never invented.
   hours      Json? // OpeningHours { mon..sun: "09:00-17:00" }
+  /// Optional SEO overrides written by an editor; fall back to name/summary.
+  seoTitle       Json?
+  seoDescription Json?
   verified   Boolean  @default(false)
   featured   Boolean  @default(false)
 

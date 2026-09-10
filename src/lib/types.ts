@@ -214,6 +214,13 @@ export interface Place {
   rating?: Rating;
   /** Opening hours, supplied by the owner. Never invented. */
   hours?: OpeningHours;
+  /**
+   * Optional SEO overrides, written by an editor. When absent the page falls
+   * back to the name (plus area) and the summary, which is the right default
+   * for most listings — these exist for the few where it isn't.
+   */
+  seoTitle?: Localized<string>;
+  seoDescription?: Localized<string>;
   /** True once the listing is verified / claimed by its owner. */
   verified?: boolean;
   /** Curated, editor-controlled ranking within a listing. Higher wins. */

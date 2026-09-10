@@ -44,8 +44,8 @@ export default async function AdminPage({
     : [[], [], []];
 
   const rows = [
-    ...places.map((p) => ({ id: p.id, kind: "place", label: p.kind as string, name: p.name as Localized<string>, summary: p.summary as Localized<string> })),
-    ...events.map((e) => ({ id: e.id, kind: "event", label: "EVENTS", name: e.name as Localized<string>, summary: e.summary as Localized<string> })),
+    ...places.map((p) => ({ id: p.id, kind: "place", label: p.kind as string, name: p.name as Localized<string>, summary: p.summary as Localized<string>, slug: p.slug as string | undefined })),
+    ...events.map((e) => ({ id: e.id, kind: "event", label: "EVENTS", name: e.name as Localized<string>, summary: e.summary as Localized<string>, slug: undefined as string | undefined })),
   ];
 
   return (
@@ -130,7 +130,15 @@ export default async function AdminPage({
                 </p>
                 <p className="truncate text-sm text-muted">{pick(r.summary, locale)}</p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                {r.slug ? (
+                  <Link
+                    href={`/dashboard/edit/${r.slug}`}
+                    className="rounded-full border border-brand-200 px-3 py-1.5 text-sm font-semibold text-brand-700 hover:bg-brand-50"
+                  >
+                    {tt("Μετάφραση / επεξεργασία", "Translate / edit")}
+                  </Link>
+                ) : null}
                 <form action={approveListing}>
                   <input type="hidden" name="kind" value={r.kind} />
                   <input type="hidden" name="id" value={r.id} />

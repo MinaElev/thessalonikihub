@@ -28,6 +28,20 @@ const offerSchema = z.object({
   expiresAt: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/).optional().or(z.literal("")),
 });
 
+/** Editorial fields, writable by an admin only. */
+const editorialSchema = z.object({
+  nameEl: z.string().trim().min(2).max(160),
+  nameEn: z.string().trim().max(160),
+  summaryEl: z.string().trim().min(10).max(400),
+  summaryEn: z.string().trim().max(400),
+  descriptionEl: z.string().trim().min(20),
+  descriptionEn: z.string().trim(),
+  seoTitleEl: z.string().trim().max(70),
+  seoTitleEn: z.string().trim().max(70),
+  seoDescriptionEl: z.string().trim().max(200),
+  seoDescriptionEn: z.string().trim().max(200),
+});
+
 const editSchema = z.object({
   phone: z.string().trim().max(40),
   email: z.string().trim().max(120),
@@ -128,15 +142,47 @@ export async function updateOwnedListing(
     });
   }
 
-  try {
-    await prisma.place.update({
-      where: { slug },
-      data: {
-        hours: hours as never,
-        contact: contact as never,
-        offers: (offers.length ? offers : null) as never,
-      },
+  // Editorial text and SEO overrides are admin-only: an owner must not be able
+  // to rewrite what the listing says it is.
+  let editorial: Record<string, unknown> = {};
+  if (user.role === "ADMIN" && formData.get("nameEl") !== null) {
+    const e = editorialSchema.safeParse({
+      nameEl: formData.get("nameEl") ?? "",
+      nameEn: formData.get("nameEn") ?? "",
+      summaryEl: formData.get("summaryEl") ?? "",
+      summaryEn: formData.get("summaryEn") ?? "",
+      descriptionEl: formData.get("descriptionEl") ?? "",
+      descriptionEn: formData.get("descriptionEn") ?? "",
+      seoTitleEl: formData.get("seoTitleEl") ?? "",
+      seoTitleEn: formData.get("seoTitleEn") ?? "",
+      seoDescriptionEl: formData.get("seoDescriptionEl") ?? "",
+      seoDescriptionEn: formData.get("seoDescriptionEn") ?? "",
     });
+    if (!e.success) return { status: "invalid", message: "editorial" };
+    const d = e.data;
+    // Greek is required; English is stored only when actually written, so
+    // `pick()` keeps falling back to Greek rather than showing an empty page.
+    const loc = (el: string, en: string) => (en ? { el, en } : { el });
+    editorial = {
+      name: loc(d.nameEl, d.nameEn),
+      summary: loc(d.summaryEl, d.summaryEn),
+      description: loc(d.descriptionEl, d.descriptionEn),
+      seoTitle: d.seoTitleEl || d.seoTitleEn ? loc(d.seoTitleEl, d.seoTitleEn) : null,
+      seoDescription:
+        d.seoDescriptionEl || d.seoDescriptionEn
+          ? loc(d.seoDescriptionEl, d.seoDescriptionEn)
+          : null,
+    };
+  }
+
+  try {
+    const data = {
+      hours,
+      contact,
+      offers: offers.length ? offers : null,
+      ...editorial,
+    };
+    await prisma.place.update({ where: { slug }, data: data as never });
   } catch {
     return { status: "error" };
   }

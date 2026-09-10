@@ -131,26 +131,24 @@ export function ListingForm({
       {/* Basics */}
       <fieldset className="space-y-4">
         <legend className="text-lg font-bold">{T(locale, "Βασικά στοιχεία", "Basics")}</legend>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Field label={T(locale, "Όνομα (Ελληνικά)", "Name (Greek)")} required error={errors.nameEl?.message}>
-            <input className={inputCls} {...register("nameEl")} />
-          </Field>
-          <Field label={T(locale, "Όνομα (Αγγλικά)", "Name (English)")} error={errors.nameEn?.message}>
-            <input className={inputCls} {...register("nameEn")} />
-          </Field>
-        </div>
-        <Field label={T(locale, "Σύντομη περιγραφή (Ελληνικά)", "Short summary (Greek)")} required error={errors.summaryEl?.message}>
+        {/* Greek only. The English version is written by an editor before the
+            listing is approved, so submitters aren't asked to translate. */}
+        <Field label={T(locale, "Όνομα", "Name")} required error={errors.nameEl?.message}>
+          <input className={inputCls} {...register("nameEl")} />
+        </Field>
+        <Field label={T(locale, "Σύντομη περιγραφή", "Short summary")} required error={errors.summaryEl?.message}>
           <input className={inputCls} {...register("summaryEl")} />
         </Field>
-        <Field label={T(locale, "Σύντομη περιγραφή (Αγγλικά)", "Short summary (English)")} error={errors.summaryEn?.message}>
-          <input className={inputCls} {...register("summaryEn")} />
+        <Field label={T(locale, "Περιγραφή", "Description")} required error={errors.descriptionEl?.message}>
+          <textarea rows={5} className={inputCls} {...register("descriptionEl")} />
         </Field>
-        <Field label={T(locale, "Περιγραφή (Ελληνικά)", "Description (Greek)")} required error={errors.descriptionEl?.message}>
-          <textarea rows={4} className={inputCls} {...register("descriptionEl")} />
-        </Field>
-        <Field label={T(locale, "Περιγραφή (Αγγλικά)", "Description (English)")} error={errors.descriptionEn?.message}>
-          <textarea rows={4} className={inputCls} {...register("descriptionEn")} />
-        </Field>
+        <p className="rounded-xl bg-slate-50 p-3 text-xs text-muted">
+          {T(
+            locale,
+            "Γράψε στα ελληνικά. Την αγγλική απόδοση τη συμπληρώνει η ομάδα μας πριν τη δημοσίευση.",
+            "Write in Greek. Our team adds the English version before publishing.",
+          )}
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label={T(locale, "Κατηγορία/είδος", "Type")} error={errors.type?.message}>
             <input className={inputCls} placeholder={T(locale, "π.χ. διαμέρισμα, brunch", "e.g. apartment, brunch")} {...register("type")} />

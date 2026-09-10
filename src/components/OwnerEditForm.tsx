@@ -9,6 +9,27 @@ const initial: OwnerEditState = { status: "idle" };
 
 const DAYS: WeekDay[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
+export interface EditorialValues {
+  nameEl: string; nameEn: string;
+  summaryEl: string; summaryEn: string;
+  descriptionEl: string; descriptionEn: string;
+  seoTitleEl: string; seoTitleEn: string;
+  seoDescriptionEl: string; seoDescriptionEn: string;
+}
+
+export interface EditorialLabels {
+  title: string;
+  hint: string;
+  greek: string;
+  english: string;
+  name: string;
+  summary: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+  seoHint: string;
+}
+
 export interface OwnerEditLabels {
   hoursTitle: string;
   hoursHint: string;
@@ -45,8 +66,13 @@ export function OwnerEditForm({
   contact,
   offers,
   labels,
+  editorial,
+  editorialLabels,
 }: {
   slug: string;
+  /** Present only for admins: the bilingual text and SEO overrides. */
+  editorial?: EditorialValues;
+  editorialLabels?: EditorialLabels;
   hours: OpeningHours;
   contact: {
     phone?: string;
@@ -169,6 +195,101 @@ export function OwnerEditForm({
           <Plus className="h-4 w-4" /> {labels.addOffer}
         </button>
       </section>
+
+      {editorial && editorialLabels ? (
+        <section className="rounded-2xl border border-brand-200 bg-brand-50/40 p-5">
+          <h2 className="text-lg font-bold">{editorialLabels.title}</h2>
+          <p className="mt-1 text-sm text-muted">{editorialLabels.hint}</p>
+
+          {(
+            [
+              ["name", editorialLabels.name, "nameEl", "nameEn", false],
+              ["summary", editorialLabels.summary, "summaryEl", "summaryEn", false],
+              ["description", editorialLabels.description, "descriptionEl", "descriptionEn", true],
+            ] as const
+          ).map(([key, label, elName, enName, multiline]) => (
+            <div key={key} className="mt-4">
+              <p className="mb-1 text-sm font-medium text-slate-700">{label}</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {(
+                  [
+                    [elName, editorialLabels.greek],
+                    [enName, editorialLabels.english],
+                  ] as const
+                ).map(([field, langLabel]) => (
+                  <div key={field}>
+                    <label
+                      htmlFor={field}
+                      className="mb-1 block text-xs uppercase tracking-wide text-muted"
+                    >
+                      {langLabel}
+                    </label>
+                    {multiline ? (
+                      <textarea
+                        id={field}
+                        name={field}
+                        rows={6}
+                        defaultValue={editorial[field]}
+                        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-400"
+                      />
+                    ) : (
+                      <input
+                        id={field}
+                        name={field}
+                        defaultValue={editorial[field]}
+                        className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-400"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <p className="mt-5 text-sm font-medium text-slate-700">
+            {editorialLabels.seoTitle}
+          </p>
+          <p className="mb-2 text-xs text-muted">{editorialLabels.seoHint}</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <input
+              name="seoTitleEl"
+              defaultValue={editorial.seoTitleEl}
+              placeholder={editorialLabels.greek}
+              maxLength={70}
+              className="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-400"
+            />
+            <input
+              name="seoTitleEn"
+              defaultValue={editorial.seoTitleEn}
+              placeholder={editorialLabels.english}
+              maxLength={70}
+              className="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-400"
+            />
+          </div>
+
+          <p className="mt-4 mb-2 text-sm font-medium text-slate-700">
+            {editorialLabels.seoDescription}
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <textarea
+              name="seoDescriptionEl"
+              defaultValue={editorial.seoDescriptionEl}
+              placeholder={editorialLabels.greek}
+              maxLength={200}
+              rows={2}
+              className="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-400"
+            />
+            <textarea
+              name="seoDescriptionEn"
+              defaultValue={editorial.seoDescriptionEn}
+              placeholder={editorialLabels.english}
+              maxLength={200}
+              rows={2}
+              className="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-400"
+            />
+          </div>
+        </section>
+      ) : null}
 
       <div className="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-5">
         <button

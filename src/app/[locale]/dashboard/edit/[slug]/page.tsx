@@ -78,6 +78,23 @@ export default async function EditListingPage({
     description?: Localized<string>;
     expiresAt?: string;
   }[];
+  const isAdmin = user.role === "ADMIN";
+  const loc = (v: unknown) => (v ?? {}) as Localized<string>;
+  const editorial = isAdmin
+    ? {
+        nameEl: loc(place.name).el ?? "",
+        nameEn: loc(place.name).en ?? "",
+        summaryEl: loc(place.summary).el ?? "",
+        summaryEn: loc(place.summary).en ?? "",
+        descriptionEl: loc(place.description).el ?? "",
+        descriptionEn: loc(place.description).en ?? "",
+        seoTitleEl: loc(place.seoTitle).el ?? "",
+        seoTitleEn: loc(place.seoTitle).en ?? "",
+        seoDescriptionEl: loc(place.seoDescription).el ?? "",
+        seoDescriptionEn: loc(place.seoDescription).en ?? "",
+      }
+    : undefined;
+
   const offers: OfferRow[] = rawOffers.map((o) => ({
     title: o.title ? pick(o.title, locale) : "",
     description: o.description ? pick(o.description, locale) : "",
@@ -107,6 +124,29 @@ export default async function EditListingPage({
 
       <OwnerEditForm
         slug={slug}
+        editorial={editorial}
+        editorialLabels={
+          editorial
+            ? {
+                title: tt("Συντακτικά (μόνο διαχειριστής)", "Editorial (admin only)"),
+                hint: tt(
+                  "Ο χρήστης γράφει μόνο ελληνικά. Συμπλήρωσε την αγγλική απόδοση πριν την έγκριση — αν μείνει κενή, η αγγλική σελίδα δείχνει το ελληνικό κείμενο.",
+                  "Submitters write Greek only. Add the English version before approving — if it stays empty, the English page shows the Greek text.",
+                ),
+                greek: tt("Ελληνικά", "Greek"),
+                english: tt("Αγγλικά", "English"),
+                name: tt("Όνομα", "Name"),
+                summary: tt("Σύντομη περιγραφή", "Short summary"),
+                description: tt("Περιγραφή", "Description"),
+                seoTitle: tt("Τίτλος SEO (προαιρετικό)", "SEO title (optional)"),
+                seoDescription: tt("Περιγραφή SEO (προαιρετικό)", "SEO description (optional)"),
+                seoHint: tt(
+                  "Άφησέ τα κενά και ο τίτλος παράγεται αυτόματα ως «Όνομα — Περιοχή», με τη σύντομη περιγραφή ως meta description.",
+                  "Leave blank and the title is generated as \"Name — Area\", with the short summary as the meta description.",
+                ),
+              }
+            : undefined
+        }
         hours={hours}
         contact={contact}
         offers={offers}

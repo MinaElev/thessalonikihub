@@ -75,8 +75,18 @@ export async function placeMetadata(
     // Only append the area when the result still fits a search result. Long
     // names (and entities that aren't tied to one neighbourhood) keep the
     // plain name instead of a misleading or truncated suffix.
-    title: area && name.length <= 40 ? `${name} — ${pick(area.name, locale)}` : name,
-    description: pick(place.summary, locale),
+    // An editor's override wins where one exists; otherwise the automatic
+    // title and summary, which are the right default for most listings.
+    title:
+      place.seoTitle && pick(place.seoTitle, locale)
+        ? pick(place.seoTitle, locale)
+        : area && name.length <= 40
+          ? `${name} — ${pick(area.name, locale)}`
+          : name,
+    description:
+      place.seoDescription && pick(place.seoDescription, locale)
+        ? pick(place.seoDescription, locale)
+        : pick(place.summary, locale),
     images: place.photos[0] ? [place.photos[0].url] : undefined,
     type: "article",
   });
