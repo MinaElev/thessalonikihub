@@ -4,8 +4,14 @@ import type { Place } from "@/lib/types";
  * REAL attractions, monuments and museums of Thessaloniki (DISCOVER pillar).
  *
  * All entries describe well-known public landmarks with factual, verifiable
- * information. Photos are real images of each monument from Wikimedia Commons
- * (see `photo.credit`); confirm licensing/attribution before commercial launch.
+ * information.
+ *
+ * Photos are a mix: the site's own photographs, which carry no attribution
+ * fields, and Wikimedia Commons images, which carry `author`, `license` and
+ * `sourceUrl` because CC BY-SA requires all three to be shown. Both are served
+ * from public/photos — nothing is hotlinked, since upload.wikimedia.org
+ * rate-limits under real traffic.
+ *
  * Opening hours and ticket prices change and are deliberately NOT hard-coded
  * here; link users to the official source instead.
  *
@@ -143,7 +149,15 @@ It is one of the **15 Paleochristian and Byzantine Monuments** of Thessaloniki o
       area: "center",
       address: { el: "Πλατεία Αγίου Γεωργίου, Θεσσαλονίκη", en: "Agiou Georgiou Sq., Thessaloniki" },
     },
-    photos: [],
+    photos: [
+      {
+        url: "/photos/rotunda.webp",
+        alt: {
+          el: "Η Ροτόντα με τον οθωμανικό μιναρέ της στο ηλιοβασίλεμα, με τον Θερμαϊκό στο βάθος",
+          en: "The Rotunda with its Ottoman minaret at sunset, the Thermaic Gulf beyond",
+        },
+      },
+    ],
     contact: {},
     featured: true,
     updatedAt: "2026-09-08",
@@ -197,12 +211,11 @@ It stands on Egnatia Street, free to visit 24/7, on the axis climbing up to the 
     },
     photos: [
       {
-        url: "/photos/6d192c2d38.webp",
-        alt: { el: "Η Αψίδα του Γαλερίου (Καμάρα)", en: "The Arch of Galerius (Kamara)" },
-        author: "Adam Carr",
-        license: "CC BY-SA 3.0",
-        licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Ac.galerius2.jpg",
+        url: "/photos/arch-of-galerius.webp",
+        alt: {
+          el: "Η Αψίδα του Γαλερίου, η «Καμάρα», στην Εγνατία το σούρουπο, με τα ανάγλυφα του 4ου αιώνα",
+          en: "The Arch of Galerius, the \"Kamara\", on Egnatia Street at dusk, with its 4th-century reliefs",
+        },
       },
     ],
     contact: {},
@@ -312,12 +325,11 @@ It is one of the city's **UNESCO monuments**. It is an active church; the saint'
     },
     photos: [
       {
-        url: "/photos/944690fb79.webp",
-        alt: { el: "Ο Ναός του Αγίου Δημητρίου", en: "The Church of Saint Demetrios" },
-        author: "C messier",
-        license: "CC BY-SA 4.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:%CE%9D%CE%B1%CF%8C%CF%82_%CE%91%CE%B3%CE%AF%CE%BF%CF%85_%CE%94%CE%B7%CE%BC%CE%B7%CF%84%CF%81%CE%AF%CE%BF%CF%85,_%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7_3785.jpg",
+        url: "/photos/agios-dimitrios.webp",
+        alt: {
+          el: "Ο Ναός του Αγίου Δημητρίου φωτισμένος το σούρουπο, η μεγαλύτερη εκκλησία της Θεσσαλονίκης",
+          en: "The Church of Saint Demetrios lit at dusk, the largest church in Thessaloniki",
+        },
       },
     ],
     contact: {},
@@ -373,12 +385,11 @@ One of the **15 UNESCO monuments** of Thessaloniki, on the square of the same na
     },
     photos: [
       {
-        url: "/photos/b77e380eff.webp",
-        alt: { el: "Ο ναός της Αγίας Σοφίας", en: "The Church of Hagia Sophia" },
-        author: "Andrew Zorin",
-        license: "CC BY-SA 3.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A5%D1%80%D0%B0%D0%BC_%D0%A1%D0%B2%D1%8F%D1%82%D0%BE%D0%B9_%D0%A1%D0%BE%D1%84%D0%B8%D0%B8_-_panoramio_(1).jpg",
+        url: "/photos/hagia-sophia.webp",
+        alt: {
+          el: "Η Αγία Σοφία Θεσσαλονίκης το βράδυ, με τον βυζαντινό τρούλο του 8ου αιώνα",
+          en: "Hagia Sophia of Thessaloniki at night, with its 8th-century Byzantine dome",
+        },
       },
     ],
     contact: {},
@@ -418,12 +429,11 @@ It stands on Chalkeon Street, next to the Kapani market in the centre. It is one
     },
     photos: [
       {
-        url: "/photos/ac884436c2.webp",
-        alt: { el: "Ο ναός της Παναγίας Χαλκέων", en: "The Church of Panagia Chalkeon" },
-        author: "Konstantinos Stampoulis ( el:User:Geraki )",
-        license: "CC BY-SA 2.5",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/2.5",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:THES_Panaghia_Chalkeon_5944.JPG",
+        url: "/photos/panagia-chalkeon.webp",
+        alt: {
+          el: "Η Παναγία Χαλκέων, ο ολόπλινθος βυζαντινός ναός του 1028, φωτισμένος το βράδυ",
+          en: "Panagia Chalkeon, the all-brick Byzantine church of 1028, lit at night",
+        },
       },
     ],
     contact: {},
@@ -469,12 +479,11 @@ One of the **UNESCO World Heritage monuments**, in the centre near Hagia Sophia.
     },
     photos: [
       {
-        url: "/photos/b52ea7c914.webp",
-        alt: { el: "Ο ναός της Αχειροποιήτου", en: "The Church of the Acheiropoietos" },
-        author: "Herbert Frank from Wien (Vienna), AT",
-        license: "CC BY 2.0",
-        licenseUrl: "https://creativecommons.org/licenses/by/2.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Thessaloniki,_Panagia_Acheiropoietos_%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%AF%CE%B1_%CE%91%CF%87%CE%B5%CE%B9%CF%81%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%84%CE%BF%CF%82_(5._Jhdt.)_(46896510045).jpg",
+        url: "/photos/acheiropoietos.webp",
+        alt: {
+          el: "Η Αχειροποίητος, παλαιοχριστιανική βασιλική του 5ου αιώνα, στην οδό Αγίας Σοφίας",
+          en: "The Acheiropoietos, a 5th-century early-Christian basilica on Agias Sofias Street",
+        },
       },
     ],
     contact: {},
@@ -699,11 +708,11 @@ Free to access and the ideal starting point for your first walk through the cent
     },
     photos: [
       {
-        url: "/photos/a7606f4d25.webp",
-        alt: { el: "Η Πλατεία Αριστοτέλους", en: "Aristotelous Square" },
-        author: "User:JFKennedy",
-        license: "Public domain",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Aristotelous_Plateia_2006_(cropped).jpg",
+        url: "/photos/aristotelous-square.webp",
+        alt: {
+          el: "Η Πλατεία Αριστοτέλους στο σούρουπο, ανοιχτή προς τον Θερμαϊκό",
+          en: "Aristotelous Square at dusk, opening toward the Thermaic Gulf",
+        },
       },
     ],
     contact: {},
