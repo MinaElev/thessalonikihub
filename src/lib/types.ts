@@ -81,6 +81,18 @@ export interface Rating {
   count: number;
 }
 
+/** Days of the week, keyed the way opening hours are stored. */
+export type WeekDay = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
+
+/**
+ * Opening hours, one entry per day, as a range like "09:00-17:00".
+ *
+ * An empty string means closed that day; a missing key means "not stated",
+ * which is different and must not be rendered as closed. Only an owner or a
+ * published source ever fills this in — hours are never guessed.
+ */
+export type OpeningHours = Partial<Record<WeekDay, string>>;
+
 export type CancellationPolicy = "flexible" | "moderate" | "strict";
 export type ParkingOption =
   | "none"
@@ -200,6 +212,8 @@ export interface Place {
   service?: ServiceDetails;
   /** Aggregate guest rating; shown once moderated reviews exist. */
   rating?: Rating;
+  /** Opening hours, supplied by the owner. Never invented. */
+  hours?: OpeningHours;
   /** True once the listing is verified / claimed by its owner. */
   verified?: boolean;
   /** Curated, editor-controlled ranking within a listing. Higher wins. */

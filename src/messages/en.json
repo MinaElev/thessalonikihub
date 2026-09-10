@@ -161,7 +161,18 @@
     "verified": "Verified",
     "reviews": "reviews",
     "similar": "Similar",
-    "exploreArea": "Explore the area: {area}"
+    "exploreArea": "Explore the area: {area}",
+    "hours": "Opening hours",
+    "closed": "Closed",
+    "day": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    }
   },
   "stay": {
     "guests": "guests",

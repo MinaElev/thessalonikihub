@@ -58,6 +58,7 @@ function rowToPlace(r: any): Place {
     stay: r.stay ?? undefined,
     service: r.service ?? undefined,
     rating: r.rating ?? undefined,
+    hours: r.hours ?? undefined,
     verified: r.verified ?? undefined,
     featured: r.featured ?? undefined,
     updatedAt:

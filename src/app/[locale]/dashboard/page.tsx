@@ -47,8 +47,8 @@ export default async function DashboardPage({
     : [[], [], []];
 
   const rows = [
-    ...places.map((p) => ({ id: p.id, name: p.name as Localized<string>, status: p.status, kind: p.kind as string })),
-    ...events.map((e) => ({ id: e.id, name: e.name as Localized<string>, status: e.status, kind: "EVENTS" })),
+    ...places.map((p) => ({ id: p.id, name: p.name as Localized<string>, status: p.status, kind: p.kind as string, slug: p.slug })),
+    ...events.map((e) => ({ id: e.id, name: e.name as Localized<string>, status: e.status, kind: "EVENTS", slug: undefined as string | undefined })),
   ];
 
   return (
@@ -89,9 +89,19 @@ export default async function DashboardPage({
                 <p className="font-semibold">{pick(r.name, locale)}</p>
                 <p className="text-xs text-muted">{r.kind}</p>
               </div>
-              <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusTone[r.status] ?? ""}`}>
-                {r.status}
-              </span>
+              <div className="flex items-center gap-3">
+                {r.slug ? (
+                  <Link
+                    href={`/dashboard/edit/${r.slug}`}
+                    className="text-sm font-semibold text-brand-700 hover:text-brand-800"
+                  >
+                    {tt("Επεξεργασία", "Edit")}
+                  </Link>
+                ) : null}
+                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusTone[r.status] ?? ""}`}>
+                  {r.status}
+                </span>
+              </div>
             </li>
           ))}
         </ul>

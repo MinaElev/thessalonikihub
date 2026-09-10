@@ -30,6 +30,7 @@ export function placeToDbData(place: Place) {
     stay: (place.stay ?? null) as never,
     service: (place.service ?? null) as never,
     rating: (place.rating ?? null) as never,
+    hours: (place.hours ?? null) as never,
     featured: place.featured ?? false,
     status: "PUBLISHED" as never,
   };

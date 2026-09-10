@@ -74,6 +74,18 @@ const schemaType: Record<StayPillar, string> = {
   services: "Service",
 };
 
+const SCHEMA_DAY: Record<string, string> = {
+  mon: "Monday",
+  tue: "Tuesday",
+  wed: "Wednesday",
+  thu: "Thursday",
+  fri: "Friday",
+  sat: "Saturday",
+  sun: "Sunday",
+};
+
+const DAY_ORDER = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
+
 function Fact({ icon: Icon, children }: { icon: LucideIcon; children: ReactNode }) {
   return (
     <div className="flex items-center gap-2 rounded-xl border border-slate-100 bg-white px-3 py-2 text-sm text-slate-700">
@@ -190,6 +202,24 @@ export async function PlaceDetail({
           ...(stay.languages?.length
             ? { availableLanguage: stay.languages }
             : {}),
+        }
+      : {}),
+    ...(place.hours
+      ? {
+          openingHoursSpecification: DAY_ORDER.flatMap((d) => {
+            const range = place.hours?.[d];
+            if (!range) return [];
+            const [opens, closes] = range.split("-").map((x) => x.trim());
+            if (!opens || !closes) return [];
+            return [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: `https://schema.org/${SCHEMA_DAY[d]}`,
+                opens,
+                closes,
+              },
+            ];
+          }),
         }
       : {}),
     ...(place.rating
@@ -548,6 +578,30 @@ export async function PlaceDetail({
                     </details>
                   ))}
                 </div>
+              </section>
+            ) : null}
+
+            {place.hours && Object.keys(place.hours).length ? (
+              <section className="mt-10">
+                <h2 className="mb-3 text-xl font-bold">{t("place.hours")}</h2>
+                <dl className="max-w-sm divide-y divide-slate-100 rounded-2xl border border-slate-100">
+                  {DAY_ORDER.map((d) => {
+                    const range = place.hours?.[d];
+                    if (range === undefined) return null;
+                    return (
+                      <div key={d} className="flex justify-between gap-4 px-4 py-2.5 text-sm">
+                        <dt className="text-slate-700">{t(`place.day.${d}`)}</dt>
+                        <dd
+                          className={
+                            range ? "font-semibold text-ink" : "text-slate-400"
+                          }
+                        >
+                          {range || t("place.closed")}
+                        </dd>
+                      </div>
+                    );
+                  })}
+                </dl>
               </section>
             ) : null}
 
