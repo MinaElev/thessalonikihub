@@ -59,6 +59,9 @@ export default async function DashboardPage({
           <p className="mt-1 text-sm text-muted">{user.email}</p>
         </div>
         <div className="flex gap-2">
+          <Link href="/dashboard/saved" className="inline-flex items-center gap-1 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold hover:border-brand-300 hover:text-brand-700">
+            {tt("Το ταξίδι μου", "My trip")}
+          </Link>
           <Link href="/submit" className="inline-flex items-center gap-1 rounded-full bg-accent-600 px-4 py-2 text-sm font-semibold text-white hover:bg-accent-700">
             <Plus className="h-4 w-4" /> {tt("Νέα καταχώρηση", "New listing")}
           </Link>

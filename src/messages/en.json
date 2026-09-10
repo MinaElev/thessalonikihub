@@ -379,5 +379,32 @@
     "adminTitle": "Ownership requests",
     "adminEmpty": "No pending requests.",
     "myClaims": "My requests"
+  },
+  "saved": {
+    "title": "My trip",
+    "subtitle": "Everything you've saved, in one place.",
+    "save": "Save",
+    "savedLabel": "Saved",
+    "signIn": "Sign in to save",
+    "error": "Something went wrong.",
+    "empty": "You haven't saved anything yet. Hit Save on whatever you like.",
+    "remove": "Remove",
+    "shareTitle": "Sharing",
+    "shareOn": "Create a link",
+    "shareOff": "Turn off",
+    "shareRotate": "New link",
+    "shareHint": "Creates a public link to your list. Anyone with it can view the list — your email is never shown.",
+    "shareRotateHint": "A new link revokes the previous one.",
+    "sharedTitle": "Trip list",
+    "sharedIntro": "A list from ThessalonikiHub.",
+    "notFound": "This link is no longer valid.",
+    "items": "places",
+    "kind": {
+      "place": "Place",
+      "event": "Event",
+      "route": "Route",
+      "dish": "Food",
+      "festival": "Festival"
+    }
   }
 }

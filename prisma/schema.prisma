@@ -72,6 +72,9 @@ model Profile {
   events    EventItem[] @relation("OwnerEvents")
   claims    Claim[]
   saved     SavedItem[]
+  /// Opaque token that makes the saved list readable at /list/<token>.
+  /// Null until the owner turns sharing on; regenerating it revokes old links.
+  shareToken String? @unique
 }
 
 /// A place: accommodation, restaurant, bar, attraction or experience.

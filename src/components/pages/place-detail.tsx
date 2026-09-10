@@ -39,6 +39,8 @@ import { MarkdownBody } from "@/components/MarkdownBody";
 import { JsonLd } from "@/components/JsonLd";
 import { MiniMapClient } from "@/components/map/MiniMapClient";
 import { ClaimBusiness } from "@/components/ClaimBusiness";
+import { SaveButton } from "@/components/SaveButton";
+import { isSaved } from "@/lib/saved";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
 import { cityHref, mapsHref, pillarHref, areaHref } from "@/lib/links";
@@ -156,6 +158,7 @@ export async function PlaceDetail({
   const stay = place.kind === "stay" ? place.stay : undefined;
   const service = place.kind === "services" ? place.service : undefined;
   const amenityGroups = place.amenities ? groupAmenities(place.amenities) : [];
+  const alreadySaved = await isSaved("place", place.slug);
 
   // Knowledge graph: the "otherPillars" a place links out to.
   const nearbyEat =
@@ -297,6 +300,21 @@ export async function PlaceDetail({
               <h1 className="text-3xl font-extrabold sm:text-4xl">
                 {pick(place.name, locale)}
               </h1>
+              <SaveButton
+                kind="place"
+                slug={place.slug}
+                path={`/${place.kind}/${place.slug}`}
+                label={pick(place.name, locale)}
+                initiallySaved={alreadySaved}
+                loginHref={locale === "el" ? "/login" : `/${locale}/login`}
+                labels={{
+                  save: t("saved.save"),
+                  saved: t("saved.savedLabel"),
+                  removed: t("saved.save"),
+                  signIn: t("saved.signIn"),
+                  error: t("saved.error"),
+                }}
+              />
               {place.verified ? (
                 <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2.5 py-1 text-sm font-semibold text-brand-700">
                   <BadgeCheck className="h-4 w-4" /> {t("place.verified")}
