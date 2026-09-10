@@ -1,6 +1,8 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 const exploreLinks = [
   { key: "stay", href: "/stay" },
@@ -12,6 +14,11 @@ const exploreLinks = [
   { key: "services", href: "/services" },
   { key: "areas", href: "/areas" },
   { key: "dayTrips", href: "/day-trips" },
+  { key: "metro", href: "/metro" },
+  { key: "whenToVisit", href: "/when-to-visit" },
+  { key: "festivals", href: "/festivals" },
+  { key: "whatToEat", href: "/what-to-eat" },
+  { key: "routes", href: "/routes" },
   { key: "forYou", href: "/for" },
   { key: "plan", href: "/plan" },
   { key: "guides", href: "/guides" },
@@ -19,6 +26,7 @@ const exploreLinks = [
 
 export function Footer() {
   const t = useTranslations();
+  const locale = useLocale() as Locale;
   const year = new Date().getFullYear();
 
   return (
@@ -32,6 +40,26 @@ export function Footer() {
           <p className="mt-2 max-w-sm text-sm text-muted">
             {t("footer.tagline")}
           </p>
+          <div className="mt-5 max-w-sm">
+            <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
+              {t("newsletter.title")}
+            </p>
+            <p className="mb-2 mt-1 text-sm text-muted">
+              {t("newsletter.subtitle")}
+            </p>
+            <NewsletterForm
+              locale={locale}
+              labels={{
+                placeholder: t("newsletter.placeholder"),
+                cta: t("newsletter.cta"),
+                sending: t("newsletter.sending"),
+                thanks: t("newsletter.thanks"),
+                invalid: t("newsletter.invalid"),
+                error: t("newsletter.error"),
+                privacy: t("newsletter.privacy"),
+              }}
+            />
+          </div>
           <div className="mt-4">
             <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
               {t("footer.sisterSite")}

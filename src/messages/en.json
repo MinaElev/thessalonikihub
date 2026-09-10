@@ -333,5 +333,16 @@
     "sisterTitle": "For the Chalkidiki half",
     "sisterText": "chalkidikihub.gr is ThessalonikiHub's sister site, dedicated entirely to Chalkidiki: beaches by peninsula, places to stay, villages and practical information.",
     "allDayTrips": "See all day trips from Thessaloniki"
+  },
+  "newsletter": {
+    "title": "What's on this week",
+    "subtitle": "Once a week, the city's events in your inbox.",
+    "placeholder": "Your email",
+    "cta": "Subscribe",
+    "sending": "…",
+    "thanks": "You're in. See you weekly.",
+    "invalid": "Please check the email address.",
+    "error": "Something went wrong. Try again shortly.",
+    "privacy": "City events only. Unsubscribe any time."
   }
 }
