@@ -1,15 +1,34 @@
 import type { Pillar } from "@/lib/types";
 import type { Locale } from "@/i18n/routing";
 
+const DEFAULT_SITE_URL = "https://thessalonikihub.gr";
+
+/**
+ * Canonical origin, resolved defensively.
+ *
+ * `metadataBase` feeds this straight into `new URL()`, so a bad value takes the
+ * whole build down with "Invalid URL". A hosting dashboard can easily leave the
+ * variable defined but empty, and `??` does not catch an empty string — so
+ * trim, require a protocol, and verify it parses before trusting it.
+ */
+function resolveSiteUrl(raw: string | undefined): string {
+  const value = raw?.trim();
+  if (!value) return DEFAULT_SITE_URL;
+  const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  try {
+    new URL(withProtocol);
+  } catch {
+    return DEFAULT_SITE_URL;
+  }
+  return withProtocol.replace(/\/$/, "");
+}
+
 /** Global site configuration. */
 export const site = {
   name: "ThessalonikiHub",
   domain: "thessalonikihub.gr",
   /** Canonical origin; override in production via NEXT_PUBLIC_SITE_URL. */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://thessalonikihub.gr").replace(
-    /\/$/,
-    "",
-  ),
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   defaultLocale: "el" as Locale,
   locales: ["el", "en"] as Locale[],
   twitter: "@thessalonikihub",
