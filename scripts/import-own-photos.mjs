@@ -44,16 +44,50 @@ const GREEK_ALIASES = {
   "επταπύργιο": "heptapyrgion",
   "βυζαντινα τειχη": "byzantine-walls",
   "βυζαντινά τείχη": "byzantine-walls",
+  "βυζαντινα τοιχοι": "byzantine-walls",
+  "βυζαντινά τοίχοι": "byzantine-walls",
+  "τειχη": "byzantine-walls",
+  "χαλκιδικη": "chalkidiki",
+  "χαλκιδική": "chalkidiki",
+  "βεργινα": "vergina",
+  "βεργίνα": "vergina",
+  "ολυμπος": "mount-olympus",
+  "όλυμπος": "mount-olympus",
+  "εδεσσα": "edessa",
+  "έδεσσα": "edessa",
+  "μετεωρα": "meteora",
+  "μετέωρα": "meteora",
+  "αρχαιολογικο μουσειο": "archaeological-museum",
+  "μουσειο βυζαντινου πολιτισμου": "museum-of-byzantine-culture",
   "νεα παραλια": "nea-paralia",
   "νέα παραλία": "nea-paralia",
   "μονη βλαταδων": "vlatadon-monastery",
   "μονή βλατάδων": "vlatadon-monastery",
 };
 
+/**
+ * Fold Greek characters that are visually identical to Latin ones. Filenames
+ * typed on a Greek keyboard often mix the two without it being visible —
+ * "nea-paraliα" ends in a Greek alpha — and the slug match would miss.
+ */
+const HOMOGLYPHS = {
+  "α": "a", "β": "b", "ε": "e", "ζ": "z", "η": "n", "ι": "i", "κ": "k",
+  "μ": "m", "ν": "v", "ο": "o", "ρ": "p", "τ": "t", "υ": "u", "χ": "x",
+  "Α": "A", "Β": "B", "Ε": "E", "Ζ": "Z", "Η": "H", "Ι": "I", "Κ": "K",
+  "Μ": "M", "Ν": "N", "Ο": "O", "Ρ": "P", "Τ": "T", "Υ": "Y", "Χ": "X",
+};
+
+function foldHomoglyphs(v) {
+  return v.replace(/[α-ωΑ-Ω]/g, (ch) => HOMOGLYPHS[ch] ?? ch);
+}
+
 function slugFor(filename) {
   const base = filename.replace(/\.[^.]+$/, "");
   // A leading known slug wins ("agios-dimitrios Ναός …").
-  const lead = base.toLowerCase().match(/^[a-z0-9-]+/)?.[0] ?? "";
+  // Try the raw name first, then with Greek homoglyphs folded to Latin.
+  const lead = (foldHomoglyphs(base).toLowerCase().match(/^[a-z0-9-]+/)?.[0]
+    ?? base.toLowerCase().match(/^[a-z0-9-]+/)?.[0]
+    ?? "").replace(/[-\s]+$/, "");
   for (const known of KNOWN) {
     if (lead === known || lead.startsWith(known + "-") || lead === known.replace(/-/g, "")) {
       return known;
@@ -98,7 +132,7 @@ async function main() {
     // Step the quality down until the file is a sensible weight; photographs
     // vary far too much for one setting to serve them all.
     let out;
-    for (const quality of [80, 72, 64, 56]) {
+    for (const quality of [80, 72, 64, 56, 48, 42]) {
       out = await sharp(full)
         .rotate() // honour EXIF orientation before stripping it
         .resize({ width: 1600, height: 1600, fit: "inside", withoutEnlargement: true })

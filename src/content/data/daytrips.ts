@@ -95,12 +95,11 @@ It lies about **90 km** (~1 hr 15 min) away. For a simple stroll/lunch, Litochor
     category: "nature",
     photos: [
       {
-        url: "/photos/07da3bf8c1.webp",
-        alt: { el: "Ο Όλυμπος", en: "Mount Olympus" },
-        author: "kallerna",
-        license: "CC BY-SA 4.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Olympus_National_Park_30.jpg",
+        url: "/photos/mount-olympus.webp",
+        alt: {
+          el: "Πεζοπόροι στο μονοπάτι του Ολύμπου, με τις κορυφές του Εθνικού Δρυμού στο βάθος",
+          en: "Hikers on the Mount Olympus trail, the peaks of the national park beyond",
+        },
       },
     ],
     featured: true,
@@ -143,12 +142,11 @@ It lies about **90 km** (~1 hour) to the west. Ideal for a calm one-day family t
     category: "nature",
     photos: [
       {
-        url: "/photos/b325d840df.webp",
-        alt: { el: "Ο καταρράκτης της Έδεσσας", en: "The Edessa waterfall" },
-        author: "Itto Ogami",
-        license: "CC BY 3.0",
-        licenseUrl: "https://creativecommons.org/licenses/by/3.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:La_cascata_-_panoramio_(1).jpg",
+        url: "/photos/edessa.webp",
+        alt: {
+          el: "Οι καταρράκτες της Έδεσσας να πέφτουν δίπλα στα παραδοσιακά σπίτια της πόλης",
+          en: "The waterfalls of Edessa dropping beside the town's traditional houses",
+        },
       },
     ],
   },
@@ -194,7 +192,15 @@ For everything on Chalkidiki (beaches, stays, villages and tips) see our dedicat
     distanceKm: 70,
     drivingTime: { el: "~1 ώρα (Κασσάνδρα)", en: "~1 hour (Kassandra)" },
     category: "beach",
-    photos: [],
+    photos: [
+      {
+        url: "/photos/chalkidiki.webp",
+        alt: {
+          el: "Οι κολπίσκοι της Σιθωνίας στη Χαλκιδική από ψηλά, με τον Άθω στον ορίζοντα",
+          en: "The coves of Sithonia in Chalkidiki from above, with Mount Athos on the horizon",
+        },
+      },
+    ],
     featured: true,
   },
   {
@@ -231,12 +237,11 @@ It is the **most distant** trip on this list, about **230 km** (~2 hr 45 min). I
     category: "history",
     photos: [
       {
-        url: "/photos/0e94e9187b.webp",
-        alt: { el: "Τα μοναστήρια των Μετεώρων", en: "The monasteries of Meteora" },
-        author: "Stathis floros",
-        license: "CC BY-SA 4.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Meteora%27s_monastery_2.jpg",
+        url: "/photos/meteora.webp",
+        alt: {
+          el: "Τα μοναστήρια των Μετεώρων πάνω στους βράχους, στο φως του ηλιοβασιλέματος",
+          en: "The monasteries of Meteora atop their rock pillars in the light of sunset",
+        },
       },
     ],
   },

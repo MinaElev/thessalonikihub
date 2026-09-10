@@ -83,12 +83,11 @@ It sits next to the **Archaeological Museum**, the **Museum of Byzantine Culture
     },
     photos: [
       {
-        url: "/photos/7250c0b344.webp",
-        alt: { el: "Ο Λευκός Πύργος της Θεσσαλονίκης", en: "The White Tower of Thessaloniki" },
-        author: "CeeGee",
-        license: "CC BY-SA 4.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:WhiteTowerThessaloniki_(3).JPG",
+        url: "/photos/white-tower.webp",
+        alt: {
+          el: "Ο Λευκός Πύργος και η παραλία της Θεσσαλονίκης το σούρουπο, με τα φώτα στον Θερμαϊκό",
+          en: "The White Tower and the Thessaloniki waterfront at dusk, lights across the Thermaic Gulf",
+        },
       },
     ],
     contact: { website: "https://lpth.gr/" },
@@ -538,12 +537,11 @@ It is one of the **UNESCO monuments**. It is an active monastery, so dress modes
     },
     photos: [
       {
-        url: "/photos/656327a394.webp",
-        alt: { el: "Η Μονή Βλατάδων", en: "Vlatades Monastery" },
-        author: "Stolbovsky",
-        license: "CC BY-SA 3.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Monastery_of_the_Vlatades_09.jpg",
+        url: "/photos/vlatadon-monastery.webp",
+        alt: {
+          el: "Η Μονή Βλατάδων στην Άνω Πόλη, με τη Θεσσαλονίκη και τον Θερμαϊκό να απλώνονται από κάτω",
+          en: "Vlatades Monastery in the Upper Town, with Thessaloniki and the gulf spread out below",
+        },
       },
     ],
     contact: {},
@@ -605,12 +603,11 @@ Part of the **UNESCO monuments**. Combine them with Vlatades Monastery and the H
     },
     photos: [
       {
-        url: "/photos/601b3f32d6.webp",
-        alt: { el: "Τα βυζαντινά τείχη της Θεσσαλονίκης", en: "The Byzantine walls of Thessaloniki" },
-        author: "Julian Nyča",
-        license: "CC BY-SA 3.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
-        sourceUrl: "https://commons.wikimedia.org/wiki/File:Saloniki_City_Walls_2.jpg",
+        url: "/photos/byzantine-walls.webp",
+        alt: {
+          el: "Τα βυζαντινά τείχη της Άνω Πόλης στο ηλιοβασίλεμα, με θέα σε όλη την πόλη και τον Θερμαϊκό",
+          en: "The Byzantine walls of the Upper Town at sunset, overlooking the whole city and the gulf",
+        },
       },
     ],
     contact: {},
@@ -664,7 +661,15 @@ At the top of Ano Poli; combine it with the Byzantine walls and Vlatades Monaste
       area: "ano-poli",
       address: { el: "Άνω Πόλη, Θεσσαλονίκη", en: "Ano Poli, Thessaloniki" },
     },
-    photos: [],
+    photos: [
+      {
+        url: "/photos/heptapyrgion.webp",
+        alt: {
+          el: "Το Επταπύργιο (Γεντί Κουλέ) από ψηλά στο ηλιοβασίλεμα, με τη βυζαντινή σημαία στον πύργο",
+          en: "The Heptapyrgion (Yedi Kule) from above at sunset, the Byzantine flag flying from its tower",
+        },
+      },
+    ],
     contact: {},
     updatedAt: "2026-09-08",
   },
@@ -770,7 +775,15 @@ Free, always open, and ideal for **sunset**, running and cycling. The Archaeolog
       area: "waterfront",
       address: { el: "Νέα Παραλία, Θεσσαλονίκη", en: "Waterfront, Thessaloniki" },
     },
-    photos: [],
+    photos: [
+      {
+        url: "/photos/nea-paralia.webp",
+        alt: {
+          el: "Οι «Ομπρέλες» του Ζογγολόπουλου στη Νέα Παραλία στο ηλιοβασίλεμα, με τον Λευκό Πύργο στο βάθος",
+          en: "Zongolopoulos's \"Umbrellas\" on the waterfront at sunset, the White Tower beyond",
+        },
+      },
+    ],
     contact: {},
     updatedAt: "2026-09-08",
   },
