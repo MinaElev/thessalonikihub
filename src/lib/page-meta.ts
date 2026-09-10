@@ -7,6 +7,7 @@ import { pillars } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { cityHref, collectionHref, pillarHref, placeHref } from "@/lib/links";
 import { getCollection, getPlace, getPlaces } from "@/lib/repo";
+import { getArea } from "@/content/data/areas";
 
 type StayPillar = Exclude<Pillar, "events">;
 
@@ -63,10 +64,18 @@ export async function placeMetadata(
 ): Promise<Metadata> {
   const place = await getPlace(pillar, slug);
   if (!place) return {};
+  // Put the neighbourhood in the title: people search "fish taverna Kalamaria"
+  // far more than they search a venue by name. buildMetadata appends the site
+  // name, which already carries "Thessaloniki".
+  const area = getArea(place.geo.area);
+  const name = pick(place.name, locale);
   return buildMetadata({
     locale,
     path: placeHref(place),
-    title: pick(place.name, locale),
+    // Only append the area when the result still fits a search result. Long
+    // names (and entities that aren't tied to one neighbourhood) keep the
+    // plain name instead of a misleading or truncated suffix.
+    title: area && name.length <= 40 ? `${name} — ${pick(area.name, locale)}` : name,
     description: pick(place.summary, locale),
     images: place.photos[0] ? [place.photos[0].url] : undefined,
     type: "article",
