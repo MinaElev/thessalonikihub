@@ -70,3 +70,11 @@ export function metroHref(): string {
 export function metroStationHref(slug: string): string {
   return `/metro/${slug}`;
 }
+
+export function whenToVisitHref(): string {
+  return "/when-to-visit";
+}
+
+export function monthHref(slug: string): string {
+  return `/when-to-visit/${slug}`;
+}

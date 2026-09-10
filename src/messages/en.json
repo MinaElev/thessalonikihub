@@ -19,7 +19,8 @@
     "forYou": "For you",
     "more": "More",
     "explore": "Explore",
-    "metro": "Metro"
+    "metro": "Metro",
+    "whenToVisit": "When to visit"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -236,5 +237,31 @@
     "approx": "Position is approximate, for orientation only.",
     "servesArea": "Serves the area",
     "allStations": "All stations"
+  },
+  "months": {
+    "title": "When to visit Thessaloniki",
+    "subtitle": "Month by month: weather, events, crowds and what's worth doing.",
+    "introA": "There is no bad season for Thessaloniki — but there is a season that suits what you're after. May and September give the best mix of warmth and calm, October brings the city's great occasions, and August offers empty monuments and low prices in exchange for the heat.",
+    "introB": "Below you'll find each month on its own: the weather to expect, what's happening in the city, whether you can swim, and what to pack.",
+    "rightNow": "We're currently in:",
+    "tableTitle": "The year at a glance",
+    "tableNote": "Average climate figures (high / low), approximate.",
+    "colMonth": "Month",
+    "colTemp": "Temperature",
+    "colRain": "Rain",
+    "colCrowds": "Crowds",
+    "colSea": "Swimming",
+    "seaYes": "Yes",
+    "seaNo": "No",
+    "allMonths": "All months",
+    "highlights": "What stands out",
+    "otherMonths": "Other months",
+    "eventsThisMonth": "Events this month",
+    "disclaimer": "Temperatures are climate averages, not a weather forecast. Event dates change each year — check the official organisers before you travel.",
+    "level": {
+      "low": "Low",
+      "medium": "Moderate",
+      "high": "High"
+    }
   }
 }
