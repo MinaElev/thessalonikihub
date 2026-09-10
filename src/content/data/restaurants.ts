@@ -129,4 +129,79 @@ An award-winning seafood restaurant, built on fresh raw materials and preparatio
     featured: true,
     updatedAt: "2026-09-10",
   },
+  {
+    slug: "boston-karamanli",
+    kind: "eat",
+    name: { el: "Boston — Breakfast, Coffee & More", en: "Boston — Breakfast, Coffee & More" },
+    summary: {
+      el: "Πρωινό, καφές και σνακ σε πακέτο ή delivery — το κατάστημα της αλυσίδας πάνω στην Κωνσταντίνου Καραμανλή.",
+      en: "Breakfast, coffee and snacks to take away or delivered — the chain's branch on Konstantinou Karamanli.",
+    },
+    description: {
+      el: `Το **Boston** είναι τοπική αλυσίδα με έμφαση στο πρωινό και τον καφέ, με φαγητό σε πακέτο και παραγγελία online. Δεν είναι εστιατόριο με τραπέζια για μεγάλα γεύματα — είναι το μέρος όπου σταματάς για καφέ, κρουασάν ή ένα σάντουιτς στον δρόμο.
+
+## Τι θα βρεις
+Καφέ και πρωινό, κρουασάν και αρτοσκευάσματα, κρύα και ζεστά σάντουιτς, club sandwich, burgers και hot dog, σαλάτες, γιαούρτια, σνακ και χυμούς.
+
+## Η αλυσίδα
+Ξεκίνησε τον **Φεβρουάριο του 2018** με στόχο, όπως το περιγράφει η ίδια η εταιρεία, «ποιοτικές γεύσεις σε ανταγωνιστικές τιμές». Περίπου ενάμιση χρόνο αργότερα άνοιξε το δεύτερο κατάστημα, και σήμερα λειτουργούν **έξι σημεία** συνολικά.
+
+Από αυτά, **μέσα στη Θεσσαλονίκη** βρίσκεται το κατάστημα της **Κωνσταντίνου Καραμανλή**, που παρουσιάζεται εδώ, ενώ ένα ακόμη λειτουργεί στον **Εύοσμο**. Τα υπόλοιπα βρίσκονται εκτός πόλης: Χαλκηδόνα, ΒΙ.ΠΕ.Θ Σίνδου, Κουφάλια και Αλεξάνδρεια Ημαθίας.
+
+## Καλό να ξέρεις
+- Λειτουργεί με **take away** και **παραγγελία online** μέσω του boston.gr, με παραλαβή ή διανομή.
+- Το ωράριο δεν δημοσιεύεται· τηλεφώνησε ή δες την ιστοσελίδα πριν πας.`,
+      en: `**Boston** is a local chain built around breakfast and coffee, with takeaway and online ordering. It is not a sit-down restaurant for long meals — it is where you stop for a coffee, a croissant or a sandwich on the way.
+
+## What you'll find
+Coffee and breakfast, croissants and pastries, cold and hot sandwiches, club sandwiches, burgers and hot dogs, salads, yoghurts, snacks and juices.
+
+## The chain
+It began in **February 2018** with the stated aim of "quality flavours at competitive prices". About eighteen months later a second branch opened, and today the company runs **six locations**.
+
+Of those, the branch on **Konstantinou Karamanli** — the one covered here — sits inside Thessaloniki, with another in **Evosmos**. The rest are outside the city: Chalkidona, the Sindos industrial park, Koufalia and Alexandreia in Imathia.
+
+## Good to know
+- It works as **takeaway** and **online ordering** through boston.gr, for pickup or delivery.
+- Opening hours are not published; call or check the website before going.`,
+    },
+    type: "cafe",
+    tags: ["breakfast", "coffee", "takeaway", "delivery", "sandwiches", "burgers", "quick", "budget"],
+    geo: {
+      lat: 40.6012,
+      lng: 22.9646,
+      area: "toumba",
+      address: {
+        el: "Κωνσταντίνου Καραμανλή 161, Θεσσαλονίκη",
+        en: "Konstantinou Karamanli 161, Thessaloniki",
+      },
+    },
+    // Company photography is not ours to reuse; the owner can supply licensed
+    // images via "Claim your business".
+    photos: [],
+    contact: {
+      phone: "+302316073056",
+      email: "karamanli@boston.gr",
+      website: "https://www.boston.gr",
+    },
+    // Opening hours are not published on the company site, so they are omitted
+    // rather than guessed.
+    faqs: [
+      {
+        question: { el: "Κάνει delivery;", en: "Do they deliver?" },
+        answer: {
+          el: "Ναι. Δέχεται παραγγελίες online μέσω του boston.gr, με παραλαβή από το κατάστημα ή διανομή.",
+          en: "Yes. Orders can be placed online through boston.gr, for pickup or delivery.",
+        },
+      },
+      {
+        question: { el: "Πόσα καταστήματα έχει;", en: "How many branches are there?" },
+        answer: {
+          el: "Έξι συνολικά. Στη Θεσσαλονίκη λειτουργούν δύο — Κωνσταντίνου Καραμανλή και Εύοσμος — ενώ τα υπόλοιπα βρίσκονται σε Χαλκηδόνα, Σίνδο, Κουφάλια και Αλεξάνδρεια.",
+          en: "Six in total. Two are in Thessaloniki — Konstantinou Karamanli and Evosmos — while the rest are in Chalkidona, Sindos, Koufalia and Alexandreia.",
+        },
+      },
+    ],
+    updatedAt: "2026-09-10",
+  },
 ];
