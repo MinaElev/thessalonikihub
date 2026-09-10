@@ -94,3 +94,11 @@ export function whatToEatHref(): string {
 export function dishHref(slug: string): string {
   return `/what-to-eat/${slug}`;
 }
+
+export function routesHref(): string {
+  return "/routes";
+}
+
+export function routeHref(slug: string): string {
+  return `/routes/${slug}`;
+}

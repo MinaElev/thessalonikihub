@@ -22,7 +22,8 @@
     "metro": "Metro",
     "whenToVisit": "When to visit",
     "festivals": "Festivals",
-    "whatToEat": "What to eat"
+    "whatToEat": "What to eat",
+    "routes": "Routes"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -298,6 +299,27 @@
       "sea": "From the sea",
       "table": "At the table",
       "drink": "Drink & meze"
+    }
+  },
+  "routes": {
+    "title": "Walking routes",
+    "subtitle": "Self-guided: stops in order, distances, and what to notice at each one.",
+    "introA": "Thessaloniki is a walkable city. Most of its monuments sit within a few blocks, and distances that look long on a map are covered in minutes on foot.",
+    "introB": "Every route here comes with an order, a map and a note on each stop — what it is and what to look for. You need no guide and no booking; only shoes.",
+    "walkIt": "See the route",
+    "distance": "Distance",
+    "duration": "Duration",
+    "minutes": "minutes",
+    "difficultyLabel": "Difficulty",
+    "bestTime": "Best time",
+    "theStops": "The stops",
+    "otherRoutes": "Other routes",
+    "startStation": "Start from",
+    "mapNote": "The numbered stops in route order. Tap a point for more.",
+    "disclaimer": "Distances and times are approximate, for an unhurried pace with stops. Monument hours and ticketing change — check before you go.",
+    "difficulty": {
+      "easy": "Easy",
+      "moderate": "Moderate"
     }
   }
 }

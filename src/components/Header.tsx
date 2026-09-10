@@ -21,6 +21,7 @@ const moreNav = [
   { key: "whenToVisit", href: "/when-to-visit" },
   { key: "festivals", href: "/festivals" },
   { key: "whatToEat", href: "/what-to-eat" },
+  { key: "routes", href: "/routes" },
   { key: "areas", href: "/areas" },
   { key: "dayTrips", href: "/day-trips" },
   { key: "map", href: "/map" },
