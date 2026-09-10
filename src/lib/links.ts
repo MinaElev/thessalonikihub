@@ -86,3 +86,11 @@ export function festivalsHref(): string {
 export function festivalHref(slug: string): string {
   return `/festivals/${slug}`;
 }
+
+export function whatToEatHref(): string {
+  return "/what-to-eat";
+}
+
+export function dishHref(slug: string): string {
+  return `/what-to-eat/${slug}`;
+}

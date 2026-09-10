@@ -10,6 +10,7 @@ import {
   metroStationHref,
   monthHref,
   festivalHref,
+  dishHref,
   eventHref,
   guideHref,
   pillarHref,
@@ -21,6 +22,7 @@ import { audiences } from "@/content/data/audiences";
 import { metroStations } from "@/content/data/metro";
 import { cityMonths } from "@/content/data/months";
 import { festivals } from "@/content/data/festivals";
+import { dishes } from "@/content/data/dishes";
 import {
   getCollections,
   getEvents,
@@ -35,7 +37,7 @@ import {
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Always-present pages.
-  const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals"]);
+  const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals", "/what-to-eat"]);
   // /today is intentionally excluded: it is a dynamic daily page.
   for (const a of areas) paths.add(areaHref(a.slug));
   for (const d of dayTrips) paths.add(dayTripHref(d.slug));
@@ -43,6 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const m of metroStations) paths.add(metroStationHref(m.slug));
   for (const m of cityMonths) paths.add(monthHref(m.slug));
   for (const f of festivals) paths.add(festivalHref(f.slug));
+  for (const d of dishes) paths.add(dishHref(d.slug));
 
   const pillars: Exclude<Pillar, "events">[] = [
     "stay",

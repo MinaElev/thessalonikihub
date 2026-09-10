@@ -21,7 +21,8 @@
     "explore": "Explore",
     "metro": "Metro",
     "whenToVisit": "When to visit",
-    "festivals": "Festivals"
+    "festivals": "Festivals",
+    "whatToEat": "What to eat"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -279,5 +280,24 @@
     "eventsThatMonth": "Events that month",
     "inMonth": "Festivals this month",
     "disclaimer": "Festival dates change every year. Always check the organiser's official site before you travel or book tickets."
+  },
+  "dishes": {
+    "title": "What Thessaloniki eats",
+    "subtitle": "The dishes that define the city — where they came from, when they're eaten and why they matter.",
+    "introA": "Thessaloniki is widely considered Greece's gastronomic capital, and the reason isn't any single restaurant. It's the city's own history: a Byzantine city, an Ottoman port, a place of refuge for those who came from Asia Minor and Pontus. Every layer left something on the plate.",
+    "introB": "These pages don't recommend shops. They explain the foods themselves — where they come from, their variations and how they're eaten — so you know what you're asking for and why.",
+    "more": "See also",
+    "whereAreas": "Where it connects",
+    "whereTitle": "And where do you eat them?",
+    "whereText": "These pages are about the food, not about particular businesses. Restaurant listings are added only with verified information supplied by the businesses themselves.",
+    "whereCta": "Browse the Eat section",
+    "disclaimer": "Historical information comes from public sources. Where a dish's origin is shared or disputed, the page says so.",
+    "kind": {
+      "street": "Street food",
+      "sweet": "Sweet",
+      "sea": "From the sea",
+      "table": "At the table",
+      "drink": "Drink & meze"
+    }
   }
 }

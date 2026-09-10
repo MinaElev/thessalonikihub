@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, UtensilsCrossed } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Collection, Pillar, Place } from "@/lib/types";
@@ -10,7 +10,7 @@ import { FilterableGrid } from "@/components/FilterableGrid";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { pillars } from "@/lib/site";
-import { cityHref, collectionHref, pillarHref } from "@/lib/links";
+import { cityHref, collectionHref, pillarHref, whatToEatHref } from "@/lib/links";
 import {
   getCollection,
   getCollections,
@@ -90,6 +90,24 @@ export async function PillarIndex({
           <MarkdownBody>{t(`pillarIntro.${pillar}`)}</MarkdownBody>
         </div>
       </header>
+
+      {pillar === "eat" ? (
+        <Link
+          href={whatToEatHref()}
+          className="mb-10 flex items-start gap-4 rounded-2xl border border-brand-200 bg-brand-50 p-5 transition hover:border-brand-300"
+        >
+          <UtensilsCrossed className="mt-0.5 h-6 w-6 shrink-0 text-brand-700" />
+          <span>
+            <span className="block font-bold text-brand-900">
+              {t("dishes.title")}
+            </span>
+            <span className="mt-1 block text-sm text-brand-900/80">
+              {t("dishes.subtitle")}
+            </span>
+          </span>
+          <ArrowRight className="ml-auto mt-1 h-5 w-5 shrink-0 text-brand-700" />
+        </Link>
+      ) : null}
 
       {collections.length ? (
         <section className="mb-10">
