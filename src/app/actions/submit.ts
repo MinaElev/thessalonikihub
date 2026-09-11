@@ -5,6 +5,8 @@ import { getCurrentUser } from "@/lib/auth";
 import { listingSchema } from "@/lib/submit-schema";
 import { centroidFor } from "@/lib/area-centroids";
 import { parseAthensLocal } from "@/lib/athens-time";
+import { sendMail, adminEmail } from "@/lib/email";
+import { newSubmission } from "@/lib/email-templates";
 import type { Localized } from "@/lib/types";
 
 export type SubmitResult =
@@ -89,6 +91,7 @@ export async function submitListing(raw: unknown): Promise<SubmitResult> {
           ownerId: user.id,
         },
       });
+      await sendMail(newSubmission(adminEmail, d.nameEl, "Εκδήλωση"));
       return { ok: true, slug };
     }
 
@@ -153,6 +156,9 @@ export async function submitListing(raw: unknown): Promise<SubmitResult> {
         ownerId: user.id,
       },
     });
+    // Nothing about this can fail the submission: sendMail never throws, and
+    // a listing sitting unseen in the queue is recoverable, a lost one is not.
+    await sendMail(newSubmission(adminEmail, d.nameEl, d.category));
     return { ok: true, slug };
   } catch (e) {
     console.error("submitListing failed:", e);

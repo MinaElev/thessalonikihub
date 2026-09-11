@@ -6,6 +6,7 @@ import { Container } from "@/components/ui";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { setUserRole, deleteSubscriber } from "@/app/actions/people";
+import { isMailConfigured, adminEmail } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +64,27 @@ export default async function AdminPeoplePage({
           "Λογαριασμοί και εγγραφές στο newsletter.",
           "Accounts and newsletter sign-ups.",
         )}
+      </p>
+
+      {/* Whether notifications can actually go out is invisible otherwise:
+          without SMTP the site fails silently and nobody is ever told. */}
+      <p
+        className={`mt-6 flex flex-wrap items-center gap-2 rounded-xl border p-3 text-sm ${
+          isMailConfigured
+            ? "border-brand-200 bg-brand-50/50 text-brand-800"
+            : "border-amber-200 bg-amber-50 text-amber-900"
+        }`}
+      >
+        <Mail className="h-4 w-4 shrink-0" />
+        {isMailConfigured
+          ? tt(
+              `Τα email στέλνονται. Ειδοποιήσεις νέων καταχωρήσεων προς: ${adminEmail}`,
+              `Email is sending. New-submission alerts go to: ${adminEmail}`,
+            )
+          : tt(
+              "Δεν στέλνονται email. Οι ιδιοκτήτες δεν ειδοποιούνται για έγκριση ή απόρριψη, και δεν μαθαίνεις για νέες καταχωρήσεις. Χρειάζονται οι μεταβλητές SMTP_HOST, SMTP_USER, SMTP_PASS.",
+              "Email is not sending. Owners are not told when a listing is approved or rejected, and you are not told about new submissions. Set SMTP_HOST, SMTP_USER and SMTP_PASS.",
+            )}
       </p>
 
       <section className="mt-10">
