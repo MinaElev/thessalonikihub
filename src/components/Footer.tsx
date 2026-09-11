@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui";
 import { NewsletterForm } from "@/components/NewsletterForm";
 
+/** The seven pillars: "I know what I am looking for". */
 const exploreLinks = [
   { key: "stay", href: "/stay" },
   { key: "eat", href: "/eat" },
@@ -12,16 +13,33 @@ const exploreLinks = [
   { key: "events", href: "/events" },
   { key: "experiences", href: "/experiences" },
   { key: "services", href: "/services" },
-  { key: "areas", href: "/areas" },
-  { key: "dayTrips", href: "/day-trips" },
+] as const;
+
+/** The editorial half, which a single seventeen-item column buried. */
+const readLinks = [
+  { key: "guides", href: "/guides" },
   { key: "metro", href: "/metro" },
+  { key: "areas", href: "/areas" },
   { key: "whenToVisit", href: "/when-to-visit" },
-  { key: "festivals", href: "/festivals" },
   { key: "whatToEat", href: "/what-to-eat" },
   { key: "routes", href: "/routes" },
-  { key: "forYou", href: "/for" },
+  { key: "festivals", href: "/festivals" },
+  { key: "dayTrips", href: "/day-trips" },
   { key: "plan", href: "/plan" },
-  { key: "guides", href: "/guides" },
+  { key: "forYou", href: "/for" },
+] as const;
+
+/**
+ * These four were plain <li> text for pages that did not exist. They are links
+ * now, and the pages behind them are real — a site that collects email
+ * addresses needs somewhere to say what it does with them.
+ */
+const companyLinks = [
+  { key: "footer.forBusiness", href: "/submit" },
+  { key: "footer.about", href: "/info/about" },
+  { key: "footer.contact", href: "/info/contact" },
+  { key: "footer.privacy", href: "/info/privacy" },
+  { key: "footer.terms", href: "/info/terms" },
 ] as const;
 
 export function Footer() {
@@ -31,7 +49,7 @@ export function Footer() {
 
   return (
     <footer className="mt-16 border-t border-slate-100 bg-slate-50">
-      <Container className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-2">
           <div className="text-lg font-extrabold">
             <span className="text-brand-700">Thessaloniki</span>
@@ -94,13 +112,31 @@ export function Footer() {
 
         <div>
           <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
+            {t("footer.read")}
+          </h3>
+          <ul className="space-y-2 text-sm text-slate-600">
+            {readLinks.map((l) => (
+              <li key={l.key}>
+                <Link href={l.href} className="hover:text-brand-700">
+                  {t(`nav.${l.key}`)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
             {t("footer.company")}
           </h3>
           <ul className="space-y-2 text-sm text-slate-600">
-            <li>{t("footer.forBusiness")}</li>
-            <li>{t("footer.about")}</li>
-            <li>{t("footer.contact")}</li>
-            <li>{t("footer.privacy")}</li>
+            {companyLinks.map((l) => (
+              <li key={l.key}>
+                <Link href={l.href} className="hover:text-brand-700">
+                  {t(l.key)}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

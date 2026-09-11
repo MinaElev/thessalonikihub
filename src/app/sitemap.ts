@@ -25,6 +25,7 @@ import { cityMonths } from "@/content/data/months";
 import { festivals } from "@/content/data/festivals";
 import { dishes } from "@/content/data/dishes";
 import { walkingRoutes } from "@/content/data/routes";
+import { staticPages } from "@/content/data/pages";
 import {
   getCollections,
   getEvents,
@@ -52,6 +53,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const f of festivals) paths.add(festivalHref(f.slug));
   for (const d of dishes) paths.add(dishHref(d.slug));
   for (const r of walkingRoutes) paths.add(routeHref(r.slug));
+  // About, contact, privacy and terms. Low-traffic, but a site that asks for
+  // an email address should have them indexed and findable.
+  for (const p of staticPages) paths.add(`/info/${p.slug}`);
 
   const pillars: Exclude<Pillar, "events">[] = [
     "stay",

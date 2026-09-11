@@ -38,28 +38,39 @@
     system-ui, sans-serif;
 }
 
-:root {
-  color-scheme: light;
-}
+/*
+  Base styles must sit in @layer base.
+  
+  Unlayered CSS beats layered CSS in the cascade whatever the specificity, and
+  Tailwind v4 emits its utilities inside @layer utilities. Left unlayered, the
+  `a { color: inherit }` below silently defeated every text-colour utility on
+  every link in the site: the homepage's "list your business" button rendered
+  white on white, and the header CTA lost its white text.
+*/
+@layer base {
+  :root {
+    color-scheme: light;
+  }
 
-body {
-  background: #ffffff;
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 
-a {
-  color: inherit;
+  a {
+    color: inherit;
+  }
 }
 
 /* Rich text (markdown-rendered guide/description bodies). */
