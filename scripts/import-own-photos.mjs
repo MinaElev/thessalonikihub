@@ -69,6 +69,8 @@ const GREEK_ALIASES = {
   "μαυρη θαλασσα": "mavri-thalassa",
   "μαύρη θάλασσα": "mavri-thalassa",
   "boston": "boston-karamanli",
+  "βοστον": "boston-karamanli",
+  "βοστόν": "boston-karamanli",
   "αρχαιολογικο μουσειο": "archaeological-museum",
   "μουσειο βυζαντινου πολιτισμου": "museum-of-byzantine-culture",
   "νεα παραλια": "nea-paralia",

@@ -183,9 +183,17 @@ Of those, the branch on **Konstantinou Karamanli** (the one covered here) sits i
         en: "Konstantinou Karamanli 161, Thessaloniki",
       },
     },
-    // Company photography is not ours to reuse; the owner can supply licensed
-    // images via "Claim your business".
-    photos: [],
+    // Supplied by the chain. Company photography is otherwise not ours to
+    // reuse; owners add their own via "Claim your business".
+    photos: [
+      {
+        url: "/photos/boston-karamanli.webp",
+        alt: {
+          el: "Καφές σε ποτήρι take away με το λογότυπο Boston και το περίγραμμα της πόλης",
+          en: "Takeaway coffee in a Boston-branded cup with the city skyline on it",
+        },
+      },
+    ],
     contact: {
       phone: "+302316073056",
       email: "karamanli@boston.gr",
