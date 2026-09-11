@@ -100,9 +100,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(lastMod.has(path) ? { lastModified: new Date(lastMod.get(path)!) } : {}),
     priority: path === "/" ? 1 : 0.7,
     alternates: {
-      languages: Object.fromEntries(
-        site.locales.map((l) => [l, absoluteUrl(l, path)]),
-      ),
+      languages: {
+        ...Object.fromEntries(site.locales.map((l) => [l, absoluteUrl(l, path)])),
+        // The page's own <link rel="alternate"> tags declare x-default, so the
+        // sitemap has to as well — otherwise the two describe different
+        // hreflang clusters for the same URL and Google has to pick one.
+        "x-default": absoluteUrl(site.defaultLocale, path),
+      },
     },
   }));
 }

@@ -2,7 +2,7 @@
   "name": "thessalonikihub",
   "version": "0.1.0",
   "private": true,
-  "description": "ThessalonikiHub — the digital discovery platform for Thessaloniki (stay, eat, drink, do, events).",
+  "description": "ThessalonikiHub \u2014 the digital discovery platform for Thessaloniki (stay, eat, drink, do, events).",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
@@ -14,7 +14,8 @@
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "test:sitemap": "node scripts/test-sitemap.mjs"
   },
   "prisma": {
     "seed": "ts-node --transpile-only prisma/seed.ts"
