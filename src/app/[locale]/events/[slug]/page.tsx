@@ -18,6 +18,7 @@ import { absoluteUrl } from "@/lib/site";
 import { getEvent, getFileEvents, getNearbyPlaces } from "@/lib/repo";
 import { MiniMapClient } from "@/components/map/MiniMapClient";
 import { ViewBeacon } from "@/components/ViewBeacon";
+import { TrackedLink } from "@/components/TrackedLink";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -152,14 +153,17 @@ export default async function EventPage({
                     {t("events.where")}
                   </p>
                   {event.geo ? (
-                    <a
+                    <TrackedLink
+                      kind="events"
+                      slug={event.slug}
+                      action="directions"
                       href={mapsHref(event.geo)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-1 inline-flex items-center gap-2 font-medium text-brand-700 hover:underline"
                     >
                       <MapPin className="h-4 w-4" /> {venueName}
-                    </a>
+                    </TrackedLink>
                   ) : (
                     <p className="mt-1 inline-flex items-center gap-2 font-medium">
                       <MapPin className="h-4 w-4 text-brand-600" /> {venueName}

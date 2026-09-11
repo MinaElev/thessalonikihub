@@ -84,3 +84,18 @@ export function editHref(kind: string, slug: string): string {
     ? `/dashboard/edit/event/${slug}`
     : `/dashboard/edit/${slug}`;
 }
+
+const ACTION: Record<string, Localized<string>> = {
+  phone: { el: "τηλέφωνο", en: "phone" },
+  whatsapp: { el: "WhatsApp", en: "WhatsApp" },
+  email: { el: "email", en: "email" },
+  website: { el: "ιστοσελίδα", en: "website" },
+  booking: { el: "κράτηση", en: "booking" },
+  directions: { el: "οδηγίες", en: "directions" },
+};
+
+/** How a visitor reached the business, in words. */
+export function actionLabel(action: string, locale: Locale): string {
+  const entry = ACTION[action];
+  return entry ? (locale === "el" ? entry.el : (entry.en ?? entry.el)) : action;
+}

@@ -149,7 +149,9 @@ For press enquiries or partnership proposals, the same address.`,
 
 Δεν χρησιμοποιούμε Google Analytics ή αντίστοιχο εργαλείο τρίτου, και δεν σε παρακολουθούμε ανάμεσα σε ιστοσελίδες.
 
-Μετράμε ένα μόνο πράγμα, μόνοι μας: **πόσες φορές άνοιξε κάθε καταχώρηση κάθε μέρα**, ώστε ο ιδιοκτήτης της να ξέρει αν τη διαβάζει κόσμος. Αποθηκεύεται ένας αριθμός ανά καταχώρηση ανά ημέρα — χωρίς IP, χωρίς cookie, χωρίς αναγνωριστικό, χωρίς τίποτα αποθηκευμένο στη συσκευή σου. Από αυτόν τον αριθμό δεν προκύπτει ποιος είδε τι.
+Μετράμε μόνοι μας δύο πράγματα, και μόνο αυτά: **πόσες φορές άνοιξε κάθε καταχώρηση κάθε μέρα**, και **πόσες φορές πατήθηκε καθένα από τα κουμπιά επικοινωνίας της** (τηλέφωνο, WhatsApp, email, ιστοσελίδα, κράτηση, οδηγίες χάρτη). Έτσι ο ιδιοκτήτης ξέρει αν τον διαβάζει και αν τον βρίσκει κόσμος.
+
+Αποθηκεύεται ένας αριθμός ανά καταχώρηση, ανά ενέργεια, ανά ημέρα — χωρίς IP, χωρίς cookie, χωρίς αναγνωριστικό, χωρίς τίποτα αποθηκευμένο στη συσκευή σου. Από αυτούς τους αριθμούς δεν προκύπτει ποιος είδε ή πάτησε τι. Δεν μαθαίνουμε το τηλέφωνο που κάλεσες ή το email που έστειλες: η επικοινωνία γίνεται απευθείας ανάμεσα σε σένα και την επιχείρηση.
 
 ## Γιατί
 - **Newsletter:** για να σου στείλουμε αυτό που ζήτησες. Μόνο γι' αυτό.
@@ -174,7 +176,7 @@ For press enquiries or partnership proposals, the same address.`,
 - **Newsletter:** μέχρι να διαγραφείς. Κάθε email περιέχει σύνδεσμο διαγραφής.
 - **Λογαριασμός:** όσο υπάρχει ο λογαριασμός.
 - **Καταχωρήσεις που απορρίφθηκαν:** διαγράφονται οριστικά 30 ημέρες μετά την απόρριψη. Στο διάστημα αυτό βλέπεις τον λόγο και μπορείς να διορθώσεις και να υποβάλεις ξανά.
-- **Μετρήσεις προβολών:** 14 μήνες, ώστε να συγκρίνεται η ίδια σεζόν με την περσινή.
+- **Μετρήσεις προβολών και επικοινωνιών:** 14 μήνες, ώστε να συγκρίνεται η ίδια σεζόν με την περσινή.
 
 ## Τα δικαιώματά σου
 Σύμφωνα με τον **GDPR**, έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, περιορισμού, φορητότητας και εναντίωσης.
@@ -202,7 +204,9 @@ For press enquiries or partnership proposals, the same address.`,
 
 We use no Google Analytics or comparable third-party tool, and we do not track you across websites.
 
-We measure exactly one thing, ourselves: **how many times each listing was opened each day**, so that its owner knows whether anyone is reading it. What is stored is one number per listing per day — no IP address, no cookie, no identifier, nothing kept on your device. That number cannot say who looked at what.
+We measure two things ourselves, and only these: **how many times each listing was opened each day**, and **how many times each of its contact buttons was pressed** (phone, WhatsApp, email, website, booking, map directions). That is how an owner knows whether people are reading their page and getting in touch.
+
+What is stored is one number per listing, per action, per day — no IP address, no cookie, no identifier, nothing kept on your device. Those numbers cannot say who looked at or pressed what. We do not learn the number you called or the email you sent: that conversation happens directly between you and the business.
 
 ## Why
 - **Newsletter:** to send you what you asked for. Nothing else.
@@ -227,7 +231,7 @@ There are no advertising or analytics cookies at present. **If advertising is ad
 - **Newsletter:** until you unsubscribe. Every email carries an unsubscribe link.
 - **Account:** for as long as the account exists.
 - **Rejected submissions:** permanently deleted 30 days after rejection. Until then you can read the reason, fix the listing and submit it again.
-- **View counts:** 14 months, so a season can be compared with the same season last year.
+- **View and contact counts:** 14 months, so a season can be compared with the same season last year.
 
 ## Your rights
 Under the **GDPR** you have the right of access, rectification, erasure, restriction, portability and objection.

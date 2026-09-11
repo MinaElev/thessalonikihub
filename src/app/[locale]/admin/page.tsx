@@ -19,7 +19,7 @@ import { prisma, isDbConfigured } from "@/lib/db";
 import { approveListing, rejectListing } from "@/app/actions/moderate";
 import { approveClaim, rejectClaim } from "@/app/actions/claim";
 import { kindLabel, editHref, publicHref } from "@/lib/listing-labels";
-import { getTopViewed } from "@/lib/views";
+import { getTopViewed, getSiteTotals } from "@/lib/views";
 
 export default async function AdminPage({
   params,
@@ -54,7 +54,10 @@ export default async function AdminPage({
       ])
     : [[], [], []];
 
-  const topViewed = await getTopViewed(30, 8);
+  const [topViewed, totals] = await Promise.all([
+    getTopViewed(30, 8),
+    getSiteTotals(30),
+  ]);
 
   const rows = [
     ...places.map((p) => ({
@@ -107,6 +110,49 @@ export default async function AdminPage({
           </Link>
         </div>
       </div>
+
+      {totals.views || totals.contacts ? (
+        <section className="mb-10 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-2xl border border-slate-100 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-400">
+              {tt("Προβολές / 30 ημέρες", "Views / 30 days")}
+            </p>
+            <p className="mt-1 text-3xl font-extrabold tabular-nums">{totals.views}</p>
+            {totals.previousViews ? (
+              <p className="mt-0.5 text-xs text-muted">
+                {/* Signed, so a fall reads as a fall rather than a number. */}
+                {totals.views >= totals.previousViews ? "+" : "−"}
+                {Math.abs(totals.views - totals.previousViews)}{" "}
+                {tt("από την προηγούμενη περίοδο", "vs the period before")}
+              </p>
+            ) : null}
+          </div>
+          <div className="rounded-2xl border border-slate-100 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-400">
+              {tt("Επικοινωνίες", "Contacts")}
+            </p>
+            <p className="mt-1 text-3xl font-extrabold tabular-nums text-brand-700">
+              {totals.contacts}
+            </p>
+            <p className="mt-0.5 text-xs text-muted">
+              {tt("τηλέφωνο, κράτηση, site, οδηγίες", "phone, booking, site, directions")}
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-100 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-400">
+              {tt("Ποσοστό επικοινωνίας", "Contact rate")}
+            </p>
+            <p className="mt-1 text-3xl font-extrabold tabular-nums">
+              {totals.views
+                ? `${Math.round((totals.contacts / totals.views) * 100)}%`
+                : "—"}
+            </p>
+            <p className="mt-0.5 text-xs text-muted">
+              {tt("από όσους άνοιξαν καταχώρηση", "of everyone who opened a listing")}
+            </p>
+          </div>
+        </section>
+      ) : null}
 
       {claims.length ? (
         <section className="mb-10">
@@ -257,7 +303,15 @@ export default async function AdminPage({
                 >
                   /{t.kind}/{t.slug}
                 </Link>
-                <span className="shrink-0 text-sm font-bold tabular-nums">{t.views}</span>
+                <span className="shrink-0 text-sm tabular-nums">
+                  <span className="font-bold">{t.views}</span>
+                  <span className="text-muted"> {tt("προβολές", "views")}</span>
+                  {t.contacts ? (
+                    <span className="ml-2 font-semibold text-brand-700">
+                      {t.contacts} {tt("επαφές", "contacts")}
+                    </span>
+                  ) : null}
+                </span>
               </li>
             ))}
           </ul>

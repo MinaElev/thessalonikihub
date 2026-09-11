@@ -45,6 +45,7 @@ import { isSaved } from "@/lib/saved";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
 import { ViewBeacon } from "@/components/ViewBeacon";
+import { TrackedLink } from "@/components/TrackedLink";
 import { areaHref, cityHref, mapsHref, pillarHref, placeHref } from "@/lib/links";
 import { formatDate, formatDistance, priceRangeLabel } from "@/lib/format";
 import { getArea } from "@/content/data/areas";
@@ -702,50 +703,65 @@ export async function PlaceDetail({
               <h2 className="mb-4 text-lg font-bold">{t("place.contact")}</h2>
               <div className="space-y-2">
                 {place.contact.bookingUrl ? (
-                  <a
+                  <TrackedLink
+                    kind={pillar}
+                    slug={place.slug}
+                    action="booking"
                     href={place.contact.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-600 px-4 py-2.5 font-semibold text-white transition hover:bg-accent-700"
                   >
                     <CalendarCheck className="h-5 w-5" /> {t("place.book")}
-                  </a>
+                  </TrackedLink>
                 ) : null}
                 {place.contact.phone ? (
-                  <a
+                  <TrackedLink
+                    kind={pillar}
+                    slug={place.slug}
+                    action="phone"
                     href={`tel:${place.contact.phone}`}
                     className="flex w-full items-center gap-3 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium transition hover:border-brand-300 hover:text-brand-700"
                   >
                     <Phone className="h-4 w-4" /> {t("place.call")}
-                  </a>
+                  </TrackedLink>
                 ) : null}
                 {place.contact.whatsapp ? (
-                  <a
+                  <TrackedLink
+                    kind={pillar}
+                    slug={place.slug}
+                    action="whatsapp"
                     href={`https://wa.me/${place.contact.whatsapp.replace(/[^0-9]/g, "")}`}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     className="flex w-full items-center gap-3 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium transition hover:border-brand-300 hover:text-brand-700"
                   >
                     <MessageCircle className="h-4 w-4" /> {t("place.whatsapp")}
-                  </a>
+                  </TrackedLink>
                 ) : null}
                 {place.contact.email ? (
-                  <a
+                  <TrackedLink
+                    kind={pillar}
+                    slug={place.slug}
+                    action="email"
                     href={`mailto:${place.contact.email}`}
                     className="flex w-full items-center gap-3 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium transition hover:border-brand-300 hover:text-brand-700"
                   >
                     <Mail className="h-4 w-4" /> {t("place.email")}
-                  </a>
+                  </TrackedLink>
                 ) : null}
                 {place.contact.website ? (
-                  <a
+                  <TrackedLink
+                    kind={pillar}
+                    slug={place.slug}
+                    action="website"
                     href={place.contact.website}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     className="flex w-full items-center gap-3 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium transition hover:border-brand-300 hover:text-brand-700"
                   >
                     <Globe className="h-4 w-4" /> {t("place.website")}
-                  </a>
+                  </TrackedLink>
                 ) : null}
               </div>
 
@@ -760,14 +776,17 @@ export async function PlaceDetail({
                   label={pick(place.name, locale)}
                 />
               </div>
-              <a
+              <TrackedLink
+                kind={pillar}
+                slug={place.slug}
+                action="directions"
                 href={mapsHref(place.geo)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:underline"
               >
                 <MapPin className="h-4 w-4" /> {t("place.getDirections")}
-              </a>
+              </TrackedLink>
             </div>
           </aside>
         </div>

@@ -253,22 +253,27 @@ model Subscriber {
   @@index([confirmed])
 }
 
-/// One day's view count for one listing.
+/// One day's tally of what visitors did with one listing.
 ///
 /// Aggregated on write rather than stored per visit: there is no row per
 /// visitor, no identifier, no IP and no cookie — only "this listing was opened
-/// N times on this day". That keeps the promise the privacy page makes while
-/// still giving an owner a reason to pay for placement.
+/// N times on this day", or "the phone number was tapped N times". That keeps
+/// the promise the privacy page makes while still giving an owner a reason to
+/// pay for placement.
 model ListingView {
-  id    String   @id @default(cuid())
+  id     String   @id @default(cuid())
   /// Pillar segment of the public URL: "stay", "eat", ..., or "events".
-  kind  String
-  slug  String
+  kind   String
+  slug   String
+  /// What was counted: "view" for opening the page, otherwise the contact
+  /// route taken — "phone", "whatsapp", "email", "website", "booking",
+  /// "directions".
+  action String   @default("view")
   /// Midnight Europe/Athens for the day being counted.
-  day   DateTime @db.Date
-  count Int      @default(0)
+  day    DateTime @db.Date
+  count  Int      @default(0)
 
-  @@unique([kind, slug, day])
+  @@unique([kind, slug, day, action])
   @@index([kind, slug])
   @@index([day])
 }

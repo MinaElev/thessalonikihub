@@ -18,12 +18,13 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { signOut } from "@/app/actions/moderate";
 import { resubmitListing } from "@/app/actions/resubmit";
-import { getViewCounts, viewKey } from "@/lib/views";
+import { getListingStats, emptyStats, viewKey } from "@/lib/views";
 import {
   statusLabel,
   statusHint,
   statusTone,
   kindLabel,
+  actionLabel,
   publicHref,
   editHref,
 } from "@/lib/listing-labels";
@@ -77,8 +78,9 @@ export default async function DashboardPage({
     })),
   ];
 
-  // What an owner actually wants to know: is anyone reading this?
-  const views = await getViewCounts(
+  // What an owner actually wants to know: is anyone reading this, and did
+  // anyone get in touch because of it?
+  const stats = await getListingStats(
     rows.map((r) => ({ kind: r.kind, slug: r.slug })),
     30,
   );
@@ -177,21 +179,7 @@ export default async function DashboardPage({
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="font-semibold">{pick(r.name, locale)}</p>
-                  <p className="text-xs text-muted">
-                    {kindLabel(r.kind, locale)}
-                    {r.status === "PUBLISHED" ? (
-                      <>
-                        {" · "}
-                        <span className="inline-flex items-center gap-1">
-                          <BarChart3 className="h-3.5 w-3.5" />
-                          {tt(
-                            `${views.get(viewKey(r.kind, r.slug)) ?? 0} προβολές / 30 ημέρες`,
-                            `${views.get(viewKey(r.kind, r.slug)) ?? 0} views / 30 days`,
-                          )}
-                        </span>
-                      </>
-                    ) : null}
-                  </p>
+                  <p className="text-xs text-muted">{kindLabel(r.kind, locale)}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   {r.status === "PUBLISHED" ? (
@@ -218,6 +206,40 @@ export default async function DashboardPage({
               {/* A status badge alone leaves the owner guessing whether the
                   ball is in their court. Say so, and for a rejection say why. */}
               <p className="mt-1.5 text-xs text-muted">{statusHint(r.status, locale)}</p>
+
+              {r.status === "PUBLISHED"
+                ? (() => {
+                    const st = stats.get(viewKey(r.kind, r.slug)) ?? emptyStats();
+                    const routes = Object.entries(st.byAction).sort((a, b) => b[1] - a[1]);
+                    return (
+                      <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl bg-slate-50 px-3 py-2.5">
+                        <span className="inline-flex items-baseline gap-1.5">
+                          <BarChart3 className="h-3.5 w-3.5 self-center text-slate-400" />
+                          <span className="text-base font-bold tabular-nums">{st.views}</span>
+                          <span className="text-xs text-muted">{tt("προβολές", "views")}</span>
+                        </span>
+                        <span className="inline-flex items-baseline gap-1.5">
+                          <span className="text-base font-bold tabular-nums text-brand-700">
+                            {st.contacts}
+                          </span>
+                          <span className="text-xs text-muted">
+                            {tt("επικοινωνίες", "contacts")}
+                          </span>
+                        </span>
+                        {routes.length ? (
+                          <span className="text-xs text-muted">
+                            {routes
+                              .map(([action, n]) => `${n} ${actionLabel(action, locale)}`)
+                              .join(" · ")}
+                          </span>
+                        ) : null}
+                        <span className="ml-auto text-[11px] uppercase tracking-wide text-slate-400">
+                          {tt("τελευταίες 30 ημέρες", "last 30 days")}
+                        </span>
+                      </div>
+                    );
+                  })()
+                : null}
               {r.status === "REJECTED" ? (
                 <div className="mt-2 rounded-lg bg-rose-50 p-3">
                   {r.rejectionNote ? (

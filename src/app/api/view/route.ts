@@ -3,13 +3,14 @@ import { prisma, isDbConfigured } from "@/lib/db";
 import { athensDayStart } from "@/lib/athens-time";
 
 /**
- * Records that a listing page was opened.
+ * Records what a visitor did with a listing: opened it, or took one of the
+ * contact routes on it.
  *
- * Deliberately thin. The request body carries a pillar and a slug and nothing
- * else; no IP, user agent, referrer or identifier of any kind is written. What
- * lands in the database is a single integer per listing per day, which is
- * enough to tell an owner their page is being read and not enough to say
- * anything about who read it.
+ * Deliberately thin. The request body carries a pillar, a slug and an action
+ * name, and nothing else; no IP, user agent, referrer or identifier of any kind
+ * is written. What lands in the database is a single integer per listing per
+ * action per day, which is enough to tell an owner their page is being read and
+ * acted on, and not enough to say anything about who did it.
  */
 
 /** Only the pillars that have owned, public listing pages. */
@@ -21,6 +22,17 @@ const KINDS = new Set([
   "experiences",
   "services",
   "events",
+]);
+
+/** "view" is opening the page; the rest are ways of reaching the business. */
+const ACTIONS = new Set([
+  "view",
+  "phone",
+  "whatsapp",
+  "email",
+  "website",
+  "booking",
+  "directions",
 ]);
 
 /** Slugs this project generates are lowercase latin, digits and hyphens. */
@@ -40,26 +52,27 @@ export async function POST(request: Request) {
     return new NextResponse(null, { status: 204 });
   }
 
-  let kind: unknown;
-  let slug: unknown;
+  let body: unknown;
   try {
-    ({ kind, slug } = await request.json());
+    body = await request.json();
   } catch {
     return new NextResponse(null, { status: 204 });
   }
 
-  if (typeof kind !== "string" || typeof slug !== "string") {
+  const { kind, slug, action = "view" } = (body ?? {}) as Record<string, unknown>;
+
+  if (typeof kind !== "string" || typeof slug !== "string" || typeof action !== "string") {
     return new NextResponse(null, { status: 204 });
   }
-  if (!KINDS.has(kind) || !SLUG.test(slug)) {
+  if (!KINDS.has(kind) || !ACTIONS.has(action) || !SLUG.test(slug)) {
     return new NextResponse(null, { status: 204 });
   }
 
   try {
     const day = athensDayStart();
     await prisma.listingView.upsert({
-      where: { kind_slug_day: { kind, slug, day } },
-      create: { kind, slug, day, count: 1 },
+      where: { kind_slug_day_action: { kind, slug, day, action } },
+      create: { kind, slug, day, action, count: 1 },
       update: { count: { increment: 1 } },
     });
   } catch (e) {
