@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { LogIn, Plus, ShieldCheck, Pencil, Eye, AlertCircle } from "lucide-react";
+import { LogIn, Plus, ShieldCheck, Pencil, Eye, AlertCircle, RotateCcw } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
@@ -8,6 +8,7 @@ import { Container } from "@/components/ui";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { signOut } from "@/app/actions/moderate";
+import { resubmitListing } from "@/app/actions/resubmit";
 import {
   statusLabel,
   statusHint,
@@ -187,11 +188,23 @@ export default async function DashboardPage({
               {/* A status badge alone leaves the owner guessing whether the
                   ball is in their court. Say so, and for a rejection say why. */}
               <p className="mt-1.5 text-xs text-muted">{statusHint(r.status, locale)}</p>
-              {r.status === "REJECTED" && r.rejectionNote ? (
-                <p className="mt-2 flex items-start gap-2 rounded-lg bg-rose-50 p-3 text-sm text-rose-800">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span>{r.rejectionNote}</span>
-                </p>
+              {r.status === "REJECTED" ? (
+                <div className="mt-2 rounded-lg bg-rose-50 p-3">
+                  {r.rejectionNote ? (
+                    <p className="flex items-start gap-2 text-sm text-rose-800">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <span>{r.rejectionNote}</span>
+                    </p>
+                  ) : null}
+                  <form action={resubmitListing} className={r.rejectionNote ? "mt-3" : ""}>
+                    <input type="hidden" name="kind" value={r.kind} />
+                    <input type="hidden" name="id" value={r.id} />
+                    <button className="inline-flex items-center gap-1 rounded-full bg-brand-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand-700">
+                      <RotateCcw className="h-4 w-4" />
+                      {tt("Υπέβαλε ξανά για έλεγχο", "Submit again for review")}
+                    </button>
+                  </form>
+                </div>
               ) : null}
             </li>
           ))}
