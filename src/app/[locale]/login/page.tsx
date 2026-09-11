@@ -22,7 +22,7 @@ export default async function LoginPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
-  const { next } = await searchParams;
+  const { next, auth_error: authError } = await searchParams;
   setRequestLocale(locale);
   const tt = (el: string, en: string) => (locale === "el" ? el : en);
 
@@ -38,6 +38,16 @@ export default async function LoginPage({
             "Save places for your trip, or manage your business listing.",
           )}
         </p>
+        {authError ? (
+          <p className="mb-4 rounded-lg border border-accent-200 bg-accent-50 px-3 py-2 text-sm text-accent-700">
+            {/* Supabase reports expired and already-used links identically, so
+                the wording covers both rather than guessing which happened. */}
+            {tt(
+              "Ο σύνδεσμος δεν ισχύει πια — είτε έληξε είτε χρησιμοποιήθηκε ήδη. Ζήτησε καινούργιο παρακάτω.",
+              "That link is no longer valid — it has expired or was already used. Request a new one below.",
+            )}
+          </p>
+        ) : null}
         <LoginForm locale={locale} next={safeNext(next)} />
       </div>
     </Container>

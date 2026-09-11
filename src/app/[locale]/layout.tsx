@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SiteJsonLd } from "@/components/SiteJsonLd";
 import { AdSenseScript } from "@/components/ads/AdSenseScript";
+import { AuthHashHandler } from "@/components/auth/AuthHashHandler";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin", "greek"], variable: "--font-inter" });
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
       <body className="flex min-h-screen flex-col">
         <SiteJsonLd />
         <AdSenseScript />
+        <AuthHashHandler />
         <NextIntlClientProvider>
           <a
             href="#main"
