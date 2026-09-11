@@ -6,9 +6,13 @@ import { Container } from "@/components/ui";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 /**
- * The seven pillars stay on the bar: they are the product's spine and its
- * commercial surface. Everything else is supporting content, grouped by what
- * the visitor is trying to do rather than by how the site is built.
+ * Five pillars on the bar, not seven.
+ *
+ * All seven plus the Explore menu left roughly 70px of slack in a 1152px
+ * container at 1440 wide, which is what made the bar feel cramped and forced
+ * the call to action onto two lines. Experiences and Services are the two with
+ * the least behind them, so they moved into the mega menu rather than one of
+ * the categories people actually browse by.
  */
 const primaryNav = [
   { key: "stay", href: "/stay" },
@@ -16,8 +20,6 @@ const primaryNav = [
   { key: "drink", href: "/drink" },
   { key: "discover", href: "/discover" },
   { key: "events", href: "/events" },
-  { key: "experiences", href: "/experiences" },
-  { key: "services", href: "/services" },
 ] as const;
 
 const exploreGroups = [
@@ -28,6 +30,7 @@ const exploreGroups = [
       { key: "metro", href: "/metro" },
       { key: "map", href: "/map" },
       { key: "routes", href: "/routes" },
+      { key: "services", href: "/services" },
     ],
   },
   {
@@ -45,6 +48,7 @@ const exploreGroups = [
       { key: "whatToEat", href: "/what-to-eat" },
       { key: "plan", href: "/plan" },
       { key: "forYou", href: "/for" },
+      { key: "experiences", href: "/experiences" },
     ],
   },
   {
@@ -119,7 +123,7 @@ export function Header() {
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
           <Link
             href="/submit"
-            className="hidden rounded-full bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700 sm:inline-block"
+            className="hidden whitespace-nowrap rounded-full bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700 sm:inline-block"
           >
             + {t("submit")}
           </Link>
