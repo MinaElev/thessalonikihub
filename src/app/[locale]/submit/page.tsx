@@ -58,7 +58,7 @@ export default async function SubmitHub({
             {tt("Συνδέσου για να καταχωρήσεις.", "Sign in to add a listing.")}
           </span>
           <Link
-            href="/login"
+            href="/login?next=%2Fsubmit"
             className="ml-auto rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
             {tt("Σύνδεση / Εγγραφή", "Sign in / Register")}

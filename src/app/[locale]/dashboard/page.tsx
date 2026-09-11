@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { LogIn, Plus, ShieldCheck } from "lucide-react";
+import { LogIn, Plus, ShieldCheck, Pencil, Eye, AlertCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
@@ -8,13 +8,14 @@ import { Container } from "@/components/ui";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { signOut } from "@/app/actions/moderate";
-
-const statusTone: Record<string, string> = {
-  PENDING: "bg-amber-100 text-amber-700",
-  PUBLISHED: "bg-brand-50 text-brand-700",
-  REJECTED: "bg-rose-100 text-rose-700",
-  DRAFT: "bg-slate-100 text-slate-600",
-};
+import {
+  statusLabel,
+  statusHint,
+  statusTone,
+  kindLabel,
+  publicHref,
+  editHref,
+} from "@/lib/listing-labels";
 
 export default async function DashboardPage({
   params,
@@ -31,7 +32,7 @@ export default async function DashboardPage({
       <Container className="py-16 text-center">
         <LogIn className="mx-auto h-10 w-10 text-brand-600" />
         <p className="mt-3 text-lg">{tt("Συνδέσου για να δεις τις καταχωρήσεις σου.", "Sign in to see your listings.")}</p>
-        <Link href="/login" className="mt-4 inline-block rounded-full bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700">
+        <Link href="/login?next=%2Fdashboard" className="mt-4 inline-block rounded-full bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700">
           {tt("Σύνδεση", "Sign in")}
         </Link>
       </Container>
@@ -47,8 +48,22 @@ export default async function DashboardPage({
     : [[], [], []];
 
   const rows = [
-    ...places.map((p) => ({ id: p.id, name: p.name as Localized<string>, status: p.status, kind: p.kind as string, slug: p.slug })),
-    ...events.map((e) => ({ id: e.id, name: e.name as Localized<string>, status: e.status, kind: "EVENTS", slug: undefined as string | undefined })),
+    ...places.map((p) => ({
+      id: p.id,
+      name: p.name as Localized<string>,
+      status: p.status as string,
+      kind: p.kind as string,
+      slug: p.slug,
+      rejectionNote: p.rejectionNote,
+    })),
+    ...events.map((e) => ({
+      id: e.id,
+      name: e.name as Localized<string>,
+      status: e.status as string,
+      kind: "EVENTS",
+      slug: e.slug,
+      rejectionNote: e.rejectionNote,
+    })),
   ];
 
   // Moderation has no entry point of its own — an admin arrives here like
@@ -141,24 +156,43 @@ export default async function DashboardPage({
       ) : (
         <ul className="divide-y divide-slate-100 rounded-2xl border border-slate-100">
           {rows.map((r) => (
-            <li key={r.id} className="flex items-center justify-between gap-4 p-4">
-              <div>
-                <p className="font-semibold">{pick(r.name, locale)}</p>
-                <p className="text-xs text-muted">{r.kind}</p>
-              </div>
-              <div className="flex items-center gap-3">
-                {r.slug ? (
+            <li key={r.id} className="p-4">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-semibold">{pick(r.name, locale)}</p>
+                  <p className="text-xs text-muted">{kindLabel(r.kind, locale)}</p>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {r.status === "PUBLISHED" ? (
+                    <Link
+                      href={publicHref(r.kind, r.slug)}
+                      className="inline-flex items-center gap-1 rounded-full border border-slate-200 px-3 py-1.5 text-sm font-semibold hover:border-brand-300 hover:text-brand-700"
+                    >
+                      <Eye className="h-4 w-4" /> {tt("Προβολή", "View")}
+                    </Link>
+                  ) : null}
                   <Link
-                    href={`/dashboard/edit/${r.slug}`}
-                    className="text-sm font-semibold text-brand-700 hover:text-brand-800"
+                    href={editHref(r.kind, r.slug)}
+                    className="inline-flex items-center gap-1 rounded-full border border-brand-200 px-3 py-1.5 text-sm font-semibold text-brand-700 hover:bg-brand-50"
                   >
-                    {tt("Επεξεργασία", "Edit")}
+                    <Pencil className="h-4 w-4" /> {tt("Επεξεργασία", "Edit")}
                   </Link>
-                ) : null}
-                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusTone[r.status] ?? ""}`}>
-                  {r.status}
-                </span>
+                  <span
+                    className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusTone[r.status as keyof typeof statusTone] ?? ""}`}
+                  >
+                    {statusLabel(r.status, locale)}
+                  </span>
+                </div>
               </div>
+              {/* A status badge alone leaves the owner guessing whether the
+                  ball is in their court. Say so, and for a rejection say why. */}
+              <p className="mt-1.5 text-xs text-muted">{statusHint(r.status, locale)}</p>
+              {r.status === "REJECTED" && r.rejectionNote ? (
+                <p className="mt-2 flex items-start gap-2 rounded-lg bg-rose-50 p-3 text-sm text-rose-800">
+                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                  <span>{r.rejectionNote}</span>
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>
@@ -179,7 +213,13 @@ export default async function DashboardPage({
                   </p>
                 </div>
                 <span
-                  className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${statusTone[c.status] ?? ""}`}
+                  className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                    c.status === "APPROVED"
+                      ? "bg-brand-50 text-brand-700"
+                      : c.status === "REJECTED"
+                        ? "bg-rose-100 text-rose-700"
+                        : "bg-amber-100 text-amber-800"
+                  }`}
                 >
                   {c.status === "PENDING"
                     ? tt("Σε αναμονή", "Pending")

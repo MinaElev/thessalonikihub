@@ -73,7 +73,7 @@ export default async function SubmitCategoryPage({
             )}
           </span>
           <Link
-            href="/login"
+            href={`/login?next=${encodeURIComponent(`/submit/${category}`)}`}
             className="ml-auto rounded-full bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700"
           >
             {tt("Σύνδεση / Εγγραφή", "Sign in / Register")}

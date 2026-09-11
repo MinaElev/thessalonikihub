@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { centroidFor } from "@/lib/area-centroids";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -78,12 +78,32 @@ export function ListingForm({
   const center = centroidFor(watchedArea || undefined);
   const [pending, startTransition] = useTransition();
   const [result, setResult] = useState<null | { ok: boolean; error?: string }>(null);
+  const [missing, setMissing] = useState(0);
 
   const onSubmit = (data: ListingInput) => {
+    setMissing(0);
     startTransition(async () => {
       const res = await submitListing(data);
       setResult(res.ok ? { ok: true } : { ok: false, error: res.error });
+      // A long form scrolled well past the top by now; the outcome is up there.
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  };
+
+  /**
+   * The form runs to forty fields for an apartment, so a missing required one
+   * is usually off-screen when Submit is pressed. Left to itself the page did
+   * nothing visible and the button looked broken — say how many, and go to the
+   * first one.
+   */
+  const onInvalid = (formErrors: Record<string, unknown>) => {
+    const names = Object.keys(formErrors);
+    setMissing(names.length);
+    const field = document.querySelector<HTMLElement>(`[name="${names[0]}"]`);
+    if (!field) return;
+    field.scrollIntoView({ behavior: "smooth", block: "center" });
+    // Focusing would scroll again and fight the smooth scroll above.
+    window.setTimeout(() => field.focus({ preventScroll: true }), 400);
   };
 
   if (result?.ok) {
@@ -100,12 +120,27 @@ export function ListingForm({
             "It will be reviewed by our team and published once approved.",
           )}
         </p>
-        <Link
-          href="/dashboard"
-          className="mt-5 inline-block rounded-full bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700"
-        >
-          {T(locale, "Οι καταχωρήσεις μου", "My listings")}
-        </Link>
+        <p className="mx-auto mt-3 max-w-md text-sm text-muted">
+          {T(
+            locale,
+            "Στον πίνακά σου βλέπεις την πορεία της και μπορείς να συμπληρώσεις ωράριο, επικοινωνία και προσφορές όποτε θέλεις.",
+            "Your dashboard shows its progress, and lets you add opening hours, contact details and offers whenever you like.",
+          )}
+        </p>
+        <div className="mt-5 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/dashboard"
+            className="inline-block rounded-full bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700"
+          >
+            {T(locale, "Οι καταχωρήσεις μου", "My listings")}
+          </Link>
+          <Link
+            href="/submit"
+            className="inline-block rounded-full border border-slate-200 bg-white px-5 py-2.5 font-semibold hover:border-brand-300 hover:text-brand-700"
+          >
+            {T(locale, "Νέα καταχώρηση", "Add another")}
+          </Link>
+        </div>
       </div>
     );
   }
@@ -113,7 +148,20 @@ export function ListingForm({
   const sec = config.sections;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+    <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="space-y-8" noValidate>
+      {missing > 0 ? (
+        <p className="flex items-center gap-2 rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm font-medium text-accent-800">
+          <AlertCircle className="h-5 w-5 shrink-0" />
+          {missing === 1
+            ? T(locale, "Λείπει ένα υποχρεωτικό πεδίο.", "One required field is missing.")
+            : T(
+                locale,
+                `Λείπουν ${missing} υποχρεωτικά πεδία.`,
+                `${missing} required fields are missing.`,
+              )}
+        </p>
+      ) : null}
+
       {result && !result.ok ? (
         <div className="rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm text-accent-800">
           {result.error === "db"

@@ -36,7 +36,7 @@ export default async function EditListingPage({
           {tt("Συνδέσου για να επεξεργαστείς την καταχώρηση.", "Sign in to edit this listing.")}
         </p>
         <Link
-          href="/login"
+          href={`/login?next=${encodeURIComponent(`/dashboard/edit/${slug}`)}`}
           className="mt-4 inline-block rounded-full bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700"
         >
           {tt("Σύνδεση", "Sign in")}

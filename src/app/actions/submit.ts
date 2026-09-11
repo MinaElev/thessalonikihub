@@ -4,6 +4,7 @@ import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { listingSchema } from "@/lib/submit-schema";
 import { centroidFor } from "@/lib/area-centroids";
+import { parseAthensLocal } from "@/lib/athens-time";
 import type { Localized } from "@/lib/types";
 
 export type SubmitResult =
@@ -72,8 +73,11 @@ export async function submitListing(raw: unknown): Promise<SubmitResult> {
           description: loc(d.descriptionEl, d.descriptionEn) as never,
           type: d.type || "event",
           tags: csv(d.tagsCsv),
-          startsAt: new Date(d.startsAt as string),
-          endsAt: d.endsAt ? new Date(d.endsAt) : null,
+          // The owner typed a Thessaloniki wall-clock time. `new Date()` on a
+          // zoneless value would resolve it against the server's zone (UTC on
+          // Vercel), shifting every evening event by two or three hours.
+          startsAt: parseAthensLocal(d.startsAt as string) as Date,
+          endsAt: parseAthensLocal(d.endsAt),
           venue: loc(d.venueEl ?? "", d.nameEn) as never,
           lat: geo.lat,
           lng: geo.lng,
