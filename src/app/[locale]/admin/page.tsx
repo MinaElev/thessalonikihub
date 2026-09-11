@@ -1,5 +1,14 @@
 import { setRequestLocale } from "next-intl/server";
-import { ShieldCheck, Check, X, BadgeCheck, Pencil, CalendarClock } from "lucide-react";
+import {
+  ShieldCheck,
+  Check,
+  X,
+  BadgeCheck,
+  Pencil,
+  CalendarClock,
+  BarChart3,
+  Users,
+} from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
@@ -9,7 +18,8 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { approveListing, rejectListing } from "@/app/actions/moderate";
 import { approveClaim, rejectClaim } from "@/app/actions/claim";
-import { kindLabel, editHref } from "@/lib/listing-labels";
+import { kindLabel, editHref, publicHref } from "@/lib/listing-labels";
+import { getTopViewed } from "@/lib/views";
 
 export default async function AdminPage({
   params,
@@ -43,6 +53,8 @@ export default async function AdminPage({
         }),
       ])
     : [[], [], []];
+
+  const topViewed = await getTopViewed(30, 8);
 
   const rows = [
     ...places.map((p) => ({
@@ -79,12 +91,21 @@ export default async function AdminPage({
             {tt("Καταχωρήσεις σε αναμονή έγκρισης.", "Listings awaiting approval.")}
           </p>
         </div>
-        <Link
-          href="/admin/import"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold hover:border-brand-300 hover:text-brand-700"
-        >
-          {tt("Εισαγωγή events →", "Import events →")}
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/admin/people"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold hover:border-brand-300 hover:text-brand-700"
+          >
+            <Users className="h-4 w-4" />
+            {tt("Χρήστες", "People")}
+          </Link>
+          <Link
+            href="/admin/import"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold hover:border-brand-300 hover:text-brand-700"
+          >
+            {tt("Εισαγωγή events →", "Import events →")}
+          </Link>
+        </div>
       </div>
 
       {claims.length ? (
@@ -217,6 +238,31 @@ export default async function AdminPage({
           ))}
         </ul>
       )}
+
+      {topViewed.length ? (
+        <section className="mt-12">
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
+            <BarChart3 className="h-5 w-5 text-brand-600" />
+            {tt("Πιο διαβασμένα (30 ημέρες)", "Most read (30 days)")}
+          </h2>
+          <ul className="divide-y divide-slate-100 rounded-2xl border border-slate-100">
+            {topViewed.map((t) => (
+              <li
+                key={`${t.kind}-${t.slug}`}
+                className="flex items-center justify-between gap-4 p-3"
+              >
+                <Link
+                  href={publicHref(t.kind, t.slug)}
+                  className="min-w-0 truncate text-sm font-semibold text-brand-700 hover:underline"
+                >
+                  /{t.kind}/{t.slug}
+                </Link>
+                <span className="shrink-0 text-sm font-bold tabular-nums">{t.views}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </Container>
   );
 }

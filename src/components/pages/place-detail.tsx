@@ -44,6 +44,7 @@ import { SaveButton } from "@/components/SaveButton";
 import { isSaved } from "@/lib/saved";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
+import { ViewBeacon } from "@/components/ViewBeacon";
 import { areaHref, cityHref, mapsHref, pillarHref, placeHref } from "@/lib/links";
 import { formatDate, formatDistance, priceRangeLabel } from "@/lib/format";
 import { getArea } from "@/content/data/areas";
@@ -253,6 +254,8 @@ export async function PlaceDetail({
           }}
         />
       ) : null}
+
+      <ViewBeacon kind={pillar} slug={place.slug} />
 
       <Container>
         <Breadcrumbs

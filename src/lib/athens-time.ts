@@ -71,3 +71,21 @@ export function toAthensLocalInput(instant: Date | string | null | undefined): s
   const hour = get("hour") === "24" ? "00" : get("hour");
   return `${get("year")}-${get("month")}-${get("day")}T${hour}:${get("minute")}`;
 }
+
+/**
+ * The calendar day in Thessaloniki, as midnight UTC — the shape a Postgres
+ * `date` column round-trips without shifting.
+ *
+ * Counting by the server's day would roll the counter over at 02:00 or 03:00
+ * local time, so an evening's visits would land on tomorrow's row.
+ */
+export function athensDayStart(instant: Date = new Date()): Date {
+  // en-CA formats as YYYY-MM-DD.
+  const ymd = new Intl.DateTimeFormat("en-CA", {
+    timeZone: ATHENS,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(instant);
+  return new Date(`${ymd}T00:00:00.000Z`);
+}

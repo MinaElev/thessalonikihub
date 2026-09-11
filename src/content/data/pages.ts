@@ -147,7 +147,9 @@ For press enquiries or partnership proposals, the same address.`,
 
 **Αν αποθηκεύσεις μέρη:** τη λίστα των αποθηκευμένων, δεμένη με τον λογαριασμό σου.
 
-Δεν χρησιμοποιούμε εργαλεία ανάλυσης επισκεψιμότητας και δεν σε παρακολουθούμε ανάμεσα σε ιστοσελίδες.
+Δεν χρησιμοποιούμε Google Analytics ή αντίστοιχο εργαλείο τρίτου, και δεν σε παρακολουθούμε ανάμεσα σε ιστοσελίδες.
+
+Μετράμε ένα μόνο πράγμα, μόνοι μας: **πόσες φορές άνοιξε κάθε καταχώρηση κάθε μέρα**, ώστε ο ιδιοκτήτης της να ξέρει αν τη διαβάζει κόσμος. Αποθηκεύεται ένας αριθμός ανά καταχώρηση ανά ημέρα — χωρίς IP, χωρίς cookie, χωρίς αναγνωριστικό, χωρίς τίποτα αποθηκευμένο στη συσκευή σου. Από αυτόν τον αριθμό δεν προκύπτει ποιος είδε τι.
 
 ## Γιατί
 - **Newsletter:** για να σου στείλουμε αυτό που ζήτησες. Μόνο γι' αυτό.
@@ -171,7 +173,8 @@ For press enquiries or partnership proposals, the same address.`,
 ## Πόσο καιρό
 - **Newsletter:** μέχρι να διαγραφείς. Κάθε email περιέχει σύνδεσμο διαγραφής.
 - **Λογαριασμός:** όσο υπάρχει ο λογαριασμός.
-- **Καταχωρήσεις που απορρίφθηκαν:** διαγράφονται.
+- **Καταχωρήσεις που απορρίφθηκαν:** διαγράφονται οριστικά 30 ημέρες μετά την απόρριψη. Στο διάστημα αυτό βλέπεις τον λόγο και μπορείς να διορθώσεις και να υποβάλεις ξανά.
+- **Μετρήσεις προβολών:** 14 μήνες, ώστε να συγκρίνεται η ίδια σεζόν με την περσινή.
 
 ## Τα δικαιώματά σου
 Σύμφωνα με τον **GDPR**, έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, περιορισμού, φορητότητας και εναντίωσης.
@@ -197,7 +200,9 @@ For press enquiries or partnership proposals, the same address.`,
 
 **If you save places:** your saved list, tied to your account.
 
-We use no analytics tools and we do not track you across websites.
+We use no Google Analytics or comparable third-party tool, and we do not track you across websites.
+
+We measure exactly one thing, ourselves: **how many times each listing was opened each day**, so that its owner knows whether anyone is reading it. What is stored is one number per listing per day — no IP address, no cookie, no identifier, nothing kept on your device. That number cannot say who looked at what.
 
 ## Why
 - **Newsletter:** to send you what you asked for. Nothing else.
@@ -221,7 +226,8 @@ There are no advertising or analytics cookies at present. **If advertising is ad
 ## How long
 - **Newsletter:** until you unsubscribe. Every email carries an unsubscribe link.
 - **Account:** for as long as the account exists.
-- **Rejected submissions:** deleted.
+- **Rejected submissions:** permanently deleted 30 days after rejection. Until then you can read the reason, fix the listing and submit it again.
+- **View counts:** 14 months, so a season can be compared with the same season last year.
 
 ## Your rights
 Under the **GDPR** you have the right of access, rectification, erasure, restriction, portability and objection.

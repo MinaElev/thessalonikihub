@@ -17,6 +17,7 @@ import { formatDistance, formatEventWhen } from "@/lib/format";
 import { absoluteUrl } from "@/lib/site";
 import { getEvent, getFileEvents, getNearbyPlaces } from "@/lib/repo";
 import { MiniMapClient } from "@/components/map/MiniMapClient";
+import { ViewBeacon } from "@/components/ViewBeacon";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -97,6 +98,8 @@ export default async function EventPage({
             : {}),
         }}
       />
+      <ViewBeacon kind="events" slug={event.slug} />
+
       <Container>
         <Breadcrumbs
           locale={locale}

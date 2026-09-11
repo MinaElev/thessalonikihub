@@ -1,5 +1,14 @@
 import { setRequestLocale } from "next-intl/server";
-import { LogIn, Plus, ShieldCheck, Pencil, Eye, AlertCircle, RotateCcw } from "lucide-react";
+import {
+  LogIn,
+  Plus,
+  ShieldCheck,
+  Pencil,
+  Eye,
+  AlertCircle,
+  RotateCcw,
+  BarChart3,
+} from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
@@ -9,6 +18,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { signOut } from "@/app/actions/moderate";
 import { resubmitListing } from "@/app/actions/resubmit";
+import { getViewCounts, viewKey } from "@/lib/views";
 import {
   statusLabel,
   statusHint,
@@ -66,6 +76,12 @@ export default async function DashboardPage({
       rejectionNote: e.rejectionNote,
     })),
   ];
+
+  // What an owner actually wants to know: is anyone reading this?
+  const views = await getViewCounts(
+    rows.map((r) => ({ kind: r.kind, slug: r.slug })),
+    30,
+  );
 
   // Moderation has no entry point of its own — an admin arrives here like
   // anyone else, so the queue has to announce itself or it goes unnoticed.
@@ -161,7 +177,21 @@ export default async function DashboardPage({
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="font-semibold">{pick(r.name, locale)}</p>
-                  <p className="text-xs text-muted">{kindLabel(r.kind, locale)}</p>
+                  <p className="text-xs text-muted">
+                    {kindLabel(r.kind, locale)}
+                    {r.status === "PUBLISHED" ? (
+                      <>
+                        {" · "}
+                        <span className="inline-flex items-center gap-1">
+                          <BarChart3 className="h-3.5 w-3.5" />
+                          {tt(
+                            `${views.get(viewKey(r.kind, r.slug)) ?? 0} προβολές / 30 ημέρες`,
+                            `${views.get(viewKey(r.kind, r.slug)) ?? 0} views / 30 days`,
+                          )}
+                        </span>
+                      </>
+                    ) : null}
+                  </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   {r.status === "PUBLISHED" ? (

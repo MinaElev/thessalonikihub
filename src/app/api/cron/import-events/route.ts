@@ -76,5 +76,42 @@ export async function GET(request: Request) {
     imported++;
   }
 
-  return NextResponse.json({ ok: true, sources: sources.length, imported });
+  const purged = await purgeExpiredData();
+
+  return NextResponse.json({ ok: true, sources: sources.length, imported, purged });
+}
+
+/**
+ * Enforce the retention periods the privacy page publishes.
+ *
+ * Rejected submissions were previously kept for ever while the policy said
+ * they were deleted. Thirty days is the grace period: long enough for the
+ * owner to read why, correct it and resubmit, short enough to be a real
+ * deletion rather than an indefinite hold.
+ *
+ * Daily view counts go after 14 months, which leaves one full year plus the
+ * same season again for comparison.
+ */
+async function purgeExpiredData() {
+  const now = Date.now();
+  const rejectedBefore = new Date(now - 30 * 24 * 60 * 60 * 1000);
+  const viewsBefore = new Date(now - 426 * 24 * 60 * 60 * 1000);
+
+  // updatedAt is when the row last changed, which for a rejected listing is
+  // the rejection itself — the schema records no separate rejectedAt.
+  const [places, events, views] = await Promise.all([
+    prisma.place.deleteMany({
+      where: { status: "REJECTED", updatedAt: { lt: rejectedBefore } },
+    }),
+    prisma.eventItem.deleteMany({
+      where: { status: "REJECTED", updatedAt: { lt: rejectedBefore } },
+    }),
+    prisma.listingView.deleteMany({ where: { day: { lt: viewsBefore } } }),
+  ]);
+
+  return {
+    rejectedPlaces: places.count,
+    rejectedEvents: events.count,
+    oldViewRows: views.count,
+  };
 }
