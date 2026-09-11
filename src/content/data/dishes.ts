@@ -367,6 +367,288 @@ It is the reason many consider Thessaloniki the country's gastronomic capital. T
     areas: ["toumba", "kalamaria", "aretsou"],
     featured: true,
   },
+  {
+    slug: "frappe",
+    name: { el: "Φραπές", en: "Frappé" },
+    kind: "drink",
+    whenToEat: { el: "Απόγευμα, και με την ησυχία σου", en: "Afternoon, and slowly" },
+    blurb: {
+      el: "Ο αφρός που καθιερώθηκε στη ΔΕΘ του 1957 και έγινε εθνικό ρόφημα.",
+      en: "The foam that took hold at the 1957 fair and became a national drink.",
+    },
+    long: {
+      el: `Ο φραπές είναι το πιο ελληνικό ρόφημα που δεν υπάρχει σχεδόν πουθενά αλλού, και η Θεσσαλονίκη διεκδικεί τη γέννησή του.
+
+## Η ιστορία, όπως λέγεται
+Το **1957**, στη **22η Διεθνή Έκθεση Θεσσαλονίκης**, η εταιρεία Δρίτσα εκπροσωπούσε στην Ελλάδα τον στιγμιαίο καφέ της Nestlé. Στο περίπτερο προωθούσαν ένα νέο σοκολατούχο ρόφημα για παιδιά, που ετοιμαζόταν αναμειγνύοντάς το με γάλα σε **σέικερ**.
+
+Ένας υπάλληλος, ο **Δημήτρης Βακόνδιος**, θέλησε καφέ και δεν είχε ζεστό νερό. Χρησιμοποίησε το σέικερ με κρύο νερό, και βγήκε ο αφρός.
+
+## Πόσο αληθινό είναι
+Αξίζει να το πούμε καθαρά: **παγωμένος στιγμιαίος καφές υπήρχε και πριν**. Διαφημίσεις της Nestlé από τη δεκαετία του 1930 και του 1940 πρότειναν ήδη την κρύα κατανάλωση. Η ιστορία της ΔΕΘ είναι ο πιο διαδεδομένος αστικός θρύλος, όχι τεκμηριωμένη ευρεσιτεχνία.
+
+Αυτό που δεν αμφισβητείται είναι ότι ο **ελληνικός φραπές** — με τον πυκνό αφρό, το σέικερ και το ψηλό ποτήρι — καθιερώθηκε εδώ και από εδώ διαδόθηκε σε όλη τη χώρα.
+
+## Πώς παραγγέλνεται
+Δύο άξονες, και πρέπει να πεις και τους δύο:
+
+- **Γλυκύτητα:** σκέτος, μέτριος, γλυκός
+- **Γάλα:** με γάλα ή χωρίς
+
+Άρα «μέτριος με γάλα» ή «σκέτος χωρίς». Αν πεις απλώς «έναν φραπέ», θα σε ξαναρωτήσουν.
+
+## Πότε τον πίνουν
+Όλη μέρα, αλλά κυρίως **το απόγευμα** και κυρίως **αργά**. Ο φραπές δεν είναι καφές που τον πίνεις και φεύγεις. Είναι το εισιτήριο για δύο ώρες σε τραπέζι, και στη Θεσσαλονίκη αυτό είναι θεσμός, όχι σχήμα λόγου.
+
+Το καλοκαίρι τον θα δεις παντού στη **Νέα Παραλία** και στα τραπέζια της **Αριστοτέλους**· τον χειμώνα υποχωρεί υπέρ του freddo, αλλά δεν εξαφανίζεται ποτέ.`,
+      en: `The frappé is the most Greek drink that exists almost nowhere else, and Thessaloniki claims its birth.
+
+## The story, as it is told
+In **1957**, at the **22nd International Fair of Thessaloniki**, the Dritsa company represented Nestlé's instant coffee in Greece. At the stand they were promoting a new chocolate drink for children, prepared by mixing it with milk in a **shaker**.
+
+An employee, **Dimitris Vakondios**, wanted a coffee and had no hot water. He used the shaker with cold water instead, and got the foam.
+
+## How true is it
+Worth saying plainly: **cold instant coffee existed before this**. Nestlé advertisements from the 1930s and 1940s already suggested drinking it iced. The fair story is the most widely repeated urban legend, not a documented invention.
+
+What is not disputed is that the **Greek frappé** — the thick foam, the shaker, the tall glass — was established here and spread from here across the country.
+
+## How to order it
+Two axes, and you have to state both:
+
+- **Sweetness:** *sketos* (no sugar), *metrios* (medium), *glykos* (sweet)
+- **Milk:** with or without
+
+So "metrios with milk", or "sketos without". Ask simply for "a frappé" and you will be asked again.
+
+## When people drink it
+All day, but mostly **in the afternoon**, and mostly **slowly**. A frappé is not a coffee you drink and leave. It is a ticket to two hours at a table, and in Thessaloniki that is an institution rather than a figure of speech.
+
+In summer you will see it everywhere along the **waterfront** and at the tables on **Aristotelous**; in winter it gives ground to the freddo, but it never disappears.`,
+    },
+    areas: ["center", "waterfront"],
+    featured: true,
+  },
+  {
+    slug: "soutzoukakia",
+    name: { el: "Σουτζουκάκια", en: "Soutzoukakia" },
+    kind: "table",
+    whenToEat: { el: "Μεσημέρι ή βράδυ, με ρύζι", en: "Lunch or dinner, with rice" },
+    blurb: {
+      el: "Σμυρνέικα, με κύμινο και σάλτσα ντομάτας. Ήρθαν το 1922 και έμειναν.",
+      en: "Smyrna-style, with cumin and tomato sauce. They arrived in 1922 and stayed.",
+    },
+    long: {
+      el: `Τα σουτζουκάκια είναι το πιάτο που εξηγεί γιατί η κουζίνα της Θεσσαλονίκης έχει άλλη μυρωδιά από της νότιας Ελλάδας.
+
+## Από πού ήρθαν
+Ήρθαν από τη **Σμύρνη**, με τους πρόσφυγες του **1922**. Γι' αυτό λέγονται συχνά **«σμυρνέικα»**. Δεν είναι παραλλαγή του κεφτέ: είναι άλλο πιάτο, με άλλα μπαχαρικά και άλλη λογική.
+
+## Τι τα ξεχωρίζει
+Δύο πράγματα, και τα δύο ασυνήθιστα για την ελληνική κουζίνα της εποχής:
+
+- **Κύμινο**, γενναιόδωρα. Είναι η μυρωδιά που θα καταλάβεις αμέσως.
+- **Σκόρδο** μουλιασμένο με ψίχα ψωμιού, που δίνει την υφή.
+
+Ψήνονται ή τηγανίζονται και μετά σιγοβράζουν σε **σάλτσα ντομάτας**. Το σχήμα τους είναι επίμηκες, όχι στρογγυλό — από εκεί και το όνομα, που κρατά από το *sucuk*.
+
+## Πώς σερβίρονται
+Με **ρύζι** ή με **πατάτες**, σχεδόν πάντα με το ζουμί τους. Σε μεζεδοπωλείο θα έρθουν σε μικρή μερίδα ως μεζές, σε ταβέρνα ως κυρίως.
+
+Ταιριάζουν με κόκκινο κρασί, αλλά στη Θεσσαλονίκη θα τα δεις συχνά με **τσίπουρο**.
+
+## Πού να τα φας
+Σε **μεζεδοπωλεία** και ταβέρνες με μικρασιατικό προσανατολισμό, κυρίως γύρω από τις αγορές και στις προσφυγικές γειτονιές: **Καλαμαριά**, **Τούμπα**, Χαριλάου.
+
+Δεν είναι πιάτο που χρειάζεται ειδική αναζήτηση. Είναι σε κάθε δεύτερο μενού. Αλλά η διαφορά ανάμεσα σε καλά και μέτρια σουτζουκάκια είναι μεγάλη, και φαίνεται στο κύμινο: αν δεν το μυρίζεις, κάτι λείπει.`,
+      en: `Soutzoukakia are the dish that explains why Thessaloniki's cooking smells different from southern Greece's.
+
+## Where they came from
+They came from **Smyrna**, with the refugees of **1922**. That is why they are often called **"Smyrneika"**. They are not a variant of the meatball: they are a different dish, with different spices and a different logic.
+
+## What sets them apart
+Two things, both unusual in the Greek cooking of the time:
+
+- **Cumin**, generously. It is the smell you will recognise immediately.
+- **Garlic** worked into soaked breadcrumb, which gives the texture.
+
+They are baked or fried and then simmered in **tomato sauce**. The shape is oblong rather than round — hence the name, which comes from *sucuk*.
+
+## How they are served
+With **rice** or **potatoes**, almost always in their sauce. In a meze house they arrive as a small plate; in a taverna as a main.
+
+They go with red wine, though in Thessaloniki you will as often see them with **tsipouro**.
+
+## Where to eat them
+In **meze houses** and tavernas with an Asia Minor leaning, mostly around the markets and in the refugee neighbourhoods: **Kalamaria**, **Toumba**, Charilaou.
+
+This is not a dish you need to hunt for. It is on every second menu. But the gap between good and mediocre soutzoukakia is wide, and it shows in the cumin: if you cannot smell it, something is missing.`,
+    },
+    areas: ["kalamaria", "toumba"],
+    featured: true,
+  },
+  {
+    slug: "patsas",
+    name: { el: "Πατσάς", en: "Patsas" },
+    kind: "table",
+    whenToEat: { el: "Πολύ νωρίς ή πολύ αργά", en: "Very early or very late" },
+    blurb: {
+      el: "Η σούπα που κρατά ανοιχτά μαγαζιά όταν όλα τα άλλα έχουν κλείσει.",
+      en: "The soup that keeps shops open when everything else has closed.",
+    },
+    long: {
+      el: `Ο πατσάς είναι το φαγητό που τρώγεται σε ώρες που δεν τρώει κανείς, και στη Θεσσαλονίκη έχει τα δικά του μαγαζιά, ανοιχτά όταν όλα τα άλλα έχουν κλείσει.
+
+## Τι είναι
+Σούπα από **πατσά** — στομάχι και πόδι μοσχαριού — που σιγοβράζει ώρες μέχρι να γίνει πηχτός ζωμός. Σερβίρεται καυτός, με **σκορδοξίδι** και **κόκκινη πιπεριά** που τα προσθέτεις μόνος σου στο πιάτο.
+
+Δεν είναι πιάτο για όλους, και δεν προσποιείται ότι είναι.
+
+## Γιατί εδώ
+Η παράδοση κρατά από την **οθωμανική** κουζίνα και ενισχύθηκε με τους πρόσφυγες. Οι πατσατζίδικοι της Θεσσαλονίκης δούλευαν πάντα γύρω από τις **αγορές** — εκεί που οι εργάτες ξεκινούσαν πριν ξημερώσει — και γι' αυτό επιβίωσαν ως **ολονύχτια** μαγαζιά.
+
+## Πότε τρώγεται
+Δύο κοινά, στα δύο άκρα της νύχτας:
+
+- **Νωρίς το πρωί**, πριν τη δουλειά. Αυτή είναι η αυθεντική ώρα.
+- **Πολύ αργά**, μετά την έξοδο. Ο πατσάς έχει φήμη ως το φαγητό που «στρώνει» μετά το ποτό, και η φήμη αυτή κρατά γενιές.
+
+## Πώς να τον παραγγείλεις
+Θα σε ρωτήσουν αν τον θες **με πατσά ή μόνο ζωμό**. Αν είναι η πρώτη σου φορά, ζήτα λίγο πατσά και περισσότερο ζωμό. Το σκορδοξίδι μπαίνει σταδιακά — δοκίμασε πρώτα.
+
+## Πού
+Στα **πατσατζίδικα** γύρω από το **Καπάνι** και τη **Βλάλη**, και σε μερικά ιστορικά μαγαζιά του κέντρου που δεν έχουν αλλάξει δεκαετίες. Ρώτα για ωράριο· αρκετά ανοίγουν τα μεσάνυχτα και κλείνουν το μεσημέρι.`,
+      en: `Patsas is the food eaten at hours when nobody eats, and in Thessaloniki it has its own shops, open when everything else has closed.
+
+## What it is
+A soup of **tripe** — beef stomach and trotter — simmered for hours into a thick broth. It is served scalding, with **garlic vinegar** and **red pepper** that you add yourself at the table.
+
+It is not a dish for everyone, and it does not pretend to be.
+
+## Why here
+The tradition comes from **Ottoman** cooking and was reinforced by the refugees. Thessaloniki's patsas shops always worked around the **markets** — where labourers started before dawn — which is why they survived as **all-night** places.
+
+## When it is eaten
+Two crowds, at the two ends of the night:
+
+- **Early morning**, before work. This is the original hour.
+- **Very late**, after a night out. Patsas has a reputation as the thing that settles you after drinking, and that reputation has held for generations.
+
+## How to order it
+You will be asked whether you want it **with tripe or broth only**. If it is your first time, ask for a little tripe and more broth. Add the garlic vinegar gradually — taste first.
+
+## Where
+In the **patsatzidika** around **Kapani** and **Vlali**, and in a few historic places in the centre that have not changed in decades. Ask about hours; several open at midnight and close at noon.`,
+    },
+    areas: ["center"],
+  },
+  {
+    slug: "siropiasta",
+    name: { el: "Σιροπιαστά γλυκά", en: "Syrup sweets" },
+    kind: "sweet",
+    whenToEat: { el: "Απόγευμα, με καφέ", en: "Late afternoon, with coffee" },
+    blurb: {
+      el: "Μπακλαβάς, καταΐφι, γαλακτομπούρεκο: η οθωμανική κληρονομιά στο ταψί.",
+      en: "Baklava, kataifi, galaktoboureko: the Ottoman inheritance, baked in a tray.",
+    },
+    long: {
+      el: `Η Θεσσαλονίκη έχει φήμη για τα γλυκά της, και δεν εννοούμε τα ζαχαροπλαστεία με τις τούρτες. Εννοούμε τα **σιροπιαστά**: τα γλυκά ταψιού που κόβονται σε κομμάτια και στάζουν.
+
+## Από πού
+Είναι κληρονομιά **οθωμανική και μικρασιατική**. Ήρθαν με τους πρόσφυγες του 1922 και βρήκαν πόλη που ήδη τα ήξερε από πέντε αιώνες κοινής ζωής. Γι' αυτό εδώ τα φτιάχνουν με σιρόπι πιο ελαφρύ και φύλλο πιο λεπτό απ' ό,τι σε άλλες περιοχές.
+
+## Τι να δοκιμάσεις
+- **Μπακλαβάς** — φύλλο, καρύδι ή φιστίκι, σιρόπι. Το μέτρο της ποιότητας είναι αν το φύλλο παραμένει τραγανό.
+- **Καταΐφι** — ίδια λογική, άλλη υφή: κλωστές αντί για φύλλο.
+- **Γαλακτομπούρεκο** — κρέμα σιμιγδαλιού μέσα σε φύλλο, με σιρόπι. Τρώγεται χλιαρό.
+- **Ραβανί** — σιμιγδαλένιο κέικ σε σιρόπι, το πιο απλό και το πιο δύσκολο να γίνει σωστά.
+- **Τουλούμπα** — τηγανητή ζύμη σε σιρόπι, ζεστή.
+
+Και το **τρίγωνο Πανοράματος**, που έχει τη δική του σελίδα εδώ γιατί είναι καθαρά θεσσαλονικιώτικο.
+
+## Πότε τρώγονται
+**Απόγευμα**, με καφέ. Όχι ως επιδόρπιο μετά το φαγητό — αυτό είναι πιο βόρειο-ευρωπαϊκή συνήθεια. Εδώ το γλυκό είναι ξεχωριστή έξοδος, γύρω στις έξι το απόγευμα.
+
+## Πού
+Ιστορικά ζαχαροπλαστεία υπάρχουν σε όλο το κέντρο, με πυκνότητα γύρω από την **Τσιμισκή** και την **Αριστοτέλους**. Στο **Πανόραμα** ανηφορίζουν οι ντόπιοι ειδικά γι' αυτό.
+
+Μια συμβουλή: ζήτα να σου κόψουν **μισό κομμάτι** αν δοκιμάζεις πολλά. Είναι συνηθισμένο και κανείς δεν θα παραξενευτεί.`,
+      en: `Thessaloniki has a reputation for its sweets, and we do not mean the patisseries with the layer cakes. We mean the **syrup sweets**: the tray-baked ones that are cut into pieces and drip.
+
+## Where from
+They are an **Ottoman and Asia Minor** inheritance. They arrived with the refugees of 1922 and found a city that already knew them from five centuries of shared life. That is why the syrup here is lighter and the pastry thinner than in other regions.
+
+## What to try
+- **Baklava** — filo, walnut or pistachio, syrup. The measure of quality is whether the pastry stays crisp.
+- **Kataifi** — same logic, different texture: shredded pastry instead of sheets.
+- **Galaktoboureko** — semolina custard inside filo, with syrup. Eaten warm.
+- **Ravani** — semolina cake in syrup, the simplest and the hardest to get right.
+- **Touloumba** — fried dough in syrup, served warm.
+
+And the **trigono of Panorama**, which has its own page here because it is purely Thessalonian.
+
+## When they are eaten
+**Late afternoon**, with coffee. Not as dessert after a meal — that is a more northern European habit. Here the sweet is its own outing, at around six in the evening.
+
+## Where
+Historic patisseries are spread across the centre, most densely around **Tsimiski** and **Aristotelous**. Locals drive up to **Panorama** specifically for this.
+
+One tip: ask them to cut you **half a piece** if you are trying several. It is common and nobody will find it odd.`,
+    },
+    areas: ["center", "panorama"],
+    featured: true,
+  },
+  {
+    slug: "salepi",
+    name: { el: "Σαλέπι", en: "Salep" },
+    kind: "drink",
+    whenToEat: { el: "Χειμωνιάτικο βράδυ, στον δρόμο", en: "A winter evening, in the street" },
+    blurb: {
+      el: "Ζεστό, πυκνό, με κανέλα. Πωλείται από πλανόδιους και μόνο τον χειμώνα.",
+      en: "Hot, thick, dusted with cinnamon. Sold by street vendors, winter only.",
+    },
+    long: {
+      el: `Το σαλέπι είναι χειμωνιάτικο ρόφημα του δρόμου, και στη Θεσσαλονίκη επιβιώνει εκεί που σε άλλες πόλεις έχει σχεδόν χαθεί.
+
+## Τι είναι
+Πυκνό, ζεστό, λευκό ρόφημα από **αλεσμένο βολβό ορχιδέας** (σάλεπι), βρασμένο με γάλα ή νερό. Σερβίρεται σε ποτήρι, με **κανέλα** από πάνω.
+
+Η υφή του ξενίζει την πρώτη φορά: είναι ανάμεσα σε ρόφημα και κρέμα.
+
+## Από πού
+Είναι **οθωμανικής** καταγωγής και κάποτε πωλούνταν σε όλη την πόλη από πλανόδιους με θερμός. Η παράδοση συνδέεται με τον χειμώνα και με τις **αγορές**.
+
+Σήμερα το αυθεντικό σαλέπι είναι σπάνιο — ο βολβός της ορχιδέας προστατεύεται και η συλλογή του περιορίζεται — οπότε πολλά από όσα πωλούνται είναι παρασκευάσματα με άμυλο και άρωμα. Αξίζει να ρωτήσεις.
+
+## Πότε
+Μόνο **χειμώνα**, από Νοέμβριο ως Μάρτιο, και κυρίως **βράδυ** ή νωρίς το πρωί σε κρύα μέρα. Δεν θα το βρεις καλοκαίρι.
+
+## Πού
+Από **πλανόδιους** στο κέντρο, ιδίως γύρω από την Αριστοτέλους, την Εγνατία και τις αγορές τις κρύες βραδιές. Μερικά παραδοσιακά μαγαζιά το σερβίρουν σταθερά τη σεζόν.
+
+Αν πετύχεις καροτσάκι με σαλέπι σε παγωμένο βράδυ στην Αριστοτέλους, δοκίμασέ το. Είναι από τις λίγες γεύσεις της πόλης που δεν έχουν γίνει τουριστικό προϊόν.`,
+      en: `Salep is a winter street drink, and in Thessaloniki it survives where in other cities it has nearly vanished.
+
+## What it is
+A thick, hot, white drink made from **ground orchid tuber** (salep), boiled with milk or water. It is served in a glass with **cinnamon** on top.
+
+The texture surprises people the first time: it sits between a drink and a custard.
+
+## Where from
+It is **Ottoman** in origin and was once sold across the city by street vendors with flasks. The tradition is tied to winter and to the **markets**.
+
+Genuine salep is rare today — the orchid tuber is protected and its collection restricted — so much of what is sold is made with starch and flavouring. It is worth asking.
+
+## When
+**Winter only**, from November to March, and mostly **in the evening** or early on a cold morning. You will not find it in summer.
+
+## Where
+From **street vendors** in the centre, particularly around Aristotelous, Egnatia and the markets on cold nights. A few traditional shops serve it through the season.
+
+If you come across a salep cart on a freezing night on Aristotelous, try it. It is one of the few flavours in the city that has not been turned into a tourist product.`,
+    },
+    areas: ["center"],
+  },
 ];
 
 const bySlug = new Map(dishes.map((d) => [d.slug, d]));

@@ -300,7 +300,7 @@ export interface Guide {
   excerpt: Localized<string>;
   /** Markdown body. */
   body: Localized<string>;
-  category: "itinerary" | "food" | "nightlife" | "areas" | "seasonal" | "tips";
+  category: "itinerary" | "food" | "nightlife" | "areas" | "seasonal" | "tips" | "history";
   cover: Photo;
   author: string;
   publishedAt: string;

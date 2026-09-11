@@ -314,6 +314,272 @@ Buses run parallel to the seafront toward the centre. Alternatively, from the ea
     metroStation: "panepistimio",
     featured: true,
   },
+  {
+    slug: "jewish-thessaloniki-walk",
+    name: { el: "Η εβραϊκή Θεσσαλονίκη με τα πόδια", en: "Jewish Thessaloniki on foot" },
+    blurb: {
+      el: "Τα λίγα σημεία που απέμειναν από τη μεγαλύτερη κοινότητα της πόλης.",
+      en: "The few places left of the city's largest community.",
+    },
+    distanceKm: 2.0,
+    durationMin: 150,
+    difficulty: "easy",
+    bestTime: { el: "Πρωί, με το μουσείο ανοιχτό", en: "Morning, while the museum is open" },
+    intro: {
+      el: `Αυτή η διαδρομή δεν είναι περιήγηση σε αξιοθέατα. Είναι μια βόλτα σε μια πόλη που για 450 χρόνια είχε τους μισούς της κατοίκους Εβραίους, και που τους έχασε σχεδόν όλους μέσα σε δώδεκα εβδομάδες το 1943.
+
+Τα σημεία είναι λίγα και διάσπαρτα, γιατί ελάχιστα σώθηκαν. Πάρε τη με αυτή τη γνώση, όχι με κατάλογο στο χέρι.
+
+**Σημαντικό:** το Εβραϊκό Μουσείο έχει περιορισμένο ωράριο και η Συναγωγή Μοναστηριωτών δεν είναι πάντα ανοιχτή σε επισκέπτες. Έλεγξε πριν πας και, όπου χρειάζεται, κλείσε ραντεβού.`,
+      en: `This route is not a tour of sights. It is a walk through a city that for 450 years had half its residents Jewish, and that lost almost all of them inside twelve weeks in 1943.
+
+The points are few and scattered, because very little survived. Take it with that in mind, rather than as a checklist.
+
+**Important:** the Jewish Museum keeps limited hours and the Monastirioton Synagogue is not always open to visitors. Check before you go and arrange a visit where one is needed.`,
+    },
+    stops: [
+      {
+        name: { el: "Πλατεία Ελευθερίας", en: "Eleftherias Square" },
+        lat: 40.6350,
+        lng: 22.9370,
+        note: {
+          el: "Εδώ, τον Ιούλιο του 1942, συγκεντρώθηκαν δημόσια οι άνδρες της κοινότητας. Το Μνημείο Ολοκαυτώματος στέκει στην πλατεία.",
+          en: "Here, in July 1942, the men of the community were publicly assembled. The Holocaust Memorial stands on the square.",
+        },
+      },
+      {
+        name: { el: "Εβραϊκό Μουσείο Θεσσαλονίκης", en: "Jewish Museum of Thessaloniki" },
+        lat: 40.6348,
+        lng: 22.9399,
+        note: {
+          el: "Σε ένα από τα λίγα κτίρια που γλίτωσαν από την πυρκαγιά του 1917. Αφηγείται την ιστορία από την άφιξη του 1492 ως τον εκτοπισμό.",
+          en: "In one of the few buildings to survive the 1917 fire. It tells the story from the arrival of 1492 to the deportation.",
+        },
+      },
+      {
+        name: { el: "Συναγωγή Μοναστηριωτών", en: "Monastirioton Synagogue" },
+        lat: 40.6386,
+        lng: 22.9386,
+        note: {
+          el: "Η μόνη προπολεμική συναγωγή που σώζεται από τις περισσότερες από τριάντα που λειτουργούσαν στην πόλη.",
+          en: "The only pre-war synagogue still standing of the more than thirty that once served the city.",
+        },
+      },
+      {
+        name: { el: "Αγορά Μοδιάνο", en: "Modiano Market" },
+        lat: 40.6371,
+        lng: 22.9414,
+        note: {
+          el: "Χτίστηκε το 1922 από τον Έλι Μοδιάνο, σε μια πόλη που ανοικοδομούνταν. Το όνομα κρατά, η αγορά λειτουργεί ακόμη.",
+          en: "Built in 1922 by Eli Modiano, in a city then being rebuilt. The name has held; the market still works.",
+        },
+      },
+      {
+        name: { el: "Παλιός Σιδηροδρομικός Σταθμός", en: "Old Railway Station" },
+        lat: 40.6450,
+        lng: 22.9200,
+        note: {
+          el: "Από εδώ αναχώρησε στις 15 Μαρτίου 1943 το πρώτο τρένο προς το Άουσβιτς-Μπίρκεναου.",
+          en: "The first train to Auschwitz-Birkenau left from here on 15 March 1943.",
+        },
+      },
+    ],
+    outro: {
+      el: `## Πρακτικά
+- **Μισή μέρα** αρκεί, αλλά μην τη βιάζεσαι.
+- Η διαδρομή είναι **επίπεδη** και γίνεται όλη με τα πόδια.
+- Στα μνημεία και στους χώρους λατρείας, ευπρεπής ενδυμασία και ησυχία.
+- Πολλά σημεία δεν είναι σημασμένα. Αν θες να καταλάβεις τι βλέπεις, διάβασε πρώτα τη σελίδα για την [Εβραϊκή Θεσσαλονίκη](/guides/jewish-thessaloniki).
+
+## Τι δεν θα δεις
+Το **παλιό εβραϊκό νεκροταφείο**, με τάφους αιώνων, καταστράφηκε το 1942. Στη θέση του απλώνεται η πανεπιστημιούπολη του Αριστοτελείου. Δεν υπάρχει τίποτα να επισκεφθείς εκεί, αλλά αξίζει να το ξέρεις όταν περνάς.`,
+      en: `## Practical notes
+- **Half a day** is enough, but do not rush it.
+- The route is **flat** and entirely walkable.
+- At memorials and places of worship: modest dress, and quiet.
+- Many points are unmarked. To understand what you are looking at, read the page on [Jewish Thessaloniki](/en/guides/jewish-thessaloniki) first.
+
+## What you will not see
+The **old Jewish cemetery**, with graves going back centuries, was destroyed in 1942. The Aristotle University campus stands on the site. There is nothing to visit there, but it is worth knowing as you pass.`,
+    },
+  },
+  {
+    slug: "markets-walk",
+    name: { el: "Οι αγορές: Μοδιάνο, Καπάνι, Βλάλη", en: "The markets: Modiano, Kapani, Vlali" },
+    blurb: {
+      el: "Μία ώρα στις τρεις αγορές που ταΐζουν ακόμη την πόλη.",
+      en: "An hour through the three markets that still feed the city.",
+    },
+    distanceKm: 1.2,
+    durationMin: 90,
+    difficulty: "easy",
+    bestTime: { el: "Πρωί, πριν τις 13:00", en: "Morning, before 1 p.m." },
+    intro: {
+      el: `Οι αγορές της Θεσσαλονίκης δεν είναι τουριστικό αξιοθέατο. Είναι ο τρόπος με τον οποίο ψωνίζει ακόμη η πόλη, και το μέρος όπου θα καταλάβεις γρηγορότερα τι τρώει και πώς μιλάει.
+
+Η διαδρομή είναι μικρή σε απόσταση και μεγάλη σε πυκνότητα. Πάρ' την **πρωί**, όταν δουλεύουν όλοι οι πάγκοι.`,
+      en: `Thessaloniki's markets are not a tourist attraction. They are how the city still shops, and the fastest place to understand what it eats and how it talks.
+
+The route is short in distance and dense in everything else. Take it **in the morning**, when every stall is working.`,
+    },
+    stops: [
+      {
+        name: { el: "Πλατεία Αριστοτέλους", en: "Aristotelous Square" },
+        lat: 40.6329,
+        lng: 22.9412,
+        note: {
+          el: "Αφετηρία. Από εδώ ανηφορίζεις προς την Ερμού και μπαίνεις στην αγορά.",
+          en: "The starting point. From here you climb toward Ermou and into the market.",
+        },
+        placeSlug: "aristotelous-square",
+      },
+      {
+        name: { el: "Αγορά Μοδιάνο", en: "Modiano Market" },
+        lat: 40.6371,
+        lng: 22.9414,
+        note: {
+          el: "Η σκεπαστή αγορά του 1922, με ψαράδικα, αλλαντικά και μεζεδοπωλεία στους διαδρόμους.",
+          en: "The covered market of 1922, with fishmongers, delicatessens and meze bars along its aisles.",
+        },
+      },
+      {
+        name: { el: "Καπάνι (Βλάλη)", en: "Kapani (Vlali)" },
+        lat: 40.6366,
+        lng: 22.9400,
+        note: {
+          el: "Η παλιότερη αγορά της πόλης, υπαίθρια και πυκνή: φρούτα, λαχανικά, ελιές, μπαχαρικά.",
+          en: "The city's oldest market, open-air and dense: fruit, vegetables, olives, spices.",
+        },
+      },
+      {
+        name: { el: "Μπεζεστένι", en: "Bezesteni" },
+        lat: 40.6363,
+        lng: 22.9418,
+        note: {
+          el: "Οθωμανική σκεπαστή αγορά του 15ου αιώνα, χτισμένη για υφάσματα. Λειτουργεί ακόμη ως αγορά.",
+          en: "A 15th-century Ottoman covered market built for the cloth trade. Still a market today.",
+        },
+      },
+      {
+        name: { el: "Παναγία Χαλκέων", en: "Panagia Chalkeon" },
+        lat: 40.6360,
+        lng: 22.9470,
+        note: {
+          el: "Κλείσιμο στον ολόπλινθο ναό του 1028, που πήρε το όνομά του από τους χαλκιάδες της περιοχής.",
+          en: "Finish at the all-brick church of 1028, named for the coppersmiths who worked here.",
+        },
+        placeSlug: "panagia-chalkeon",
+      },
+    ],
+    outro: {
+      el: `## Πρακτικά
+- **Πρωί**, ιδανικά πριν τις 13:00. Το απόγευμα οι περισσότεροι πάγκοι κλείνουν.
+- **Κυριακή κλειστά.** Το Σάββατο είναι η πιο ζωντανή μέρα και η πιο γεμάτη.
+- Πάρε **μετρητά**. Πολλοί πάγκοι δεν δέχονται κάρτα.
+- Η περιοχή είναι απόλυτα ασφαλής, αλλά είναι πυκνή· πρόσεχε την τσάντα σου όπως σε κάθε αγορά.
+
+## Τι να δοκιμάσεις στον δρόμο
+Ελιές και τουρσιά από τους πάγκους, ξηρούς καρπούς, και αν είσαι πρωινός τύπος, [πατσά](/what-to-eat/patsas) σε ένα από τα μαγαζιά που δουλεύουν από τα μεσάνυχτα. Για κάτι πιο ήπιο, [μπουγάτσα](/what-to-eat/bougatsa) και καφέ.`,
+      en: `## Practical notes
+- **Morning**, ideally before 1 p.m. Most stalls close in the afternoon.
+- **Closed Sunday.** Saturday is the liveliest day and the most crowded.
+- Bring **cash**. Many stalls do not take cards.
+- The area is perfectly safe, but it is dense; mind your bag as in any market.
+
+## What to eat on the way
+Olives and pickles from the stalls, nuts, and if you are an early riser, [patsas](/en/what-to-eat/patsas) at one of the shops that work from midnight. For something gentler, [bougatsa](/en/what-to-eat/bougatsa) and a coffee.`,
+    },
+  },
+  {
+    slug: "ottoman-thessaloniki-walk",
+    name: { el: "Η οθωμανική Θεσσαλονίκη με τα πόδια", en: "Ottoman Thessaloniki on foot" },
+    blurb: {
+      el: "Τέσσερα μνημεία πέντε αιώνων, όλα μέσα σε ένα χιλιόμετρο.",
+      en: "Four monuments spanning five centuries, all within a kilometre.",
+    },
+    distanceKm: 1.1,
+    durationMin: 100,
+    difficulty: "easy",
+    bestTime: { el: "Πρωί ή νωρίς απόγευμα", en: "Morning or early afternoon" },
+    intro: {
+      el: `Πέντε αιώνες οθωμανικής ιστορίας δεν χωράνε σε μια βόλτα, αλλά τα τέσσερα σημαντικότερα μνημεία του κέντρου είναι όλα μέσα σε ένα χιλιόμετρο.
+
+Η διαδρομή είναι σύντομη και εύκολη. Το ζήτημα δεν είναι η απόσταση· είναι ότι πρέπει να ξέρεις τι κοιτάς, γιατί τα περισσότερα από αυτά τα κτίρια έχουν αλλάξει χρήση δύο και τρεις φορές.`,
+      en: `Five centuries of Ottoman history do not fit into one walk, but the four most important monuments in the centre all sit within a kilometre.
+
+The route is short and easy. The difficulty is not the distance; it is that you need to know what you are looking at, because most of these buildings have changed use two or three times.`,
+    },
+    stops: [
+      {
+        name: { el: "Μπέη Χαμάμ", en: "Bey Hamam" },
+        lat: 40.6366,
+        lng: 22.9440,
+        note: {
+          el: "Το πρώτο οθωμανικό λουτρό της πόλης, του 1444, και το μεγαλύτερο που σώζεται στην Ελλάδα. Λειτούργησε ως λουτρό ως το 1968.",
+          en: "The city's first Ottoman bath, from 1444, and the largest surviving in Greece. It worked as a bath until 1968.",
+        },
+      },
+      {
+        name: { el: "Μπεζεστένι", en: "Bezesteni" },
+        lat: 40.6363,
+        lng: 22.9418,
+        note: {
+          el: "Σκεπαστή αγορά του 15ου αιώνα για το εμπόριο υφασμάτων, που λειτουργεί ακόμη.",
+          en: "A 15th-century covered market for the cloth trade, still trading.",
+        },
+      },
+      {
+        name: { el: "Χαμζά Μπέη Τζαμί (Αλκαζάρ)", en: "Hamza Bey Mosque (Alcazar)" },
+        lat: 40.6371,
+        lng: 22.9435,
+        note: {
+          el: "Από τα παλαιότερα οθωμανικά τζαμιά της πόλης. Οι Θεσσαλονικείς το ξέρουν ως «Αλκαζάρ», από τον κινηματογράφο που στεγάστηκε εδώ.",
+          en: "Among the city's oldest Ottoman mosques. Locals know it as the \"Alcazar\", after the cinema that occupied it.",
+        },
+      },
+      {
+        name: { el: "Αλατζά Ιμαρέτ", en: "Alatza Imaret" },
+        lat: 40.6410,
+        lng: 22.9470,
+        note: {
+          el: "Ιδρύθηκε τον Φεβρουάριο του 1484 από τον Ισχάκ Πασά ως ιμαρέτ, με μαγειρείο για τους φτωχούς και ξενώνα.",
+          en: "Founded in February 1484 by Ishak Pasha as an imaret, with a kitchen for the poor and a hostel.",
+        },
+      },
+      {
+        name: { el: "Ροτόντα", en: "Rotunda" },
+        lat: 40.6333,
+        lng: 22.9531,
+        note: {
+          el: "Ρωμαϊκό κτίσμα, μετά ναός, μετά τζαμί. Ο μιναρές της είναι ο μόνος που σώζεται στη Θεσσαλονίκη.",
+          en: "Roman building, then church, then mosque. Its minaret is the only one surviving in Thessaloniki.",
+        },
+        placeSlug: "rotunda",
+      },
+    ],
+    outro: {
+      el: `## Πρακτικά
+- **Μία ώρα** με τα πόδια, δύο με στάσεις.
+- Αρκετά μνημεία ανοίγουν **μόνο για εκθέσεις**. Δες τις επίσημες ανακοινώσεις πριν πας.
+- Το **Μπεζεστένι** λειτουργεί ως αγορά, οπότε ακολουθεί ωράριο καταστημάτων.
+- Η διαδρομή είναι επίπεδη και πάνω σε κεντρικούς δρόμους.
+
+## Αν θες να συνεχίσεις
+Το σπίτι όπου γεννήθηκε ο **Μουσταφά Κεμάλ** λειτουργεί ως μουσείο δίπλα στο τουρκικό προξενείο. Χρειάζεται **ταυτότητα ή διαβατήριο** και ο έλεγχος είναι αυστηρός. Δεν το έβαλα στη διαδρομή γιατί απαιτεί ξεχωριστό προγραμματισμό.
+
+Για το πλαίσιο, δες τη σελίδα [Οθωμανική Θεσσαλονίκη](/guides/ottoman-thessaloniki).`,
+      en: `## Practical notes
+- **One hour** walking, two with stops.
+- Several monuments open **only for exhibitions**. Check official announcements before you go.
+- The **Bezesteni** works as a market, so it follows shop hours.
+- The route is flat and runs along central streets.
+
+## If you want to continue
+The house where **Mustafa Kemal** was born is a museum beside the Turkish consulate. It requires **an ID card or passport** and security is strict. It is not on the route because it needs separate planning.
+
+For context, see the page on [Ottoman Thessaloniki](/en/guides/ottoman-thessaloniki).`,
+    },
+  },
 ];
 
 const bySlug = new Map(walkingRoutes.map((r) => [r.slug, r]));
