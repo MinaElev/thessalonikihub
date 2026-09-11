@@ -11,6 +11,7 @@ import { PlaceCard } from "@/components/PlaceCard";
 import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { MapClient } from "@/components/map/MapClient";
 import { pillars } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
@@ -90,7 +91,9 @@ export default async function AreaHub({
           <MapPin className="h-7 w-7 text-brand-600" /> {name}
         </h1>
         <div className="mt-4">
-          <MarkdownBody>{pick(area.long, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale} selfHref={areaHref(area.slug)}>
+            {pick(area.long, locale)}
+          </MarkdownBody>
         </div>
       </header>
 
@@ -146,6 +149,16 @@ export default async function AreaHub({
           </div>
         </section>
       ) : null}
+
+      {/* Walking routes run through these neighbourhoods, but nothing linked
+          to the hub outside the menu. */}
+      <RelatedLinks
+        title={t("related.exploreMore")}
+        items={[
+          { href: "/routes", label: t("nav.routes") },
+          { href: "/areas", label: t("nav.areas") },
+        ]}
+      />
     </Container>
   );
 }

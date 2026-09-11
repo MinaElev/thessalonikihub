@@ -129,7 +129,9 @@ export default async function FestivalPage({
 
       <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
         <div className="min-w-0">
-          <MarkdownBody>{pick(f.long, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale} selfHref={festivalHref(f.slug)}>
+            {pick(f.long, locale)}
+          </MarkdownBody>
 
           {events.length ? (
             <section className="mt-10">

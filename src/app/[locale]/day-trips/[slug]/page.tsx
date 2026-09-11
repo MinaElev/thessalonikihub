@@ -9,6 +9,7 @@ import { PhotoCredit } from "@/components/PhotoCredit";
 import { Container } from "@/components/ui";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { buildMetadata } from "@/lib/seo";
 import { dayTripHref } from "@/lib/links";
 import { dayTrips, getDayTrip } from "@/content/data/daytrips";
@@ -46,6 +47,12 @@ export default async function DayTripPage({
   const d = getDayTrip(slug);
   if (!d) notFound();
   const photo = d.photos[0];
+  // Same category first — someone reading about Vergina is likelier to want
+  // Meteora than a beach — then whatever else fills the row.
+  const others = [...dayTrips]
+    .filter((o) => o.slug !== d.slug)
+    .sort((a, b) => Number(b.category === d.category) - Number(a.category === d.category))
+    .slice(0, 4);
 
   return (
     <Container className="max-w-3xl py-4">
@@ -83,7 +90,32 @@ export default async function DayTripPage({
         </>
       ) : null}
 
-      <MarkdownBody>{pick(d.description, locale)}</MarkdownBody>
+      <MarkdownBody locale={locale} selfHref={dayTripHref(d.slug)}>
+        {pick(d.description, locale)}
+      </MarkdownBody>
+
+      {/* These pages used to end here with no outgoing link at all. */}
+      <RelatedLinks
+        title={t("related.moreTrips")}
+        more={{ href: "/day-trips", label: t("related.allTrips") }}
+        items={others.map((o) => ({
+          href: dayTripHref(o.slug),
+          label: pick(o.name, locale),
+          hint: `${o.distanceKm} km · ${pick(o.drivingTime, locale)}`,
+        }))}
+      />
+
+      <RelatedLinks
+        title={t("related.planYourTrip")}
+        items={[
+          { href: "/plan", label: t("nav.plan"), hint: t("related.planYourTripText") },
+          { href: "/when-to-visit", label: t("nav.whenToVisit") },
+          // The combined-holiday page belongs with Chalkidiki and nowhere else.
+          ...(d.slug === "chalkidiki"
+            ? [{ href: "/thessaloniki-and-chalkidiki", label: t("nav.combos") }]
+            : []),
+        ]}
+      />
     </Container>
   );
 }

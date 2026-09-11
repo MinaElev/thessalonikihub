@@ -44,7 +44,7 @@ import { SaveButton } from "@/components/SaveButton";
 import { isSaved } from "@/lib/saved";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
-import { cityHref, mapsHref, pillarHref, areaHref } from "@/lib/links";
+import { areaHref, cityHref, mapsHref, pillarHref, placeHref } from "@/lib/links";
 import { formatDate, formatDistance, priceRangeLabel } from "@/lib/format";
 import { getArea } from "@/content/data/areas";
 import {
@@ -425,7 +425,9 @@ export async function PlaceDetail({
 
             <section className="mt-8">
               <h2 className="mb-2 text-xl font-bold">{t("place.about")}</h2>
-              <MarkdownBody>{pick(place.description, locale)}</MarkdownBody>
+              <MarkdownBody locale={locale} selfHref={placeHref(place)}>
+              {pick(place.description, locale)}
+            </MarkdownBody>
             </section>
 
             {amenityGroups.length ? (

@@ -69,7 +69,7 @@ export default async function AudiencePage({
       <header className="mb-8 max-w-3xl">
         <h1 className="text-3xl font-extrabold sm:text-4xl">{pick(a.name, locale)}</h1>
         <div className="mt-4">
-          <MarkdownBody>{pick(a.intro, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale}>{pick(a.intro, locale)}</MarkdownBody>
         </div>
       </header>
 

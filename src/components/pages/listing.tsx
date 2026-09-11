@@ -251,7 +251,7 @@ export async function CollectionListing({
           {pick(collection.heading, locale)}
         </h1>
         <div className="mt-4">
-          <MarkdownBody>{pick(collection.intro, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale}>{pick(collection.intro, locale)}</MarkdownBody>
         </div>
       </header>
 

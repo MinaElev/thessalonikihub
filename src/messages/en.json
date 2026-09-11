@@ -448,5 +448,14 @@
       "dish": "Food",
       "festival": "Festival"
     }
+  },
+  "related": {
+    "moreTrips": "More day trips from Thessaloniki",
+    "allTrips": "All day trips",
+    "relatedGuides": "Related guides",
+    "allGuides": "All guides",
+    "planYourTrip": "Plan your trip",
+    "planYourTripText": "How many days, when to come and what to see first.",
+    "exploreMore": "Keep exploring"
   }
 }

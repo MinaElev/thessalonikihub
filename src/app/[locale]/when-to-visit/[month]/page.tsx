@@ -18,6 +18,7 @@ import { Container } from "@/components/ui";
 import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { festivalHref, monthHref } from "@/lib/links";
@@ -177,7 +178,7 @@ export default async function MonthPage({
 
       <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
         <div className="min-w-0">
-          <MarkdownBody>{pick(m.long, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale}>{pick(m.long, locale)}</MarkdownBody>
 
           {events.length ? (
             <section className="mt-10">
@@ -269,6 +270,16 @@ export default async function MonthPage({
           <p className="text-xs text-muted">{t("months.disclaimer")}</p>
         </aside>
       </div>
+
+      {/* The festivals hub was reachable only from the menu, though every month
+          page lists the fixtures that fall in it. */}
+      <RelatedLinks
+        title={t("related.exploreMore")}
+        items={[
+          { href: "/festivals", label: t("nav.festivals") },
+          { href: "/when-to-visit", label: t("nav.whenToVisit") },
+        ]}
+      />
     </Container>
   );
 }

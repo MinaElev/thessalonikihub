@@ -10,6 +10,7 @@ import { Container } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { guideHref } from "@/lib/links";
@@ -55,6 +56,13 @@ export default async function GuidePage({
   const related = (
     await Promise.all((guide.relatedPlaces ?? []).map((s) => getPlaceBySlug(s)))
   ).filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+  // Guides in the same category first; someone reading an itinerary wants
+  // another itinerary more than a nightlife piece.
+  const siblings = getGuides()
+    .filter((g) => g.slug !== guide.slug)
+    .sort((a, b) => Number(b.category === guide.category) - Number(a.category === guide.category))
+    .slice(0, 4);
 
   return (
     <>
@@ -102,7 +110,7 @@ export default async function GuidePage({
           </div>
           <PhotoCredit photo={guide.cover} className="-mt-4 mb-6 text-right" />
           <p className="mb-6 text-lg text-muted">{pick(guide.excerpt, locale)}</p>
-          <MarkdownBody>{pick(guide.body, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale}>{pick(guide.body, locale)}</MarkdownBody>
         </article>
 
         {related.length ? (
@@ -115,6 +123,18 @@ export default async function GuidePage({
             </div>
           </section>
         ) : null}
+
+        {/* Two guides carried no relatedPlaces and so ended with no outgoing
+            link at all; sibling guides always give the reader somewhere. */}
+        <RelatedLinks
+          title={t("related.relatedGuides")}
+          more={{ href: "/guides", label: t("related.allGuides") }}
+          items={siblings.map((g) => ({
+            href: guideHref(g),
+            label: pick(g.title, locale),
+            hint: pick(g.excerpt, locale),
+          }))}
+        />
       </Container>
     </>
   );

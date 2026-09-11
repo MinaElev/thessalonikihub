@@ -172,7 +172,9 @@ export default async function RoutePage({
       </div>
 
       <div className="mb-10 max-w-3xl">
-        <MarkdownBody>{pick(r.intro, locale)}</MarkdownBody>
+        <MarkdownBody locale={locale} selfHref={routeHref(r.slug)}>
+            {pick(r.intro, locale)}
+          </MarkdownBody>
       </div>
 
       <div className="mb-10">
@@ -215,7 +217,9 @@ export default async function RoutePage({
 
       <div className="grid gap-8 lg:grid-cols-[1fr_290px]">
         <div className="min-w-0">
-          <MarkdownBody>{pick(r.outro, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale} selfHref={routeHref(r.slug)}>
+            {pick(r.outro, locale)}
+          </MarkdownBody>
 
           <section className="mt-10">
             <h2 className="mb-4 text-2xl font-bold">{t("routes.otherRoutes")}</h2>

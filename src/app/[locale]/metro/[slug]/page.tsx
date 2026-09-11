@@ -112,7 +112,9 @@ export default async function MetroStationPage({
             <p className="mt-3 text-lg text-muted">{pick(station.blurb, locale)}</p>
           </header>
 
-          <MarkdownBody>{pick(station.long, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale} selfHref={metroStationHref(station.slug)}>
+            {pick(station.long, locale)}
+          </MarkdownBody>
 
           {places.length ? (
             <section className="mt-10">

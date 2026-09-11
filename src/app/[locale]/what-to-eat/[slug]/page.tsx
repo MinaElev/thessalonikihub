@@ -82,7 +82,9 @@ export default async function DishPage({
 
       <div className="grid gap-8 lg:grid-cols-[1fr_290px]">
         <div className="min-w-0">
-          <MarkdownBody>{pick(d.long, locale)}</MarkdownBody>
+          <MarkdownBody locale={locale} selfHref={dishHref(d.slug)}>
+            {pick(d.long, locale)}
+          </MarkdownBody>
 
           <section className="mt-10">
             <h2 className="mb-4 text-2xl font-bold">{t("dishes.more")}</h2>
