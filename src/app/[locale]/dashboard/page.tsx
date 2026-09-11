@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { LogIn, Plus } from "lucide-react";
+import { LogIn, Plus, ShieldCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
@@ -51,6 +51,19 @@ export default async function DashboardPage({
     ...events.map((e) => ({ id: e.id, name: e.name as Localized<string>, status: e.status, kind: "EVENTS", slug: undefined as string | undefined })),
   ];
 
+  // Moderation has no entry point of its own — an admin arrives here like
+  // anyone else, so the queue has to announce itself or it goes unnoticed.
+  const isAdmin = user.role === "ADMIN";
+  const [pendingPlaces, pendingEvents, pendingClaims] =
+    isAdmin && isDbConfigured
+      ? await Promise.all([
+          prisma.place.count({ where: { status: "PENDING" } }),
+          prisma.eventItem.count({ where: { status: "PENDING" } }),
+          prisma.claim.count({ where: { status: "PENDING" } }),
+        ])
+      : [0, 0, 0];
+  const pendingTotal = pendingPlaces + pendingEvents + pendingClaims;
+
   return (
     <Container className="py-8">
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
@@ -72,6 +85,47 @@ export default async function DashboardPage({
           </form>
         </div>
       </div>
+
+      {isAdmin ? (
+        <Link
+          href="/admin"
+          className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-brand-200 bg-brand-50/50 p-4 transition hover:border-brand-300 hover:bg-brand-50"
+        >
+          <span className="flex items-center gap-2 font-semibold text-brand-800">
+            <ShieldCheck className="h-5 w-5 text-brand-600" />
+            {tt("Διαχείριση", "Moderation")}
+          </span>
+          <span className="text-sm text-slate-700">
+            {pendingTotal === 0
+              ? tt("Καμία εκκρεμότητα", "Nothing pending")
+              : [
+                  pendingPlaces
+                    ? tt(
+                        `${pendingPlaces} ${pendingPlaces === 1 ? "καταχώρηση" : "καταχωρήσεις"}`,
+                        `${pendingPlaces} listing${pendingPlaces === 1 ? "" : "s"}`,
+                      )
+                    : null,
+                  pendingEvents
+                    ? tt(
+                        `${pendingEvents} ${pendingEvents === 1 ? "εκδήλωση" : "εκδηλώσεις"}`,
+                        `${pendingEvents} event${pendingEvents === 1 ? "" : "s"}`,
+                      )
+                    : null,
+                  pendingClaims
+                    ? tt(
+                        `${pendingClaims} ${pendingClaims === 1 ? "αίτημα ιδιοκτησίας" : "αιτήματα ιδιοκτησίας"}`,
+                        `${pendingClaims} ownership request${pendingClaims === 1 ? "" : "s"}`,
+                      )
+                    : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+          </span>
+          <span className="text-sm font-semibold text-brand-700">
+            {tt("Άνοιγμα →", "Open →")}
+          </span>
+        </Link>
+      ) : null}
 
       {!isDbConfigured ? (
         <p className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-sm text-muted">
