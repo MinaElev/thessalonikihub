@@ -19,6 +19,7 @@ import { getEvent, getFileEvents, getNearbyPlaces } from "@/lib/repo";
 import { MiniMapClient } from "@/components/map/MiniMapClient";
 import { ViewBeacon } from "@/components/ViewBeacon";
 import { TrackedLink } from "@/components/TrackedLink";
+import { eventCover } from "@/lib/event-cover";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -39,7 +40,9 @@ export async function generateMetadata({
     path: eventHref(event),
     title: pick(event.name, locale),
     description: pick(event.summary, locale),
-    images: event.photos[0] ? [event.photos[0].url] : undefined,
+    // Always an image: an imported event with no photograph still gets its
+    // category card, so a shared link never previews blank.
+    images: [eventCover(event).url],
     type: "article",
     // Imported events carry the source feed's own words until an editor
     // rewrites them; republishing that verbatim is duplicate content.
@@ -58,7 +61,7 @@ export default async function EventPage({
   const event = await getEvent(slug);
   if (!event) notFound();
 
-  const photo = event.photos[0];
+  const photo = eventCover(event);
   const venueName = pick(event.venue, locale);
   const nearbyStay = event.geo ? getNearbyPlaces(event.geo, "stay", { limit: 4 }) : [];
   const nearbyEat = event.geo ? getNearbyPlaces(event.geo, "eat", { limit: 4 }) : [];

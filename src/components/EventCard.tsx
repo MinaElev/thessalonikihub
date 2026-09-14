@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { EventItem } from "@/lib/types";
 import { pick } from "@/lib/types";
+import { eventCover } from "@/lib/event-cover";
 import { eventHref } from "@/lib/links";
 import { formatEventWhen } from "@/lib/format";
 
@@ -14,30 +15,20 @@ export function EventCard({
   event: EventItem;
   locale: Locale;
 }) {
-  const photo = event.photos[0];
+  const photo = eventCover(event);
   return (
     <Link
       href={eventHref(event)}
       className="group flex gap-4 overflow-hidden rounded-2xl border border-slate-100 bg-white p-3 shadow-sm transition hover:shadow-md"
     >
       <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-slate-100">
-        {photo ? (
-          <Image
-            src={photo.url}
-            alt={pick(photo.alt, locale)}
-            fill
-            sizes="96px"
-            className="object-cover"
-          />
-        ) : (
-          /* Imported events almost never carry a photo. */
-          <div
-            aria-hidden="true"
-            className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-50 to-brand-100"
-          >
-            <CalendarDays className="h-7 w-7 text-brand-600/40" />
-          </div>
-        )}
+        <Image
+          src={photo.url}
+          alt={pick(photo.alt, locale)}
+          fill
+          sizes="96px"
+          className="object-cover"
+        />
       </div>
       <div className="min-w-0 flex-1">
         <h3 className="truncate font-bold text-ink group-hover:text-brand-700">

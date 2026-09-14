@@ -70,6 +70,21 @@ import {
 
 type StayPillar = Exclude<Pillar, "events">;
 
+/**
+ * A more precise schema.org type where the listing's own `type` supports one.
+ *
+ * TouristAttraction is true of everything under "discover" but tells a search
+ * engine very little. Museum, Church and LandmarksOrHistoricalBuildings are
+ * all subtypes it understands, and the site already records which is which.
+ */
+const REFINED_TYPE: Record<string, string> = {
+  museum: "Museum",
+  church: "Church",
+  monastery: "Church",
+  archaeological: "LandmarksOrHistoricalBuildings",
+  landmark: "LandmarksOrHistoricalBuildings",
+};
+
 const schemaType: Record<StayPillar, string> = {
   stay: "LodgingBusiness",
   eat: "Restaurant",
@@ -177,7 +192,8 @@ export async function PlaceDetail({
 
   const ld: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": schemaType[pillar],
+    "@type":
+      pillar === "discover" ? (REFINED_TYPE[place.type] ?? schemaType[pillar]) : schemaType[pillar],
     name: pick(place.name, locale),
     description: pick(place.summary, locale),
     address: place.geo.address
