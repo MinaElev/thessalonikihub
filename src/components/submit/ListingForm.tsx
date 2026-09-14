@@ -277,8 +277,8 @@ export function ListingForm({
         <p className="text-xs text-muted">
           {T(
             locale,
-            "Το απευθείας ανέβασμα αρχείων θα ενεργοποιηθεί με τη σύνδεση του Supabase Storage.",
-            "Direct file upload activates once Supabase Storage is connected.",
+            "Προαιρετικό εδώ. Μόλις εγκριθεί η καταχώρηση, ανεβάζεις φωτογραφίες απευθείας από το κινητό σου μέσα από τον πίνακά σου — χωρίς συνδέσμους.",
+            "Optional here. Once the listing is approved you can upload photographs straight from your phone in your dashboard — no links needed.",
           )}
         </p>
       </fieldset>

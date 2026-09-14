@@ -7,6 +7,7 @@ import type { Localized, OpeningHours } from "@/lib/types";
 import { pick } from "@/lib/types";
 import { Container } from "@/components/ui";
 import { OwnerEditForm } from "@/components/OwnerEditForm";
+import { PhotoUploader } from "@/components/owner/PhotoUploader";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 
@@ -121,6 +122,41 @@ export default async function EditListingPage({
           )}
         </p>
       </header>
+
+      <div className="mb-10">
+        <PhotoUploader
+          kind={place.kind.toLowerCase()}
+          slug={slug}
+          initial={(place.photos ?? []) as never}
+          locale={locale}
+          labels={{
+            title: tt("Φωτογραφίες", "Photographs"),
+            hint: tt(
+              "Δικές σου φωτογραφίες, από το κινητό ή τον υπολογιστή. Τις μικραίνουμε και τις μετατρέπουμε σε WebP αυτόματα — και αφαιρούμε τα δεδομένα τοποθεσίας που κουβαλάει κάθε φωτογραφία κινητού.",
+              "Your own photographs, from a phone or a computer. We resize and convert them automatically — and strip the location data every phone photo carries.",
+            ),
+            choose: tt("Ανέβασε φωτογραφία", "Upload a photo"),
+            uploading: tt("Ανεβαίνει…", "Uploading…"),
+            remove: tt("Αφαίρεση", "Remove"),
+            empty: tt("Καμία φωτογραφία ακόμα.", "No photographs yet."),
+            errorAuth: tt("Δεν έχεις δικαίωμα.", "You do not have permission."),
+            errorType: tt(
+              "Δεν αναγνωρίσαμε την εικόνα. Δοκίμασε JPEG, PNG ή HEIC.",
+              "We could not read that image. Try JPEG, PNG or HEIC.",
+            ),
+            errorSize: tt("Πολύ μεγάλο αρχείο — έως 8MB.", "File too large — 8MB maximum."),
+            errorLimit: tt(
+              "Έφτασες το όριο των 8 φωτογραφιών. Αφαίρεσε μία πρώτα.",
+              "You have reached the limit of 8 photographs. Remove one first.",
+            ),
+            errorStorage: tt(
+              "Η αποθήκευση απέτυχε. Δοκίμασε ξανά σε λίγο.",
+              "Storage failed. Try again shortly.",
+            ),
+            errorGeneric: tt("Κάτι πήγε στραβά.", "Something went wrong."),
+          }}
+        />
+      </div>
 
       <OwnerEditForm
         slug={slug}
