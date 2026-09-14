@@ -30,7 +30,8 @@
     "groupGuide": "Guide",
     "groupTrips": "Day trips",
     "menu": "Menu",
-    "closeMenu": "Close"
+    "closeMenu": "Close",
+    "weekend": "This weekend"
   },
   "areas": {
     "title": "Thessaloniki Areas",
@@ -141,7 +142,8 @@
     "intentStay": "Where to stay",
     "intentMetro": "By metro",
     "intentEat": "What to eat",
-    "intentSee": "UNESCO monuments"
+    "intentSee": "UNESCO monuments",
+    "intentWeekend": "This weekend"
   },
   "pillars": {
     "stayDesc": "Hotels, apartments and boutique stays.",
@@ -458,5 +460,19 @@
     "planYourTrip": "Plan your trip",
     "planYourTripText": "How many days, when to come and what to see first.",
     "exploreMore": "Keep exploring"
+  },
+  "weekend": {
+    "title": "What's on this weekend in Thessaloniki",
+    "subtitle": "Concerts, theatre, festivals and screenings from Friday to Sunday — refreshed every week.",
+    "inProgress": "This weekend",
+    "upcoming": "The weekend ahead",
+    "nothing": "Nothing listed for this weekend yet. The programme refreshes daily, so check again towards the end of the week.",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "noneThatDay": "Nothing listed",
+    "alsoOpen": "Open all weekend",
+    "alsoOpenIntro": "Monuments and museums that open on all three days.",
+    "moreEvents": "All events"
   }
 }

@@ -92,6 +92,7 @@ export default async function HomePage({
   const unesco = getCollections("discover").find((c) => c.slug === "unesco-monuments");
   const quickIntents = [
     ...(todayHasSomething ? [{ href: "/today", label: t("home.intentToday") }] : []),
+    { href: "/this-weekend", label: t("home.intentWeekend") },
     { href: whenToVisitHref(), label: t("home.intentWhen") },
     { href: areasHref(), label: t("home.intentStay") },
     { href: metroHref(), label: t("home.intentMetro") },

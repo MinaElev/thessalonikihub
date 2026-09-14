@@ -37,6 +37,7 @@ const exploreGroups = [
     key: "groupWhatsOn",
     items: [
       { key: "today", href: "/today" },
+      { key: "weekend", href: "/this-weekend" },
       { key: "festivals", href: "/festivals" },
       { key: "whenToVisit", href: "/when-to-visit" },
     ],

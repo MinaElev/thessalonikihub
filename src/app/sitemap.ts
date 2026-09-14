@@ -43,8 +43,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastMod = new Map<string, string>();
 
   // Always-present pages.
-  const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals", "/what-to-eat", "/routes", "/thessaloniki-and-chalkidiki"]);
-  // /today is intentionally excluded: it is a dynamic daily page.
+  const paths = new Set<string>(["/", "/guides", "/areas", "/day-trips", "/for", "/plan", "/metro", "/when-to-visit", "/festivals", "/what-to-eat", "/routes", "/thessaloniki-and-chalkidiki", "/this-weekend"]);
+  // /today is intentionally excluded: it changes every day and is empty on a
+  // quiet one. /this-weekend is included for the opposite reasons — the URL
+  // never changes, it refreshes weekly, and a weekend is never empty.
   for (const a of areas) paths.add(areaHref(a.slug));
   for (const d of dayTrips) paths.add(dayTripHref(d.slug));
   for (const a of audiences) paths.add(audienceHref(a.slug));
