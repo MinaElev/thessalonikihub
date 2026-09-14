@@ -283,3 +283,24 @@ model ListingView {
   @@index([kind, slug])
   @@index([day])
 }
+
+/// A pending email verification during registration.
+///
+/// The code is stored hashed, never in the clear: this table is the one place
+/// a leak would hand someone else's account over, and a six-digit number is
+/// short enough that a stolen database dump would otherwise be enough.
+model EmailVerification {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  /// SHA-256 of the code. Compared by hashing the attempt, never by decrypting.
+  codeHash  String
+  expiresAt DateTime
+  /// Wrong guesses so far. Six digits is a million combinations, but only if
+  /// guessing is capped — without this the table is a keyspace to walk.
+  attempts  Int      @default(0)
+  /// Throttles resends, so the form cannot be used to mail a stranger.
+  lastSentAt DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
+}

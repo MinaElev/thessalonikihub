@@ -20,6 +20,36 @@ function build(to: string, subject: string, doc: EmailDoc): Mail {
 }
 
 /* ------------------------------------------------------------------ *
+ * 0. Registration code — our own, sent before the account exists.
+ * ------------------------------------------------------------------ */
+
+export function verificationCode(to: string, code: string, minutes: number): Mail {
+  return build(to, `Ο κωδικός επιβεβαίωσης: ${code}`, {
+    preheader: `Ο κωδικός σου είναι ${code}. Ισχύει ${minutes} λεπτά.`,
+    heading: "Επιβεβαίωσε το email σου",
+    blocks: [
+      {
+        kind: "text",
+        text: "Γράψε αυτόν τον κωδικό στη σελίδα εγγραφής για να ολοκληρωθεί ο λογαριασμός σου.",
+      },
+      { kind: "code", value: code, caption: `Ισχύει για ${minutes} λεπτά, μία φορά.` },
+      {
+        kind: "callout",
+        tone: "warn",
+        title: "Μην τον δώσεις σε κανέναν",
+        text: "Δεν θα σου ζητήσουμε ποτέ αυτόν τον κωδικό — ούτε με email, ούτε με τηλέφωνο, ούτε με μήνυμα.",
+      },
+      {
+        kind: "text",
+        text: "Αν δεν έκανες εσύ εγγραφή, αγνόησε αυτό το email. Χωρίς τον κωδικό δεν δημιουργείται λογαριασμός και η διεύθυνσή σου διαγράφεται.",
+      },
+    ],
+    footnote:
+      "Έλαβες αυτό το email επειδή αυτή η διεύθυνση χρησιμοποιήθηκε για εγγραφή στο ThessalonikiHub.",
+  });
+}
+
+/* ------------------------------------------------------------------ *
  * 1. Welcome — sent once, after the account is confirmed.
  * ------------------------------------------------------------------ */
 

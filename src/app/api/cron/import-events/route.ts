@@ -106,7 +106,7 @@ async function purgeExpiredData() {
 
   // updatedAt is when the row last changed, which for a rejected listing is
   // the rejection itself — the schema records no separate rejectedAt.
-  const [places, events, views] = await Promise.all([
+  const [places, events, views, codes] = await Promise.all([
     prisma.place.deleteMany({
       where: { status: "REJECTED", updatedAt: { lt: rejectedBefore } },
     }),
@@ -114,11 +114,16 @@ async function purgeExpiredData() {
       where: { status: "REJECTED", updatedAt: { lt: rejectedBefore } },
     }),
     prisma.listingView.deleteMany({ where: { day: { lt: viewsBefore } } }),
+    // Abandoned registrations. The row holds an address someone typed and a
+    // hash worth attacking, and once the code has expired it is good for
+    // nothing else.
+    prisma.emailVerification.deleteMany({ where: { expiresAt: { lt: new Date() } } }),
   ]);
 
   return {
     rejectedPlaces: places.count,
     rejectedEvents: events.count,
     oldViewRows: views.count,
+    expiredCodes: codes.count,
   };
 }

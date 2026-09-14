@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Loader2, CheckCircle2, KeyRound, ArrowLeft } from "lucide-react";
+import { Mail, Loader2, KeyRound, ArrowLeft, CheckCircle2, UserPlus } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { createClient } from "@/lib/supabase/client";
+import { startRegistration, completeRegistration } from "@/app/actions/register";
 
 const T = (locale: Locale, el: string, en: string) => (locale === "el" ? el : en);
 const inputCls =
   "w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100";
+const codeCls =
+  "w-full rounded-lg border border-slate-200 px-3 py-3 text-center font-mono text-2xl tracking-[0.4em] outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100";
 
 /** Google's brand mark, so the button reads as a real provider button. */
 function GoogleMark() {
@@ -29,16 +32,21 @@ function GoogleMark() {
  */
 const googleEnabled = process.env.NEXT_PUBLIC_ENABLE_GOOGLE_AUTH === "true";
 
-type Mode = "password" | "magic";
-/** "sent" now means a code is waiting to be typed, not a link to be clicked. */
-type Status =
-  | "idle"
-  | "loading"
-  | "google"
-  | "sent"
-  | "verifying"
-  | "reset-sent"
-  | "error";
+/**
+ * Sign in and registration — codes only, never links.
+ *
+ * Every email route into an account is a six-digit code typed on this page.
+ * A link has to come back to the right origin to work, which made it fail in
+ * ways a code cannot: a Site URL still pointing at localhost, a redirect
+ * missing from the allowlist, a link opened on the phone when the session
+ * began on the laptop. Nothing here sends one.
+ *
+ * Registration is ours end to end — our code, our email, our table, and the
+ * account created server-side once the code checks out. Signing in uses
+ * Supabase's own code, which is the part worth delegating.
+ */
+type View = "signin" | "signin-code" | "register" | "register-code" | "registered";
+type Busy = null | "password" | "code" | "verify" | "google" | "register";
 
 export function LoginForm({
   locale,
@@ -49,13 +57,14 @@ export function LoginForm({
   next?: string;
 }) {
   const supabase = createClient();
-  const [mode, setMode] = useState<Mode>("password");
-  const [register, setRegister] = useState(false);
+  const [view, setView] = useState<View>("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
+  const [busy, setBusy] = useState<Busy>(null);
   const [message, setMessage] = useState<string | null>(null);
+  /** A code sign-in started from "forgot my password" ends at the reset page. */
+  const [afterCode, setAfterCode] = useState<"next" | "reset">("next");
 
   if (!supabase) {
     return (
@@ -69,135 +78,85 @@ export function LoginForm({
     );
   }
 
-  // Send the visitor back where they were, not to a generic dashboard.
-  const callback = () => {
-    const url = new URL("/auth/callback", window.location.origin);
-    if (next) url.searchParams.set("next", next);
-    return url.toString();
-  };
-
-  const goNext = () => {
-    window.location.assign(next ?? "/dashboard");
+  const goNext = (path?: string) => {
+    window.location.assign(path ?? next ?? "/dashboard");
   };
 
   const rateLimited = () =>
     T(
       locale,
-      googleEnabled
-        ? "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε με κωδικό πρόσβασης ή με Google."
-        : "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε σύνδεση με κωδικό πρόσβασης.",
-      googleEnabled
-        ? "Too many attempts. Only a few emails per hour are allowed — try a password or Google instead."
-        : "Too many attempts. Only a few emails per hour are allowed — sign in with a password instead.",
+      "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε ξανά σε λίγο.",
+      "Too many attempts. Only a few emails per hour are allowed — try again shortly.",
     );
 
-  /** Password sign-in, or sign-up when the register toggle is on. */
-  const submitPassword = async (e: React.FormEvent) => {
+  const generic = () => T(locale, "Κάτι πήγε στραβά.", "Something went wrong.");
+
+  /* ---------------------------------------------------------------- *
+   * Sign in with a password
+   * ---------------------------------------------------------------- */
+  const signInPassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setBusy("password");
     setMessage(null);
-
-    if (register) {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: { emailRedirectTo: callback() },
-      });
-      if (error) {
-        setStatus("error");
-        setMessage(
-          error.status === 429
-            ? rateLimited()
-            : /already/i.test(error.message)
-              ? T(
-                  locale,
-                  "Υπάρχει ήδη λογαριασμός με αυτό το email. Δοκίμασε σύνδεση.",
-                  "An account with this email already exists. Try signing in.",
-                )
-              : /password/i.test(error.message)
-                ? T(
-                    locale,
-                    "Ο κωδικός είναι πολύ αδύναμος (τουλάχιστον 6 χαρακτήρες).",
-                    "That password is too weak (at least 6 characters).",
-                  )
-                : T(locale, "Κάτι πήγε στραβά.", "Something went wrong."),
-        );
-        return;
-      }
-      // With email confirmation on, Supabase returns no session until the user
-      // clicks the link; with it off, they are signed in immediately.
-      if (data.session) {
-        goNext();
-        return;
-      }
-      setStatus("sent");
-      return;
-    }
-
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
-      setStatus("error");
+      setBusy(null);
       setMessage(
-        error.status === 429
-          ? rateLimited()
-          : T(
-              locale,
-              "Λάθος email ή κωδικός.",
-              "Wrong email or password.",
-            ),
+        error.status === 400
+          ? T(locale, "Λάθος email ή κωδικός.", "Wrong email or password.")
+          : generic(),
       );
       return;
     }
     goNext();
   };
 
-  /**
-   * Ask Supabase to email a one-time code.
-   *
-   * No `emailRedirectTo`: a code needs no redirect at all, which is what makes
-   * this immune to the entire class of failure that links suffer — a Site URL
-   * pointing at localhost, a redirect that is not on the allowlist, a link
-   * opened on a different device from the one that asked for it. Whether the
-   * mail shows a code or a link is decided by the Supabase email template.
-   */
-  const sendCode = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    setMessage(null);
-    setCode("");
-    const { error } = await supabase.auth.signInWithOtp({ email });
-    if (!error) {
-      setStatus("sent");
+  /* ---------------------------------------------------------------- *
+   * Sign in with a one-time code
+   * ---------------------------------------------------------------- */
+  const sendSignInCode = async (purpose: "next" | "reset") => {
+    if (!email) {
+      setMessage(T(locale, "Γράψε πρώτα το email σου.", "Enter your email first."));
       return;
     }
-    setStatus("error");
-    setMessage(
-      error.status === 429
-        ? rateLimited()
-        : T(locale, "Κάτι πήγε στραβά.", "Something went wrong."),
-    );
+    setBusy("code");
+    setMessage(null);
+    setCode("");
+    // shouldCreateUser false: registration is our own flow, and this must not
+    // quietly create an account for a mistyped address.
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: false },
+    });
+    setBusy(null);
+    if (error) {
+      setMessage(
+        error.status === 429
+          ? rateLimited()
+          : T(
+              locale,
+              "Δεν βρέθηκε λογαριασμός με αυτό το email.",
+              "No account found with that email.",
+            ),
+      );
+      return;
+    }
+    setAfterCode(purpose);
+    setView("signin-code");
   };
 
-  const verifyCode = async (e: React.FormEvent) => {
+  const verifySignInCode = async (e: React.FormEvent) => {
     e.preventDefault();
     const token = code.replace(/\D/g, "");
-    if (token.length < 6) {
+    if (token.length !== 6) {
       setMessage(T(locale, "Ο κωδικός έχει 6 ψηφία.", "The code is 6 digits."));
       return;
     }
-    setStatus("verifying");
+    setBusy("verify");
     setMessage(null);
-
-    // A first-ever address confirms under "signup"; an existing one under
-    // "email". Which applies depends on whether Supabase already knew the
-    // address, which the browser has no way to tell, so try both.
-    let { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
+    const { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
     if (error) {
-      ({ error } = await supabase.auth.verifyOtp({ email, token, type: "signup" }));
-    }
-
-    if (error) {
-      setStatus("sent");
+      setBusy(null);
       setMessage(
         T(
           locale,
@@ -207,36 +166,122 @@ export function LoginForm({
       );
       return;
     }
+    goNext(afterCode === "reset" ? "/auth/reset-password" : undefined);
+  };
+
+  /* ---------------------------------------------------------------- *
+   * Register — our own verification
+   * ---------------------------------------------------------------- */
+  const registerError = (error?: string, retryIn?: number) => {
+    switch (error) {
+      case "invalid-email":
+        return T(locale, "Έλεγξε τη διεύθυνση email.", "Check the email address.");
+      case "weak-password":
+        return T(
+          locale,
+          "Ο κωδικός πρέπει να έχει τουλάχιστον 8 χαρακτήρες.",
+          "The password needs at least 8 characters.",
+        );
+      case "exists":
+        return T(
+          locale,
+          "Υπάρχει ήδη λογαριασμός με αυτό το email. Συνδέσου.",
+          "An account with that email already exists. Sign in instead.",
+        );
+      case "too-soon":
+        return T(
+          locale,
+          `Μόλις στείλαμε κωδικό. Ξαναδοκίμασε σε ${retryIn ?? 60} δευτερόλεπτα.`,
+          `A code was just sent. Try again in ${retryIn ?? 60} seconds.`,
+        );
+      case "bad-code":
+        return T(locale, "Λάθος κωδικός.", "Wrong code.");
+      case "expired":
+        return T(
+          locale,
+          "Ο κωδικός έληξε. Ξεκίνα την εγγραφή από την αρχή.",
+          "The code expired. Start registration again.",
+        );
+      case "locked":
+        return T(
+          locale,
+          "Πολλές λάθος προσπάθειες. Ζήτησε νέο κωδικό.",
+          "Too many wrong attempts. Request a new code.",
+        );
+      case "unavailable":
+        return T(
+          locale,
+          "Η εγγραφή δεν είναι διαθέσιμη αυτή τη στιγμή.",
+          "Registration is not available right now.",
+        );
+      default:
+        return generic();
+    }
+  };
+
+  const beginRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password.length < 8) {
+      setMessage(registerError("weak-password"));
+      return;
+    }
+    setBusy("register");
+    setMessage(null);
+    setCode("");
+    const result = await startRegistration(email);
+    setBusy(null);
+
+    if (result.step === "code") {
+      setView("register-code");
+      if (result.error) setMessage(registerError(result.error, result.retryIn));
+      return;
+    }
+    setMessage(registerError(result.error, result.retryIn));
+  };
+
+  const finishRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const token = code.replace(/\D/g, "");
+    if (token.length !== 6) {
+      setMessage(T(locale, "Ο κωδικός έχει 6 ψηφία.", "The code is 6 digits."));
+      return;
+    }
+    setBusy("verify");
+    setMessage(null);
+    const result = await completeRegistration({ email, code: token, password });
+
+    if (result.step !== "done") {
+      setBusy(null);
+      if (result.error === "expired") setView("register");
+      setMessage(registerError(result.error, result.retryIn));
+      return;
+    }
+
+    // The account exists and is already confirmed, so sign straight in rather
+    // than making someone who just proved their address type it all again.
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    setBusy(null);
+    if (error) {
+      setView("registered");
+      return;
+    }
     goNext();
   };
 
-  const sendReset = async () => {
-    if (!email) {
-      setStatus("error");
-      setMessage(T(locale, "Γράψε πρώτα το email σου.", "Enter your email first."));
-      return;
-    }
-    setStatus("loading");
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/reset-password`,
-    });
-    if (error) {
-      setStatus("error");
-      setMessage(error.status === 429 ? rateLimited() : T(locale, "Κάτι πήγε στραβά.", "Something went wrong."));
-      return;
-    }
-    setStatus("reset-sent");
-  };
-
+  /* ---------------------------------------------------------------- *
+   * Google
+   * ---------------------------------------------------------------- */
   const signInGoogle = async () => {
-    setStatus("google");
+    setBusy("google");
     setMessage(null);
+    const url = new URL("/auth/callback", window.location.origin);
+    if (next) url.searchParams.set("next", next);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: callback() },
+      options: { redirectTo: url.toString() },
     });
     if (error) {
-      setStatus("error");
+      setBusy(null);
       setMessage(
         T(
           locale,
@@ -247,34 +292,58 @@ export function LoginForm({
     }
   };
 
-  if (status === "reset-sent") {
+  /* ---------------------------------------------------------------- *
+   * Views
+   * ---------------------------------------------------------------- */
+
+  const back = (to: View, label: string) => (
+    <button
+      type="button"
+      onClick={() => {
+        setView(to);
+        setMessage(null);
+        setCode("");
+      }}
+      className="inline-flex items-center gap-1 text-sm font-semibold text-slate-500 hover:text-slate-800"
+    >
+      <ArrowLeft className="h-4 w-4" />
+      {label}
+    </button>
+  );
+
+  if (view === "registered") {
     return (
       <div className="rounded-xl border border-brand-100 bg-brand-50 p-6 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-brand-600" />
         <p className="mt-2 font-semibold">
-          {T(locale, "Έλεγξε το email σου!", "Check your email!")}
+          {T(locale, "Ο λογαριασμός δημιουργήθηκε!", "Your account is ready!")}
         </p>
         <p className="mt-1 text-sm text-muted">
           {T(
             locale,
-            "Σου στείλαμε σύνδεσμο για να ορίσεις νέο κωδικό.",
-            "We sent you a link to set a new password.",
+            "Συνδέσου με το email και τον κωδικό σου.",
+            "Sign in with your email and password.",
           )}
         </p>
         <button
           type="button"
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+            setView("signin");
+            setCode("");
+            setMessage(null);
+          }}
           className="mt-4 text-sm font-semibold text-brand-700 underline"
         >
-          {T(locale, "Πίσω", "Back")}
+          {T(locale, "Σύνδεση", "Sign in")}
         </button>
       </div>
     );
   }
 
-  if (status === "sent" || status === "verifying") {
+  if (view === "signin-code" || view === "register-code") {
+    const isRegister = view === "register-code";
     return (
-      <form onSubmit={verifyCode} className="space-y-4">
+      <form onSubmit={isRegister ? finishRegister : verifySignInCode} className="space-y-4">
         <div className="rounded-xl border border-brand-100 bg-brand-50 p-5 text-center">
           <Mail className="mx-auto h-9 w-9 text-brand-600" />
           <p className="mt-2 font-semibold">
@@ -291,8 +360,8 @@ export function LoginForm({
         </label>
         <input
           id="otp"
-          // Numeric keypad on phones, and the browser or OS can fill the code
-          // straight from the notification.
+          // Numeric keypad on phones, and the OS can fill the code straight
+          // from the notification rather than anyone reading digits off it.
           inputMode="numeric"
           autoComplete="one-time-code"
           maxLength={6}
@@ -301,36 +370,33 @@ export function LoginForm({
           value={code}
           onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
           placeholder="000000"
-          className="w-full rounded-lg border border-slate-200 px-3 py-3 text-center font-mono text-2xl tracking-[0.4em] outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+          className={codeCls}
         />
 
         {message ? <p className="text-sm text-accent-600">{message}</p> : null}
 
         <button
           type="submit"
-          disabled={status === "verifying"}
+          disabled={busy === "verify"}
           className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60"
         >
-          {status === "verifying" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-          {T(locale, "Επιβεβαίωση", "Confirm")}
+          {busy === "verify" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+          {isRegister
+            ? T(locale, "Ολοκλήρωση εγγραφής", "Complete registration")
+            : T(locale, "Σύνδεση", "Sign in")}
         </button>
 
         <div className="flex items-center justify-between text-sm">
+          {back(isRegister ? "register" : "signin", T(locale, "Πίσω", "Back"))}
           <button
             type="button"
+            disabled={busy !== null}
             onClick={() => {
-              setStatus("idle");
-              setMessage(null);
+              const noop = { preventDefault() {} } as React.FormEvent;
+              if (isRegister) void beginRegister(noop);
+              else void sendSignInCode(afterCode);
             }}
-            className="inline-flex items-center gap-1 font-semibold text-slate-500 hover:text-slate-800"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {T(locale, "Άλλο email", "Different email")}
-          </button>
-          <button
-            type="button"
-            onClick={(e) => sendCode(e as unknown as React.FormEvent)}
-            className="font-semibold text-brand-700 underline"
+            className="font-semibold text-brand-700 underline disabled:opacity-60"
           >
             {T(locale, "Στείλε ξανά", "Resend")}
           </button>
@@ -339,6 +405,69 @@ export function LoginForm({
     );
   }
 
+  if (view === "register") {
+    return (
+      <form onSubmit={beginRegister} className="space-y-3">
+        <label htmlFor="reg-email" className="block text-sm font-medium text-slate-700">
+          Email
+        </label>
+        <input
+          id="reg-email"
+          type="email"
+          required
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className={inputCls}
+        />
+
+        <label htmlFor="reg-password" className="block text-sm font-medium text-slate-700">
+          {T(locale, "Κωδικός πρόσβασης", "Password")}
+        </label>
+        <input
+          id="reg-password"
+          type="password"
+          required
+          minLength={8}
+          autoComplete="new-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={inputCls}
+        />
+        <p className="text-xs text-muted">
+          {T(locale, "Τουλάχιστον 8 χαρακτήρες.", "At least 8 characters.")}
+        </p>
+
+        {message ? <p className="text-sm text-accent-600">{message}</p> : null}
+
+        <button
+          type="submit"
+          disabled={busy === "register"}
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60"
+        >
+          {busy === "register" ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <UserPlus className="h-4 w-4" />
+          )}
+          {T(locale, "Στείλε μου κωδικό επιβεβαίωσης", "Email me a confirmation code")}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setView("signin");
+            setMessage(null);
+          }}
+          className="w-full text-center text-sm text-muted underline"
+        >
+          {T(locale, "Έχω ήδη λογαριασμό", "I already have an account")}
+        </button>
+      </form>
+    );
+  }
+
+  /* Default: sign in. */
   return (
     <div className="space-y-4">
       {googleEnabled ? (
@@ -346,115 +475,97 @@ export function LoginForm({
           <button
             type="button"
             onClick={signInGoogle}
-            disabled={status === "google"}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 font-medium transition hover:bg-slate-50 disabled:opacity-60"
+            disabled={busy === "google"}
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 font-semibold transition hover:bg-slate-50 disabled:opacity-60"
           >
-            {status === "google" ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleMark />}
+            {busy === "google" ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleMark />}
             {T(locale, "Συνέχεια με Google", "Continue with Google")}
           </button>
-
-          <div className="flex items-center gap-3 text-xs text-slate-400">
-            <span className="h-px flex-1 bg-slate-200" /> {T(locale, "ή", "or")}{" "}
+          <div className="flex items-center gap-3 text-xs text-muted">
+            <span className="h-px flex-1 bg-slate-200" />
+            {T(locale, "ή", "or")}
             <span className="h-px flex-1 bg-slate-200" />
           </div>
         </>
       ) : null}
 
-      <form onSubmit={mode === "password" ? submitPassword : sendCode} className="space-y-3">
-        <div>
-          <label htmlFor="login-email" className="mb-1 block text-sm font-medium text-slate-700">
-            Email
-          </label>
-          <input
-            id="login-email"
-            type="email"
-            required
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="email@example.com"
-            className={inputCls}
-          />
-        </div>
+      <form onSubmit={signInPassword} className="space-y-3">
+        <label htmlFor="email" className="block text-sm font-medium text-slate-700">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          required
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className={inputCls}
+        />
 
-        {mode === "password" ? (
-          <div>
-            <label htmlFor="login-password" className="mb-1 block text-sm font-medium text-slate-700">
-              {T(locale, "Κωδικός", "Password")}
-            </label>
-            <input
-              id="login-password"
-              type="password"
-              required
-              minLength={6}
-              autoComplete={register ? "new-password" : "current-password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className={inputCls}
-            />
-          </div>
-        ) : null}
+        <label htmlFor="password" className="block text-sm font-medium text-slate-700">
+          {T(locale, "Κωδικός πρόσβασης", "Password")}
+        </label>
+        <input
+          id="password"
+          type="password"
+          required
+          autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={inputCls}
+        />
+
+        {message ? <p className="text-sm text-accent-600">{message}</p> : null}
 
         <button
           type="submit"
-          disabled={status === "loading"}
+          disabled={busy === "password"}
           className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60"
         >
-          {status === "loading" ? (
+          {busy === "password" ? (
             <Loader2 className="h-4 w-4 animate-spin" />
-          ) : mode === "password" ? (
-            <KeyRound className="h-4 w-4" />
           ) : (
-            <Mail className="h-4 w-4" />
+            <KeyRound className="h-4 w-4" />
           )}
-          {mode === "magic"
-            ? T(locale, "Στείλε μου κωδικό", "Email me a code")
-            : register
-              ? T(locale, "Δημιουργία λογαριασμού", "Create account")
-              : T(locale, "Σύνδεση", "Sign in")}
+          {T(locale, "Σύνδεση", "Sign in")}
         </button>
-
-        {status === "error" && message ? (
-          <p className="text-sm text-accent-600">{message}</p>
-        ) : null}
-
-        {mode === "password" ? (
-          <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
-            <button
-              type="button"
-              onClick={() => {
-                setRegister(!register);
-                setStatus("idle");
-                setMessage(null);
-              }}
-              className="font-semibold text-brand-700 underline"
-            >
-              {register
-                ? T(locale, "Έχω ήδη λογαριασμό", "I already have an account")
-                : T(locale, "Δημιουργία λογαριασμού", "Create an account")}
-            </button>
-            {!register ? (
-              <button type="button" onClick={sendReset} className="text-muted underline">
-                {T(locale, "Ξέχασα τον κωδικό", "Forgot password")}
-              </button>
-            ) : null}
-          </div>
-        ) : null}
       </form>
 
-      <button
-        type="button"
-        onClick={() => {
-          setMode(mode === "password" ? "magic" : "password");
-          setStatus("idle");
-          setMessage(null);
-        }}
-        className="w-full text-center text-sm text-muted underline"
-      >
-        {mode === "password"
-          ? T(locale, "Σύνδεση με κωδικό μιας χρήσης στο email", "Sign in with a one-time code")
-          : T(locale, "Σύνδεση με κωδικό πρόσβασης", "Use a password instead")}
-      </button>
+      <div className="space-y-2 text-center text-sm">
+        <button
+          type="button"
+          disabled={busy === "code"}
+          onClick={() => sendSignInCode("next")}
+          className="inline-flex items-center gap-1.5 font-semibold text-brand-700 underline disabled:opacity-60"
+        >
+          {busy === "code" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
+          {T(locale, "Σύνδεση με κωδικό μιας χρήσης", "Sign in with a one-time code")}
+        </button>
+        <p>
+          <button
+            type="button"
+            disabled={busy === "code"}
+            onClick={() => sendSignInCode("reset")}
+            className="text-muted underline disabled:opacity-60"
+          >
+            {T(locale, "Ξέχασα τον κωδικό μου", "I forgot my password")}
+          </button>
+        </p>
+        <p>
+          <button
+            type="button"
+            onClick={() => {
+              setView("register");
+              setMessage(null);
+              setPassword("");
+            }}
+            className="text-muted underline"
+          >
+            {T(locale, "Δεν έχω λογαριασμό — Εγγραφή", "No account yet — Register")}
+          </button>
+        </p>
+      </div>
     </div>
   );
 }
