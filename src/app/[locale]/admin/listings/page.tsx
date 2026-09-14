@@ -15,6 +15,8 @@ import {
   type ListingStatusValue,
 } from "@/lib/listing-labels";
 import { getListingStats, viewKey, emptyStats } from "@/lib/views";
+import { getFilePlaces } from "@/lib/repo";
+import type { Pillar } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +24,7 @@ const STATUSES = ["DRAFT", "PENDING", "PUBLISHED", "REJECTED"] as const;
 const PILLARS = ["STAY", "EAT", "DRINK", "DISCOVER", "EXPERIENCES", "SERVICES", "EVENTS"] as const;
 
 interface Row {
+  /** Empty for a listing that exists only in a content file. */
   id: string;
   table: "place" | "event";
   entity: string;
@@ -32,6 +35,8 @@ interface Row {
   updatedAt: Date;
   startsAt: Date | null;
   textRewritten: boolean;
+  /** Defined in a content file, with no database row behind it yet. */
+  fromFile: boolean;
 }
 
 function one(value: string | string[] | undefined): string {
@@ -101,7 +106,42 @@ export default async function AdminListingsPage({
       ])
     : [[], []];
 
+  // Listings defined in content files are live on the site whether or not a
+  // database row exists for them, so a panel that queried only the database
+  // was hiding real pages — including every business added by hand. They are
+  // merged in here, and a row is created the moment one is actually moderated.
+  const dbSlugs = new Set(places.map((p) => p.slug));
+  const filePillars: Exclude<Pillar, "events">[] = [
+    "stay",
+    "eat",
+    "drink",
+    "discover",
+    "experiences",
+    "services",
+  ];
+  const fileOnly = filePillars
+    .filter((pillar) => !kind || kind === pillar.toUpperCase())
+    .flatMap((pillar) => getFilePlaces(pillar))
+    .filter((place) => !dbSlugs.has(place.slug))
+    // A file listing is live, so it only belongs under "published" or no filter.
+    .filter(() => !status || status === "PUBLISHED");
+
   const all: Row[] = [
+    ...fileOnly.map((f) => ({
+      id: "",
+      table: "place" as const,
+      entity: f.kind.toUpperCase(),
+      slug: f.slug,
+      name: f.name,
+      status: "PUBLISHED",
+      ownerEmail: null,
+      // Content files carry no timestamp; sorting puts these last rather than
+      // claiming an edit date the repository never recorded.
+      updatedAt: new Date(0),
+      startsAt: null,
+      textRewritten: true,
+      fromFile: true,
+    })),
     ...places.map((p) => ({
       id: p.id,
       table: "place" as const,
@@ -113,6 +153,7 @@ export default async function AdminListingsPage({
       updatedAt: p.updatedAt,
       startsAt: null,
       textRewritten: true,
+      fromFile: false,
     })),
     ...events.map((e) => ({
       id: e.id,
@@ -125,6 +166,7 @@ export default async function AdminListingsPage({
       updatedAt: e.updatedAt,
       startsAt: e.startsAt,
       textRewritten: e.textRewritten,
+      fromFile: false,
     })),
   ];
 
@@ -247,7 +289,7 @@ export default async function AdminListingsPage({
             const st = stats.get(viewKey(r.entity, r.slug)) ?? emptyStats();
             return (
               <li
-                key={`${r.table}-${r.id}`}
+                key={`${r.table}-${r.id || r.slug}`}
                 className="rounded-2xl border border-slate-100 p-4"
               >
                 <div className="flex flex-wrap items-start justify-between gap-4">
@@ -269,6 +311,11 @@ export default async function AdminListingsPage({
                           {tt("κείμενο πηγής", "source text")}
                         </span>
                       ) : null}
+                      {r.fromFile ? (
+                        <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-normal text-slate-600">
+                          {tt("από αρχείο", "from a file")}
+                        </span>
+                      ) : null}
                     </p>
                     <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
                       <span className="font-mono">/{r.entity.toLowerCase()}/{r.slug}</span>
@@ -276,9 +323,13 @@ export default async function AdminListingsPage({
                         {tt("ιδιοκτήτης:", "owner:")}{" "}
                         {r.ownerEmail ?? tt("κανείς", "none")}
                       </span>
-                      <span>
-                        {tt("ενημερώθηκε", "updated")} {date(r.updatedAt)}
-                      </span>
+                      {r.fromFile ? (
+                        <span>{tt("ορίζεται στο repository", "defined in the repository")}</span>
+                      ) : (
+                        <span>
+                          {tt("ενημερώθηκε", "updated")} {date(r.updatedAt)}
+                        </span>
+                      )}
                       {r.startsAt ? (
                         <span className="inline-flex items-center gap-1">
                           <CalendarClock className="h-3.5 w-3.5" />
@@ -313,6 +364,7 @@ export default async function AdminListingsPage({
                     <form action={setListingStatus} className="flex items-center gap-1.5">
                       <input type="hidden" name="kind" value={r.table} />
                       <input type="hidden" name="id" value={r.id} />
+                      <input type="hidden" name="slug" value={r.slug} />
                       <select
                         name="status"
                         defaultValue={r.status}
@@ -333,24 +385,35 @@ export default async function AdminListingsPage({
 
                 {/* The only irreversible action in the panel, so it is folded
                     away and says what it does before it is reachable. */}
-                <details className="mt-2">
-                  <summary className="inline-flex cursor-pointer items-center gap-1 text-xs text-slate-400 hover:text-rose-600">
-                    <Trash2 className="h-3.5 w-3.5" /> {tt("Διαγραφή…", "Delete…")}
-                  </summary>
-                  <form action={deleteListing} className="mt-2 flex flex-wrap items-center gap-3">
-                    <input type="hidden" name="kind" value={r.table} />
-                    <input type="hidden" name="id" value={r.id} />
-                    <p className="text-xs text-rose-800">
-                      {tt(
-                        "Οριστική διαγραφή, χωρίς επαναφορά. Για να κατέβει απλώς από το site, βάλ' την σε «Πρόχειρο».",
-                        "Permanent, with no undo. To just take it off the site, set it to Draft instead.",
-                      )}
-                    </p>
-                    <button className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-800 hover:bg-rose-100">
-                      {tt("Διαγραφή οριστικά", "Delete permanently")}
-                    </button>
-                  </form>
-                </details>
+                {r.fromFile ? (
+                  <p className="mt-2 text-xs text-slate-400">
+                    {tt(
+                      "Γραμμένη σε αρχείο του repository. Με την πρώτη αλλαγή κατάστασης δημιουργείται εγγραφή στη βάση και γίνεται πλήρως διαχειρίσιμη — το αρχείο μένει ως έχει.",
+                      "Written in a repository file. The first status change creates a database row and makes it fully manageable — the file itself is left alone.",
+                    )}
+                  </p>
+                ) : null}
+
+                {r.fromFile ? null : (
+                  <details className="mt-2">
+                    <summary className="inline-flex cursor-pointer items-center gap-1 text-xs text-slate-400 hover:text-rose-600">
+                      <Trash2 className="h-3.5 w-3.5" /> {tt("Διαγραφή…", "Delete…")}
+                    </summary>
+                    <form action={deleteListing} className="mt-2 flex flex-wrap items-center gap-3">
+                      <input type="hidden" name="kind" value={r.table} />
+                      <input type="hidden" name="id" value={r.id} />
+                      <p className="text-xs text-rose-800">
+                        {tt(
+                          "Οριστική διαγραφή, χωρίς επαναφορά. Για να κατέβει απλώς από το site, βάλ' την σε «Πρόχειρο».",
+                          "Permanent, with no undo. To just take it off the site, set it to Draft instead.",
+                        )}
+                      </p>
+                      <button className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-800 hover:bg-rose-100">
+                        {tt("Διαγραφή οριστικά", "Delete permanently")}
+                      </button>
+                    </form>
+                  </details>
+                )}
               </li>
             );
           })}

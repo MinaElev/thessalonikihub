@@ -201,10 +201,16 @@ export default async function AdminPage({
             <p className="text-xs uppercase tracking-wide text-slate-400">
               {tt("Καταχωρήσεις", "Listings")}
             </p>
-            <p className="mt-1 text-3xl font-extrabold tabular-nums">{inventory.places.total}</p>
+            {/* What the site serves, which is the database rows plus the
+                listings that still live only in a content file. Counting rows
+                alone under-reported every business added by hand. */}
+            <p className="mt-1 text-3xl font-extrabold tabular-nums">
+              {inventory.places.published + inventory.fileOnlyPlaces}
+            </p>
             <p className="mt-0.5 text-xs text-muted">
               {breakdown([
-                [inventory.places.published, tt("δημοσιευμένες", "published")],
+                [inventory.fileOnlyPlaces, tt("από αρχείο", "from files")],
+                [inventory.places.published, tt("στη βάση", "in the database")],
                 [inventory.places.pending, tt("σε έλεγχο", "in review")],
                 [inventory.places.rejected, tt("απορριφθείσες", "rejected")],
               ])}

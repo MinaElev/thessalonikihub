@@ -4,6 +4,8 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 import { getCurrentUser } from "@/lib/auth";
+import { getPlaceBySlug } from "@/lib/repo";
+import { placeToDbData } from "@/lib/place-to-db";
 
 /**
  * Blanket status control over any listing, published ones included.
@@ -46,8 +48,30 @@ export async function setListingStatus(formData: FormData) {
 
   const kind = String(formData.get("kind") ?? "");
   const id = String(formData.get("id") ?? "");
+  const slug = String(formData.get("slug") ?? "");
   const status = String(formData.get("status") ?? "");
-  if (!id || !STATUSES.has(status)) return;
+  if (!STATUSES.has(status)) return;
+
+  // A listing defined in a content file has no database row until something
+  // needs one. Moderating it is such a moment: materialise the row from the
+  // file first, exactly as approving an ownership claim already does, and the
+  // repository's merge-by-slug then prefers it from here on. The content file
+  // is left untouched, so this is reversible by deleting the row.
+  if (kind === "place" && !id) {
+    if (!slug) return;
+    const place = await getPlaceBySlug(slug);
+    if (!place) return;
+    const data = placeToDbData(place);
+    await prisma.place.upsert({
+      where: { slug },
+      update: { status: status as never },
+      create: { slug, ...data, status: status as never },
+    });
+    revalidateFor("place", slug, place.kind.toLowerCase());
+    return;
+  }
+
+  if (!id) return;
 
   if (kind === "event") {
     const row = await prisma.eventItem.update({
@@ -87,6 +111,9 @@ export async function deleteListing(formData: FormData) {
 
   const kind = String(formData.get("kind") ?? "");
   const id = String(formData.get("id") ?? "");
+  // Without a row there is nothing to delete: a file-based listing is defined
+  // in the repository, and removing a database row would not take it off the
+  // site. Setting it to Draft is what hides it; the page says so.
   if (!id) return;
 
   if (kind === "event") {

@@ -9,7 +9,9 @@ import { festivals } from "@/content/data/festivals";
 import { dishes } from "@/content/data/dishes";
 import { walkingRoutes } from "@/content/data/routes";
 import { staticPages } from "@/content/data/pages";
-import { getGuides, getCollections } from "@/lib/repo";
+import { getGuides, getCollections, getFilePlaces } from "@/lib/repo";
+import type { Pillar } from "@/lib/types";
+import { prisma as db } from "@/lib/db";
 
 /**
  * Everything the platform holds, counted.
@@ -38,6 +40,12 @@ export interface DatabaseInventory {
    * success from every screen that only reports status.
    */
   eventsAwaitingRewrite: number;
+  /**
+   * Listings defined in a content file with no database row behind them. They
+   * are live on the site and were invisible to a panel that counted rows, so
+   * the counts here are what the site serves, not what the database holds.
+   */
+  fileOnlyPlaces: number;
   people: { total: number; users: number; owners: number; admins: number };
   subscribers: { total: number; confirmed: number; unsubscribed: number };
   claims: { pending: number; approved: number; rejected: number };
@@ -78,6 +86,7 @@ export async function getDatabaseInventory(): Promise<DatabaseInventory> {
       places: { ...EMPTY_STATUS },
       events: { ...EMPTY_STATUS },
       eventsAwaitingRewrite: 0,
+      fileOnlyPlaces: 0,
       people: { total: 0, users: 0, owners: 0, admins: 0 },
       subscribers: { total: 0, confirmed: 0, unsubscribed: 0 },
       claims: { pending: 0, approved: 0, rejected: 0 },
@@ -110,6 +119,22 @@ export async function getDatabaseInventory(): Promise<DatabaseInventory> {
       prisma.savedItem.count(),
     ]);
 
+  // A file listing only gains a row when something moderates it, so the set
+  // of slugs already in the database is what tells the two apart.
+  const rows = await db.place.findMany({ select: { slug: true } });
+  const known = new Set(rows.map((r) => r.slug));
+  const pillars: Exclude<Pillar, "events">[] = [
+    "stay",
+    "eat",
+    "drink",
+    "discover",
+    "experiences",
+    "services",
+  ];
+  const fileOnlyPlaces = pillars
+    .flatMap((pillar) => getFilePlaces(pillar))
+    .filter((place) => !known.has(place.slug)).length;
+
   const byRole = (role: string) =>
     roleRows.find((r) => r.role === role)?._count._all ?? 0;
   const byClaim = (status: string) =>
@@ -119,6 +144,7 @@ export async function getDatabaseInventory(): Promise<DatabaseInventory> {
     places: foldStatuses(placeRows),
     events: foldStatuses(eventRows),
     eventsAwaitingRewrite: awaitingRewrite,
+    fileOnlyPlaces,
     people: {
       total: roleRows.reduce((a, r) => a + r._count._all, 0),
       users: byRole("USER"),
