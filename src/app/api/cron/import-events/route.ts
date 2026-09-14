@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { previewSources } from "@/lib/events/ingest";
@@ -78,6 +78,7 @@ export async function GET(request: Request) {
     imported++;
   }
 
+  const retiredEvents = await retirePastEvents();
   const purged = await purgeExpiredData();
 
   // The import refreshed event rows and the purge deleted some, so neither
@@ -85,7 +86,55 @@ export async function GET(request: Request) {
   revalidateTag(TAG_EVENTS);
   revalidateTag(TAG_PLACES);
 
-  return NextResponse.json({ ok: true, sources: sources.length, imported, purged });
+  return NextResponse.json({
+    ok: true,
+    sources: sources.length,
+    imported,
+    retiredEvents,
+    purged,
+  });
+}
+
+/**
+ * Take finished events off the site.
+ *
+ * A page for something that already happened is worse than no page: the
+ * visitor reads the date, realises they missed it, and leaves. Two had been
+ * sitting published for days before anyone noticed, because nothing was
+ * watching.
+ *
+ * Draft rather than deleted — the row is the record that it happened, and an
+ * admin looking back still wants it.
+ */
+async function retirePastEvents(): Promise<number> {
+  // A full day of grace. Events imported with only a date get a start time
+  // padded to midnight, so "past" at 04:00 would retire something happening
+  // that very evening.
+  const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+  const finished = await prisma.eventItem.findMany({
+    where: {
+      status: "PUBLISHED",
+      OR: [
+        { endsAt: { not: null, lt: cutoff } },
+        { endsAt: null, startsAt: { lt: cutoff } },
+      ],
+    },
+    select: { id: true, slug: true },
+  });
+  if (finished.length === 0) return 0;
+
+  await prisma.eventItem.updateMany({
+    where: { id: { in: finished.map((e) => e.id) } },
+    data: { status: "DRAFT" },
+  });
+
+  revalidateTag(TAG_EVENTS);
+  revalidatePath("/events");
+  for (const e of finished) revalidatePath(`/events/${e.slug}`);
+  revalidatePath("/sitemap.xml");
+
+  return finished.length;
 }
 
 /**
