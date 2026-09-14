@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { prisma, isDbConfigured } from "@/lib/db";
 
@@ -12,8 +13,12 @@ export interface CurrentUser {
 /**
  * The signed-in user (or null). Ensures a matching Profile row exists and
  * returns their role. Safe when Supabase/DB are not configured (returns null).
+ *
+ * Deduplicated per request. Each call otherwise costs a Supabase round trip
+ * and a Profile upsert — a database *write* — so a layout and the page inside
+ * it asking the same question paid for it twice.
  */
-export async function getCurrentUser(): Promise<CurrentUser | null> {
+export const getCurrentUser = cache(async function getCurrentUser(): Promise<CurrentUser | null> {
   const supabase = await createClient();
   if (!supabase) return null;
 
@@ -39,7 +44,7 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
   });
 
   return { ...base, name: profile.name, role: profile.role };
-}
+});
 
 export async function requireUser(): Promise<CurrentUser | null> {
   return getCurrentUser();

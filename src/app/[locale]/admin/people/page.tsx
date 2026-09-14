@@ -1,8 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
-import { ShieldCheck, Download, Mail, Users, Trash2, ArrowLeft } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Download, Mail, Users, Trash2 } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
-import { Container } from "@/components/ui";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { setUserRole, deleteSubscriber } from "@/app/actions/people";
@@ -21,15 +19,6 @@ export default async function AdminPeoplePage({
   setRequestLocale(locale);
   const tt = (el: string, en: string) => (locale === "el" ? el : en);
   const me = await getCurrentUser();
-
-  if (!me || me.role !== "ADMIN") {
-    return (
-      <Container className="py-16 text-center">
-        <ShieldCheck className="mx-auto h-10 w-10 text-slate-300" />
-        <p className="mt-3 text-muted">{tt("Πρόσβαση μόνο για διαχειριστές.", "Admins only.")}</p>
-      </Container>
-    );
-  }
 
   const [people, subscribers] = isDbConfigured
     ? await Promise.all([
@@ -50,15 +39,8 @@ export default async function AdminPeoplePage({
     }).format(d);
 
   return (
-    <Container className="py-8">
-      <Link
-        href="/admin"
-        className="mb-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2"
-      >
-        <ArrowLeft className="h-4 w-4" /> {tt("Πίσω στη διαχείριση", "Back to moderation")}
-      </Link>
-
-      <h1 className="text-3xl font-extrabold">{tt("Χρήστες", "People")}</h1>
+    <div>
+      <h2 className="text-xl font-bold">{tt("Χρήστες", "People")}</h2>
       <p className="mt-1 text-sm text-muted">
         {tt(
           "Λογαριασμοί και εγγραφές στο newsletter.",
@@ -69,7 +51,7 @@ export default async function AdminPeoplePage({
       {/* Whether notifications can actually go out is invisible otherwise:
           without SMTP the site fails silently and nobody is ever told. */}
       <p
-        className={`mt-6 flex flex-wrap items-center gap-2 rounded-xl border p-3 text-sm ${
+        className={`mt-4 flex flex-wrap items-center gap-2 rounded-xl border p-3 text-sm ${
           isMailConfigured
             ? "border-brand-200 bg-brand-50/50 text-brand-800"
             : "border-amber-200 bg-amber-50 text-amber-900"
@@ -143,7 +125,7 @@ export default async function AdminPeoplePage({
                       ) : null}
                     </td>
                     <td className="px-4 py-3">
-                      {p.id === me.id ? (
+                      {p.id === me?.id ? (
                         // Demoting yourself has no way back through the UI.
                         <span className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">
                           {p.role} · {tt("εσύ", "you")}
@@ -238,6 +220,6 @@ export default async function AdminPeoplePage({
           )}
         </p>
       </section>
-    </Container>
+    </div>
   );
 }
