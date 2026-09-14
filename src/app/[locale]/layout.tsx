@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { Inter, Sora } from "next/font/google";
+import { Inter } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
 import { Header } from "@/components/Header";
@@ -12,8 +12,13 @@ import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import { AuthHashHandler } from "@/components/auth/AuthHashHandler";
 import "../globals.css";
 
-const inter = Inter({ subsets: ["latin", "greek"], variable: "--font-inter" });
-const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
+// One family, both alphabets. See --font-display in globals.css for why the
+// separate heading font went away.
+const inter = Inter({
+  subsets: ["latin", "greek"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -55,7 +60,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${sora.variable}`}>
+    <html lang={locale} className={inter.variable}>
       <body className="flex min-h-screen flex-col">
         <SiteJsonLd />
         <AdSenseScript />

@@ -1,7 +1,8 @@
 "use server";
 
 import { z } from "zod";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { TAG_PLACES } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import type { OpeningHours, WeekDay } from "@/lib/types";
@@ -187,6 +188,7 @@ export async function updateOwnedListing(
     return { status: "error" };
   }
 
+  revalidateTag(TAG_PLACES);
   revalidatePath("/dashboard");
   revalidatePath(`/${place.kind.toLowerCase()}/${slug}`);
   return { status: "ok" };

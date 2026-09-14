@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import type { Collection, EventItem, Guide, Localized, Pillar, Place } from "@/lib/types";
 import { accommodations } from "@/content/data/accommodations";
 import { restaurants } from "@/content/data/restaurants";
@@ -9,6 +11,7 @@ import { events as allEvents } from "@/content/data/events";
 import { collections as allCollections } from "@/content/data/collections";
 import { guides as allGuides } from "@/content/data/guides";
 import { prisma, isDbConfigured } from "@/lib/db";
+import { DATA_TTL, TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 
 /**
  * Repository layer — the ONLY place the app reads content from.
@@ -21,6 +24,12 @@ import { prisma, isDbConfigured } from "@/lib/db";
  * Places and events are async (they may hit the DB). Nearby/similar and search
  * stay synchronous over the file seed. `getFile*` helpers give sync access to
  * the seed for `generateStaticParams` (so the build never needs the DB).
+ *
+ * READS ARE CACHED TWICE. `unstable_cache` keeps the two queries below in
+ * Next's data cache between requests (invalidated by tag whenever a row is
+ * written, see `cache-tags.ts`), and React's `cache` dedupes them within a
+ * single render — a listing page used to query once in `generateMetadata` and
+ * again in the page body for the same rows.
  */
 
 type StayPillar = Exclude<Pillar, "events">;
@@ -97,29 +106,91 @@ function rowToEvent(r: any): EventItem {
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-async function dbPlaces(pillar: StayPillar): Promise<Place[]> {
+/**
+ * Every published place, in one query.
+ *
+ * One query for all six pillars rather than one each: a page that shows an
+ * area, or the map, or search results wants most of them anyway, and at this
+ * size the whole table is smaller than the six round-trips it replaces.
+ */
+const loadDbPlaces = unstable_cache(
+  async (): Promise<Place[]> => {
+    const rows = await prisma.place.findMany({ where: { status: "PUBLISHED" } });
+    return rows.map(rowToPlace);
+  },
+  ["repo:places"],
+  { tags: [TAG_PLACES], revalidate: DATA_TTL },
+);
+
+/**
+ * Published events from the last year.
+ *
+ * The listings only ever show what is current, but the imports run daily and
+ * nothing deletes a past event, so an unbounded read would grow for ever. A
+ * year is well past anything a visitor browses to and still bounded; an older
+ * event keeps its own page through `dbEvent` below.
+ */
+const EVENT_WINDOW_DAYS = 365;
+
+const loadDbEvents = unstable_cache(
+  async (): Promise<EventItem[]> => {
+    const from = new Date(Date.now() - EVENT_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+    const rows = await prisma.eventItem.findMany({
+      where: { status: "PUBLISHED", startsAt: { gte: from } },
+      orderBy: { startsAt: "asc" },
+    });
+    return rows.map(rowToEvent);
+  },
+  ["repo:events"],
+  { tags: [TAG_EVENTS], revalidate: DATA_TTL },
+);
+
+/** One event by slug — for the ones that fell out of the window above. */
+const loadDbEvent = unstable_cache(
+  async (slug: string): Promise<EventItem | null> => {
+    const row = await prisma.eventItem.findFirst({ where: { slug, status: "PUBLISHED" } });
+    return row ? rowToEvent(row) : null;
+  },
+  ["repo:event"],
+  { tags: [TAG_EVENTS], revalidate: DATA_TTL },
+);
+
+/**
+ * A database that cannot be reached must not take the site down with it, so
+ * every read falls back to the editorial seed. The failure happens inside the
+ * cached function, which means the empty result is never what gets stored —
+ * the next request tries the database again instead of serving a blank page
+ * for the rest of the cache window.
+ */
+const dbPlaces = cache(async (): Promise<Place[]> => {
   if (!isDbConfigured) return [];
   try {
-    const rows = await prisma.place.findMany({
-      where: { kind: pillar.toUpperCase() as never, status: "PUBLISHED" },
-    });
-    return rows.map(rowToPlace);
+    return await loadDbPlaces();
   } catch (e) {
     console.error("repo.dbPlaces failed:", e);
     return [];
   }
-}
+});
 
-async function dbEvents(): Promise<EventItem[]> {
+const dbEvents = cache(async (): Promise<EventItem[]> => {
   if (!isDbConfigured) return [];
   try {
-    const rows = await prisma.eventItem.findMany({ where: { status: "PUBLISHED" } });
-    return rows.map(rowToEvent);
+    return await loadDbEvents();
   } catch (e) {
     console.error("repo.dbEvents failed:", e);
     return [];
   }
-}
+});
+
+const dbEvent = cache(async (slug: string): Promise<EventItem | undefined> => {
+  if (!isDbConfigured) return undefined;
+  try {
+    return (await loadDbEvent(slug)) ?? undefined;
+  } catch (e) {
+    console.error("repo.dbEvent failed:", e);
+    return undefined;
+  }
+});
 
 function mergeBySlug<T extends { slug: string }>(file: T[], db: T[]): T[] {
   const map = new Map<string, T>();
@@ -139,15 +210,15 @@ export function getFilePlaces(pillar: StayPillar): Place[] {
   return sortByFeatured(placesByPillar[pillar]);
 }
 
-export async function getPlaces(pillar: StayPillar): Promise<Place[]> {
-  return sortByFeatured(mergeBySlug(placesByPillar[pillar], await dbPlaces(pillar)));
-}
+export const getPlaces = cache(async (pillar: StayPillar): Promise<Place[]> => {
+  const fromDb = (await dbPlaces()).filter((p) => p.kind === pillar);
+  return sortByFeatured(mergeBySlug(placesByPillar[pillar], fromDb));
+});
 
-async function getAllPlaces(): Promise<Place[]> {
-  const pillars: StayPillar[] = ["stay", "eat", "drink", "discover", "experiences", "services"];
-  const lists = await Promise.all(pillars.map((p) => getPlaces(p)));
-  return lists.flat();
-}
+/** Every place of every pillar. Shares the one cached query with `getPlaces`. */
+export const getAllPlaces = cache(async (): Promise<Place[]> => {
+  return sortByFeatured(mergeBySlug(allFilePlaces, await dbPlaces()));
+});
 
 export async function getPlace(pillar: StayPillar, slug: string): Promise<Place | undefined> {
   return (await getPlaces(pillar)).find((p) => p.slug === slug);
@@ -158,15 +229,14 @@ export async function getPlaceBySlug(slug: string): Promise<Place | undefined> {
 }
 
 export async function getPlacesInArea(area: string): Promise<Place[]> {
-  return sortByFeatured((await getAllPlaces()).filter((p) => p.geo.area === area));
+  return (await getAllPlaces()).filter((p) => p.geo.area === area);
 }
 
 export async function getPlacesByTags(tags: string[], limit = 6): Promise<Place[]> {
   const set = new Set(tags);
-  return sortByFeatured((await getAllPlaces()).filter((p) => p.tags.some((t) => set.has(t)))).slice(
-    0,
-    limit,
-  );
+  return (await getAllPlaces())
+    .filter((p) => p.tags.some((t) => set.has(t)))
+    .slice(0, limit);
 }
 
 export async function getCollectionMembers(collection: Collection): Promise<Place[]> {
@@ -204,14 +274,17 @@ export function getFileEvents(): EventItem[] {
   return [...allEvents];
 }
 
-export async function getEvents(): Promise<EventItem[]> {
+export const getEvents = cache(async (): Promise<EventItem[]> => {
   return mergeBySlug(allEvents, await dbEvents()).sort((a, b) =>
     a.startsAt.localeCompare(b.startsAt),
   );
-}
+});
 
 export async function getEvent(slug: string): Promise<EventItem | undefined> {
-  return (await getEvents()).find((e) => e.slug === slug);
+  const listed = (await getEvents()).find((e) => e.slug === slug);
+  // Everything current is already in hand; only an event older than the read
+  // window above costs a second query, and it is a lookup on a unique index.
+  return listed ?? (await dbEvent(slug));
 }
 
 function sameDay(a: Date, b: Date): boolean {

@@ -1,8 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma, isDbConfigured } from "@/lib/db";
+import { TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 import { getCurrentUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { sendMail } from "@/lib/email";
@@ -35,6 +36,7 @@ export async function approveListing(formData: FormData) {
     });
     revalidatePath("/events");
     revalidatePath(`/events/${row.slug}`);
+    revalidateTag(TAG_EVENTS);
     if (row.owner?.email) {
       notify = {
         email: row.owner.email,
@@ -51,6 +53,7 @@ export async function approveListing(formData: FormData) {
     const pillar = row.kind.toLowerCase();
     revalidatePath(`/${pillar}`);
     revalidatePath(`/${pillar}/${row.slug}`);
+    revalidateTag(TAG_PLACES);
     if (row.owner?.email) {
       notify = {
         email: row.owner.email,
@@ -91,6 +94,10 @@ export async function rejectListing(formData: FormData) {
           data: { status: "REJECTED", rejectionNote: note },
           select: { name: true, owner: { select: { email: true } } },
         });
+
+  // A listing can be rejected after it was published, so the cached reads have
+  // to drop it rather than keep serving it until they expire.
+  revalidateTag(kind === "event" ? TAG_EVENTS : TAG_PLACES);
 
   // A rejection the owner never hears about is the same as silence, and the
   // reason is the whole point of collecting it.

@@ -1,6 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { TAG_EVENTS } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { parseAthensLocal } from "@/lib/athens-time";
@@ -93,6 +94,7 @@ export async function updateOwnedEvent(
     return { status: "error" };
   }
 
+  revalidateTag(TAG_EVENTS);
   revalidatePath("/dashboard");
   revalidatePath("/admin");
   revalidatePath("/events");

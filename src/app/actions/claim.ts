@@ -1,6 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { TAG_PLACES } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { getPlaceBySlug } from "@/lib/repo";
@@ -98,6 +99,8 @@ export async function approveClaim(formData: FormData) {
     await prisma.claim.update({ where: { id }, data: { status: "APPROVED" } });
   }
 
+  // The place row now carries an owner and a verified badge.
+  revalidateTag(TAG_PLACES);
   revalidatePath("/admin");
   revalidatePath("/dashboard");
   revalidatePath(`/${claim.placeKind}/${claim.placeSlug}`);

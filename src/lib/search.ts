@@ -1,7 +1,8 @@
+import { cache } from "react";
 import type { Locale } from "@/i18n/routing";
 import type { EventItem, Guide, Localized, Place } from "@/lib/types";
 import { pick } from "@/lib/types";
-import { getEvents, getGuides, getPlaces } from "@/lib/repo";
+import { getAllPlaces, getEvents, getGuides } from "@/lib/repo";
 import { areas } from "@/content/data/areas";
 import { dayTrips } from "@/content/data/daytrips";
 import { audiences } from "@/content/data/audiences";
@@ -94,27 +95,31 @@ interface Indexed extends SearchHit {
  * Places and events come from the repository, so anything a user submitted or
  * an importer added is included the moment it is published.
  */
-async function buildIndex(locale: Locale): Promise<Indexed[]> {
+/**
+ * Built once per request: `/search` is dynamic, and a page that searches and
+ * then counts its own results would otherwise walk every entity twice.
+ */
+const buildIndex = cache(async (locale: Locale): Promise<Indexed[]> => {
   const out: Indexed[] = [];
   const add = (hit: SearchHit, hay: string) => out.push({ ...hit, haystack: hay });
 
-  for (const pillar of ["stay", "eat", "drink", "discover", "experiences", "services"] as const) {
-    for (const p of await getPlaces(pillar)) {
-      add(
-        {
-          kind: "place",
-          id: `place-${p.kind}-${p.slug}`,
-          title: pick(p.name, locale),
-          summary: pick(p.summary, locale),
-          href: placeHref(p),
-          place: p,
-        },
-        haystack(locale, p.name, p.summary, p.type, p.tags.join(" ")),
-      );
-    }
+  const [places, events] = await Promise.all([getAllPlaces(), getEvents()]);
+
+  for (const p of places) {
+    add(
+      {
+        kind: "place",
+        id: `place-${p.kind}-${p.slug}`,
+        title: pick(p.name, locale),
+        summary: pick(p.summary, locale),
+        href: placeHref(p),
+        place: p,
+      },
+      haystack(locale, p.name, p.summary, p.type, p.tags.join(" ")),
+    );
   }
 
-  for (const e of await getEvents()) {
+  for (const e of events) {
     add(
       {
         kind: "event",
@@ -249,7 +254,7 @@ async function buildIndex(locale: Locale): Promise<Indexed[]> {
   }
 
   return out;
-}
+});
 
 /**
  * Rank a hit for one folded term. A match in the title beats a match in the

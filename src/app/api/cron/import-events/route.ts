@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
+import { TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { previewSources } from "@/lib/events/ingest";
 import { toEventData } from "@/lib/events/normalize";
@@ -77,6 +79,11 @@ export async function GET(request: Request) {
   }
 
   const purged = await purgeExpiredData();
+
+  // The import refreshed event rows and the purge deleted some, so neither
+  // cached read is trustworthy any more.
+  revalidateTag(TAG_EVENTS);
+  revalidateTag(TAG_PLACES);
 
   return NextResponse.json({ ok: true, sources: sources.length, imported, purged });
 }

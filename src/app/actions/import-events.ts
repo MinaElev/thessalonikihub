@@ -1,6 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { TAG_EVENTS } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { previewSources } from "@/lib/events/ingest";
@@ -81,6 +82,9 @@ export async function runImport(formData: FormData): Promise<ImportResult> {
       }
       imported++;
     }
+    // Re-importing refreshes dates and venues on rows that may already be
+    // published, so the cached event read has to be dropped.
+    revalidateTag(TAG_EVENTS);
     revalidatePath("/admin");
     return { ok: true, imported };
   } catch {

@@ -34,8 +34,13 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif,
-    system-ui, sans-serif;
+  /*
+    Headings used to load Sora. Sora has no Greek glyphs, so on the default
+    locale every heading on the site fell back to Inter anyway — the second
+    font was a download that rendered nothing. Inter covers both alphabets;
+    the weight and tracking below are what make a heading look like one.
+  */
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
@@ -65,7 +70,7 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
   a {
