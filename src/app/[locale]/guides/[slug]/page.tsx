@@ -17,6 +17,8 @@ import { guideHref } from "@/lib/links";
 import { formatDate } from "@/lib/format";
 import { absoluteUrl } from "@/lib/site";
 import { getGuide, getGuides, getPlaceBySlug } from "@/lib/repo";
+import { ShareButton } from "@/components/ShareButton";
+import { shareProps } from "@/lib/share";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -52,6 +54,8 @@ export default async function GuidePage({
   const t = await getTranslations({ locale });
   const guide = getGuide(slug);
   if (!guide) notFound();
+
+  const share = await shareProps(locale, guideHref(guide));
 
   const related = (
     await Promise.all((guide.relatedPlaces ?? []).map((s) => getPlaceBySlug(s)))
@@ -94,10 +98,17 @@ export default async function GuidePage({
           <h1 className="text-3xl font-extrabold sm:text-4xl">
             {pick(guide.title, locale)}
           </h1>
-          <p className="mt-2 text-sm text-muted">
-            {t("guides.publishedOn")} {formatDate(guide.publishedAt, locale)} ·{" "}
-            {t("guides.by")} {guide.author}
-          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <p className="text-sm text-muted">
+              {t("guides.publishedOn")} {formatDate(guide.publishedAt, locale)} ·{" "}
+              {t("guides.by")} {guide.author}
+            </p>
+            <ShareButton
+              url={share.url}
+              title={pick(guide.title, locale)}
+              labels={share.labels}
+            />
+          </div>
           <div className="relative my-6 aspect-[16/9] overflow-hidden rounded-3xl bg-slate-100">
             <Image
               src={guide.cover.url}

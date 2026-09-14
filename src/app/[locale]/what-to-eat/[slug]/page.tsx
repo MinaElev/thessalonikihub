@@ -13,6 +13,8 @@ import { areaHref, dishHref, pillarHref } from "@/lib/links";
 import { getArea } from "@/content/data/areas";
 import { dishes, getDish, getDishes } from "@/content/data/dishes";
 import Image from "next/image";
+import { ShareButton } from "@/components/ShareButton";
+import { shareProps } from "@/lib/share";
 
 export function generateStaticParams() {
   return dishes.map((d) => ({ slug: d.slug }));
@@ -49,6 +51,8 @@ export default async function DishPage({
   const d = getDish(slug);
   if (!d) notFound();
 
+  const share = await shareProps(locale, dishHref(d.slug));
+
   const name = pick(d.name, locale);
   const areas = (d.areas ?? [])
     .map((a) => getArea(a))
@@ -79,6 +83,9 @@ export default async function DishPage({
           <UtensilsCrossed className="mt-1 h-7 w-7 shrink-0 text-brand-600" /> {name}
         </h1>
         <p className="mt-3 text-lg text-muted">{pick(d.blurb, locale)}</p>
+        <div className="mt-4">
+          <ShareButton url={share.url} title={name} labels={share.labels} />
+        </div>
       </header>
 
       {d.photo ? (

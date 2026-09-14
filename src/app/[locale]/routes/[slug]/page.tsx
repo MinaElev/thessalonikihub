@@ -28,6 +28,8 @@ import {
   getWalkingRoute,
   getWalkingRoutes,
 } from "@/content/data/routes";
+import { ShareButton } from "@/components/ShareButton";
+import { shareProps } from "@/lib/share";
 
 export function generateStaticParams() {
   return walkingRoutes.map((r) => ({ slug: r.slug }));
@@ -63,6 +65,8 @@ export default async function RoutePage({
   const t = await getTranslations({ locale });
   const r = getWalkingRoute(slug);
   if (!r) notFound();
+
+  const share = await shareProps(locale, routeHref(r.slug));
 
   const el = locale === "el";
   const name = pick(r.name, locale);
@@ -126,6 +130,9 @@ export default async function RoutePage({
           <Footprints className="mt-1 h-7 w-7 shrink-0 text-brand-600" /> {name}
         </h1>
         <p className="mt-3 text-lg text-muted">{pick(r.blurb, locale)}</p>
+        <div className="mt-4">
+          <ShareButton url={share.url} title={name} labels={share.labels} />
+        </div>
       </header>
 
       <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

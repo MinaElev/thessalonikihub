@@ -452,6 +452,15 @@
       "festival": "Festival"
     }
   },
+  "share": {
+    "share": "Share",
+    "copy": "Copy link",
+    "copied": "Copied!",
+    "whatsapp": "WhatsApp",
+    "viber": "Viber",
+    "facebook": "Facebook",
+    "email": "By email"
+  },
   "related": {
     "moreTrips": "More day trips from Thessaloniki",
     "allTrips": "All day trips",

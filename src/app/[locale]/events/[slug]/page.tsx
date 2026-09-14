@@ -20,6 +20,8 @@ import { MiniMapClient } from "@/components/map/MiniMapClient";
 import { ViewBeacon } from "@/components/ViewBeacon";
 import { TrackedLink } from "@/components/TrackedLink";
 import { eventCover } from "@/lib/event-cover";
+import { ShareButton } from "@/components/ShareButton";
+import { shareProps } from "@/lib/share";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -62,6 +64,7 @@ export default async function EventPage({
   if (!event) notFound();
 
   const photo = eventCover(event);
+  const share = await shareProps(locale, eventHref(event));
   const venueName = pick(event.venue, locale);
   const nearbyStay = event.geo ? getNearbyPlaces(event.geo, "stay", { limit: 4 }) : [];
   const nearbyEat = event.geo ? getNearbyPlaces(event.geo, "eat", { limit: 4 }) : [];
@@ -132,6 +135,15 @@ export default async function EventPage({
               {pick(event.name, locale)}
             </h1>
             <p className="mt-3 text-lg text-muted">{pick(event.summary, locale)}</p>
+            <div className="mt-4">
+              <ShareButton
+                url={share.url}
+                title={pick(event.name, locale)}
+                kind="events"
+                slug={event.slug}
+                labels={share.labels}
+              />
+            </div>
             <div className="mt-6">
               <MarkdownBody>{pick(event.description, locale)}</MarkdownBody>
             </div>

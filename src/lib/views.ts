@@ -6,6 +6,15 @@ export function viewKey(kind: string, slug: string): string {
   return `${kind.toLowerCase()}:${slug}`;
 }
 
+/**
+ * A share is neither an open nor a way of reaching the business, so it never
+ * counts as a contact. Folding it in would flatter the one number an owner
+ * reads as "people who got in touch".
+ */
+function isContact(action: string): boolean {
+  return action !== "view" && action !== "share";
+}
+
 function since(days: number): Date {
   const start = athensDayStart();
   start.setUTCDate(start.getUTCDate() - (days - 1));
@@ -19,9 +28,11 @@ export interface ListingStats {
   contacts: number;
   /** Per route, for the ones that actually happened. */
   byAction: Record<string, number>;
+  /** Times someone passed the page on. Counted apart from contacts. */
+  shares: number;
 }
 
-const EMPTY: ListingStats = { views: 0, contacts: 0, byAction: {} };
+const EMPTY: ListingStats = { views: 0, contacts: 0, byAction: {}, shares: 0 };
 
 export function emptyStats(): ListingStats {
   return EMPTY;
@@ -51,10 +62,17 @@ export async function getListingStats(
 
   for (const row of rows) {
     const key = viewKey(row.kind, row.slug);
-    const entry = result.get(key) ?? { views: 0, contacts: 0, byAction: {} };
+    const entry = result.get(key) ?? {
+      views: 0,
+      contacts: 0,
+      byAction: {},
+      shares: 0,
+    };
     const count = row._sum.count ?? 0;
     if (row.action === "view") {
       entry.views += count;
+    } else if (row.action === "share") {
+      entry.shares += count;
     } else {
       entry.contacts += count;
       entry.byAction[row.action] = (entry.byAction[row.action] ?? 0) + count;
@@ -94,7 +112,7 @@ export async function getTopViewed(days = 30, limit = 8): Promise<TopListing[]> 
     };
     const count = row._sum.count ?? 0;
     if (row.action === "view") entry.views += count;
-    else entry.contacts += count;
+    else if (isContact(row.action)) entry.contacts += count;
     merged.set(key, entry);
   }
 
@@ -110,11 +128,13 @@ export async function getTopViewed(days = 30, limit = 8): Promise<TopListing[]> 
 export interface SiteTotals {
   views: number;
   contacts: number;
+  shares: number;
   previousViews: number;
 }
 
 export async function getSiteTotals(days = 30): Promise<SiteTotals> {
-  if (!isDbConfigured) return { views: 0, contacts: 0, previousViews: 0 };
+  if (!isDbConfigured)
+    return { views: 0, contacts: 0, shares: 0, previousViews: 0 };
 
   const start = since(days);
   const previousStart = since(days * 2);
@@ -131,13 +151,15 @@ export async function getSiteTotals(days = 30): Promise<SiteTotals> {
 
   let views = 0;
   let contacts = 0;
+  let shares = 0;
   for (const row of rows) {
     const count = row._sum.count ?? 0;
     if (row.action === "view") views += count;
+    else if (row.action === "share") shares += count;
     else contacts += count;
   }
 
-  return { views, contacts, previousViews: previous._sum.count ?? 0 };
+  return { views, contacts, shares, previousViews: previous._sum.count ?? 0 };
 }
 
 /** One listing's daily series, for its own statistics page. */
@@ -166,7 +188,7 @@ export async function getListingSeries(
     const point = byDay.get(row.day.toISOString().slice(0, 10));
     if (!point) continue;
     if (row.action === "view") point.views += row.count;
-    else point.contacts += row.count;
+    else if (isContact(row.action)) point.contacts += row.count;
   }
   return Array.from(byDay.values());
 }

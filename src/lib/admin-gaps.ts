@@ -112,7 +112,8 @@ export async function getDailySeries(days = 30): Promise<DailyPoint[]> {
     if (!point) continue;
     const n = row._sum.count ?? 0;
     if (row.action === "view") point.views += n;
-    else point.contacts += n;
+    // A share is not a contact; the trend line stays about getting in touch.
+    else if (row.action !== "share") point.contacts += n;
   }
 
   return Array.from(byDay.values());

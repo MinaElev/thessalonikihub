@@ -24,9 +24,13 @@ const KINDS = new Set([
   "events",
 ]);
 
-/** "view" is opening the page; the rest are ways of reaching the business. */
+/**
+ * "view" is opening the page, "share" is passing it on, and the rest are ways
+ * of reaching the business. The three are kept apart everywhere they are read.
+ */
 const ACTIONS = new Set([
   "view",
+  "share",
   "phone",
   "whatsapp",
   "email",

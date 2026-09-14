@@ -452,6 +452,15 @@
       "festival": "Φεστιβάλ"
     }
   },
+  "share": {
+    "share": "Κοινοποίηση",
+    "copy": "Αντιγραφή συνδέσμου",
+    "copied": "Αντιγράφηκε!",
+    "whatsapp": "WhatsApp",
+    "viber": "Viber",
+    "facebook": "Facebook",
+    "email": "Με email"
+  },
   "related": {
     "moreTrips": "Άλλες εκδρομές από τη Θεσσαλονίκη",
     "allTrips": "Όλες οι εκδρομές",

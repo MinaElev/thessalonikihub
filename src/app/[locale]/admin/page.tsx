@@ -372,13 +372,13 @@ export default async function AdminPage({
       </section>
 
       {/* Traffic. */}
-      {totals.views || totals.contacts ? (
+      {totals.views || totals.contacts || totals.shares ? (
         <section className="mb-12">
           <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
             <BarChart3 className="h-5 w-5 text-brand-600" />
             {tt("Κίνηση, 30 ημέρες", "Traffic, 30 days")}
           </h2>
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-2xl border border-slate-100 p-4">
               <p className="text-xs uppercase tracking-wide text-slate-400">
                 {tt("Προβολές", "Views")}
@@ -401,6 +401,17 @@ export default async function AdminPage({
               </p>
               <p className="mt-0.5 text-xs text-muted">
                 {tt("τηλέφωνο, κράτηση, site, οδηγίες", "phone, booking, site, directions")}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-100 p-4">
+              <p className="text-xs uppercase tracking-wide text-slate-400">
+                {tt("Κοινοποιήσεις", "Shares")}
+              </p>
+              <p className="mt-1 text-3xl font-extrabold tabular-nums">
+                {totals.shares}
+              </p>
+              <p className="mt-0.5 text-xs text-muted">
+                {tt("σελίδες που στάλθηκαν παρακάτω", "pages passed on to someone")}
               </p>
             </div>
             <div className="rounded-2xl border border-slate-100 p-4">

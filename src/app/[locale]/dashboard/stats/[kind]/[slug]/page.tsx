@@ -109,7 +109,7 @@ export default async function ListingStatsPage({
         </Link>
       </header>
 
-      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+      <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-2xl border border-slate-100 p-4">
           <p className="text-xs uppercase tracking-wide text-slate-400">
             {tt("Προβολές", "Views")}
@@ -122,6 +122,15 @@ export default async function ListingStatsPage({
           </p>
           <p className="mt-1 text-3xl font-extrabold tabular-nums text-brand-700">
             {stats.contacts}
+          </p>
+        </div>
+        <div className="rounded-2xl border border-slate-100 p-4">
+          <p className="text-xs uppercase tracking-wide text-slate-400">
+            {tt("Κοινοποιήσεις", "Shares")}
+          </p>
+          <p className="mt-1 text-3xl font-extrabold tabular-nums">{stats.shares}</p>
+          <p className="mt-0.5 text-xs text-muted">
+            {tt("φορές που στάλθηκε η σελίδα", "times the page was passed on")}
           </p>
         </div>
         <div className="rounded-2xl border border-slate-100 p-4">

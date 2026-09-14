@@ -67,6 +67,8 @@ import {
   getSimilarPlaces,
   type NearbyResult,
 } from "@/lib/repo";
+import { ShareButton } from "@/components/ShareButton";
+import { shareProps } from "@/lib/share";
 
 type StayPillar = Exclude<Pillar, "events">;
 
@@ -169,6 +171,7 @@ export async function PlaceDetail({
   locale: Locale;
 }) {
   const t = await getTranslations({ locale });
+  const share = await shareProps(locale, `/${place.kind}/${place.slug}`);
   const pillar = place.kind as StayPillar;
   const label = pick(pillars[pillar].label, locale);
   const area = getArea(place.geo.area);
@@ -336,6 +339,13 @@ export async function PlaceDetail({
                   signIn: t("saved.signIn"),
                   error: t("saved.error"),
                 }}
+              />
+              <ShareButton
+                url={share.url}
+                title={pick(place.name, locale)}
+                kind={place.kind}
+                slug={place.slug}
+                labels={share.labels}
               />
               {place.verified ? (
                 <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2.5 py-1 text-sm font-semibold text-brand-700">
