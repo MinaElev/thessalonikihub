@@ -5,6 +5,7 @@ import { z } from "zod";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { createAdminClient, isAdminConfigured } from "@/lib/supabase/admin";
+import { recordAudit } from "@/lib/audit";
 
 /**
  * Account administration: naming people, and removing them.
@@ -56,6 +57,10 @@ export async function deleteAccount(formData: FormData) {
 
   const id = String(formData.get("id") ?? "");
   if (!id) return;
+  const victim = await prisma.profile.findUnique({
+    where: { id },
+    select: { email: true },
+  });
   // Deleting yourself would end the session mid-request and leave the site
   // with no administrator if you are the only one.
   if (id === me.id) return;
@@ -75,5 +80,6 @@ export async function deleteAccount(formData: FormData) {
     await admin?.auth.admin.deleteUser(id).catch(() => {});
   }
 
+  await recordAudit(me, "account.delete", victim?.email ?? id);
   revalidatePath("/admin/people");
 }

@@ -11,6 +11,7 @@ import { listingApproved, listingRejected } from "@/lib/email-templates";
 import { site } from "@/lib/site";
 import { pick } from "@/lib/types";
 import type { Localized } from "@/lib/types";
+import { recordAudit } from "@/lib/audit";
 
 async function isAdmin(): Promise<boolean> {
   const u = await getCurrentUser();
@@ -19,7 +20,8 @@ async function isAdmin(): Promise<boolean> {
 
 /** Approve a submission (admin only). Reads `kind` + `id` from the form. */
 export async function approveListing(formData: FormData) {
-  if (!isDbConfigured || !(await isAdmin())) return;
+  const actor = await getCurrentUser();
+  if (!isDbConfigured || actor?.role !== "ADMIN") return;
   const kind = String(formData.get("kind"));
   const id = String(formData.get("id"));
 
@@ -70,6 +72,8 @@ export async function approveListing(formData: FormData) {
       listingApproved(notify.email, notify.name, `${site.url}${notify.path}`),
     );
   }
+
+  await recordAudit(actor, "listing.approve", notify?.path ?? id, notify?.name);
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
   revalidatePath("/admin");
@@ -78,7 +82,8 @@ export async function approveListing(formData: FormData) {
 
 /** Reject a submission (admin only). */
 export async function rejectListing(formData: FormData) {
-  if (!isDbConfigured || !(await isAdmin())) return;
+  const actor = await getCurrentUser();
+  if (!isDbConfigured || actor?.role !== "ADMIN") return;
   const kind = String(formData.get("kind"));
   const id = String(formData.get("id"));
   const note = formData.get("note") ? String(formData.get("note")) : null;
@@ -106,6 +111,13 @@ export async function rejectListing(formData: FormData) {
       listingRejected(row.owner.email, pick(row.name as Localized<string>, "el"), note),
     );
   }
+
+  await recordAudit(
+    actor,
+    "listing.reject",
+    pick(row.name as Localized<string>, "el"),
+    note,
+  );
   revalidatePath("/admin");
   revalidatePath("/dashboard");
 }

@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Link } from "@/i18n/navigation";
-import { LayoutDashboard, List, Users, FileText, DownloadCloud } from "lucide-react";
+import { LayoutDashboard, List, Users, FileText, DownloadCloud, History } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 
 /**
@@ -23,6 +23,7 @@ const ICONS = {
   people: Users,
   content: FileText,
   import: DownloadCloud,
+  activity: History,
 } as const;
 
 export function AdminNav({
@@ -46,6 +47,7 @@ export function AdminNav({
     { key: "people", href: "/admin/people", label: tt("Χρήστες", "People") },
     { key: "content", href: "/admin/content", label: tt("Περιεχόμενο", "Content") },
     { key: "import", href: "/admin/import", label: tt("Εισαγωγή", "Import") },
+    { key: "activity", href: "/admin/activity", label: tt("Ιστορικό", "Activity") },
   ] as const;
 
   // The locale prefix is on the pathname but not on the hrefs, so compare the

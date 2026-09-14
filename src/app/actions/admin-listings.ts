@@ -6,6 +6,7 @@ import { TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 import { getCurrentUser } from "@/lib/auth";
 import { getPlaceBySlug } from "@/lib/repo";
 import { placeToDbData } from "@/lib/place-to-db";
+import { recordAudit } from "@/lib/audit";
 
 /**
  * Blanket status control over any listing, published ones included.
@@ -44,7 +45,8 @@ function revalidateFor(kind: string, slug: string, pillar?: string) {
 }
 
 export async function setListingStatus(formData: FormData) {
-  if (!isDbConfigured || !(await requireAdmin())) return;
+  const actor = await requireAdmin();
+  if (!isDbConfigured || !actor) return;
 
   const kind = String(formData.get("kind") ?? "");
   const id = String(formData.get("id") ?? "");
@@ -68,6 +70,7 @@ export async function setListingStatus(formData: FormData) {
       create: { slug, ...data, status: status as never },
     });
     revalidateFor("place", slug, place.kind.toLowerCase());
+    await recordAudit(actor, "listing.adopt", slug, status);
     return;
   }
 
@@ -85,6 +88,7 @@ export async function setListingStatus(formData: FormData) {
       select: { slug: true },
     });
     revalidateFor("event", row.slug);
+    await recordAudit(actor, "listing.status", row.slug, status);
   } else {
     const row = await prisma.place.update({
       where: { id },
@@ -95,6 +99,7 @@ export async function setListingStatus(formData: FormData) {
       select: { slug: true, kind: true },
     });
     revalidateFor("place", row.slug, row.kind.toLowerCase());
+    await recordAudit(actor, "listing.status", row.slug, status);
   }
 }
 
@@ -107,7 +112,8 @@ export async function setListingStatus(formData: FormData) {
  * exists for spam and for test rows.
  */
 export async function deleteListing(formData: FormData) {
-  if (!isDbConfigured || !(await requireAdmin())) return;
+  const actor = await requireAdmin();
+  if (!isDbConfigured || !actor) return;
 
   const kind = String(formData.get("kind") ?? "");
   const id = String(formData.get("id") ?? "");
@@ -120,11 +126,76 @@ export async function deleteListing(formData: FormData) {
     const row = await prisma.eventItem
       .delete({ where: { id }, select: { slug: true } })
       .catch(() => null);
-    if (row) revalidateFor("event", row.slug);
+    if (row) {
+      revalidateFor("event", row.slug);
+      await recordAudit(actor, "listing.delete", row.slug);
+    }
   } else {
     const row = await prisma.place
       .delete({ where: { id }, select: { slug: true, kind: true } })
       .catch(() => null);
-    if (row) revalidateFor("place", row.slug, row.kind.toLowerCase());
+    if (row) {
+      revalidateFor("place", row.slug, row.kind.toLowerCase());
+      await recordAudit(actor, "listing.delete", row.slug);
+    }
   }
+}
+
+/**
+ * Apply one status to many listings at once.
+ *
+ * Twenty imported events needing the same treatment is the case this exists
+ * for. Ids arrive as repeated `selected` fields, each prefixed with its table
+ * so a place and an event with the same cuid cannot be confused.
+ *
+ * File-only listings are not selectable in the UI and are ignored here too:
+ * adopting a content file into the database is a decision worth making one at
+ * a time, not something to do to thirty rows by accident.
+ */
+export async function bulkSetStatus(formData: FormData) {
+  const actor = await requireAdmin();
+  if (!isDbConfigured || !actor) return;
+
+  const status = String(formData.get("status") ?? "");
+  if (!STATUSES.has(status)) return;
+
+  const selected = formData
+    .getAll("selected")
+    .map(String)
+    .filter((v) => v.includes(":"));
+  if (selected.length === 0) return;
+
+  const placeIds = selected.filter((v) => v.startsWith("place:")).map((v) => v.slice(6));
+  const eventIds = selected.filter((v) => v.startsWith("event:")).map((v) => v.slice(6));
+
+  const clear = status === "REJECTED" ? {} : { rejectionNote: null };
+
+  if (placeIds.length) {
+    await prisma.place.updateMany({
+      where: { id: { in: placeIds } },
+      data: { status: status as never, ...clear },
+    });
+    revalidateTag(TAG_PLACES);
+  }
+  if (eventIds.length) {
+    await prisma.eventItem.updateMany({
+      where: { id: { in: eventIds } },
+      data: { status: status as never, ...clear },
+    });
+    revalidateTag(TAG_EVENTS);
+  }
+
+  revalidatePath("/");
+  revalidatePath("/events");
+  revalidatePath("/sitemap.xml");
+  revalidatePath("/admin");
+  revalidatePath("/admin/listings");
+  revalidatePath("/dashboard");
+
+  await recordAudit(
+    actor,
+    "listing.status",
+    `${selected.length} listings`,
+    `bulk → ${status}`,
+  );
 }

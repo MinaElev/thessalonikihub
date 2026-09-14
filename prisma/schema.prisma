@@ -309,3 +309,29 @@ model EmailVerification {
 
   @@index([expiresAt])
 }
+
+/// A record of what an administrator did.
+///
+/// Approvals, rejections, status changes, deletions and role changes all
+/// happened with no trace of who did them. With one administrator that is
+/// merely untidy; with two it is the difference between a question and an
+/// argument. Deliberately append-only — nothing in the application deletes
+/// from here, which is what makes it worth reading.
+model AuditEntry {
+  id        String   @id @default(cuid())
+  /// Who acted. Kept as a plain id, not a relation: the record must survive
+  /// the account being deleted, which is exactly when it matters most.
+  actorId    String
+  /// Their address at the time, since the account may be gone when this is read.
+  actorEmail String
+  /// What happened: "listing.approve", "account.delete", "role.change", …
+  action     String
+  /// What it happened to, human-readable: a slug, an email, a title.
+  target     String
+  /// Anything worth keeping: a rejection note, an old and new role.
+  detail     String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([action])
+}

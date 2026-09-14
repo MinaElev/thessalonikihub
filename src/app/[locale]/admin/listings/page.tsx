@@ -1,11 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
-import { Pencil, Eye, Trash2, Search, BarChart3, CalendarClock } from "lucide-react";
+import { Pencil, Eye, Trash2, Search, BarChart3, CalendarClock, CheckSquare } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Localized } from "@/lib/types";
 import { pick } from "@/lib/types";
 import { prisma, isDbConfigured } from "@/lib/db";
-import { setListingStatus, deleteListing } from "@/app/actions/admin-listings";
+import { setListingStatus, deleteListing, bulkSetStatus } from "@/app/actions/admin-listings";
 import {
   statusLabel,
   statusTone,
@@ -284,6 +284,44 @@ export default async function AdminListingsPage({
           {tt("Καμία εγγραφή με αυτά τα φίλτρα.", "Nothing matches these filters.")}
         </p>
       ) : (
+        <>
+        {/* The bulk form holds only this bar. The checkboxes live down in the
+            rows and join it by id, because a form inside a form is invalid
+            HTML — and every row already has its own. Sticky, since the
+            selection is made while scrolling. */}
+        <form
+          action={bulkSetStatus}
+          id="bulk"
+          className="sticky top-0 z-10 mb-3 rounded-xl border border-slate-200 bg-white/95 p-3 backdrop-blur"
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <CheckSquare className="h-4 w-4 text-slate-400" />
+            <span className="text-sm text-muted">
+              {tt("Επιλεγμένες:", "Selected:")}
+            </span>
+            <select
+              name="status"
+              defaultValue="PUBLISHED"
+              className="rounded-lg border border-slate-200 px-2 py-1.5 text-sm"
+            >
+              {STATUSES.map((st) => (
+                <option key={st} value={st}>
+                  {statusLabel(st, locale)}
+                </option>
+              ))}
+            </select>
+            <button className="rounded-full bg-slate-900 px-4 py-1.5 text-sm font-semibold text-white hover:bg-slate-700">
+              {tt("Εφαρμογή σε όλες", "Apply to selected")}
+            </button>
+            <span className="ml-auto text-xs text-muted">
+              {tt(
+                "Οι καταχωρήσεις από αρχείο δεν επιλέγονται μαζικά.",
+                "File-based listings cannot be selected in bulk.",
+              )}
+            </span>
+          </div>
+        </form>
+
         <ul className="space-y-2">
           {rows.map((r) => {
             const st = stats.get(viewKey(r.entity, r.slug)) ?? emptyStats();
@@ -293,7 +331,20 @@ export default async function AdminListingsPage({
                 className="rounded-2xl border border-slate-100 p-4"
               >
                 <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div className="min-w-0">
+                  <div className="flex min-w-0 gap-3">
+                    {r.fromFile ? (
+                      <span className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        form="bulk"
+                        name="selected"
+                        value={`${r.table}:${r.id}`}
+                        aria-label={pick(r.name, locale)}
+                        className="mt-1 h-4 w-4 shrink-0"
+                      />
+                    )}
+                    <div className="min-w-0">
                     <p className="flex flex-wrap items-center gap-2 font-semibold">
                       {pick(r.name, locale)}
                       <span
@@ -344,6 +395,7 @@ export default async function AdminListingsPage({
                         </span>
                       ) : null}
                     </p>
+                    </div>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2">
@@ -418,6 +470,7 @@ export default async function AdminListingsPage({
             );
           })}
         </ul>
+        </>
       )}
     </div>
   );

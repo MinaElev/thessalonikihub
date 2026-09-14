@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
+import { recordAudit } from "@/lib/audit";
 
 const ROLES = new Set(["USER", "OWNER", "ADMIN"]);
 
@@ -25,7 +26,12 @@ export async function setUserRole(formData: FormData) {
   // only admin, and there is no way back in from the UI.
   if (id === me.id && role !== "ADMIN") return;
 
+  const before = await prisma.profile.findUnique({
+    where: { id },
+    select: { email: true, role: true },
+  });
   await prisma.profile.update({ where: { id }, data: { role: role as never } });
+  await recordAudit(me, "role.change", before?.email ?? id, `${before?.role} → ${role}`);
   revalidatePath("/admin/people");
 }
 
@@ -44,7 +50,12 @@ export async function deleteSubscriber(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   if (!id) return;
 
+  const row = await prisma.subscriber.findUnique({
+    where: { id },
+    select: { email: true },
+  });
   await prisma.subscriber.delete({ where: { id } }).catch(() => {});
+  await recordAudit(me, "subscriber.delete", row?.email ?? id);
   revalidatePath("/admin/people");
 }
 

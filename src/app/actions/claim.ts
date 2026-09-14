@@ -7,6 +7,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { getPlaceBySlug } from "@/lib/repo";
 import { placeToDbData } from "@/lib/place-to-db";
 import { pick } from "@/lib/types";
+import { recordAudit } from "@/lib/audit";
 
 export interface ClaimState {
   status: "idle" | "ok" | "duplicate" | "unauthenticated" | "notfound" | "error";
