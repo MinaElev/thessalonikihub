@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Loader2, CheckCircle2, KeyRound } from "lucide-react";
+import { Mail, Loader2, CheckCircle2, KeyRound, ArrowLeft } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { createClient } from "@/lib/supabase/client";
 
@@ -30,7 +30,15 @@ function GoogleMark() {
 const googleEnabled = process.env.NEXT_PUBLIC_ENABLE_GOOGLE_AUTH === "true";
 
 type Mode = "password" | "magic";
-type Status = "idle" | "loading" | "google" | "sent" | "reset-sent" | "error";
+/** "sent" now means a code is waiting to be typed, not a link to be clicked. */
+type Status =
+  | "idle"
+  | "loading"
+  | "google"
+  | "sent"
+  | "verifying"
+  | "reset-sent"
+  | "error";
 
 export function LoginForm({
   locale,
@@ -45,6 +53,7 @@ export function LoginForm({
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string | null>(null);
 
@@ -75,8 +84,8 @@ export function LoginForm({
     T(
       locale,
       googleEnabled
-        ? "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε με κωδικό ή με Google."
-        : "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε σύνδεση με κωδικό.",
+        ? "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε με κωδικό πρόσβασης ή με Google."
+        : "Πολλές προσπάθειες. Επιτρέπονται λίγα email την ώρα — δοκίμασε σύνδεση με κωδικό πρόσβασης.",
       googleEnabled
         ? "Too many attempts. Only a few emails per hour are allowed — try a password or Google instead."
         : "Too many attempts. Only a few emails per hour are allowed — sign in with a password instead.",
@@ -142,14 +151,21 @@ export function LoginForm({
     goNext();
   };
 
-  const sendMagicLink = async (e: React.FormEvent) => {
+  /**
+   * Ask Supabase to email a one-time code.
+   *
+   * No `emailRedirectTo`: a code needs no redirect at all, which is what makes
+   * this immune to the entire class of failure that links suffer — a Site URL
+   * pointing at localhost, a redirect that is not on the allowlist, a link
+   * opened on a different device from the one that asked for it. Whether the
+   * mail shows a code or a link is decided by the Supabase email template.
+   */
+  const sendCode = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
     setMessage(null);
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: callback() },
-    });
+    setCode("");
+    const { error } = await supabase.auth.signInWithOtp({ email });
     if (!error) {
       setStatus("sent");
       return;
@@ -160,6 +176,38 @@ export function LoginForm({
         ? rateLimited()
         : T(locale, "Κάτι πήγε στραβά.", "Something went wrong."),
     );
+  };
+
+  const verifyCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const token = code.replace(/\D/g, "");
+    if (token.length < 6) {
+      setMessage(T(locale, "Ο κωδικός έχει 6 ψηφία.", "The code is 6 digits."));
+      return;
+    }
+    setStatus("verifying");
+    setMessage(null);
+
+    // A first-ever address confirms under "signup"; an existing one under
+    // "email". Which applies depends on whether Supabase already knew the
+    // address, which the browser has no way to tell, so try both.
+    let { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
+    if (error) {
+      ({ error } = await supabase.auth.verifyOtp({ email, token, type: "signup" }));
+    }
+
+    if (error) {
+      setStatus("sent");
+      setMessage(
+        T(
+          locale,
+          "Ο κωδικός δεν ισχύει ή έληξε. Ζήτησε καινούργιο.",
+          "That code is wrong or has expired. Request a new one.",
+        ),
+      );
+      return;
+    }
+    goNext();
   };
 
   const sendReset = async () => {
@@ -199,7 +247,7 @@ export function LoginForm({
     }
   };
 
-  if (status === "sent" || status === "reset-sent") {
+  if (status === "reset-sent") {
     return (
       <div className="rounded-xl border border-brand-100 bg-brand-50 p-6 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-brand-600" />
@@ -207,17 +255,11 @@ export function LoginForm({
           {T(locale, "Έλεγξε το email σου!", "Check your email!")}
         </p>
         <p className="mt-1 text-sm text-muted">
-          {status === "reset-sent"
-            ? T(
-                locale,
-                "Σου στείλαμε σύνδεσμο για να ορίσεις νέο κωδικό.",
-                "We sent you a link to set a new password.",
-              )
-            : T(
-                locale,
-                "Σου στείλαμε σύνδεσμο επιβεβαίωσης. Άνοιξέ τον από την ίδια συσκευή.",
-                "We sent you a confirmation link. Open it on this same device.",
-              )}
+          {T(
+            locale,
+            "Σου στείλαμε σύνδεσμο για να ορίσεις νέο κωδικό.",
+            "We sent you a link to set a new password.",
+          )}
         </p>
         <button
           type="button"
@@ -227,6 +269,73 @@ export function LoginForm({
           {T(locale, "Πίσω", "Back")}
         </button>
       </div>
+    );
+  }
+
+  if (status === "sent" || status === "verifying") {
+    return (
+      <form onSubmit={verifyCode} className="space-y-4">
+        <div className="rounded-xl border border-brand-100 bg-brand-50 p-5 text-center">
+          <Mail className="mx-auto h-9 w-9 text-brand-600" />
+          <p className="mt-2 font-semibold">
+            {T(locale, "Στείλαμε έναν κωδικό", "We sent you a code")}
+          </p>
+          <p className="mt-1 text-sm text-muted">
+            {T(locale, "Έξι ψηφία στο", "Six digits to")}{" "}
+            <span className="font-semibold text-ink">{email}</span>
+          </p>
+        </div>
+
+        <label htmlFor="otp" className="block text-sm font-medium text-slate-700">
+          {T(locale, "Κωδικός επιβεβαίωσης", "Confirmation code")}
+        </label>
+        <input
+          id="otp"
+          // Numeric keypad on phones, and the browser or OS can fill the code
+          // straight from the notification.
+          inputMode="numeric"
+          autoComplete="one-time-code"
+          maxLength={6}
+          required
+          autoFocus
+          value={code}
+          onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
+          placeholder="000000"
+          className="w-full rounded-lg border border-slate-200 px-3 py-3 text-center font-mono text-2xl tracking-[0.4em] outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+        />
+
+        {message ? <p className="text-sm text-accent-600">{message}</p> : null}
+
+        <button
+          type="submit"
+          disabled={status === "verifying"}
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60"
+        >
+          {status === "verifying" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+          {T(locale, "Επιβεβαίωση", "Confirm")}
+        </button>
+
+        <div className="flex items-center justify-between text-sm">
+          <button
+            type="button"
+            onClick={() => {
+              setStatus("idle");
+              setMessage(null);
+            }}
+            className="inline-flex items-center gap-1 font-semibold text-slate-500 hover:text-slate-800"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {T(locale, "Άλλο email", "Different email")}
+          </button>
+          <button
+            type="button"
+            onClick={(e) => sendCode(e as unknown as React.FormEvent)}
+            className="font-semibold text-brand-700 underline"
+          >
+            {T(locale, "Στείλε ξανά", "Resend")}
+          </button>
+        </div>
+      </form>
     );
   }
 
@@ -251,7 +360,7 @@ export function LoginForm({
         </>
       ) : null}
 
-      <form onSubmit={mode === "password" ? submitPassword : sendMagicLink} className="space-y-3">
+      <form onSubmit={mode === "password" ? submitPassword : sendCode} className="space-y-3">
         <div>
           <label htmlFor="login-email" className="mb-1 block text-sm font-medium text-slate-700">
             Email
@@ -299,7 +408,7 @@ export function LoginForm({
             <Mail className="h-4 w-4" />
           )}
           {mode === "magic"
-            ? T(locale, "Στείλε μου σύνδεσμο", "Email me a link")
+            ? T(locale, "Στείλε μου κωδικό", "Email me a code")
             : register
               ? T(locale, "Δημιουργία λογαριασμού", "Create account")
               : T(locale, "Σύνδεση", "Sign in")}
@@ -343,8 +452,8 @@ export function LoginForm({
         className="w-full text-center text-sm text-muted underline"
       >
         {mode === "password"
-          ? T(locale, "Σύνδεση με σύνδεσμο email αντί για κωδικό", "Use an email link instead")
-          : T(locale, "Σύνδεση με κωδικό", "Use a password instead")}
+          ? T(locale, "Σύνδεση με κωδικό μιας χρήσης στο email", "Sign in with a one-time code")
+          : T(locale, "Σύνδεση με κωδικό πρόσβασης", "Use a password instead")}
       </button>
     </div>
   );
