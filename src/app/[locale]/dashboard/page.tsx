@@ -247,9 +247,12 @@ export default async function DashboardPage({
                               .join(" · ")}
                           </span>
                         ) : null}
-                        <span className="ml-auto text-[11px] uppercase tracking-wide text-slate-400">
-                          {tt("τελευταίες 30 ημέρες", "last 30 days")}
-                        </span>
+                        <Link
+                          href={`/dashboard/stats/${r.kind.toLowerCase()}/${r.slug}`}
+                          className="ml-auto text-xs font-semibold text-brand-700 hover:underline"
+                        >
+                          {tt("Αναλυτικά →", "Details →")}
+                        </Link>
                       </div>
                     );
                   })()

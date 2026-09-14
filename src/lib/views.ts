@@ -139,3 +139,34 @@ export async function getSiteTotals(days = 30): Promise<SiteTotals> {
 
   return { views, contacts, previousViews: previous._sum.count ?? 0 };
 }
+
+/** One listing's daily series, for its own statistics page. */
+export async function getListingSeries(
+  kind: string,
+  slug: string,
+  days = 30,
+): Promise<{ day: string; views: number; contacts: number }[]> {
+  if (!isDbConfigured) return [];
+
+  const start = since(days);
+  const rows = await prisma.listingView.findMany({
+    where: { kind: kind.toLowerCase(), slug, day: { gte: start } },
+    select: { day: true, action: true, count: true },
+  });
+
+  // Quiet days are present as zeroes: a chart that skips them draws a rising
+  // line out of a flat fortnight.
+  const byDay = new Map<string, { day: string; views: number; contacts: number }>();
+  for (let i = 0; i < days; i++) {
+    const d = new Date(start.getTime() + i * 86_400_000);
+    const key = d.toISOString().slice(0, 10);
+    byDay.set(key, { day: key, views: 0, contacts: 0 });
+  }
+  for (const row of rows) {
+    const point = byDay.get(row.day.toISOString().slice(0, 10));
+    if (!point) continue;
+    if (row.action === "view") point.views += row.count;
+    else point.contacts += row.count;
+  }
+  return Array.from(byDay.values());
+}
