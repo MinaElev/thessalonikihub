@@ -68,6 +68,7 @@ function rowToPlace(r: any): Place {
     service: r.service ?? undefined,
     rating: r.rating ?? undefined,
     hours: r.hours ?? undefined,
+    hoursNote: r.hoursNote ?? undefined,
     seoTitle: r.seoTitle ?? undefined,
     seoDescription: r.seoDescription ?? undefined,
     verified: r.verified ?? undefined,

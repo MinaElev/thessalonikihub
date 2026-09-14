@@ -224,6 +224,12 @@ export interface Place {
   /** Opening hours, supplied by the owner. Never invented. */
   hours?: OpeningHours;
   /**
+   * Context the weekday table cannot carry: the season these hours belong to,
+   * holiday closures, or — where we could not verify times at all — how to
+   * find out. Published instead of guessed hours, never alongside invented ones.
+   */
+  hoursNote?: Localized<string>;
+  /**
    * Optional SEO overrides, written by an editor. When absent the page falls
    * back to the name (plus area) and the summary, which is the right default
    * for most listings — these exist for the few where it isn't.

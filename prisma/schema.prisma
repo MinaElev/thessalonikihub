@@ -108,6 +108,11 @@ model Place {
   rating     Json? // Rating { average, count } — from moderated reviews
   /// Opening hours per weekday, supplied by the owner. Never invented.
   hours      Json? // OpeningHours { mon..sun: "09:00-17:00" }
+  /// What the table above cannot say: which season it applies to, the days a
+  /// site closes for public holidays, where to confirm. Greek monuments run
+  /// different summer and winter hours by ministerial decision, so a single
+  /// week of times is only ever half the truth.
+  hoursNote  Json? // Localized<string>
   /// Optional SEO overrides written by an editor; fall back to name/summary.
   seoTitle       Json?
   seoDescription Json?

@@ -607,10 +607,13 @@ export async function PlaceDetail({
               </section>
             ) : null}
 
-            {place.hours && Object.keys(place.hours).length ? (
+            {(place.hours && Object.keys(place.hours).length) || place.hoursNote ? (
               <section className="mt-10">
                 <h2 className="mb-3 text-xl font-bold">{t("place.hours")}</h2>
-                <dl className="max-w-sm divide-y divide-slate-100 rounded-2xl border border-slate-100">
+                <dl
+                  className="max-w-sm divide-y divide-slate-100 rounded-2xl border border-slate-100"
+                  hidden={!place.hours || !Object.keys(place.hours).length}
+                >
                   {DAY_ORDER.map((d) => {
                     const range = place.hours?.[d];
                     if (range === undefined) return null;
@@ -628,6 +631,14 @@ export async function PlaceDetail({
                     );
                   })}
                 </dl>
+                {/* Seasonal ranges, holiday closures, or — where we could not
+                    verify times — where to check. Never a substitute for hours
+                    we have; always present when we do not have them. */}
+                {place.hoursNote ? (
+                  <p className="mt-3 max-w-prose text-sm text-muted">
+                    {pick(place.hoursNote, locale)}
+                  </p>
+                ) : null}
               </section>
             ) : null}
 

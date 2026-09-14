@@ -3,6 +3,121 @@ import type { Guide } from "@/lib/types";
 /** Editorial guides & itineraries built around real Thessaloniki landmarks. */
 export const guides: Guide[] = [
   {
+    slug: "agios-dimitrios-26-oktovriou",
+    title: {
+      el: "26 Οκτωβρίου στη Θεσσαλονίκη: του Αγίου Δημητρίου",
+      en: "26 October in Thessaloniki: the feast of Saint Demetrios",
+    },
+    excerpt: {
+      el: "Η μέρα που η πόλη κλείνει. Τι είναι ανοιχτό, τι όχι, πού γίνεται η λιτανεία και γιατί η ίδια ημερομηνία γιορτάζει δύο πράγματα.",
+      en: "The day the city closes. What stays open, what does not, where the procession goes, and why one date marks two things.",
+    },
+    body: {
+      el: `Αν βρεθείς στη Θεσσαλονίκη στις 26 Οκτωβρίου, θα το καταλάβεις πριν καν βγεις από το ξενοδοχείο. Τα καταστήματα είναι κλειστά, οι δρόμοι γύρω από τον Άγιο Δημήτριο γεμάτοι, και η πόλη έχει τον ρυθμό Κυριακής μέσα στην εβδομάδα.
+
+Δεν πρόκειται για έθιμο. Είναι **υποχρεωτική αργία**, θεσμοθετημένη με ΦΕΚ, και ισχύει για όλες τις επιχειρήσεις μέσα στα όρια των δήμων του Πολεοδομικού Συγκροτήματος Θεσσαλονίκης.
+
+## Δύο επέτειοι, μία ημερομηνία
+
+Η 26η Οκτωβρίου είναι η γιορτή του **Αγίου Δημητρίου**, πολιούχου της πόλης. Είναι όμως και η επέτειος της **απελευθέρωσης της Θεσσαλονίκης, στις 26 Οκτωβρίου 1912**.
+
+Η σύμπτωση δεν πέρασε απαρατήρητη τότε και δεν έχει ξεχαστεί από τότε: ο ελληνικός στρατός μπήκε στην πόλη ανήμερα της γιορτής του προστάτη της. Γι' αυτό η μέρα έχει διπλό χαρακτήρα — θρησκευτικό το πρωί, εθνικό το μεσημέρι, με παρέλαση και επίσημες εκδηλώσεις.
+
+Και επειδή η 28η Οκτωβρίου είναι πανελλήνια αργία δύο μέρες μετά, η πόλη ουσιαστικά έχει ένα εκτεταμένο τριήμερο. Αν σχεδιάζεις ταξίδι, να το ξέρεις και για τα καλά και για τα άσχημα: η ατμόσφαιρα είναι μοναδική, αλλά τα ξενοδοχεία γεμίζουν και τιμολογούν ανάλογα.
+
+## Τι είναι κλειστό και τι όχι
+
+**Κλειστά:** καταστήματα, δημόσιες υπηρεσίες, τράπεζες, σχολεία.
+
+**Ανοιχτά:** η εστίαση λειτουργεί κανονικά και έχει από τις καλύτερες μέρες της χρονιάς. Τα μουσεία ακολουθούν το πρόγραμμα αργίας — δεν είναι από τις ημερομηνίες που κλείνουν υποχρεωτικά, αλλά επιβεβαίωσε πριν πας. Το μετρό και τα λεωφορεία δουλεύουν με πρόγραμμα αργίας, δηλαδή αραιότερα.
+
+Αν ο μόνος σου σκοπός είναι ψώνια, διάλεξε άλλη μέρα. Αν θες να δεις την πόλη να κάνει κάτι που κάνει μόνο μία φορά τον χρόνο, ήρθες τη σωστή.
+
+## Ο ναός και η λιτανεία
+
+Ο **Ναός του Αγίου Δημητρίου** είναι το επίκεντρο. Πεντάκλιτη βασιλική χτισμένη πάνω από τα ρωμαϊκά λουτρά όπου μαρτύρησε ο άγιος, μνημείο UNESCO, και ο μεγαλύτερος ναός της πόλης.
+
+Ανήμερα λειτουργεί από πολύ νωρίς και με ουρά. Αν θες να τον δεις με ησυχία, πήγαινε **οποιαδήποτε άλλη μέρα** — στις 26 πηγαίνεις για το πλήθος, όχι για την αρχιτεκτονική.
+
+Η **κρύπτη**, κάτω από το ιερό, είναι το σημείο όπου κατά την παράδοση έγινε το μαρτύριο· διατηρεί τμήματα των λουτρών και μικρή μουσειακή έκθεση με γλυπτά του 6ου–7ου αιώνα. Η είσοδος και στα δύο είναι δωρεάν.
+
+Το πρόγραμμα των ακολουθιών και της λιτανείας ανακοινώνεται από την Ιερά Μητρόπολη λίγες μέρες πριν και αλλάζει από χρονιά σε χρονιά — δεν δημοσιεύουμε ώρες που δεν έχουν ανακοινωθεί ακόμα. Τηλέφωνο ναού: 2310 270008.
+
+## Τα Δημήτρια
+
+Γύρω από τη γιορτή κινείται και ο σημαντικότερος πολιτιστικός θεσμός της πόλης, τα **Δημήτρια**. Ξεκίνησαν το 1966 και πήραν το όνομά τους από τα βυζαντινά εμποροπανηγύρια που γίνονταν στη Θεσσαλονίκη ανήμερα του πολιούχου.
+
+Σήμερα είναι φεστιβάλ θεάτρου, μουσικής, χορού και εικαστικών που απλώνεται σε εβδομάδες και σε χώρους σε όλη την πόλη. Το πρόγραμμα βγαίνει κάθε φθινόπωρο.
+
+## Πώς να φτάσεις
+
+Ο ναός βρίσκεται στην οδό Αγίου Δημητρίου, στην ανηφόρα προς την Άνω Πόλη. Πλησιέστερη στάση μετρό η **Αγία Σοφία**, περίπου δέκα λεπτά με τα πόδια ανηφορικά, ή η **Βενιζέλου** από την άλλη πλευρά.
+
+Ανήμερα οι γύρω δρόμοι κλείνουν για τη λιτανεία και την παρέλαση. Άφησε το αυτοκίνητο — και αν μένεις εκτός κέντρου, υπολόγισε το αραιότερο πρόγραμμα αργίας στα δρομολόγια.
+
+## Αν είσαι εδώ την υπόλοιπη χρονιά
+
+Η γιορτή είναι μία μέρα· ο ναός στέκει όλες τις άλλες. Τις καθημερινές είναι σχεδόν άδειος, και τότε φαίνονται τα ψηφιδωτά του 7ου αιώνα που επιβίωσαν από τη φωτιά του 1917 — τα λίγα που σώθηκαν, στους πεσσούς γύρω από το ιερό.`,
+      en: `If you are in Thessaloniki on 26 October, you will notice before you leave the hotel. The shops are shut, the streets around Agios Dimitrios are full, and the city keeps a Sunday rhythm in the middle of the week.
+
+This is not custom. It is a **compulsory public holiday**, set in law, and it applies to every business inside the municipalities of the Thessaloniki urban area.
+
+## Two anniversaries, one date
+
+26 October is the feast of **Saint Demetrios**, the city's patron. It is also the anniversary of the **liberation of Thessaloniki, on 26 October 1912**.
+
+The coincidence was not lost on anyone at the time and has not been forgotten since: the Greek army entered the city on its protector's own feast day. That gives the date a double character — religious in the morning, national by midday, with a parade and official ceremonies.
+
+And because 28 October is a national holiday two days later, the city effectively gets a long weekend. Worth knowing both ways if you are planning a trip: the atmosphere is unlike any other day of the year, and the hotels know it.
+
+## What closes, what does not
+
+**Closed:** shops, public services, banks, schools.
+
+**Open:** restaurants and bars run normally and have one of their best days of the year. Museums follow a holiday schedule — this is not one of the dates they are required to close, but confirm before you go. Metro and buses run to a holiday timetable, which means less often.
+
+If your only plan is shopping, pick another day. If you want to see the city do something it does once a year, you picked the right one.
+
+## The church and the procession
+
+The **Church of Agios Dimitrios** is the centre of it. A five-aisled basilica built over the Roman baths where the saint was martyred, a UNESCO monument, and the largest church in the city.
+
+On the day it opens very early and there is a queue. If you want to see it quietly, come **any other day** — on the 26th you are going for the crowd, not the architecture.
+
+The **crypt**, beneath the sanctuary, is where tradition places the martyrdom; it preserves parts of the baths and a small display of 6th- and 7th-century sculpture. Entry to both is free.
+
+The order of services and the procession is announced by the Metropolis a few days beforehand and changes from year to year — we do not publish times that have not been announced. The church's phone is 2310 270008.
+
+## The Dimitria
+
+The city's main cultural festival, the **Dimitria**, moves around the same feast. It began in 1966 and takes its name from the Byzantine trade fairs held in Thessaloniki on the patron saint's day.
+
+Today it is a festival of theatre, music, dance and visual art spread across weeks and across venues throughout the city. The programme appears each autumn.
+
+## Getting there
+
+The church stands on Agiou Dimitriou street, on the slope up towards the Upper Town. The nearest metro stop is **Agia Sofia**, about ten minutes on foot uphill, or **Venizelou** from the other side.
+
+On the day itself the surrounding streets close for the procession and the parade. Leave the car — and if you are staying outside the centre, allow for the thinner holiday timetable.
+
+## If you are here the rest of the year
+
+The feast is one day; the church stands on all the others. On a weekday it is nearly empty, and that is when you can actually see the 7th-century mosaics that survived the fire of 1917 — the few that did, on the piers around the sanctuary.`,
+    },
+    category: "seasonal",
+    cover: {
+      url: "/photos/agios-dimitrios.webp",
+      alt: {
+        el: "Ο Ναός του Αγίου Δημητρίου, πολιούχου της Θεσσαλονίκης, στη γιορτή του στις 26 Οκτωβρίου",
+        en: "The Church of Saint Demetrios, patron of Thessaloniki, on his feast day of 26 October",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-09-14",
+    updatedAt: "2026-09-14",
+    relatedPlaces: ["agios-dimitrios", "rotunda", "hagia-sophia", "byzantine-walls"],
+  },
+  {
     slug: "unesco-monuments-of-thessaloniki",
     title: { el: "Τα Μνημεία UNESCO της Θεσσαλονίκης", en: "The UNESCO Monuments of Thessaloniki" },
     excerpt: {
