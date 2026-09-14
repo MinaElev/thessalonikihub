@@ -18,6 +18,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { signOut } from "@/app/actions/moderate";
 import { resubmitListing } from "@/app/actions/resubmit";
+import { NameForm } from "@/components/owner/NameForm";
 import { getListingStats, emptyStats, viewKey } from "@/lib/views";
 import {
   statusLabel,
@@ -104,6 +105,19 @@ export default async function DashboardPage({
         <div>
           <h1 className="text-3xl font-extrabold">{tt("Οι καταχωρήσεις μου", "My listings")}</h1>
           <p className="mt-1 text-sm text-muted">{user.email}</p>
+          <NameForm
+            current={user.name}
+            labels={{
+              edit: tt("Πρόσθεσε το όνομά σου", "Add your name"),
+              placeholder: tt("Όνομα ή επωνυμία", "Name or business name"),
+              save: tt("Αποθήκευση", "Save"),
+              saved: tt("Αποθηκεύτηκε", "Saved"),
+              hint: tt(
+                "Το βλέπουμε μόνο εμείς, όταν επικοινωνούμε μαζί σου. Δεν δημοσιεύεται.",
+                "Only we see it, when we get in touch. It is not published.",
+              ),
+            }}
+          />
         </div>
         <div className="flex gap-2">
           <Link href="/dashboard/saved" className="inline-flex items-center gap-1 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold hover:border-brand-300 hover:text-brand-700">

@@ -10,6 +10,7 @@ import {
   Mail,
   Database,
   Inbox,
+  Wrench,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -21,6 +22,8 @@ import { approveClaim, rejectClaim } from "@/app/actions/claim";
 import { kindLabel, editHref, publicHref } from "@/lib/listing-labels";
 import { getTopViewed, getSiteTotals } from "@/lib/views";
 import { getDatabaseInventory, getFileContentInventory } from "@/lib/admin-inventory";
+import { getContentGaps, getDailySeries } from "@/lib/admin-gaps";
+import { TrendChart } from "@/components/admin/TrendChart";
 import { isMailConfigured } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
@@ -46,10 +49,12 @@ export default async function AdminPage({
       ])
     : [[], [], []];
 
-  const [topViewed, totals, inventory] = await Promise.all([
+  const [topViewed, totals, inventory, gaps, series] = await Promise.all([
     getTopViewed(30, 8),
     getSiteTotals(30),
     getDatabaseInventory(),
+    getContentGaps(),
+    getDailySeries(30),
   ]);
   const fileContent = getFileContentInventory();
   const fileTotal = fileContent.reduce((a, g) => a + g.count, 0);
@@ -76,6 +81,34 @@ export default async function AdminPage({
       textRewritten: e.textRewritten,
     })),
   ];
+
+  const GAP_LABEL: Record<string, [string, string]> = {
+    placesNoHours: [
+      "καταχωρήσεις δεν λένε πότε είναι ανοιχτές",
+      "listings do not say when they are open",
+    ],
+    eventsNoText: [
+      "εκδηλώσεις κρατούν το κείμενο της πηγής, άρα μένουν εκτός Google",
+      "events still carry source text, so they stay out of Google",
+    ],
+    placesNoPhoto: ["καταχωρήσεις χωρίς φωτογραφία", "listings with no photograph"],
+    placesNoContact: [
+      "καταχωρήσεις χωρίς κανέναν τρόπο επικοινωνίας",
+      "listings with no way to make contact",
+    ],
+    eventsNoPhoto: [
+      "εκδηλώσεις χωρίς δική τους φωτογραφία",
+      "events with no photograph of their own",
+    ],
+    eventsNoGeo: [
+      "εκδηλώσεις χωρίς συντεταγμένες, δεν μπαίνουν σε χάρτη",
+      "events with no coordinates, so they cannot appear on a map",
+    ],
+    placesNoOwner: [
+      "καταχωρήσεις χωρίς ιδιοκτήτη να τις συντηρεί",
+      "listings with no owner keeping them up to date",
+    ],
+  };
 
   const CONTENT_LABEL: Record<string, [string, string]> = {
     guides: ["Οδηγοί", "Guides"],
@@ -171,6 +204,41 @@ export default async function AdminPage({
             {tt("Δες τες →", "Show them →")}
           </span>
         </Link>
+      ) : null}
+
+      {/* What is published but incomplete. The panel could say what exists
+          and what was waiting; it could not say what was wrong. */}
+      {gaps.length ? (
+        <section className="mb-12">
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
+            <Wrench className="h-5 w-5 text-accent-600" />
+            {tt("Τι λείπει", "What is missing")}
+          </h2>
+          <ul className="divide-y divide-slate-100 rounded-2xl border border-slate-100">
+            {gaps.map((g) => (
+              <li key={g.key}>
+                <Link
+                  href={g.href}
+                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1 p-3.5 transition hover:bg-slate-50"
+                >
+                  <span
+                    className={`text-lg font-extrabold tabular-nums ${
+                      g.severity === "high" ? "text-accent-700" : "text-slate-700"
+                    }`}
+                  >
+                    {g.count}
+                  </span>
+                  <span className="min-w-0 flex-1 text-sm text-slate-700">
+                    {locale === "el" ? GAP_LABEL[g.key]?.[0] : GAP_LABEL[g.key]?.[1]}
+                  </span>
+                  <span className="text-sm font-semibold text-brand-700">
+                    {tt("Δες →", "Show →")}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       ) : null}
 
       {/* The whole platform, counted. */}
@@ -346,6 +414,20 @@ export default async function AdminPage({
                 {tt("από όσους άνοιξαν καταχώρηση", "of everyone who opened a listing")}
               </p>
             </div>
+          </div>
+
+          <div className="mt-3">
+            <TrendChart
+              data={series}
+              labels={{
+                views: tt("Προβολές", "Views"),
+                contacts: tt("Επικοινωνίες", "Contacts"),
+                empty: tt(
+                  "Καμία κίνηση ακόμα. Το γράφημα γεμίζει μόλις αρχίσουν οι επισκέψεις.",
+                  "No traffic yet. The chart fills in once visits start.",
+                ),
+              }}
+            />
           </div>
 
           {topViewed.length ? (

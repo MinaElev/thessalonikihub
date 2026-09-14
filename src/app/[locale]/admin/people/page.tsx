@@ -1,9 +1,10 @@
 import { setRequestLocale } from "next-intl/server";
-import { Download, Mail, Users, Trash2 } from "lucide-react";
+import { Download, Mail, Users, Trash2, UserX } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { setUserRole, deleteSubscriber } from "@/app/actions/people";
+import { deleteAccount } from "@/app/actions/account";
 import { isMailConfigured, adminEmail } from "@/lib/email";
 import { TestEmailButton } from "@/components/admin/TestEmailButton";
 
@@ -114,6 +115,7 @@ export default async function AdminPeoplePage({
                   <th className="px-4 py-3">{tt("Εγγραφή", "Joined")}</th>
                   <th className="px-4 py-3">{tt("Καταχωρήσεις", "Listings")}</th>
                   <th className="px-4 py-3">{tt("Ρόλος", "Role")}</th>
+                  <th className="px-4 py-3" />
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -163,6 +165,30 @@ export default async function AdminPeoplePage({
                             {tt("Αλλαγή", "Change")}
                           </button>
                         </form>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      {p.id === me?.id ? null : (
+                        <details>
+                          <summary className="inline-flex cursor-pointer items-center gap-1 text-xs text-slate-400 hover:text-rose-600">
+                            <UserX className="h-3.5 w-3.5" />
+                            {tt("Διαγραφή", "Delete")}
+                          </summary>
+                          {/* The only irreversible thing on this page, and the
+                              one a GDPR erasure request actually needs. */}
+                          <form action={deleteAccount} className="mt-2 w-56 text-left">
+                            <input type="hidden" name="id" value={p.id} />
+                            <p className="mb-2 text-xs text-rose-800">
+                              {tt(
+                                "Διαγράφει οριστικά τον λογαριασμό και από το Supabase. Οι καταχωρήσεις του μένουν, χωρίς ιδιοκτήτη.",
+                                "Permanently deletes the account, in Supabase too. Their listings remain, without an owner.",
+                              )}
+                            </p>
+                            <button className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-800 hover:bg-rose-100">
+                              {tt("Διαγραφή οριστικά", "Delete permanently")}
+                            </button>
+                          </form>
+                        </details>
                       )}
                     </td>
                   </tr>
