@@ -19,6 +19,7 @@ import { areaHref } from "@/lib/links";
 import { getMapPoints } from "@/lib/mappoints";
 import { areas, getArea } from "@/content/data/areas";
 import { getPlaces, getEventsInArea } from "@/lib/repo";
+import Image from "next/image";
 
 const PILLARS: Exclude<Pillar, "events">[] = [
   "stay",
@@ -90,6 +91,22 @@ export default async function AreaHub({
         <h1 className="inline-flex items-center gap-2 text-3xl font-extrabold sm:text-4xl">
           <MapPin className="h-7 w-7 text-brand-600" /> {name}
         </h1>
+        {area.photo ? (
+          <figure className="mt-5 overflow-hidden rounded-2xl bg-slate-100">
+            {/* The header image, so it is the Largest Contentful Paint element
+                and worth loading eagerly; sizes stops a phone fetching the
+                full-width file to render it at 400px. */}
+            <Image
+              src={area.photo.url}
+              alt={pick(area.photo.alt, locale)}
+              width={1536}
+              height={1024}
+              priority
+              sizes="(max-width: 768px) 100vw, 760px"
+              className="h-auto w-full object-cover"
+            />
+          </figure>
+        ) : null}
         <div className="mt-4">
           <MarkdownBody locale={locale} selfHref={areaHref(area.slug)}>
             {pick(area.long, locale)}

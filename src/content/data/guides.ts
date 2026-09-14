@@ -180,10 +180,10 @@ The feast is one day; the church stands on all the others. On a weekday it is ne
     },
     category: "itinerary",
     cover: {
-      url: "/photos/arch-of-galerius.webp",
+      url: "/photos/roman-thessaloniki.webp",
       alt: {
-        el: "Η Αψίδα του Γαλερίου στην Εγνατία, αφετηρία της ρωμαϊκής διαδρομής",
-        en: "The Arch of Galerius on Egnatia Street, the start of the Roman walk",
+        el: "Η ρωμαϊκή Θεσσαλονίκη: μνημεία της αυτοκρατορικής πόλης",
+        en: "Roman Thessaloniki: monuments of the imperial city",
       },
     },
     author: "ThessalonikiHub",

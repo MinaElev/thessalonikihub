@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/types";
+import type { Localized, Photo } from "@/lib/types";
 
 /** A Thessaloniki neighbourhood / area used across every pillar. */
 export interface Area {
@@ -12,6 +12,9 @@ export interface Area {
   center: { lat: number; lng: number };
   /** Neighbouring area slugs, for cross-linking. */
   nearby: string[];
+  /** A photograph of the area, taken for this site. Optional: most areas
+   *  have none yet, and a hub page reads perfectly well without one. */
+  photo?: Photo;
   featured?: boolean;
 }
 
@@ -114,6 +117,13 @@ A few minutes on foot from the centre; close to the port and to metro/bus stops.
   },
   {
     slug: "ano-poli",
+    photo: {
+      url: "/photos/ano-poli.webp",
+      alt: {
+        el: "Η Άνω Πόλη της Θεσσαλονίκης στο ηλιοβασίλεμα, πάνω από τον Θερμαϊκό",
+        en: "Thessaloniki's Upper Town at sunset, above the Thermaic Gulf",
+      },
+    },
     name: { el: "Άνω Πόλη", en: "Ano Poli (Upper Town)" },
     blurb: {
       el: "Η παλιά πόλη πάνω από τα τείχη: βυζαντινά μνημεία, στενά δρομάκια και η καλύτερη θέα στον Θερμαϊκό.",

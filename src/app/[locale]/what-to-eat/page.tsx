@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
 import { dishHref, pillarHref } from "@/lib/links";
 import { getDishes } from "@/content/data/dishes";
+import Image from "next/image";
 
 export async function generateMetadata({
   params,
@@ -57,8 +58,23 @@ export default async function WhatToEatPage({
         {list.map((d) => (
           <article
             key={d.slug}
-            className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-brand-200 hover:shadow-md"
+            className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-brand-200 hover:shadow-md"
           >
+            {d.photo ? (
+              <Link href={dishHref(d.slug)} className="relative block aspect-[16/9] bg-slate-100">
+                {/* Two columns at most, so a card is never wider than half the
+                    page — sizes says so rather than letting the browser
+                    assume the full viewport and fetch four times the pixels. */}
+                <Image
+                  src={d.photo.url}
+                  alt={pick(d.photo.alt, locale)}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 560px"
+                  className="object-cover"
+                />
+              </Link>
+            ) : null}
+            <div className="flex flex-1 flex-col p-6">
             <div className="mb-2 flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-bold text-brand-700">
                 {t(`dishes.kind.${d.kind}`)}
@@ -79,6 +95,7 @@ export default async function WhatToEatPage({
             >
               {t("common.readMore")} <ArrowRight className="h-4 w-4" />
             </Link>
+            </div>
           </article>
         ))}
       </div>

@@ -35,6 +35,12 @@ const KNOWN = new Set([
   "archaeological-museum", "museum-of-byzantine-culture",
   "vergina", "mount-olympus", "edessa", "meteora", "chalkidiki",
   "mavri-thalassa", "boston-karamanli", "agias-sofias-luxury-apartments",
+  // The dishes in src/content/data/dishes.ts, none of which had a picture.
+  "bougatsa", "koulouri", "trigono-panoramatos", "mydia-thermaikou",
+  "tsipouro-meze", "mikrasiatiki-kouzina", "frappe", "soutzoukakia",
+  "patsas", "siropiasta", "salepi",
+  // An area, and a cover for the Roman walk guide.
+  "ano-poli", "roman-thessaloniki",
 ]);
 
 /** Greek filenames are common here, so match on a transliterated form too. */
@@ -69,6 +75,40 @@ const GREEK_ALIASES = {
   "μαυρη θαλασσα": "mavri-thalassa",
   "μαύρη θάλασσα": "mavri-thalassa",
   "boston": "boston-karamanli",
+  // Dishes. Both accented and unaccented spellings, because a filename typed
+  // on a phone keyboard rarely has either consistently.
+  "μπουγατσα": "bougatsa",
+  "μπουγάτσα": "bougatsa",
+  "κουλουρι": "koulouri",
+  "κουλούρι": "koulouri",
+  "τριγωνο": "trigono-panoramatos",
+  "τρίγωνο": "trigono-panoramatos",
+  "μυδια": "mydia-thermaikou",
+  "μύδια": "mydia-thermaikou",
+  "τσιπουρο": "tsipouro-meze",
+  "τσίπουρο": "tsipouro-meze",
+  "μικρασιατικη": "mikrasiatiki-kouzina",
+  "μικρασιάτικη": "mikrasiatiki-kouzina",
+  "φραπες": "frappe",
+  "φραπές": "frappe",
+  "σμυρνεικα": "soutzoukakia",
+  "σμυρνέικα": "soutzoukakia",
+  "σουτζουκακια": "soutzoukakia",
+  "σουτζουκάκια": "soutzoukakia",
+  "πατσας": "patsas",
+  "πατσάς": "patsas",
+  "σιροπιαστα": "siropiasta",
+  "σιροπιαστά": "siropiasta",
+  "σαλεπι": "salepi",
+  "σαλέπι": "salepi",
+  // An area and a guide cover.
+  "ανω πολη": "ano-poli",
+  "άνω πόλη": "ano-poli",
+  "η ρωμαικη": "roman-thessaloniki",
+  "η ρωμαϊκη": "roman-thessaloniki",
+  "η ρωμαϊκή": "roman-thessaloniki",
+  "ρωμαικη": "roman-thessaloniki",
+  "ρωμαϊκή": "roman-thessaloniki",
   "βοστον": "boston-karamanli",
   "βοστόν": "boston-karamanli",
   "αρχαιολογικο μουσειο": "archaeological-museum",

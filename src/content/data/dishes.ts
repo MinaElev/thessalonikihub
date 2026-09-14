@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/types";
+import type { Localized, Photo } from "@/lib/types";
 
 /**
  * "What Thessaloniki eats", monographs on the city's signature foods.
@@ -18,6 +18,12 @@ export interface Dish {
   whenToEat: Localized<string>;
   blurb: Localized<string>;
   long: Localized<string>;
+  /**
+   * A photograph of the dish itself, taken for this site. Food pages without
+   * a picture of the food are the one case where the text cannot carry the
+   * page on its own.
+   */
+  photo?: Photo;
   /** Area slugs where it is most associated, for cross-linking. */
   areas?: string[];
   featured?: boolean;
@@ -26,6 +32,13 @@ export interface Dish {
 export const dishes: Dish[] = [
   {
     slug: "bougatsa",
+    photo: {
+      url: "/photos/bougatsa.webp",
+      alt: {
+        el: "Μπουγάτσα Θεσσαλονίκης κομμένη σε τετράγωνα, με τραγανό φύλλο",
+        en: "Thessaloniki bougatsa cut into squares, with crisp filo pastry",
+      },
+    },
     name: { el: "Μπουγάτσα", en: "Bougatsa" },
     kind: "street",
     whenToEat: { el: "Πρωινό, από νωρίς", en: "Breakfast, from early" },
@@ -86,6 +99,13 @@ Traditional bougatsa shops operate across the city, most densely in the **centre
   },
   {
     slug: "koulouri",
+    photo: {
+      url: "/photos/koulouri.webp",
+      alt: {
+        el: "Κουλούρι Θεσσαλονίκης πασπαλισμένο με σουσάμι",
+        en: "A Thessaloniki koulouri bread ring coated in sesame",
+      },
+    },
     name: { el: "Κουλούρι Θεσσαλονίκης", en: "Koulouri Thessalonikis" },
     kind: "street",
     whenToEat: { el: "Πρωί ή οποιαδήποτε ώρα, στον δρόμο", en: "Morning, or any hour, on the street" },
@@ -134,6 +154,13 @@ Beyond the classic you'll find **filled** versions (with cheese, chocolate sprea
   },
   {
     slug: "trigono-panoramatos",
+    photo: {
+      url: "/photos/trigono-panoramatos.webp",
+      alt: {
+        el: "Τρίγωνο Πανοράματος, σφολιάτα γεμισμένη με κρέμα",
+        en: "Trigono Panoramatos, a filled pastry triangle from Panorama",
+      },
+    },
     name: { el: "Τρίγωνο Πανοράματος", en: "Trigono Panoramatos" },
     kind: "sweet",
     whenToEat: { el: "Απόγευμα, με καφέ", en: "Afternoon, with coffee" },
@@ -182,6 +209,13 @@ Cold, with a plain coffee for contrast. It is **very sweet**, one or two is plen
   },
   {
     slug: "mydia-thermaikou",
+    photo: {
+      url: "/photos/mydia-thermaikou.webp",
+      alt: {
+        el: "Μύδια του Θερμαϊκού, μαγειρεμένα και σερβιρισμένα",
+        en: "Mussels from the Thermaic Gulf, cooked and served",
+      },
+    },
     name: { el: "Μύδια Θερμαϊκού", en: "Thermaic Gulf mussels" },
     kind: "sea",
     whenToEat: { el: "Μεσημέρι ή βράδυ, με τσίπουρο", en: "Lunch or dinner, with tsipouro" },
@@ -239,6 +273,13 @@ Mussels are **seasonal** and availability varies through the year. The Thermaic 
   },
   {
     slug: "tsipouro-meze",
+    photo: {
+      url: "/photos/tsipouro-meze.webp",
+      alt: {
+        el: "Τσίπουρο με μεζέδες, όπως σερβίρεται στα τσιπουράδικα της πόλης",
+        en: "Tsipouro with mezedes, as served in the city's tsipouradika",
+      },
+    },
     name: { el: "Τσίπουρο & μεζές", en: "Tsipouro and meze" },
     kind: "drink",
     whenToEat: { el: "Μεσημέρι ή βράδυ, για ώρες", en: "Lunch or evening, for hours" },
@@ -301,6 +342,13 @@ Tsipouro has two zones: **midday**, especially at weekends, and **evening from 9
   },
   {
     slug: "mikrasiatiki-kouzina",
+    photo: {
+      url: "/photos/mikrasiatiki-kouzina.webp",
+      alt: {
+        el: "Πιάτα της μικρασιάτικης κουζίνας της Θεσσαλονίκης",
+        en: "Dishes from Thessaloniki's Asia Minor kitchen",
+      },
+    },
     name: { el: "Μικρασιάτικη κουζίνα", en: "The Asia Minor kitchen" },
     kind: "table",
     whenToEat: { el: "Κυρίως βράδυ, σε τραπέζι", en: "Mainly evening, sitting down" },
@@ -369,6 +417,13 @@ It is the reason many consider Thessaloniki the country's gastronomic capital. T
   },
   {
     slug: "frappe",
+    photo: {
+      url: "/photos/frappe.webp",
+      alt: {
+        el: "Φραπές, ο ελληνικός κρύος καφές με αφρό",
+        en: "Frappé, the Greek iced coffee with its foam",
+      },
+    },
     name: { el: "Φραπές", en: "Frappé" },
     kind: "drink",
     whenToEat: { el: "Απόγευμα, και με την ησυχία σου", en: "Afternoon, and slowly" },
@@ -441,6 +496,13 @@ In summer you will see it everywhere along the **waterfront** and at the tables 
   },
   {
     slug: "soutzoukakia",
+    photo: {
+      url: "/photos/soutzoukakia.webp",
+      alt: {
+        el: "Σμυρνέικα σουτζουκάκια σε κόκκινη σάλτσα",
+        en: "Smyrna-style soutzoukakia in red sauce",
+      },
+    },
     name: { el: "Σουτζουκάκια", en: "Soutzoukakia" },
     kind: "table",
     whenToEat: { el: "Μεσημέρι ή βράδυ, με ρύζι", en: "Lunch or dinner, with rice" },
@@ -509,6 +571,13 @@ They need no hunting — they are on every second menu. But the gap between good
   },
   {
     slug: "patsas",
+    photo: {
+      url: "/photos/patsas.webp",
+      alt: {
+        el: "Πατσάς, η σούπα που τρώγεται τα ξημερώματα",
+        en: "Patsas, the soup eaten in the small hours",
+      },
+    },
     name: { el: "Πατσάς", en: "Patsas" },
     kind: "table",
     whenToEat: { el: "Πολύ νωρίς ή πολύ αργά", en: "Very early or very late" },
@@ -578,6 +647,13 @@ In the **patsatzidika** around **Kapani** and **Vlali**, and in a few historic p
   },
   {
     slug: "siropiasta",
+    photo: {
+      url: "/photos/siropiasta.webp",
+      alt: {
+        el: "Σιροπιαστά γλυκά της Θεσσαλονίκης",
+        en: "Syrup-soaked sweets from Thessaloniki",
+      },
+    },
     name: { el: "Σιροπιαστά γλυκά", en: "Syrup sweets" },
     kind: "sweet",
     whenToEat: { el: "Απόγευμα, με καφέ", en: "Late afternoon, with coffee" },
@@ -642,6 +718,13 @@ Historic patisseries are spread across the centre, most densely around **Tsimisk
   },
   {
     slug: "salepi",
+    photo: {
+      url: "/photos/salepi.webp",
+      alt: {
+        el: "Σαλέπι, το ζεστό χειμωνιάτικο ρόφημα του δρόμου",
+        en: "Salepi, the hot winter street drink",
+      },
+    },
     name: { el: "Σαλέπι", en: "Salep" },
     kind: "drink",
     whenToEat: { el: "Χειμωνιάτικο βράδυ, στον δρόμο", en: "A winter evening, in the street" },

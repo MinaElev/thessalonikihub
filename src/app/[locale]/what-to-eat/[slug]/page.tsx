@@ -12,6 +12,7 @@ import { buildMetadata } from "@/lib/seo";
 import { areaHref, dishHref, pillarHref } from "@/lib/links";
 import { getArea } from "@/content/data/areas";
 import { dishes, getDish, getDishes } from "@/content/data/dishes";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return dishes.map((d) => ({ slug: d.slug }));
@@ -79,6 +80,24 @@ export default async function DishPage({
         </h1>
         <p className="mt-3 text-lg text-muted">{pick(d.blurb, locale)}</p>
       </header>
+
+      {d.photo ? (
+        <figure className="mb-8 overflow-hidden rounded-2xl bg-slate-100">
+          {/* priority: this is the largest element above the fold, so it is
+              what Largest Contentful Paint is measured against. sizes caps the
+              download at the real rendered width — a phone must not fetch the
+              1600px file to show it 400px wide. */}
+          <Image
+            src={d.photo.url}
+            alt={pick(d.photo.alt, locale)}
+            width={1600}
+            height={900}
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
+            className="h-auto w-full object-cover"
+          />
+        </figure>
+      ) : null}
 
       <div className="grid gap-8 lg:grid-cols-[1fr_290px]">
         <div className="min-w-0">
