@@ -54,6 +54,8 @@ function shortHash(s: string): string {
  * editor rewrites it. Everything lands as PENDING for moderation; translation
  * happens later, with review.
  */
+import { profileFor } from "./sources";
+
 export function toEventData(e: ExternalEvent) {
   const desc = (e.description ?? e.title).trim();
   const summary = desc.length > 160 ? `${desc.slice(0, 157)}…` : desc;
@@ -64,7 +66,9 @@ export function toEventData(e: ExternalEvent) {
     name: { el: e.title },
     summary: { el: summary },
     description: { el: desc },
-    type: "imported",
+    // A feed that publishes categories gives us a real type; everything
+    // else stays "imported" until a rewrite classifies it.
+    type: profileFor(e.sourceUrl)?.categoryTypes?.[e.category ?? ""] ?? "imported",
     tags: [] as string[],
     startsAt: new Date(e.startsAt),
     endsAt: e.endsAt ? new Date(e.endsAt) : null,
@@ -72,8 +76,9 @@ export function toEventData(e: ExternalEvent) {
     // No venue in the feed means no venue on the page. Pinning every import to
     // Aristotelous Square would put events on the map where they are not.
     venue: venue ? { el: venue } : {},
-    lat: null,
-    lng: null,
+    // Coordinates only when the source stated them itself.
+    lat: e.lat ?? null,
+    lng: e.lng ?? null,
     area: null,
     // The description is still the feed's own text: keep it out of the index
     // until it has been rewritten during moderation.

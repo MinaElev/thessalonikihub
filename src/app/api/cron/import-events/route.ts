@@ -59,7 +59,9 @@ export async function GET(request: Request) {
       // Only new rows are enriched. Re-running the model over an event that
       // already exists would spend money to produce different words for the
       // same facts, and would overwrite an editor's corrections.
-      const { data, autoPublished: live } = await enrichEvent(raw);
+      const { data, autoPublished: live } = await enrichEvent(raw, {
+        indexable: e.indexable,
+      });
       await prisma.eventItem.create({ data: data as never });
       if (live) autoPublished++;
     } else if (!existing.textRewritten) {

@@ -107,6 +107,28 @@ export function extractDate(text: string): ExtractedDate | null {
   return null;
 }
 
+import { profileFor } from "./sources";
+
+/**
+ * Whether a clock time is believable as a public event's start.
+ *
+ * Feeds carry data-entry artefacts — a calendar we read lists a punk gig at
+ * 03:33, which the source really does say. The date is still right, so the
+ * entry is kept; only the clock is demoted to unknown, and the page then shows
+ * the day without asserting an hour nobody will turn up at. Midnight and 01:00
+ * stay trusted: club nights genuinely list those as door times.
+ */
+function plausibleStart(date: Date): boolean {
+  const hour = Number(
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Athens",
+      hour: "2-digit",
+      hour12: false,
+    }).format(date),
+  );
+  return hour < 2 || hour >= 8;
+}
+
 export function parseRss(xml: string, source = "rss"): ExternalEvent[] {
   const blocks = xml.split(/<item[\s>]/i).slice(1).map((s) => s.split(/<\/item>/i)[0]);
   const events: ExternalEvent[] = [];
@@ -119,23 +141,54 @@ export function parseRss(xml: string, source = "rss"): ExternalEvent[] {
     const descHtml = tag(block, "description") ?? "";
     const descText = stripHtml(descHtml);
     const pub = tag(block, "pubDate");
+    const profile = profileFor(link);
 
-    // pubDate is when the article was posted, not when the event runs — its
-    // clock time says nothing about the start, so it is never treated as known.
-    const found =
-      extractDate(descText) ??
-      extractDate(decodeEntities(title)) ??
-      (pub ? { date: new Date(pub), timeKnown: false } : null);
+    const category = decodeEntities(tag(block, "category") ?? "").trim() || undefined;
+    // A feed we have notes on may publish categories we deliberately skip.
+    if (profile?.allowCategories && !profile.allowCategories.includes(category ?? "")) {
+      continue;
+    }
+
+    // pubDate is normally when the article was posted, not when the event runs,
+    // so its clock time says nothing about the start. Some feeds set it to the
+    // event's own start with a timezone; only a checked profile says so.
+    const found = profile?.pubDateIsEventStart && pub
+      ? { date: new Date(pub), timeKnown: plausibleStart(new Date(pub)) }
+      : extractDate(descText) ??
+        extractDate(decodeEntities(title)) ??
+        (pub ? { date: new Date(pub), timeKnown: false } : null);
     if (!found || isNaN(found.date.getTime())) continue;
+
+    // <georss:point>lat lng</georss:point> — the source's own coordinates, so
+    // unlike a gazetteer guess these can be trusted onto a map.
+    let lat: number | undefined;
+    let lng: number | undefined;
+    const point = /<georss:point>\s*([-\d.]+)\s+([-\d.]+)\s*<\/georss:point>/i.exec(block);
+    if (point) {
+      const a = Number(point[1]);
+      const b = Number(point[2]);
+      if (Number.isFinite(a) && Number.isFinite(b) && Math.abs(a) <= 90 && Math.abs(b) <= 180) {
+        lat = a;
+        lng = b;
+      }
+    }
+
+    let cleanTitle = decodeEntities(title).trim();
+    if (profile?.titlePrefix) cleanTitle = cleanTitle.replace(profile.titlePrefix, "").trim();
+    if (!cleanTitle) continue;
 
     events.push({
       externalId: guid || link || `${title}-${found.date.toISOString()}`,
       source,
       sourceUrl: link || undefined,
-      title: decodeEntities(title),
+      title: cleanTitle,
       description: descText || undefined,
       startsAt: found.date.toISOString(),
       timeKnown: found.timeKnown,
+      category,
+      lat,
+      lng,
+      indexable: profile?.indexable,
     });
   }
 

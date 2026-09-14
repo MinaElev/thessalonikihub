@@ -43,7 +43,20 @@ export interface EnrichResult {
 
 const loc = (el: string, en?: string) => (en && en.trim() ? { el, en } : { el });
 
-export async function enrichEvent(data: EventData): Promise<EnrichResult> {
+export interface EnrichOptions {
+  /**
+   * False for a feed whose entries must never enter the sitemap. Those are
+   * published so a reader browsing tonight can see them, and left flagged as
+   * not-our-text so they stay noindex — a title and a map pin is useful to a
+   * person and thin to a search engine.
+   */
+  indexable?: boolean;
+}
+
+export async function enrichEvent(
+  data: EventData,
+  options: EnrichOptions = {},
+): Promise<EnrichResult> {
   const source = `${data.name.el}\n${data.description.el}`;
   const enriched: EventData = { ...data };
 
@@ -84,6 +97,14 @@ export async function enrichEvent(data: EventData): Promise<EnrichResult> {
   if (price) enriched.priceInfo = loc(price.el, price.en);
 
   /* ---- The model ---- */
+
+  if (options.indexable === false) {
+    // Nothing to rewrite — these feeds publish a title and no body — and
+    // nothing to gain from trying: the page is going out unindexed either way,
+    // so spending a model call on it would buy prose no search engine reads.
+    enriched.status = "PUBLISHED";
+    return { data: enriched, autoPublished: true };
+  }
 
   if (!isRewriterConfigured) return { data: enriched, autoPublished: false };
 

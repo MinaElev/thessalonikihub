@@ -18,6 +18,13 @@ export interface ExternalEvent {
    * must not present the time component as if it were the real start.
    */
   timeKnown: boolean;
+  /** The source's own category, when it publishes one. */
+  category?: string;
+  /** Coordinates the source stated itself — never inferred. */
+  lat?: number;
+  lng?: number;
+  /** False when this feed's entries must stay out of the sitemap. */
+  indexable?: boolean;
   /** ISO 8601 end datetime, if known. */
   endsAt?: string;
   location?: string;
