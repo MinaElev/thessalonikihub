@@ -47,3 +47,42 @@ export async function deleteSubscriber(formData: FormData) {
   await prisma.subscriber.delete({ where: { id } }).catch(() => {});
   revalidatePath("/admin/people");
 }
+
+export interface TestMailState {
+  status: "idle" | "sent" | "unconfigured" | "failed";
+  detail?: string;
+}
+
+/**
+ * Send a test message to the signed-in admin's own address.
+ *
+ * Deliberately only to themselves: a test that could be pointed at an
+ * arbitrary address is a way to send mail from this domain to strangers.
+ */
+export async function sendTestEmail(
+  _prev: TestMailState,
+  _formData: FormData,
+): Promise<TestMailState> {
+  const me = await getCurrentUser();
+  if (!me || me.role !== "ADMIN") return { status: "failed", detail: "forbidden" };
+
+  const { sendMailResult, isMailConfigured } = await import("@/lib/email");
+  if (!isMailConfigured) return { status: "unconfigured" };
+
+  const result = await sendMailResult({
+    to: me.email,
+    subject: "ThessalonikiHub — δοκιμή αποστολής",
+    text: `Αν διαβάζεις αυτό, το SMTP του ThessalonikiHub δουλεύει.
+
+Από εδώ και πέρα φεύγουν αυτόματα:
+  · ειδοποίηση στον ιδιοκτήτη όταν εγκρίνεται η καταχώρησή του
+  · ειδοποίηση με τον λόγο όταν απορρίπτεται
+  · ειδοποίηση σε σένα όταν έρχεται νέα καταχώρηση
+
+Στάλθηκε από το κουμπί δοκιμής στο /admin/people.
+`,
+  });
+
+  if (result.ok) return { status: "sent" };
+  return { status: "failed", detail: result.error };
+}

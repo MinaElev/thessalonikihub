@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { setUserRole, deleteSubscriber } from "@/app/actions/people";
 import { isMailConfigured, adminEmail } from "@/lib/email";
+import { TestEmailButton } from "@/components/admin/TestEmailButton";
 
 export const dynamic = "force-dynamic";
 
@@ -68,6 +69,20 @@ export default async function AdminPeoplePage({
               "Email is not sending. Owners are not told when a listing is approved or rejected, and you are not told about new submissions. Set SMTP_HOST, SMTP_USER and SMTP_PASS.",
             )}
       </p>
+
+      <div className="mt-3">
+        <TestEmailButton
+          labels={{
+            send: tt("Δοκιμαστικό email σε μένα", "Send a test email to myself"),
+            sent: tt("Στάλθηκε — δες τα εισερχόμενά σου.", "Sent — check your inbox."),
+            unconfigured: tt(
+              "Λείπουν οι μεταβλητές SMTP.",
+              "The SMTP variables are missing.",
+            ),
+            failed: tt("Δεν στάλθηκε:", "Not sent:"),
+          }}
+        />
+      </div>
 
       <section className="mt-10">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
