@@ -51,8 +51,14 @@ function transport(): Transporter | null {
 export interface Mail {
   to: string;
   subject: string;
-  /** Plain text. A text-only email is fine here and never renders badly. */
+  /**
+   * Plain text. Always sent, even alongside HTML: a message with no text part
+   * is a well-known spam signal, and it is what a screen reader and a watch
+   * fall back to.
+   */
   text: string;
+  /** Optional rich version. Clients that can render it will prefer it. */
+  html?: string;
 }
 
 export interface SendResult {
@@ -73,7 +79,13 @@ export async function sendMailResult(mail: Mail): Promise<SendResult> {
   if (!tx) return { ok: false, error: "not-configured" };
   if (!mail.to) return { ok: false, error: "no-recipient" };
   try {
-    await tx.sendMail({ from, to: mail.to, subject: mail.subject, text: mail.text });
+    await tx.sendMail({
+      from,
+      to: mail.to,
+      subject: mail.subject,
+      text: mail.text,
+      ...(mail.html ? { html: mail.html } : {}),
+    });
     return { ok: true };
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);

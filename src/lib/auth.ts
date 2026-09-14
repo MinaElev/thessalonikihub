@@ -43,6 +43,22 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<Cur
     create: { id: user.id, email: user.email, name: base.name },
   });
 
+  // The welcome goes out on the first request where a session exists, which
+  // is the first moment we know the address actually works. `welcomedAt` is
+  // what stops it repeating; it is written whether or not the send succeeded,
+  // because a greeting is not worth retrying on every page load forever.
+  if (!profile.welcomedAt) {
+    await prisma.profile.update({
+      where: { id: profile.id },
+      data: { welcomedAt: new Date() },
+    });
+    const [{ sendMail }, { welcome }] = await Promise.all([
+      import("@/lib/email"),
+      import("@/lib/email-templates"),
+    ]);
+    await sendMail(welcome(user.email));
+  }
+
   return { ...base, name: profile.name, role: profile.role };
 });
 

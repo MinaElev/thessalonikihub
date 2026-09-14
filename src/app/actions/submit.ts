@@ -6,7 +6,8 @@ import { listingSchema } from "@/lib/submit-schema";
 import { centroidFor } from "@/lib/area-centroids";
 import { parseAthensLocal } from "@/lib/athens-time";
 import { sendMail, adminEmail } from "@/lib/email";
-import { newSubmission } from "@/lib/email-templates";
+import { newSubmission, submissionReceived } from "@/lib/email-templates";
+import { kindLabel } from "@/lib/listing-labels";
 import type { Localized } from "@/lib/types";
 
 export type SubmitResult =
@@ -91,7 +92,13 @@ export async function submitListing(raw: unknown): Promise<SubmitResult> {
           ownerId: user.id,
         },
       });
-      await sendMail(newSubmission(adminEmail, d.nameEl, "Εκδήλωση"));
+      // The submitter hears about it as well. Until now they pressed Submit,
+      // saw a green box and then nothing — no record in their inbox that the
+      // submission had happened at all.
+      await Promise.all([
+        sendMail(newSubmission(adminEmail, d.nameEl, "Εκδήλωση")),
+        sendMail(submissionReceived(user.email, d.nameEl, "Εκδήλωση")),
+      ]);
       return { ok: true, slug };
     }
 
@@ -158,7 +165,11 @@ export async function submitListing(raw: unknown): Promise<SubmitResult> {
     });
     // Nothing about this can fail the submission: sendMail never throws, and
     // a listing sitting unseen in the queue is recoverable, a lost one is not.
-    await sendMail(newSubmission(adminEmail, d.nameEl, d.category));
+    const label = kindLabel(d.category, "el");
+    await Promise.all([
+      sendMail(newSubmission(adminEmail, d.nameEl, label)),
+      sendMail(submissionReceived(user.email, d.nameEl, label)),
+    ]);
     return { ok: true, slug };
   } catch (e) {
     console.error("submitListing failed:", e);
