@@ -15,12 +15,14 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "test:sitemap": "node scripts/test-sitemap.mjs"
+    "test:sitemap": "node scripts/test-sitemap.mjs",
+    "test:events": "npx -y tsx scripts/test-event-extraction.ts"
   },
   "prisma": {
     "seed": "ts-node --transpile-only prisma/seed.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.125.0",
     "@hookform/resolvers": "^3.10.0",
     "@prisma/client": "^6.19.3",
     "@supabase/ssr": "^0.5.2",

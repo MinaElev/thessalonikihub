@@ -4,6 +4,7 @@ import { TAG_EVENTS, TAG_PLACES } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { previewSources } from "@/lib/events/ingest";
 import { toEventData } from "@/lib/events/normalize";
+import { enrichEvent } from "@/lib/events/enrich";
 import type { SourceConfig } from "@/lib/events/types";
 
 /**
@@ -47,14 +48,20 @@ export async function GET(request: Request) {
 
   const events = await previewSources(sources);
   let imported = 0;
+  let autoPublished = 0;
   for (const e of events) {
-    const data = toEventData(e);
+    const raw = toEventData(e);
     const existing = await prisma.eventItem.findUnique({
-      where: { externalId: data.externalId },
+      where: { externalId: raw.externalId },
       select: { id: true, textRewritten: true },
     });
     if (!existing) {
+      // Only new rows are enriched. Re-running the model over an event that
+      // already exists would spend money to produce different words for the
+      // same facts, and would overwrite an editor's corrections.
+      const { data, autoPublished: live } = await enrichEvent(raw);
       await prisma.eventItem.create({ data: data as never });
+      if (live) autoPublished++;
     } else if (!existing.textRewritten) {
       // Refresh the facts the feed owns (a corrected date, a venue added
       // later). Once an editor has rewritten the row, the importer stops
@@ -62,20 +69,27 @@ export async function GET(request: Request) {
       await prisma.eventItem.update({
         where: { id: existing.id },
         data: {
-          sourceUrl: data.sourceUrl,
-          startsAt: data.startsAt,
-          endsAt: data.endsAt,
-          timeKnown: data.timeKnown,
-          venue: data.venue as never,
+          sourceUrl: raw.sourceUrl,
+          startsAt: raw.startsAt,
+          endsAt: raw.endsAt,
+          timeKnown: raw.timeKnown,
+          venue: raw.venue as never,
         },
       });
     } else {
       await prisma.eventItem.update({
         where: { id: existing.id },
-        data: { sourceUrl: data.sourceUrl },
+        data: { sourceUrl: raw.sourceUrl },
       });
     }
     imported++;
+  }
+
+  if (autoPublished > 0) {
+    revalidateTag(TAG_EVENTS);
+    revalidatePath("/events");
+    revalidatePath("/");
+    revalidatePath("/sitemap.xml");
   }
 
   const retiredEvents = await retirePastEvents();
@@ -90,6 +104,7 @@ export async function GET(request: Request) {
     ok: true,
     sources: sources.length,
     imported,
+    autoPublished,
     retiredEvents,
     purged,
   });
