@@ -30,7 +30,20 @@ export interface EditorialLabels {
   seoHint: string;
 }
 
+/**
+ * The amenity checkboxes, already grouped and translated by the server — this
+ * component takes finished strings rather than a locale, like every other
+ * label it receives.
+ */
+export interface AmenityChoiceGroup {
+  key: string;
+  label: string;
+  items: { key: string; label: string }[];
+}
+
 export interface OwnerEditLabels {
+  amenitiesTitle: string;
+  amenitiesHint: string;
   hoursTitle: string;
   hoursHint: string;
   closed: string;
@@ -65,6 +78,8 @@ export function OwnerEditForm({
   hours,
   contact,
   offers,
+  amenityGroups,
+  amenitiesSelected,
   labels,
   editorial,
   editorialLabels,
@@ -81,9 +96,13 @@ export function OwnerEditForm({
     bookingUrl?: string;
   };
   offers: OfferRow[];
+  /** Empty for a pillar the catalogue has no questions for (monuments). */
+  amenityGroups: AmenityChoiceGroup[];
+  amenitiesSelected: string[];
   labels: OwnerEditLabels;
 }) {
   const [state, formAction, pending] = useActionState(updateOwnedListing, initial);
+  const ticked = new Set(amenitiesSelected);
   const [rows, setRows] = useState<OfferRow[]>(
     offers.length ? offers : [{ title: "", description: "", expiresAt: "" }],
   );
@@ -144,6 +163,38 @@ export function OwnerEditForm({
           ))}
         </div>
       </section>
+
+      {amenityGroups.length ? (
+        <section>
+          <h2 className="text-lg font-bold">{labels.amenitiesTitle}</h2>
+          <p className="mt-1 text-sm text-muted">{labels.amenitiesHint}</p>
+          {/* Tells the action the section was on screen, so "nothing ticked"
+              is stored as an answer instead of read as "not asked". */}
+          <input type="hidden" name="amenities_present" value="1" />
+          <div className="mt-3 grid gap-5 sm:grid-cols-2">
+            {amenityGroups.map((g) => (
+              <div key={g.key}>
+                <p className="mb-2 text-sm font-bold uppercase tracking-wide text-slate-400">
+                  {g.label}
+                </p>
+                <div className="space-y-1.5">
+                  {g.items.map((a) => (
+                    <label key={a.key} className="flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        name="amenities"
+                        value={a.key}
+                        defaultChecked={ticked.has(a.key)}
+                      />
+                      {a.label}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section>
         <h2 className="text-lg font-bold">{labels.offersTitle}</h2>

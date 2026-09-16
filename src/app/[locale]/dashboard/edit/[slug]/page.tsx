@@ -10,6 +10,7 @@ import { OwnerEditForm } from "@/components/OwnerEditForm";
 import { PhotoUploader } from "@/components/owner/PhotoUploader";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma, isDbConfigured } from "@/lib/db";
+import { amenityGroupsFor, type AmenityScope } from "@/content/data/amenities";
 
 export const dynamic = "force-dynamic";
 
@@ -74,6 +75,17 @@ export default async function EditListingPage({
     bookingUrl?: string;
   };
   const hours = (place.hours ?? {}) as OpeningHours;
+
+  // Monuments are editorial and have no amenity questions, so the catalogue is
+  // consulted only for the pillars people actually submit.
+  const scope = place.kind.toLowerCase();
+  const amenityGroups = ["stay", "eat", "drink", "experiences", "services"].includes(scope)
+    ? amenityGroupsFor(scope as AmenityScope).map((g) => ({
+        key: g.key,
+        label: pick(g.label, locale),
+        items: g.amenities.map((a) => ({ key: a.key, label: pick(a.label, locale) })),
+      }))
+    : [];
   const rawOffers = (place.offers ?? []) as {
     title?: Localized<string>;
     description?: Localized<string>;
@@ -186,7 +198,14 @@ export default async function EditListingPage({
         hours={hours}
         contact={contact}
         offers={offers}
+        amenityGroups={amenityGroups}
+        amenitiesSelected={place.amenities ?? []}
         labels={{
+          amenitiesTitle: tt("Παροχές", "Amenities"),
+          amenitiesHint: tt(
+            "Τσέκαρε ό,τι ισχύει. Εμφανίζονται στη σελίδα σου και χρησιμοποιούνται στα φίλτρα αναζήτησης.",
+            "Tick whatever applies. These show on your page and drive the search filters.",
+          ),
           hoursTitle: tt("Ωράριο λειτουργίας", "Opening hours"),
           hoursHint: tt(
             "Γράψε το ωράριο ως 09:00-17:00. Άφησε κενό αν είναι κλειστά εκείνη τη μέρα.",

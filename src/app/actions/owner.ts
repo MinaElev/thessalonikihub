@@ -6,6 +6,7 @@ import { TAG_PLACES } from "@/lib/cache-tags";
 import { prisma, isDbConfigured } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import type { OpeningHours, WeekDay } from "@/lib/types";
+import { amenityGroupsFor, type AmenityScope } from "@/content/data/amenities";
 
 export interface OwnerEditState {
   status: "idle" | "ok" | "forbidden" | "invalid" | "error";
@@ -62,9 +63,35 @@ function normaliseUrl(value: string): string | undefined {
   }
 }
 
+/** The pillars the amenity catalogue has questions for. */
+const AMENITY_SCOPES = new Set<string>([
+  "stay",
+  "eat",
+  "drink",
+  "experiences",
+  "services",
+]);
+
+/**
+ * The amenity keys this listing is allowed to hold.
+ *
+ * Built from the catalogue rather than trusted from the request: the form is
+ * a set of checkboxes, but a form post is just an HTTP request, and these keys
+ * render straight onto a public page. Anything not offered is dropped.
+ */
+function allowedAmenities(kind: string): Set<string> {
+  const scope = kind.toLowerCase();
+  if (!AMENITY_SCOPES.has(scope)) return new Set();
+  const keys = new Set<string>();
+  for (const group of amenityGroupsFor(scope as AmenityScope)) {
+    for (const a of group.amenities) keys.add(a.key);
+  }
+  return keys;
+}
+
 /**
  * An owner updates the parts of their listing we refuse to invent: opening
- * hours, contact details and current offers.
+ * hours, contact details, amenities and current offers.
  *
  * Only the listing's owner (or an admin) may write, and only these fields —
  * the editorial description, location and category stay under editorial
@@ -116,6 +143,18 @@ export async function updateOwnedListing(
     website: normaliseUrl(contactParsed.data.website),
     bookingUrl: normaliseUrl(contactParsed.data.bookingUrl),
   };
+
+  /*
+   * Amenities. Unticking every box is a real answer ("we have none of these"),
+   * and it looks exactly like a form that never rendered the section — so the
+   * form sends a marker field, and without it the stored list is left alone.
+   */
+  let amenities: string[] | undefined;
+  if (formData.get("amenities_present") !== null) {
+    const allowed = allowedAmenities(place.kind);
+    const picked = formData.getAll("amenities").map(String);
+    amenities = Array.from(new Set(picked.filter((k) => allowed.has(k))));
+  }
 
   // Offers arrive as parallel arrays from repeated form rows.
   const titles = formData.getAll("offer_title").map(String);
@@ -181,6 +220,7 @@ export async function updateOwnedListing(
       hours,
       contact,
       offers: offers.length ? offers : null,
+      ...(amenities ? { amenities } : {}),
       ...editorial,
     };
     await prisma.place.update({ where: { slug }, data: data as never });
