@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/types";
+import type { Localized, Pillar } from "@/lib/types";
 import type { Locale } from "@/i18n/routing";
 
 /**
@@ -7,21 +7,48 @@ import type { Locale } from "@/i18n/routing";
  * `Place.amenities` is a flat list of these keys; this catalog gives each key a
  * group and a bilingual label so amenities render grouped on listing pages and
  * the submission form can offer them as checkboxes.
+ *
+ * One catalog, not one per pillar: a key has to resolve to a label wherever it
+ * turns up, and a published listing keeps its keys for ever. What varies is who
+ * gets *asked* — a taverna owner has no use for "dryer" and a host none for
+ * "takeaway" — so every group declares the pillars it belongs to, and the
+ * submission form shows only those.
  */
+
+/** The pillars a person can submit, and so the ones asked about amenities. */
+export type AmenityScope = Extract<
+  Pillar,
+  "stay" | "eat" | "drink" | "experiences" | "services"
+>;
+
+export interface AmenityItem {
+  key: string;
+  label: Localized<string>;
+  /**
+   * Overrides the group's scope. Only for the few items that cross over —
+   * Wi-Fi matters to everyone, a high chair to hosts and tavernas both.
+   */
+  appliesTo?: AmenityScope[];
+}
+
 export interface AmenityGroup {
   key: string;
   label: Localized<string>;
-  amenities: { key: string; label: Localized<string> }[];
+  /** Which kinds of listing are asked about this group. */
+  appliesTo: AmenityScope[];
+  amenities: AmenityItem[];
 }
 
 export const amenityGroups: AmenityGroup[] = [
   {
     key: "general",
     label: { el: "Γενικά", en: "General" },
+    appliesTo: ["stay"],
     amenities: [
-      { key: "wifi", label: { el: "Wi-Fi", en: "Wi-Fi" } },
-      { key: "air-conditioning", label: { el: "Κλιματισμός", en: "Air conditioning" } },
-      { key: "heating", label: { el: "Θέρμανση", en: "Heating" } },
+      // The first three are the only ones a restaurant or bar is asked about.
+      { key: "wifi", label: { el: "Wi-Fi", en: "Wi-Fi" }, appliesTo: ["stay", "eat", "drink"] },
+      { key: "air-conditioning", label: { el: "Κλιματισμός", en: "Air conditioning" }, appliesTo: ["stay", "eat", "drink"] },
+      { key: "heating", label: { el: "Θέρμανση", en: "Heating" }, appliesTo: ["stay", "eat", "drink"] },
       { key: "elevator", label: { el: "Ασανσέρ", en: "Elevator" } },
       { key: "balcony", label: { el: "Μπαλκόνι", en: "Balcony" } },
       { key: "terrace", label: { el: "Βεράντα", en: "Terrace" } },
@@ -33,6 +60,7 @@ export const amenityGroups: AmenityGroup[] = [
   {
     key: "kitchen",
     label: { el: "Κουζίνα", en: "Kitchen" },
+    appliesTo: ["stay"],
     amenities: [
       { key: "kitchen", label: { el: "Πλήρης κουζίνα", en: "Full kitchen" } },
       { key: "oven", label: { el: "Φούρνος", en: "Oven" } },
@@ -46,6 +74,7 @@ export const amenityGroups: AmenityGroup[] = [
   {
     key: "bathroom-laundry",
     label: { el: "Μπάνιο & πλυντήριο", en: "Bathroom & laundry" },
+    appliesTo: ["stay"],
     amenities: [
       { key: "washer", label: { el: "Πλυντήριο ρούχων", en: "Washing machine" } },
       { key: "dryer", label: { el: "Στεγνωτήριο", en: "Dryer" } },
@@ -58,6 +87,7 @@ export const amenityGroups: AmenityGroup[] = [
   {
     key: "wellness",
     label: { el: "Wellness", en: "Wellness" },
+    appliesTo: ["stay"],
     amenities: [
       { key: "pool", label: { el: "Πισίνα", en: "Pool" } },
       { key: "hot-tub", label: { el: "Τζακούζι", en: "Hot tub" } },
@@ -69,14 +99,16 @@ export const amenityGroups: AmenityGroup[] = [
   {
     key: "family",
     label: { el: "Οικογένεια", en: "Family" },
+    appliesTo: ["stay"],
     amenities: [
       { key: "crib", label: { el: "Κούνια μωρού", en: "Baby crib" } },
-      { key: "high-chair", label: { el: "Καρέκλα φαγητού", en: "High chair" } },
+      { key: "high-chair", label: { el: "Καρέκλα φαγητού", en: "High chair" }, appliesTo: ["stay", "eat"] },
     ],
   },
   {
     key: "safety",
     label: { el: "Ασφάλεια", en: "Safety" },
+    appliesTo: ["stay"],
     amenities: [
       { key: "smoke-alarm", label: { el: "Ανιχνευτής καπνού", en: "Smoke alarm" } },
       { key: "fire-extinguisher", label: { el: "Πυροσβεστήρας", en: "Fire extinguisher" } },
@@ -84,7 +116,99 @@ export const amenityGroups: AmenityGroup[] = [
       { key: "safe", label: { el: "Χρηματοκιβώτιο", en: "Safe" } },
     ],
   },
+
+  // ---- Food & drink ----
+  {
+    key: "venue",
+    label: { el: "Ο χώρος", en: "The space" },
+    appliesTo: ["eat", "drink"],
+    amenities: [
+      { key: "outdoor-seating", label: { el: "Τραπέζια σε εξωτερικό χώρο", en: "Outdoor seating" } },
+      { key: "garden-courtyard", label: { el: "Κήπος ή αυλή", en: "Garden or courtyard" } },
+      { key: "rooftop", label: { el: "Ταράτσα / rooftop", en: "Rooftop" } },
+      { key: "waterfront", label: { el: "Δίπλα στη θάλασσα", en: "On the waterfront" } },
+      { key: "live-music", label: { el: "Ζωντανή μουσική", en: "Live music" } },
+      { key: "smoking-area", label: { el: "Χώρος καπνιστών", en: "Smoking area" } },
+    ],
+  },
+  {
+    key: "dining-service",
+    label: { el: "Εξυπηρέτηση", en: "Service" },
+    appliesTo: ["eat", "drink"],
+    amenities: [
+      { key: "reservations", label: { el: "Δέχεται κρατήσεις", en: "Takes reservations" } },
+      { key: "takeaway", label: { el: "Take away", en: "Takeaway" } },
+      { key: "delivery", label: { el: "Delivery", en: "Delivery" } },
+      { key: "card-payment", label: { el: "Δέχεται κάρτες", en: "Card payment" } },
+      { key: "open-late", label: { el: "Ανοιχτά αργά", en: "Open late" } },
+    ],
+  },
+  {
+    key: "menu",
+    label: { el: "Στο μενού", en: "On the menu" },
+    appliesTo: ["eat", "drink"],
+    amenities: [
+      { key: "vegetarian-options", label: { el: "Χορτοφαγικές επιλογές", en: "Vegetarian options" } },
+      { key: "vegan-options", label: { el: "Vegan επιλογές", en: "Vegan options" } },
+      { key: "gluten-free-options", label: { el: "Επιλογές χωρίς γλουτένη", en: "Gluten-free options" } },
+      { key: "kids-menu", label: { el: "Παιδικό μενού", en: "Kids menu" } },
+      { key: "specialty-coffee", label: { el: "Καφές specialty", en: "Specialty coffee" } },
+      { key: "cocktails", label: { el: "Κοκτέιλ", en: "Cocktails" } },
+      { key: "craft-beer", label: { el: "Μπίρα μικροζυθοποιίας", en: "Craft beer" } },
+      { key: "wine-list", label: { el: "Λίστα κρασιών", en: "Wine list" } },
+      { key: "tsipouro-ouzo", label: { el: "Τσίπουρο & ούζο", en: "Tsipouro & ouzo" } },
+    ],
+  },
+
+  // ---- Experiences ----
+  {
+    key: "experience",
+    label: { el: "Η εμπειρία", en: "The experience" },
+    appliesTo: ["experiences"],
+    amenities: [
+      { key: "guide-greek", label: { el: "Ξεναγός στα ελληνικά", en: "Greek-speaking guide" } },
+      { key: "guide-english", label: { el: "Ξεναγός στα αγγλικά", en: "English-speaking guide" } },
+      { key: "small-group", label: { el: "Μικρό γκρουπ", en: "Small group" } },
+      { key: "private-option", label: { el: "Δυνατότητα ιδιωτικής", en: "Private option" } },
+      { key: "family-friendly", label: { el: "Κατάλληλο για οικογένειες", en: "Family friendly" } },
+      { key: "hotel-pickup", label: { el: "Παραλαβή από το κατάλυμα", en: "Hotel pickup" } },
+      { key: "tickets-included", label: { el: "Εισιτήρια στην τιμή", en: "Tickets included" } },
+      { key: "food-included", label: { el: "Φαγητό ή ποτό στην τιμή", en: "Food or drink included" } },
+    ],
+  },
+
+  // ---- Anything with a front door ----
+  {
+    key: "access",
+    label: { el: "Πρόσβαση", en: "Access" },
+    appliesTo: ["eat", "drink", "experiences"],
+    amenities: [
+      // Deliberately different keys from the `accessibility` field on Place,
+      // so the same fact never renders twice on one page.
+      { key: "step-free-entry", label: { el: "Είσοδος χωρίς σκαλιά", en: "Step-free entrance" } },
+      { key: "accessible-wc", label: { el: "Προσβάσιμη τουαλέτα", en: "Accessible toilet" }, appliesTo: ["eat", "drink"] },
+      { key: "pet-friendly", label: { el: "Δεκτά κατοικίδια", en: "Pets welcome" }, appliesTo: ["eat", "drink"] },
+      { key: "parking-nearby", label: { el: "Πάρκινγκ κοντά", en: "Parking nearby" } },
+    ],
+  },
 ];
+
+/**
+ * The groups, and the items within them, that a given pillar is asked about.
+ *
+ * An item's own `appliesTo` wins over its group's; a group left with nothing
+ * is dropped rather than rendered as an empty heading.
+ */
+export function amenityGroupsFor(scope: AmenityScope): AmenityGroup[] {
+  return amenityGroups
+    .map((group) => ({
+      ...group,
+      amenities: group.amenities.filter((a) =>
+        (a.appliesTo ?? group.appliesTo).includes(scope),
+      ),
+    }))
+    .filter((group) => group.amenities.length > 0);
+}
 
 const labelByKey = new Map<string, Localized<string>>();
 for (const g of amenityGroups) {

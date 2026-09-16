@@ -17,7 +17,7 @@ import {
 } from "@/lib/submit-schema";
 import { submitListing } from "@/app/actions/submit";
 import { areas } from "@/content/data/areas";
-import { amenityGroups, serviceTypeLabel } from "@/content/data/amenities";
+import { amenityGroupsFor, serviceTypeLabel } from "@/content/data/amenities";
 
 const T = (locale: Locale, el: string, en: string) => (locale === "el" ? el : en);
 
@@ -62,6 +62,10 @@ export function ListingForm({
   locale: Locale;
 }) {
   const config = getCategory(category)!;
+  // Only the amenities this kind of listing is actually asked about. A taverna
+  // owner was previously shown "dryer" and "hair dryer"; a host, "takeaway".
+  const groups =
+    category === "events" ? [] : amenityGroupsFor(category);
   const {
     register,
     handleSubmit,
@@ -198,9 +202,21 @@ export function ListingForm({
           )}
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label={T(locale, "Κατηγορία/είδος", "Type")} error={errors.type?.message}>
-            <input className={inputCls} placeholder={T(locale, "π.χ. διαμέρισμα, brunch", "e.g. apartment, brunch")} {...register("type")} />
-          </Field>
+          {/* Free text became a list: "type" feeds schema.org and the filters,
+              and thirty spellings of "καφετέρια" are worth nothing to either.
+              Categories with their own structured select don't repeat it. */}
+          {config.types ? (
+            <Field label={T(locale, "Είδος", "Type")} error={errors.type?.message}>
+              <select className={inputCls} {...register("type")}>
+                <option value="">—</option>
+                {config.types.map((o) => (
+                  <option key={o.key} value={o.key}>
+                    {pick(o.label, locale)}
+                  </option>
+                ))}
+              </select>
+            </Field>
+          ) : null}
           <Field label={T(locale, "Περιοχή", "Area")} error={errors.area?.message}>
             <select className={inputCls} {...register("area")}>
               <option value="">—</option>
@@ -212,15 +228,18 @@ export function ListingForm({
             </select>
           </Field>
         </div>
-        <Field label={T(locale, "Διεύθυνση", "Address")} error={errors.address?.message}>
-          <input className={inputCls} {...register("address")} />
-        </Field>
+        {sec.location ? (
+          <Field label={T(locale, "Διεύθυνση", "Address")} error={errors.address?.message}>
+            <input className={inputCls} {...register("address")} />
+          </Field>
+        ) : null}
         <Field label={T(locale, "Ετικέτες (χωρισμένες με κόμμα)", "Tags (comma-separated)")} error={errors.tagsCsv?.message}>
           <input className={inputCls} placeholder="couples, sea-view, central" {...register("tagsCsv")} />
         </Field>
       </fieldset>
 
       {/* Location on map */}
+      {sec.location ? (
       <fieldset className="space-y-3">
         <legend className="text-lg font-bold">{T(locale, "Τοποθεσία στον χάρτη", "Map location")}</legend>
         <p className="text-sm text-muted">
@@ -242,6 +261,7 @@ export function ListingForm({
           <p className="text-xs text-muted">📍 {lat.toFixed(5)}, {lng.toFixed(5)}</p>
         ) : null}
       </fieldset>
+      ) : null}
 
       {/* Contact */}
       <fieldset className="space-y-4">
@@ -259,9 +279,18 @@ export function ListingForm({
           <Field label="Website" error={errors.website?.message}>
             <input className={inputCls} placeholder="https://" {...register("website")} />
           </Field>
-          <Field label={T(locale, "Σύνδεσμος κράτησης", "Booking link")} error={errors.bookingUrl?.message}>
-            <input className={inputCls} placeholder="https://" {...register("bookingUrl")} />
-          </Field>
+          {sec.bookingUrl ? (
+            <Field
+              label={
+                category === "events"
+                  ? T(locale, "Σύνδεσμος εισιτηρίων", "Ticket link")
+                  : T(locale, "Σύνδεσμος κράτησης", "Booking link")
+              }
+              error={errors.bookingUrl?.message}
+            >
+              <input className={inputCls} placeholder="https://" {...register("bookingUrl")} />
+            </Field>
+          ) : null}
         </div>
       </fieldset>
 
@@ -297,11 +326,15 @@ export function ListingForm({
       ) : null}
 
       {/* Amenities */}
-      {sec.amenities ? (
+      {sec.amenities && groups.length ? (
         <fieldset className="space-y-4">
-          <legend className="text-lg font-bold">{T(locale, "Παροχές", "Amenities")}</legend>
+          <legend className="text-lg font-bold">
+            {category === "experiences"
+              ? T(locale, "Τι περιλαμβάνει", "What's included")
+              : T(locale, "Παροχές", "Amenities")}
+          </legend>
           <div className="grid gap-5 sm:grid-cols-2">
-            {amenityGroups.map((g) => (
+            {groups.map((g) => (
               <div key={g.key}>
                 <p className="mb-2 text-sm font-bold uppercase tracking-wide text-slate-400">
                   {pick(g.label, locale)}
