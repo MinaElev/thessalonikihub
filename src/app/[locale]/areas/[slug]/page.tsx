@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, TrainFront } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Pillar } from "@/lib/types";
@@ -10,14 +10,19 @@ import { Container } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { MapClient } from "@/components/map/MapClient";
 import { pillars } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { areaHref } from "@/lib/links";
+import { absoluteUrl, site } from "@/lib/site";
+import { areaHref, metroStationHref } from "@/lib/links";
 import { getMapPoints } from "@/lib/mappoints";
 import { areas, getArea } from "@/content/data/areas";
+import { getStationsForArea, linesFor } from "@/content/data/metro";
+import { getRoutesForArea } from "@/content/data/routes";
+import { RouteLinks } from "@/components/RouteLinks";
 import { getPlaces, getEventsInArea } from "@/lib/repo";
 import Image from "next/image";
 
@@ -61,6 +66,7 @@ export default async function AreaHub({
   const t = await getTranslations({ locale });
   const area = getArea(slug);
   if (!area) notFound();
+  const stations = getStationsForArea(slug);
 
   const name = pick(area.name, locale);
   const points = (await getMapPoints(locale)).filter((p) => p.area === slug);
@@ -78,6 +84,38 @@ export default async function AreaHub({
 
   return (
     <Container className="py-4">
+      {/* Sixteen district pages carried no markup for the thing they describe.
+          Everything here comes from the record: the centre point that already
+          drives the map, the neighbours already listed, and the photo where
+          one exists. */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TouristDestination",
+          name,
+          description: pick(area.blurb, locale),
+          url: absoluteUrl(locale, areaHref(area.slug)),
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: area.center.lat,
+            longitude: area.center.lng,
+          },
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: locale === "el" ? "Θεσσαλονίκη" : "Thessaloniki",
+            addressCountry: "GR",
+          },
+          containedInPlace: {
+            "@type": "City",
+            name: locale === "el" ? "Θεσσαλονίκη" : "Thessaloniki",
+          },
+          ...(area.photo ? { image: `${site.url}${area.photo.url}` } : {}),
+          // Neighbouring districts are deliberately not listed here.
+          // `containsPlace` would claim Ano Poli contains the city centre,
+          // and schema.org has no property for "next to", so the honest
+          // markup is to say nothing rather than something false.
+        }}
+      />
       <Breadcrumbs
         locale={locale}
         items={[
@@ -144,6 +182,42 @@ export default async function AreaHub({
           <div className="grid gap-4 sm:grid-cols-2">
             {events.map((e) => (
               <EventCard key={e.slug} event={e} locale={locale} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <RouteLinks
+        locale={locale}
+        routes={getRoutesForArea(slug)}
+        title={t("routes.walksHere")}
+      />
+
+      {stations.length ? (
+        <section className="mb-10">
+          <h2 className="mb-1 text-2xl font-bold">{t("areas.metroTitle")}</h2>
+          <p className="mb-4 text-sm text-muted">{t("areas.metroNote")}</p>
+          <div className="flex flex-wrap gap-3">
+            {stations.map((st) => (
+              <Link
+                key={st.slug}
+                href={metroStationHref(st.slug)}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-300 hover:text-brand-700"
+              >
+                <TrainFront className="h-4 w-4 text-brand-500" />
+                {pick(st.name, locale)}
+                {linesFor(st).map((n) => (
+                  <span
+                    key={n}
+                    className={`rounded px-1.5 py-0.5 text-xs font-bold text-white ${
+                      n === "1" ? "bg-red-600" : "bg-blue-600"
+                    }`}
+                  >
+                    {n}
+                  </span>
+                ))}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             ))}
           </div>
         </section>

@@ -36,7 +36,9 @@
   "areas": {
     "title": "Thessaloniki Areas",
     "subtitle": "Each neighbourhood with its own character: where to stay, eat and what to see.",
-    "nearby": "Nearby areas"
+    "nearby": "Nearby areas",
+    "metroTitle": "Getting here by metro",
+    "metroNote": "The stations serving this neighbourhood."
   },
   "daytrips": {
     "title": "Day Trips from Thessaloniki",
@@ -302,7 +304,24 @@
     "servesArea": "Serves the area",
     "allStations": "All stations",
     "prevStation": "Previous station",
-    "nextStation": "Next station"
+    "nextStation": "Next station",
+    "journeysTitle": "From this station",
+    "journeysNote": "In one direction trains end at {inbound}; in the other at {outbound}.",
+    "destination": "Destination",
+    "stopsAway": "Stops",
+    "whatFor": "What for",
+    "withChange": "with a change",
+    "faqTitle": "Frequently asked questions",
+    "lineTitle": "The whole network",
+    "lineNote": "All 18 Thessaloniki Metro stations, in the order you meet them.",
+    "addressLabel": "Address",
+    "platformsLabel": "Platforms",
+    "accessLabel": "Accessibility",
+    "stepFree": "Step-free access",
+    "exitsLabel": "Exits",
+    "busLabel": "Bus lines",
+    "lineLabel": "Line",
+    "lineN": "Line {n}"
   },
   "months": {
     "title": "When to visit Thessaloniki",
@@ -383,7 +402,12 @@
     "difficulty": {
       "easy": "Easy",
       "moderate": "Moderate"
-    }
+    },
+    "onTheseWalks": "Part of these walking routes",
+    "walksHere": "Walking routes through this neighbourhood",
+    "startsHere": "Walks that start here",
+    "stopPosition": "Stop {n} of {total}",
+    "faqTitle": "Frequently asked questions"
   },
   "combos": {
     "title": "Thessaloniki & Chalkidiki together",

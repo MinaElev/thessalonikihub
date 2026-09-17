@@ -112,6 +112,15 @@ interface Entity {
    * almost always means the neighbourhood, not the platform.
    */
   priority: number;
+  /**
+   * Whether the match must start on a capital letter.
+   *
+   * True for a plain name, where capitalisation is what separates the station
+   * "Μικρά" from the adjective "μικρές". False for the "μετρό X" forms, which
+   * begin on a common noun in lower case and are disambiguated by the second
+   * word instead.
+   */
+  requireCapital: boolean;
 }
 
 /**
@@ -133,7 +142,7 @@ const TOO_GENERIC = new Set(
 function buildEntities(locale: Locale): Entity[] {
   const out: Entity[] = [];
   let priority = 0;
-  const add = (name: string, href: string) => {
+  const add = (name: string, href: string, requireCapital = true) => {
     const trimmed = name.trim();
     // Drop a parenthetical alias: "Ροτόντα (Άγιος Γεώργιος)" matches on the
     // name people actually write.
@@ -149,17 +158,47 @@ function buildEntities(locale: Locale): Entity[] {
       weight: base.length,
       name: fold(base),
       priority,
+      requireCapital,
     });
   };
 
   // Order sets the priority used when two entities share a name.
   priority = 1; for (const p of attractions) add(pick(p.name, locale), placeHref(p));
-  priority = 2; for (const a of areas) add(pick(a.name, locale), areaHref(a.slug));
+  // A district whose name pairs two places — "Αρετσού & Νέα Κρήνη" — matched
+  // neither half on its own, so a bare "Αρετσού" in prose fell past it to the
+  // metro station of the same name. Register each half too, at the district's
+  // own priority: the plain name means the neighbourhood, and only the
+  // explicit "μετρό Αρετσού" reaches the platform. Halves that are ordinary
+  // words, like the "Λιμάνι" of "Λιμάνι & Φραγκομαχαλάς", are dropped by the
+  // TOO_GENERIC guard in `add`, and "Ροτόντα" still loses to the monument,
+  // which is registered ahead of every district.
+  priority = 2;
+  for (const a of areas) {
+    const areaName = pick(a.name, locale);
+    add(areaName, areaHref(a.slug));
+    for (const part of areaName.split(/\s*(?:&|\band\b|\bκαι\b)\s*/u)) {
+      if (part !== areaName) add(part, areaHref(a.slug));
+    }
+  }
   priority = 3; for (const d of dishes) add(pick(d.name, locale), dishHref(d.slug));
   priority = 4; for (const d of dayTrips) add(pick(d.name, locale), dayTripHref(d.slug));
   priority = 5; for (const f of festivals) add(pick(f.name, locale), festivalHref(f.slug));
   priority = 6; for (const r of walkingRoutes) add(pick(r.name, locale), routeHref(r.slug));
   priority = 7; for (const s of metroStations) add(pick(s.name, locale), metroStationHref(s.slug));
+
+  // "μετρό Αρετσού" is never the neighbourhood and "στάση Ανάληψη" is never the
+  // ordinary noun, so these forms can link where the bare name must not. They
+  // are longer than the bare name, and the sort is longest-first, so they win
+  // the overlap without changing what a lone "Καλαμαριά" resolves to.
+  priority = 0;
+  for (const s of metroStations) {
+    const name = pick(s.name, locale);
+    const aliases =
+      locale === "el"
+        ? [`μετρό ${name}`, `στάση ${name}`, `σταθμός ${name}`]
+        : [`${name} metro station`, `${name} metro`, `${name} station`];
+    for (const alias of aliases) add(alias, metroStationHref(s.slug), false);
+  }
 
   return out.sort((a, b) => b.weight - a.weight || a.priority - b.priority);
 }
@@ -229,9 +268,12 @@ export function autoLink(markdown: string, locale: Locale, selfHref?: string): s
     if (isBlocked(start, end)) continue;
     if (taken.some(([a, b]) => start < b && end > a)) continue;
     // Greek proper nouns are capitalised. Requiring that of the original text
-    // is what separates the station "Μικρά" from the adjective "μικρές".
-    const first = markdown[start];
-    if (first !== first.toUpperCase() || first === first.toLowerCase()) continue;
+    // is what separates the station "Μικρά" from the adjective "μικρές". The
+    // "μετρό X" forms opt out: they open on a lower-case common noun.
+    if (entity.requireCapital) {
+      const first = markdown[start];
+      if (first !== first.toUpperCase() || first === first.toLowerCase()) continue;
+    }
 
     hits.push({ start, end, href: entity.href });
     taken.push([start, end]);

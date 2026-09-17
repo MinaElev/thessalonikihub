@@ -50,11 +50,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const a of areas) paths.add(areaHref(a.slug));
   for (const d of dayTrips) paths.add(dayTripHref(d.slug));
   for (const a of audiences) paths.add(audienceHref(a.slug));
-  for (const m of metroStations) paths.add(metroStationHref(m.slug));
+  for (const m of metroStations) {
+    paths.add(metroStationHref(m.slug));
+    // Only the entries actually revised carry a date, so a revised station
+    // page is distinguishable from the fifteen that have not changed.
+    if (m.updated) lastMod.set(metroStationHref(m.slug), m.updated);
+  }
   for (const m of cityMonths) paths.add(monthHref(m.slug));
   for (const f of festivals) paths.add(festivalHref(f.slug));
   for (const d of dishes) paths.add(dishHref(d.slug));
-  for (const r of walkingRoutes) paths.add(routeHref(r.slug));
+  for (const r of walkingRoutes) {
+    paths.add(routeHref(r.slug));
+    if (r.updated) lastMod.set(routeHref(r.slug), r.updated);
+  }
   // About, contact, privacy and terms. Low-traffic, but a site that asks for
   // an email address should have them indexed and findable.
   for (const p of staticPages) paths.add(`/info/${p.slug}`);

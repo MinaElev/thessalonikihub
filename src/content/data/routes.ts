@@ -36,11 +36,14 @@ export interface WalkingRoute {
   area?: string;
   metroStation?: string;
   featured?: boolean;
+  /** ISO date this route's text was last revised, for the sitemap. */
+  updated?: string;
 }
 
 export const walkingRoutes: WalkingRoute[] = [
   {
     slug: "romaiki-thessaloniki",
+    updated: "2026-09-17",
     name: { el: "Η ρωμαϊκή Θεσσαλονίκη", en: "Roman Thessaloniki" },
     blurb: {
       el: "Το αυτοκρατορικό συγκρότημα του Γαλερίου σε μία ώρα: αγορά, αψίδα, ανάκτορο και Ροτόντα, όλα με τα πόδια.",
@@ -53,7 +56,12 @@ export const walkingRoutes: WalkingRoute[] = [
     intro: {
       el: `Στα τέλη του 3ου και στις αρχές του 4ου αιώνα, ο **Γαλέριος** έκανε τη Θεσσαλονίκη μία από τις πρωτεύουσές του και έχτισε ένα ενιαίο αυτοκρατορικό συγκρότημα: ανάκτορο, ιππόδρομο, θριαμβική αψίδα και ένα κυκλικό οικοδόμημα που στέκει ακόμη.
 
-Το εντυπωσιακό είναι ότι αυτά τα μνημεία **δεν είναι διάσπαρτα**. Βρίσκονται σε ευθεία γραμμή, μέσα σε λίγα λεπτά περπάτημα, γιατί ήταν σχεδιασμένα ως ένα σύνολο. Αυτή η διαδρομή τα ακολουθεί με τη σειρά.`,
+Το εντυπωσιακό είναι ότι αυτά τα μνημεία **δεν είναι διάσπαρτα**. Βρίσκονται σε ευθεία γραμμή, μέσα σε λίγα λεπτά περπάτημα, γιατί ήταν σχεδιασμένα ως ένα σύνολο. Αυτή η διαδρομή τα ακολουθεί με τη σειρά.
+
+## Πόσο μεγάλο ήταν
+Το γαλεριανό συγκρότημα χτίστηκε γύρω στο **300 μ.Χ.** και κάλυπτε περίπου **150.000 τετραγωνικά μέτρα** — από τη θάλασσα μέχρι τη Ροτόντα, και από την Πλατεία Ναυαρίνου μέχρι τη σημερινή Αγίας Σοφίας. Δηλαδή ένα ολόκληρο κομμάτι του σημερινού κέντρου ήταν ένα και μόνο κτιριακό πρόγραμμα: ανάκτορο, Οκτάγωνο, ιππόδρομος, θριαμβική αψίδα και η Ροτόντα στο βόρειο άκρο του.
+
+Όταν περπατάς από την Καμάρα προς τη Ροτόντα, δεν πηγαίνεις από το ένα μνημείο στο άλλο. Κινείσαι **μέσα στο ίδιο κτίριο**, όση ώρα χρειάζεται για να το διασχίσεις.`,
       en: `In the late 3rd and early 4th century, **Galerius** made Thessaloniki one of his capitals and built a single imperial complex: a palace, a hippodrome, a triumphal arch and a circular building that still stands.
 
 What's striking is that these monuments **aren't scattered**. They sit in a straight line, minutes apart on foot, because they were designed as one composition. This route follows them in order.`,
@@ -226,6 +234,7 @@ It is also the only route in this guide with a **real climb**. The reward is tha
   },
   {
     slug: "paralia-nea-paralia",
+    updated: "2026-09-17",
     name: { el: "Η παραλία, άκρη σε άκρη", en: "The seafront, end to end" },
     blurb: {
       el: "Πέντε χιλιόμετρα δίπλα στη θάλασσα, από τον Λευκό Πύργο μέχρι το Μέγαρο Μουσικής, χωρίς ούτε μία ανηφόρα.",
@@ -238,7 +247,12 @@ It is also the only route in this guide with a **real climb**. The reward is tha
     intro: {
       el: `Η **Νέα Παραλία** είναι το πιο πετυχημένο σύγχρονο έργο της Θεσσαλονίκης. Ένας πεζόδρομος και ποδηλατόδρομος πέντε χιλιομέτρων δίπλα στο νερό, οργανωμένος σε διαδοχικούς θεματικούς κήπους, που έδωσε ξανά στην πόλη τη θάλασσά της.
 
-Είναι η διαδρομή που κάνουν οι ίδιοι οι Θεσσαλονικείς: τρέχοντας, με ποδήλατο, με καρότσι, ή απλώς περπατώντας μέχρι να νυχτώσει. Δεν έχει αξιοθέατα με εισιτήριο· έχει την ίδια την πόλη σε κίνηση.`,
+Είναι η διαδρομή που κάνουν οι ίδιοι οι Θεσσαλονικείς: τρέχοντας, με ποδήλατο, με καρότσι, ή απλώς περπατώντας μέχρι να νυχτώσει. Δεν έχει αξιοθέατα με εισιτήριο· έχει την ίδια την πόλη σε κίνηση.
+
+## Δεν ήταν πάντα έτσι
+Η σημερινή Νέα Παραλία είναι έργο των αρχιτεκτόνων **Πρόδρομου Νικηφορίδη και Bernard Cuomo** και παραδόθηκε τον Δεκέμβριο του 2013. Καλύπτει περίπου **50.800 τετραγωνικά μέτρα** σε **3,5 χιλιόμετρα** ανακατασκευασμένου μετώπου, και έχει αποσπάσει δώδεκα διακρίσεις.
+
+Η ιδέα που την κάνει να δουλεύει είναι ότι δεν είναι ένας ενιαίος πεζόδρομος αλλά **σειρά θεματικών κήπων** που διαδέχονται ο ένας τον άλλον: ο Κήπος του Αλεξάνδρου, του Απογευματινού Ήλιου, της Μνήμης, του Νερού, της Μουσικής, του Ήχου, των Ρόδων. Περπατώντας δεν βλέπεις το τέλος, βλέπεις τον επόμενο κήπο — γι' αυτό τα πέντε χιλιόμετρα δεν κουράζουν.`,
       en: `The **Nea Paralia** is Thessaloniki's most successful modern project. A five-kilometre pedestrian and cycle promenade beside the water, organised as a sequence of themed gardens, which gave the city back its sea.
 
 It's the walk locals themselves do: running, cycling, pushing a pram, or simply walking until dark. There are no ticketed sights on it; there is the city itself in motion.`,
@@ -269,7 +283,7 @@ It's the walk locals themselves do: running, cycling, pushing a pram, or simply 
         lat: 40.6218,
         lng: 22.9492,
         note: {
-          el: "Το έφιππο άγαλμα στην παραλία, με τις σάρισες γύρω του. Κλασικό σημείο φωτογραφίας και συνάντησης.",
+          el: "Το έφιππο άγαλμα του Μεγάλου Αλεξάνδρου πάνω στον Βουκεφάλα, με τις σάρισες γύρω του, στον ομώνυμο Κήπο του Αλεξάνδρου. Κλασικό σημείο φωτογραφίας και συνάντησης.",
           en: "The equestrian statue on the waterfront, ringed by sarissas. A classic photo and meeting point.",
         },
       },
@@ -278,7 +292,7 @@ It's the walk locals themselves do: running, cycling, pushing a pram, or simply 
         lat: 40.6098,
         lng: 22.9552,
         note: {
-          el: "Το πιο φωτογραφημένο γλυπτό της πόλης, στημένο μέσα στο νερό. Στη δύση, ο ήλιος περνά ανάμεσα από τις ομπρέλες, γι' αυτό μαζεύεται τόσος κόσμος εδώ.",
+          el: "Το πιο φωτογραφημένο γλυπτό της πόλης, έργο του Γιώργου Ζογγολόπουλου, στημένο μέσα στο νερό στον Κήπο του Απογευματινού Ήλιου. Στη δύση ο ήλιος περνά ανάμεσα από τις ομπρέλες, γι' αυτό μαζεύεται τόσος κόσμος εδώ.",
           en: "The city's most photographed sculpture, standing in the water. At sunset the light passes between the umbrellas, which is why so many people gather here.",
         },
       },
@@ -405,6 +419,9 @@ The **old Jewish cemetery**, with graves going back centuries, was destroyed in 
   },
   {
     slug: "markets-walk",
+    area: "center",
+    metroStation: "venizelou",
+    updated: "2026-09-17",
     name: { el: "Οι αγορές: Μοδιάνο, Καπάνι, Βλάλη", en: "The markets: Modiano, Kapani, Vlali" },
     blurb: {
       el: "Μία ώρα στις τρεις αγορές που ταΐζουν ακόμη την πόλη.",
@@ -417,7 +434,12 @@ The **old Jewish cemetery**, with graves going back centuries, was destroyed in 
     intro: {
       el: `Οι αγορές της Θεσσαλονίκης δεν είναι τουριστικό αξιοθέατο. Είναι ο τρόπος με τον οποίο ψωνίζει ακόμη η πόλη, και το μέρος όπου θα καταλάβεις γρηγορότερα τι τρώει και πώς μιλάει.
 
-Η διαδρομή είναι μικρή σε απόσταση και μεγάλη σε πυκνότητα. Πάρ' την **πρωί**, όταν δουλεύουν όλοι οι πάγκοι.`,
+Η διαδρομή είναι μικρή σε απόσταση και μεγάλη σε πυκνότητα. Πάρ' την **πρωί**, όταν δουλεύουν όλοι οι πάγκοι.
+
+## Δύο αγορές, πέντε αιώνες διαφορά
+Το **Καπάνι** και η **Μοδιάνο** στέκουν δίπλα-δίπλα και ανήκουν σε δύο εντελώς διαφορετικές πόλεις. Το Καπάνι υπάρχει από τα τέλη του 15ου αιώνα: το όνομά του βγαίνει από το τουρκικό *Ουν Καπάν*, την αγορά του αλευριού, και ανήκε στο βακούφι του Βαγιαζήτ Β΄. Οθωμανικό κτηματολόγιο του **1569** το αναφέρει ήδη ως συνοικία.
+
+Η Μοδιάνο είναι σχεδόν τετρακόσια χρόνια νεότερη και ανήκει στη Θεσσαλονίκη που ξαναχτίστηκε μετά την πυρκαγιά του 1917.`,
       en: `Thessaloniki's markets are not a tourist attraction. They are how the city still shops, and the fastest place to understand what it eats and how it talks.
 
 The route is short in distance and dense in everything else. Take it **in the morning**, when every stall is working.`,
@@ -438,7 +460,7 @@ The route is short in distance and dense in everything else. Take it **in the mo
         lat: 40.6371,
         lng: 22.9414,
         note: {
-          el: "Η σκεπαστή αγορά του 1922, με ψαράδικα, αλλαντικά και μεζεδοπωλεία στους διαδρόμους.",
+          el: "Χτίστηκε το 1922 και άνοιξε στις 23 Μαρτίου 1925, σχεδιασμένη από τον αρχιτέκτονα Ζακ Ολιφάντ για λογαριασμό του μηχανικού Ελί Μοδιάνο, από τις μεγαλύτερες εβραϊκές οικογένειες της πόλης. Ερήμωσε και έκλεισε το 2017· ξανάνοιξε ανακαινισμένη στις 5 Δεκεμβρίου 2022, με ψαράδικα, αλλαντικά και μεζεδοπωλεία στους διαδρόμους.",
           en: "The covered market of 1922, with fishmongers, delicatessens and meze bars along its aisles.",
         },
       },
@@ -447,7 +469,7 @@ The route is short in distance and dense in everything else. Take it **in the mo
         lat: 40.6366,
         lng: 22.9400,
         note: {
-          el: "Η παλιότερη αγορά της πόλης, υπαίθρια και πυκνή: φρούτα, λαχανικά, ελιές, μπαχαρικά.",
+          el: "Η παλιότερη αγορά της πόλης, σε λειτουργία από τον 15ο αιώνα. Υπαίθρια και πυκνή, απλωμένη στα στενά ανάμεσα σε Εγνατία, Αριστοτέλους, Ερμού και Βενιζέλου: φρούτα, λαχανικά, ελιές, μπαχαρικά. Κάηκε και ξαναχτίστηκε πολλές φορές, το 1889, το 1896, το 1898 και στη μεγάλη πυρκαγιά του 1917.",
           en: "The city's oldest market, open-air and dense: fruit, vegetables, olives, spices.",
         },
       },
@@ -590,4 +612,33 @@ export function getWalkingRoute(slug: string): WalkingRoute | undefined {
 
 export function getWalkingRoutes(): WalkingRoute[] {
   return walkingRoutes;
+}
+
+/**
+ * Reverse lookups: which walks pass through a place, district or station.
+ *
+ * The routes carried `placeSlug`, `area` and `metroStation` from the start and
+ * every one of them pointed outward. Nothing pointed back, so the section was
+ * a closed loop — a crawl of the whole site found eight pages linking to a
+ * route and seven of them were routes. These are the other direction.
+ */
+export function getRoutesForPlace(placeSlug: string): WalkingRoute[] {
+  return walkingRoutes.filter((r) =>
+    r.stops.some((s) => s.placeSlug === placeSlug),
+  );
+}
+
+/** Walks whose stops sit in a given district. */
+export function getRoutesForArea(areaSlug: string): WalkingRoute[] {
+  return walkingRoutes.filter((r) => r.area === areaSlug);
+}
+
+/** Walks that begin at a given metro station. */
+export function getRoutesForStation(stationSlug: string): WalkingRoute[] {
+  return walkingRoutes.filter((r) => r.metroStation === stationSlug);
+}
+
+/** The stop number a place occupies on a walk, 1-based; 0 when it is not on it. */
+export function stopNumberOf(route: WalkingRoute, placeSlug: string): number {
+  return route.stops.findIndex((s) => s.placeSlug === placeSlug) + 1;
 }

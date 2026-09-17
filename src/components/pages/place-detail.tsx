@@ -36,6 +36,7 @@ import { Container, Badge } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RouteLinks } from "@/components/RouteLinks";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { JsonLd } from "@/components/JsonLd";
 import { MiniMapClient } from "@/components/map/MiniMapClient";
@@ -44,6 +45,7 @@ import { SaveButton } from "@/components/SaveButton";
 import { isSaved } from "@/lib/saved";
 import { Link } from "@/i18n/navigation";
 import { pillars } from "@/lib/site";
+import { getRoutesForPlace, stopNumberOf } from "@/content/data/routes";
 import { ViewBeacon } from "@/components/ViewBeacon";
 import { TrackedLink } from "@/components/TrackedLink";
 import { areaHref, cityHref, mapsHref, pillarHref, placeHref } from "@/lib/links";
@@ -867,6 +869,12 @@ export async function PlaceDetail({
             </Link>
           </div>
         ) : null}
+        <RouteLinks
+          locale={locale}
+          routes={getRoutesForPlace(place.slug)}
+          title={t("routes.onTheseWalks")}
+          stopOf={(r) => stopNumberOf(r, place.slug)}
+        />
       </Container>
     </>
   );

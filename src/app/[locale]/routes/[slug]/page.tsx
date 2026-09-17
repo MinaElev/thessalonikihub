@@ -20,6 +20,8 @@ import { MapClient } from "@/components/map/MapClient";
 import { JsonLd } from "@/components/JsonLd";
 import type { MapPoint } from "@/lib/mappoints";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
+import { routeFaqs, isoDuration } from "@/lib/route-facts";
 import { areaHref, metroStationHref, routeHref } from "@/lib/links";
 import { getArea } from "@/content/data/areas";
 import { getMetroStation } from "@/content/data/metro";
@@ -35,6 +37,13 @@ export function generateStaticParams() {
   return walkingRoutes.map((r) => ({ slug: r.slug }));
 }
 
+/** True when the route's own name already says it is done on foot. */
+function onFoot(name: string, locale: Locale): boolean {
+  return locale === "el"
+    ? /με τα πόδια/i.test(name)
+    : /\bon foot\b|\bwalk(ing)?\b/i.test(name);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -47,8 +56,15 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     path: routeHref(slug),
-    title:
-      locale === "el"
+    // Two of the six route names end in "με τα πόδια" already, and the
+    // template appended it again: "Η εβραϊκή Θεσσαλονίκη με τα πόδια —
+    // διαδρομή 2 χλμ με τα πόδια". Say the distance and the time instead,
+    // which is what the title was for and what people search.
+    title: onFoot(name, locale)
+      ? locale === "el"
+        ? `${name}: ${r.distanceKm} χλμ, ${r.durationMin} λεπτά`
+        : `${name}: ${r.distanceKm} km, ${r.durationMin} minutes`
+      : locale === "el"
         ? `${name} — διαδρομή ${r.distanceKm} χλμ με τα πόδια`
         : `${name} — a ${r.distanceKm} km walking route`,
     description: pick(r.blurb, locale),
@@ -73,6 +89,7 @@ export default async function RoutePage({
   const area = r.area ? getArea(r.area) : undefined;
   const station = r.metroStation ? getMetroStation(r.metroStation) : undefined;
   const others = getWalkingRoutes().filter((x) => x.slug !== r.slug);
+  const faqs = routeFaqs(r, locale);
 
   // Reuse the site map component: each stop becomes a point.
   const points: MapPoint[] = r.stops.map((s, i) => ({
@@ -96,6 +113,18 @@ export default async function RoutePage({
           name,
           description: pick(r.blurb, locale),
           touristType: el ? "Πεζοπόροι στην πόλη" : "City walkers",
+          url: absoluteUrl(locale, routeHref(r.slug)),
+          // Distance and time were on the page for the reader but nowhere a
+          // search engine could read them.
+          distance: `${r.distanceKm} km`,
+          estimatedDuration: isoDuration(r.durationMin),
+          isAccessibleForFree: true,
+          offers: {
+            "@type": "Offer",
+            price: 0,
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
           itinerary: {
             "@type": "ItemList",
             numberOfItems: r.stops.length,
@@ -113,6 +142,18 @@ export default async function RoutePage({
               },
             })),
           },
+        }}
+      />
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
         }}
       />
 
@@ -227,6 +268,20 @@ export default async function RoutePage({
           <MarkdownBody locale={locale} selfHref={routeHref(r.slug)}>
             {pick(r.outro, locale)}
           </MarkdownBody>
+
+          <section className="mt-10">
+            <h2 className="mb-4 text-2xl font-bold">{t("routes.faqTitle")}</h2>
+            <div className="divide-y divide-slate-100 rounded-2xl border border-slate-100">
+              {faqs.map((f, i) => (
+                <details key={i} className="group p-4" open={i === 0}>
+                  <summary className="cursor-pointer font-semibold text-ink">
+                    {f.question}
+                  </summary>
+                  <p className="mt-2 text-sm text-muted">{f.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
 
           <section className="mt-10">
             <h2 className="mb-4 text-2xl font-bold">{t("routes.otherRoutes")}</h2>

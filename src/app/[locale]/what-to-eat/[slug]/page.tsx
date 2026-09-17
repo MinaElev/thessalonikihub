@@ -7,8 +7,10 @@ import type { Locale } from "@/i18n/routing";
 import { pick } from "@/lib/types";
 import { Container } from "@/components/ui";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, site } from "@/lib/site";
 import { areaHref, dishHref, pillarHref } from "@/lib/links";
 import { getArea } from "@/content/data/areas";
 import { dishes, getDish, getDishes } from "@/content/data/dishes";
@@ -61,6 +63,30 @@ export default async function DishPage({
 
   return (
     <Container className="py-4">
+      {/* These pages are monographs about a food, not recipes: there are no
+          ingredients or instructions here, so Recipe would be a false claim.
+          An Article about a Thing is what they actually are. */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: name,
+          description: pick(d.blurb, locale),
+          url: absoluteUrl(locale, dishHref(d.slug)),
+          inLanguage: locale,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "ThessalonikiHub",
+            url: absoluteUrl(locale, "/"),
+          },
+          about: {
+            "@type": "Thing",
+            name,
+            description: pick(d.blurb, locale),
+          },
+          ...(d.photo ? { image: `${site.url}${d.photo.url}` } : {}),
+        }}
+      />
       <Breadcrumbs
         locale={locale}
         items={[

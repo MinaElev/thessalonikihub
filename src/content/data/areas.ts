@@ -381,7 +381,7 @@ It's a 10-minute walk from Aristotelous and connects easily to Ladadika and Vala
 Η περιοχή είναι γεμάτη με φοιτητικά καφέ, οικονομικά στέκια για σουβλάκι και μπαρ. Είναι από τα λίγα σημεία όπου η πόλη είναι εξίσου ζωντανή Τρίτη βράδυ και Σάββατο.
 
 ## Πώς κινείσαι
-Απόλυτα περπατήσιμη, δίπλα στο κέντρο και σε απόσταση αναπνοής από το Αριστοτέλειο Πανεπιστήμιο.
+Απόλυτα περπατήσιμη, δίπλα στο κέντρο και σε απόσταση αναπνοής από το Αριστοτέλειο Πανεπιστήμιο. Αν έρχεσαι από αλλού, το μετρό Σιντριβάνι είναι η στάση σου: βγες από την έξοδο της Εθνικής Αμύνης και η Ροτόντα με την Καμάρα είναι λίγα βήματα μακριά.
 
 **Ιδανικό για:** νεανική ατμόσφαιρα, οικονομικό φαγητό, ιστορία μέσα στην καθημερινότητα.`,
       en: `Between Kamara and the sea lies Thessaloniki's most youthful neighbourhood. Here the Roman ruins aren't behind railings; they're the backdrop where students drink their coffee.
@@ -398,7 +398,7 @@ It's a 10-minute walk from Aristotelous and connects easily to Ladadika and Vala
 The area is packed with student cafés, cheap souvlaki spots and bars. It's one of the few places where the city feels just as alive on a Tuesday night as on a Saturday.
 
 ## Getting around
-Completely walkable, right beside the centre and a short stroll from the Aristotle University.
+Completely walkable, right beside the centre and a short stroll from the Aristotle University. Coming from further out, Sintrivani metro station is your stop: take the Ethnikis Amynis exit and the Rotunda and Kamara are a few steps away.
 
 **Best for:** a young atmosphere, affordable food, and history woven into daily life.`,
     },
@@ -612,7 +612,7 @@ Well served by buses and roughly 10–15 minutes from the centre.
 Είναι η επιλογή των ντόπιων για ήρεμο καφέ δίπλα στο νερό, μακριά από τη φασαρία του κέντρου, με το ηλιοβασίλεμα να πέφτει πίσω από τον Όλυμπο.
 
 ## Πώς κινείσαι
-Με λεωφορείο ή αυτοκίνητο από το κέντρο· η Καλαμαριά συνδέεται και με το δίκτυο του μετρό.
+Από τον Αύγουστο του 2026 η γειτονιά έχει δικό της σταθμό: το μετρό Αρετσού σε αφήνει λίγα λεπτά με τα πόδια από τη μαρίνα, στη Γραμμή 2 προς Μίκρα. Είναι η πιο εύκολη αλλαγή που έφερε η επέκταση — το ηλιοβασίλεμα δίπλα στο νερό δεν χρειάζεται πια αυτοκίνητο. Εναλλακτικά υπάρχουν λεωφορεία από το κέντρο και της Καλαμαριάς.
 
 **Ιδανικό για:** ηλιοβασίλεμα, θαλασσινό φαγητό, χαλαρή βόλτα δίπλα στο νερό.`,
       en: `At the southern edge of Kalamaria, Aretsou is where the city meets the sea again, in a quieter way than the Nea Paralia.
@@ -629,7 +629,7 @@ Nea Krini was built by refugees who came from Krini (Çeşme) in Asia Minor; hen
 It's where locals go for a quiet coffee by the water, away from the noise of the centre, with the sun setting behind Olympus.
 
 ## Getting around
-By bus or car from the centre; Kalamaria is also connected to the metro network.
+Since August 2026 the neighbourhood has had its own station: Aretsou metro station leaves you a few minutes' walk from the marina, on Line 2 toward Mikra. It is the easiest change the extension brought — the sunset by the water no longer needs a car. Buses from the centre and around Kalamaria remain an alternative.
 
 **Best for:** sunsets, seafood, a relaxed walk by the water.`,
     },

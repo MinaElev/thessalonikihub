@@ -19,6 +19,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 import {
   areaHref,
   festivalHref,
@@ -87,7 +88,21 @@ export default async function FestivalPage({
           "@type": "Festival",
           name,
           description: pick(f.blurb, locale),
-          url: f.officialUrl,
+          // `url` was the organiser's own site, which handed the entity to
+          // them; that belongs in `sameAs`. This page is the url.
+          url: absoluteUrl(locale, festivalHref(f.slug)),
+          ...(f.officialUrl ? { sameAs: [f.officialUrl] } : {}),
+          // The file forbids exact edition dates on purpose — they move every
+          // year and a stale one is worse than none. A Schedule says "every
+          // year, this month" without inventing a day.
+          eventSchedule: {
+            "@type": "Schedule",
+            repeatFrequency: "P1Y",
+            byMonth: f.month,
+          },
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode:
+            "https://schema.org/OfflineEventAttendanceMode",
           location: {
             "@type": "Place",
             name: el ? "Θεσσαλονίκη" : "Thessaloniki",
