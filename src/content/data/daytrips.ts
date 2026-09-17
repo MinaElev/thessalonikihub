@@ -68,7 +68,12 @@ It lies about **75 km** (~1 hour) southwest of Thessaloniki. Ideal for a half or
       el: `Ο **Όλυμπος** είναι το **ψηλότερο βουνό της Ελλάδας** και, στη μυθολογία, η κατοικία των δώδεκα θεών: ένας μαγικός προορισμός για τη φύση, μόλις μία ώρα από τη Θεσσαλονίκη.
 
 ## Το βουνό των θεών
-Η ψηλότερη κορυφή, ο **Μύτικας** (2.917 μ.), είναι ο θρυλικός θρόνος του Δία. Ο Όλυμπος ανακηρύχθηκε το **1938 ο πρώτος Εθνικός Δρυμός** της Ελλάδας, με σπάνια χλωρίδα και πανίδα και εντυπωσιακά φαράγγια.
+Στη μυθολογία εδώ κατοικούσαν οι δώδεκα θεοί, και η επιλογή δεν ήταν τυχαία: ο Όλυμπος είναι ορατός από τη μισή Μακεδονία και τη μισή Θεσσαλία, και για μεγάλο μέρος του χρόνου η κορυφή του χάνεται μέσα στα σύννεφα. Από τη Θεσσαλονίκη τον βλέπεις απέναντι από τον Θερμαϊκό τα καθαρά απογεύματα — είναι το βουνό πίσω από το οποίο δύει ο ήλιος.
+
+## Τα νούμερα
+Η ψηλότερη κορυφή λέγεται **Μύτικας** και φτάνει τα **2.918 μέτρα** — το ψηλότερο σημείο της Ελλάδας. Δίπλα της το **Στεφάνι**, στα 2.909, που η παράδοση θέλει να είναι ο **θρόνος του Δία**· είναι η κορυφή με το χαρακτηριστικό γαμψό σχήμα που ξεχωρίζεις από μακριά.
+
+Ο Όλυμπος ανακηρύχθηκε **εθνικός δρυμός το 1938** — ο **πρώτος στην Ελλάδα**. Προστατεύει τουλάχιστον **170 είδη φυτών, 32 θηλαστικών και 108 πτηνών**, αρκετά από τα οποία δεν υπάρχουν πουθενά αλλού.
 
 ## Τι μπορείς να κάνεις
 - **Λιτόχωρο**: η γραφική «πύλη» του βουνού, βάση για κάθε ανάβαση.
@@ -80,7 +85,12 @@ It lies about **75 km** (~1 hour) southwest of Thessaloniki. Ideal for a half or
       en: `**Mount Olympus** is the **highest mountain in Greece** and, in mythology, the home of the twelve gods. A magical nature destination just an hour from Thessaloniki.
 
 ## The mountain of the gods
-Its highest peak, **Mytikas** (2,917 m), is the legendary throne of Zeus. Olympus was declared Greece's **first National Park in 1938**, with rare flora and fauna and dramatic gorges.
+In myth the twelve gods lived here, and the choice was not arbitrary: Olympus is visible from half of Macedonia and half of Thessaly, and for much of the year its summit disappears into cloud. From Thessaloniki you see it across the Thermaic Gulf on clear afternoons — it is the mountain the sun sets behind.
+
+## The numbers
+The highest peak is **Mytikas**, at **2,918 m**, the highest point in Greece. Beside it stands **Stefani**, at 2,909 m, which tradition calls the **throne of Zeus**; it is the hooked summit you can pick out from a distance.
+
+Olympus was declared a **national park in 1938** — the **first in Greece**. It protects at least **170 plant species, 32 mammals and 108 birds**, several of which grow nowhere else.
 
 ## What you can do
 - **Litochoro**: the picturesque "gateway" to the mountain, base for every climb.
@@ -114,8 +124,18 @@ It lies about **90 km** (~1 hr 15 min) away. For a simple stroll/lunch, Litochor
     description: {
       el: `Η **Έδεσσα** είναι η «πόλη των νερών»: μια δροσερή, καταπράσινη απόδραση που ξεχωρίζει από κάθε άλλο προορισμό κοντά στη Θεσσαλονίκη.
 
+## Πώς φτιάχτηκαν
+Οι καταρράκτες δεν υπήρχαν πάντα. Δημιουργήθηκαν ύστερα από ισχυρό **σεισμό τον 14ο αιώνα**, που άλλαξε την κοίτη των νερών και τα έριξε από το ύψωμα στο οποίο στέκει η πόλη. Δηλαδή το πιο γνωστό φυσικό αξιοθέατο της Μακεδονίας είναι νεότερο από τα περισσότερα μνημεία της Θεσσαλονίκης.
+
 ## Οι καταρράκτες
 Το σήμα κατατεθέν της πόλης είναι οι **καταρράκτες**, με μεγαλύτερο τον **Κάρανο** (~70 μ.), από τους μεγαλύτερους της Ελλάδας. Πέφτουν μέσα σε ένα οργανωμένο πάρκο με μονοπάτια, γεφυράκια και σπηλιά πίσω από το νερό.
+
+Ο μεγάλος καταρράκτης λέγεται **Κάρανος** και πέφτει ελεύθερα από **70 μέτρα** — ο μεγαλύτερος στην Ελλάδα. Πίσω από την υδάτινη κουρτίνα υπάρχει διαμορφωμένο μπαλκόνι: μπαίνεις **πίσω από το νερό** και τον βλέπεις από την άλλη πλευρά. Είναι η εικόνα που μένει από την Έδεσσα.
+
+## Το Βαρόσι και το Μουσείο Νερού
+Το **Βαρόσι** είναι η παλιά συνοικία, χτισμένη πάνω στην ακρόπολη της αρχαίας πόλης, με μακεδονίτικα αρχοντικά και στενά σοκάκια. Χαρακτηρίστηκε **ιστορικός τόπος και διατηρητέος οικισμός το 1992**.
+
+Δίπλα στους καταρράκτες, το **Υπαίθριο Μουσείο Νερού** λειτουργεί από το **1993**: αναστηλωμένοι νερόμυλοι, βιοτεχνίες κάνναβης και σησαμιού, που δείχνουν πώς η πόλη έζησε επί αιώνες από τη δύναμη του νερού.
 
 ## Τι άλλο να δεις
 - Το παλιό συνοικιακό **Βαρόσι**, με παραδοσιακά αρχοντικά.
@@ -126,8 +146,16 @@ It lies about **90 km** (~1 hr 15 min) away. For a simple stroll/lunch, Litochor
 Απέχει περίπου **90 χλμ.** (~1 ώρα) δυτικά. Ιδανική για μονοήμερη, ήρεμη οικογενειακή εκδρομή· δροσερή ακόμη και το καλοκαίρι.`,
       en: `**Edessa** is the "city of waters": a cool, green escape unlike any other destination near Thessaloniki.
 
+## How they came to be
+The waterfalls were not always there. They were created by a powerful **earthquake in the 14th century**, which shifted the watercourse and sent it over the ridge the town sits on. The best-known natural sight in Macedonia is younger than most of Thessaloniki's monuments.
+
 ## The waterfalls
-The city's trademark is its **waterfalls**, the largest being **Karanos** (~70 m), among the tallest in Greece. They tumble through a landscaped park with paths, little bridges and a cave behind the water.
+The great fall is called **Karanos** and drops **70 m** in free fall — the tallest in Greece. Behind the curtain of water there is a built viewing balcony: you walk **behind the water** and see it from the other side. That is the image people take away from Edessa.
+
+## Varosi and the Water Museum
+**Varosi** is the old quarter, built on the acropolis of the ancient city, with Macedonian mansions and narrow lanes. It was designated a **historic site and protected settlement in 1992**.
+
+Beside the falls, the **Open-Air Water Museum** has run since **1993**: restored watermills and hemp and sesame workshops, showing how the town lived for centuries on the power of its water.
 
 ## What else to see
 - The old **Varosi** quarter, with traditional mansions.
@@ -216,8 +244,16 @@ For everything on Chalkidiki (beaches, stays, villages and tips) see our dedicat
 ## Τι θα δεις
 Από τα αρχικά μοναστήρια σώζονται και λειτουργούν σήμερα **έξι**, χτισμένα από τον 14ο–16ο αιώνα. Επισκέψιμα, με τοιχογραφίες, κειμήλια και θέα που κόβει την ανάσα. Βάση για την επίσκεψη είναι η **Καλαμπάκα** και το γραφικό **Καστράκι**.
 
+## Πώς χτίστηκαν εκεί πάνω
+Οι βράχοι υψώνονται **πάνω από 400 μέτρα** και τα μοναστήρια κάθονται σε υψόμετρα από **570 έως 613 μέτρα**. Τον 14ο αιώνα οι μοναχοί άρχισαν να χτίζουν στις κορυφές τους — και η μόνη πρόσβαση ήταν **αποσπώμενες σκάλες και δίχτυα με βαρούλκο**.
+
+Δηλαδή κάθε πέτρα, κάθε δοκάρι και κάθε άνθρωπος ανέβηκε εκεί με σχοινί. Όταν το κοιτάς από κάτω, αυτό είναι που δυσκολεύεσαι να χωνέψεις.
+
+## Είκοσι τέσσερα, έμειναν έξι
+Χτίστηκαν συνολικά **24 μοναστήρια**. Τα υπόλοιπα δεκαοκτώ στέκουν ερειπωμένα ή έχουν χαθεί εντελώς, και φαίνονται ακόμα ως ίχνη πάνω στους βράχους αν ξέρεις πού να κοιτάξεις.
+
 ## UNESCO
-Ένα από τα ελάχιστα μνημεία στον κόσμο που είναι εγγεγραμμένα στην UNESCO **ταυτόχρονα ως πολιτιστικό και ως φυσικό** μνημείο.
+Τα έξι σωζόμενα μοναστήρια εγγράφηκαν στον Κατάλογο Παγκόσμιας Κληρονομιάς το **1988**. Είναι ένα από τα ελάχιστα μνημεία στον κόσμο που είναι εγγεγραμμένα στην UNESCO **ταυτόχρονα ως πολιτιστικό και ως φυσικό** μνημείο.
 
 ## Πρακτικά
 Είναι η **πιο μακρινή** εκδρομή της λίστας, περίπου **230 χλμ.** (~2 ώρες 45′). Θέλει **ολόκληρη, μεγάλη μέρα** (ξεκίνα νωρίς) ή διανυκτέρευση. Για τα μοναστήρια ισχύει κώδικας ενδυμασίας (καλυμμένοι ώμοι/γόνατα, φούστα για τις γυναίκες).`,
@@ -226,8 +262,16 @@ For everything on Chalkidiki (beaches, stays, villages and tips) see our dedicat
 ## What you'll see
 Of the original monasteries, **six** survive and function today, built between the 14th and 16th centuries. They are open to visitors, with frescoes, relics and breathtaking views. The base for a visit is **Kalambaka** and the picturesque village of **Kastraki**.
 
+## How they were built up there
+The rocks rise **more than 400 m**, and the monasteries sit between **570 and 613 m** above sea level. From the 14th century monks began building on the pinnacles — and the only way up was by **removable ladders and nets hauled on a winch**.
+
+Every stone, every beam and every person went up on a rope. Standing below, that is the part that is hard to take in.
+
+## Twenty-four, of which six remain
+**Twenty-four monasteries** were built in all. The other eighteen stand ruined or have vanished entirely, and can still be made out as traces on the rock if you know where to look.
+
 ## UNESCO
-One of very few sites in the world inscribed by UNESCO **both as a cultural and a natural** monument.
+The six surviving monasteries were inscribed on the World Heritage List in **1988**. It is one of very few sites in the world inscribed by UNESCO **both as a cultural and a natural** monument.
 
 ## Practical
 It is the **most distant** trip on this list, about **230 km** (~2 hr 45 min). It needs a **full, long day** (start early) or an overnight. A dress code applies at the monasteries (covered shoulders/knees; a skirt for women).`,

@@ -685,7 +685,11 @@ At the top of Ano Poli; combine it with the Byzantine walls and Vlatades Monaste
       el: `Η **Πλατεία Αριστοτέλους** είναι η καρδιά της Θεσσαλονίκης: η μεγάλη πλατεία που ανοίγει σαν αγκαλιά προς τον Θερμαϊκό και σε καλωσορίζει στην πόλη.
 
 ## Ιστορία & αρχιτεκτονική
-Σχεδιάστηκε από τον Γάλλο πολεοδόμο **Ernest Hébrard**, στο πλαίσιο της ανασυγκρότησης μετά τη **μεγάλη πυρκαγιά του 1917**. Τα επιβλητικά νεοκλασικά κτίρια που την πλαισιώνουν (όπως το ξενοδοχείο Electra Palace) της δίνουν τη μνημειακή της αίσθηση.
+Σχεδιάστηκε από τον Γάλλο πολεοδόμο **Ernest Hébrard** το 1917, αμέσως μετά τη **μεγάλη πυρκαγιά** που ισοπέδωσε το κέντρο. Το σχέδιο παραδόθηκε στη Γενική Διοίκηση Μακεδονίας τον Ιούνιο του 1918 και οι όψεις καθορίστηκαν με ειδικό διάταγμα του 1923.
+
+Αυτό που βλέπεις όμως δεν είναι ακριβώς αυτό που σχεδίασε. Οι αρχικές, πολύ πιο περίτεχνες όψεις **απλοποιήθηκαν** όταν ήρθε η ώρα να χτιστούν, στη δεκαετία του 1950, λόγω της οικονομικής στενότητας της εποχής — και η πλατεία πήρε την τελική της μορφή μόλις τη δεκαετία του 1960. Μεσολάβησαν δηλαδή σχεδόν σαράντα χρόνια ανάμεσα στο σχέδιο και στο κτισμένο.
+
+Η ιδέα που επέζησε ακέραιη είναι ο **άξονας**: η πλατεία ανοίγει προς τη Νίκης και τη θάλασσα, και η οδός Αριστοτέλους συνεχίζει βόρεια μέχρι την Εγνατία, δένοντας το νερό με το ιστορικό κέντρο σε μία ευθεία γραμμή.
 
 ## Τι να κάνεις
 Καφές στα ιστορικά καφέ, βόλτα προς την παραλία και τον Λευκό Πύργο, ψώνια στην Τσιμισκή. Είναι ο τόπος κάθε μεγάλης **εκδήλωσης, συναυλίας και γιορτής** της πόλης.
@@ -703,6 +707,58 @@ Coffee at the historic cafés, a walk down to the seafront and the White Tower, 
 ## Good to know
 Free to access and the ideal starting point for your first walk through the centre.`,
     },
+    faqs: [
+      {
+        question: {
+          el: "Ποιος σχεδίασε την Πλατεία Αριστοτέλους;",
+          en: "Who designed Aristotelous Square?",
+        },
+        answer: {
+          el: "Ο Γάλλος αρχιτέκτονας και πολεοδόμος Ernest Hébrard, το 1917, στο πλαίσιο του σχεδίου ανοικοδόμησης μετά τη μεγάλη πυρκαγιά. Το σχέδιο παραδόθηκε τον Ιούνιο του 1918.",
+          en: "The French architect and planner Ernest Hébrard, in 1917, as part of the reconstruction plan after the great fire. The plan was delivered in June 1918.",
+        },
+      },
+      {
+        question: {
+          el: "Πόσο κοστίζει η επίσκεψη;",
+          en: "Is there an entrance fee?",
+        },
+        answer: {
+          el: "Τίποτα. Είναι ανοιχτός δημόσιος χώρος, προσβάσιμος όλο το εικοσιτετράωρο, χωρίς εισιτήριο ή ωράριο.",
+          en: "Nothing. It is an open public space, accessible around the clock, with no ticket and no opening hours.",
+        },
+      },
+      {
+        question: {
+          el: "Είναι η πλατεία όπως τη σχεδίασε ο Hébrard;",
+          en: "Is the square as Hébrard designed it?",
+        },
+        answer: {
+          el: "Όχι ακριβώς. Οι αρχικές όψεις ήταν πολύ πιο περίτεχνες, αλλά απλοποιήθηκαν όταν χτίστηκαν στη δεκαετία του 1950 λόγω της οικονομικής κατάστασης. Η πλατεία ολοκληρώθηκε τη δεκαετία του 1960, περίπου σαράντα χρόνια μετά το σχέδιο.",
+          en: "Not exactly. The original facades were far more elaborate but were simplified when they were finally built in the 1950s, for economic reasons. The square reached its present form in the 1960s, some forty years after the plan.",
+        },
+      },
+      {
+        question: {
+          el: "Τι είναι το Ολύμπιον στην πλατεία;",
+          en: "What is the Olympion on the square?",
+        },
+        answer: {
+          el: "Ιστορικός κινηματογράφος, έργο του αρχιτέκτονα Ζακ Μοσέ (1947–1950), στα κτίρια της Μητροπόλεως. Είναι η έδρα του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.",
+          en: "A historic cinema by the architect Zak Mosse (1947–1950), in the Mitropoleos buildings. It is the home of the Thessaloniki Film Festival.",
+        },
+      },
+      {
+        question: {
+          el: "Ποια είναι η καλύτερη ώρα για να πας;",
+          en: "When is the best time to go?",
+        },
+        answer: {
+          el: "Το σούρουπο. Η πλατεία κοιτάζει δυτικά προς τον Θερμαϊκό, οπότε ο ήλιος δύει ακριβώς μέσα από το άνοιγμά της προς τη θάλασσα. Είναι επίσης η ώρα που γεμίζει κόσμο.",
+          en: "At dusk. The square faces west over the Thermaic Gulf, so the sun sets straight through its opening toward the sea. It is also when it fills with people.",
+        },
+      },
+    ],
     type: "landmark",
     tags: ["landmark", "free", "views", "family"],
     geo: {
@@ -722,7 +778,7 @@ Free to access and the ideal starting point for your first walk through the cent
     ],
     contact: {},
     featured: true,
-    updatedAt: "2026-09-08",
+    updatedAt: "2026-09-18",
   },
   {
     slug: "nea-paralia",
