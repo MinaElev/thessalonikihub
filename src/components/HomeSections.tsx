@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight, TrainFront, Waves } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -34,6 +35,16 @@ interface Labels {
   intro: string;
   viewAll: string;
 }
+
+/** Display name per dish kind, passed in so this file needs no translator. */
+export type KindLabels = Record<string, string>;
+
+/**
+ * Meal order rather than file order: something eaten standing up in the
+ * morning, then the table, then the sea, then the sweet, then the drink. It
+ * reads as a day, which is also how the dishes themselves are described.
+ */
+const KIND_ORDER = ["street", "table", "sea", "sweet", "drink"];
 
 function Heading({ labels, href }: { labels: Labels; href: string }) {
   return (
@@ -232,29 +243,75 @@ export function AreasDirectory({ locale, labels }: { locale: Locale; labels: Lab
   );
 }
 
-/** Dishes as a short list, each with the time of day locals actually eat it. */
-export function DishesRow({ locale, labels }: { locale: Locale; labels: Labels }) {
+/**
+ * Dishes as a grouped list with thumbnails, each with the time of day locals
+ * actually eat it.
+ *
+ * Deliberately not a card grid. The homepage already runs two image grids on
+ * either side of this section, and a third between them left no pause; the
+ * list is what breaks them up. The photographs still appear, small, and the
+ * kind of eating each dish belongs to becomes the ordering the flat list
+ * never had.
+ */
+export function DishesRow({
+  locale,
+  labels,
+  kindLabels,
+}: {
+  locale: Locale;
+  labels: Labels;
+  kindLabels: KindLabels;
+}) {
+  const groups = KIND_ORDER.map((kind) => ({
+    kind,
+    items: dishes.filter((d) => d.kind === kind),
+  })).filter((g) => g.items.length);
+
   return (
     <section className="border-t border-slate-100 py-12">
       <Container>
         <Heading labels={labels} href={whatToEatHref()} />
         <p className="-mt-4 mb-6 max-w-2xl text-muted">{labels.intro}</p>
 
-        <ul className="flex flex-wrap gap-3">
-          {dishes.map((d) => (
-            <li key={d.slug}>
-              <Link
-                href={dishHref(d.slug)}
-                className="group flex flex-col rounded-2xl border border-slate-200 px-5 py-3 transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
-              >
-                <span className="font-bold text-ink group-hover:text-brand-700">
-                  {pick(d.name, locale)}
-                </span>
-                <span className="text-xs text-muted">{pick(d.whenToEat, locale)}</span>
-              </Link>
-            </li>
+        <div className="space-y-6">
+          {groups.map((g) => (
+            <div key={g.kind}>
+              <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
+                {kindLabels[g.kind] ?? g.kind}
+              </h3>
+              <ul className="flex flex-wrap gap-3">
+                {g.items.map((d) => (
+                  <li key={d.slug}>
+                    <Link
+                      href={dishHref(d.slug)}
+                      className="group flex items-center gap-3 rounded-2xl border border-slate-200 py-2 pl-2 pr-5 transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
+                    >
+                      <span className="relative block h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+                        {d.photo ? (
+                          <Image
+                            src={d.photo.url}
+                            alt={pick(d.photo.alt, locale)}
+                            fill
+                            sizes="48px"
+                            className="object-cover"
+                          />
+                        ) : null}
+                      </span>
+                      <span className="flex min-w-0 flex-col">
+                        <span className="font-bold text-ink group-hover:text-brand-700">
+                          {pick(d.name, locale)}
+                        </span>
+                        <span className="text-xs text-muted">
+                          {pick(d.whenToEat, locale)}
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </Container>
     </section>
   );

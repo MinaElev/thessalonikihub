@@ -315,6 +315,13 @@ export default async function HomePage({
           intro: t2("dishesIntro"),
           viewAll,
         }}
+        kindLabels={{
+          street: t("dishes.kind.street"),
+          table: t("dishes.kind.table"),
+          sea: t("dishes.kind.sea"),
+          sweet: t("dishes.kind.sweet"),
+          drink: t("dishes.kind.drink"),
+        }}
       />
 
       {/* Guides */}
