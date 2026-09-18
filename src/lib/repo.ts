@@ -200,6 +200,39 @@ function mergeBySlug<T extends { slug: string }>(file: T[], db: T[]): T[] {
   return [...map.values()];
 }
 
+/** A value the database is not actually carrying: absent, not chosen. */
+function isEmpty(v: unknown): boolean {
+  return v === null || v === undefined || (Array.isArray(v) && v.length === 0);
+}
+
+/**
+ * Overlay a database row onto its file entry, field by field.
+ *
+ * Whatever the row actually carries wins, because that is what an owner or an
+ * admin supplied. Whatever it leaves empty falls back to the file — which is
+ * how an editor's FAQs survive a listing being seeded into the database, given
+ * that no form in the application can write that column.
+ */
+function overlay(file: Place, db: Place): Place {
+  const out: Record<string, unknown> = { ...file };
+  for (const [key, value] of Object.entries(db)) {
+    if (isEmpty(value)) continue;
+    out[key] = value;
+  }
+  return out as unknown as Place;
+}
+
+/** Places merge per field; anything only in the database is taken as it is. */
+function mergePlaces(file: Place[], db: Place[]): Place[] {
+  const map = new Map<string, Place>();
+  for (const it of file) map.set(it.slug, it);
+  for (const it of db) {
+    const existing = map.get(it.slug);
+    map.set(it.slug, existing ? overlay(existing, it) : it);
+  }
+  return [...map.values()];
+}
+
 function sortByFeatured(list: Place[]): Place[] {
   return [...list].sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
 }
@@ -213,12 +246,12 @@ export function getFilePlaces(pillar: StayPillar): Place[] {
 
 export const getPlaces = cache(async (pillar: StayPillar): Promise<Place[]> => {
   const fromDb = (await dbPlaces()).filter((p) => p.kind === pillar);
-  return sortByFeatured(mergeBySlug(placesByPillar[pillar], fromDb));
+  return sortByFeatured(mergePlaces(placesByPillar[pillar], fromDb));
 });
 
 /** Every place of every pillar. Shares the one cached query with `getPlaces`. */
 export const getAllPlaces = cache(async (): Promise<Place[]> => {
-  return sortByFeatured(mergeBySlug(allFilePlaces, await dbPlaces()));
+  return sortByFeatured(mergePlaces(allFilePlaces, await dbPlaces()));
 });
 
 export async function getPlace(pillar: StayPillar, slug: string): Promise<Place | undefined> {
