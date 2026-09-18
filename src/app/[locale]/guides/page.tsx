@@ -44,7 +44,7 @@ export default async function GuidesPage({
       </header>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((g) => (
-          <GuideCard key={g.slug} guide={g} locale={locale} />
+          <GuideCard key={g.slug} guide={g} locale={locale} headingLevel={2} />
         ))}
       </div>
     </Container>

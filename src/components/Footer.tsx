@@ -96,9 +96,9 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
+          <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
             {t("footer.explore")}
-          </h3>
+          </h2>
           <ul className="space-y-2 text-sm text-slate-600">
             {exploreLinks.map((l) => (
               <li key={l.key}>
@@ -111,9 +111,9 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
+          <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
             {t("footer.read")}
-          </h3>
+          </h2>
           <ul className="space-y-2 text-sm text-slate-600">
             {readLinks.map((l) => (
               <li key={l.key}>
@@ -126,9 +126,9 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
+          <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">
             {t("footer.company")}
-          </h3>
+          </h2>
           <ul className="space-y-2 text-sm text-slate-600">
             {companyLinks.map((l) => (
               <li key={l.key}>

@@ -9,13 +9,24 @@ import { eventHref } from "@/lib/links";
 import { formatEventWhen } from "@/lib/format";
 
 export function EventCard({
+  headingLevel = 3,
   event,
   locale,
 }: {
+  /**
+   * The card title's heading level.
+   *
+   * Three where the grid sits under a section heading, two on a
+   * listing page where the cards are the sections — otherwise the
+   * document jumps from h1 to h3.
+   */
+  headingLevel?: 2 | 3;
   event: EventItem;
   locale: Locale;
 }) {
   const photo = eventCover(event);
+  const Heading = headingLevel === 2 ? "h2" : "h3";
+
   return (
     <Link
       href={eventHref(event)}
@@ -31,9 +42,9 @@ export function EventCard({
         />
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="truncate font-bold text-ink group-hover:text-brand-700">
+        <Heading className="truncate font-bold text-ink group-hover:text-brand-700">
           {pick(event.name, locale)}
-        </h3>
+        </Heading>
         <p className="mt-0.5 line-clamp-2 text-sm text-muted">
           {pick(event.summary, locale)}
         </p>

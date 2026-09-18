@@ -48,7 +48,7 @@ export default async function EventsPage({
       </header>
       <div className="grid gap-4 sm:grid-cols-2">
         {events.map((e) => (
-          <EventCard key={e.slug} event={e} locale={locale} />
+          <EventCard key={e.slug} event={e} locale={locale} headingLevel={2} />
         ))}
       </div>
     </Container>

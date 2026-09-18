@@ -81,7 +81,9 @@ export function FilterableGrid({
       {shown.length ? (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => (
-            <PlaceCard key={p.slug} place={p} locale={locale} />
+            // This grid has one call site, the city listing, where the cards
+            // sit directly under the page h1 with no section heading between.
+            <PlaceCard key={p.slug} place={p} locale={locale} headingLevel={2} />
           ))}
         </div>
       ) : (

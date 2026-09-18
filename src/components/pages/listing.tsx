@@ -47,7 +47,7 @@ function Grid({ places, locale }: { places: Place[]; locale: Locale }) {
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {places.map((p) => (
-        <PlaceCard key={p.slug} place={p} locale={locale} />
+        <PlaceCard key={p.slug} place={p} locale={locale} headingLevel={2} />
       ))}
     </div>
   );

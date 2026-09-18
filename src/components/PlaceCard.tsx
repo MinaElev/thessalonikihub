@@ -9,10 +9,19 @@ import { Badge } from "@/components/ui";
 import { getArea } from "@/content/data/areas";
 
 export function PlaceCard({
+  headingLevel = 3,
   place,
   locale,
   distanceLabel,
 }: {
+  /**
+   * The card title's heading level.
+   *
+   * Three where the grid sits under a section heading, two on a
+   * listing page where the cards are the sections — otherwise the
+   * document jumps from h1 to h3.
+   */
+  headingLevel?: 2 | 3;
   place: Place;
   locale: Locale;
   distanceLabel?: string;
@@ -20,6 +29,8 @@ export function PlaceCard({
   const photo = place.photos[0];
   const area = getArea(place.geo.area);
   const name = pick(place.name, locale);
+
+  const Heading = headingLevel === 2 ? "h2" : "h3";
 
   return (
     <Link
@@ -67,9 +78,9 @@ export function PlaceCard({
             </span>
           ) : null}
         </div>
-        <h3 className="font-bold leading-snug text-ink group-hover:text-brand-700">
+        <Heading className="font-bold leading-snug text-ink group-hover:text-brand-700">
           {name}
-        </h3>
+        </Heading>
         <p className="mt-1 line-clamp-2 text-sm text-muted">
           {pick(place.summary, locale)}
         </p>

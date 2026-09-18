@@ -6,12 +6,23 @@ import { pick } from "@/lib/types";
 import { guideHref } from "@/lib/links";
 
 export function GuideCard({
+  headingLevel = 3,
   guide,
   locale,
 }: {
+  /**
+   * The card title's heading level.
+   *
+   * Three where the grid sits under a section heading, two on a
+   * listing page where the cards are the sections — otherwise the
+   * document jumps from h1 to h3.
+   */
+  headingLevel?: 2 | 3;
   guide: Guide;
   locale: Locale;
 }) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
+
   return (
     <Link
       href={guideHref(guide)}
@@ -27,9 +38,9 @@ export function GuideCard({
         />
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="font-bold leading-snug text-ink group-hover:text-brand-700">
+        <Heading className="font-bold leading-snug text-ink group-hover:text-brand-700">
           {pick(guide.title, locale)}
-        </h3>
+        </Heading>
         <p className="mt-1 line-clamp-2 text-sm text-muted">
           {pick(guide.excerpt, locale)}
         </p>
