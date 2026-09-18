@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 /**
  * Site-wide structured data (rendered once in the layout):
- * - Organization (name, logo) for brand knowledge-panel eligibility
+ * - Organization (name, logo, what it covers) for knowledge-panel eligibility
  * - WebSite with a SearchAction so Google can show a sitelinks search box
  */
 export function SiteJsonLd() {
@@ -16,6 +16,23 @@ export function SiteJsonLd() {
           name: site.name,
           url: site.url,
           logo: `${site.url}/icon.svg`,
+          description:
+            "Ανεξάρτητος ψηφιακός οδηγός για τη Θεσσαλονίκη: γειτονιές, " +
+            "αξιοθέατα, φαγητό, μετρό, διαδρομές και εκδηλώσεις.",
+          areaServed: {
+            "@type": "City",
+            name: "Θεσσαλονίκη",
+            alternateName: "Thessaloniki",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Θεσσαλονίκη",
+              addressCountry: "GR",
+            },
+          },
+          knowsLanguage: site.locales,
+          // `sameAs` belongs here and is left out on purpose: it must name
+          // profiles that actually exist, and an unverified handle would be a
+          // claim the site cannot back.
         }}
       />
       <JsonLd

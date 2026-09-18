@@ -39,6 +39,10 @@ export async function generateMetadata({
         ? `${name} — ιστορία, παραλλαγές και πώς τρώγεται`
         : `${name} — history, versions and how it's eaten`,
     description: pick(d.blurb, locale),
+    // The dish has a photograph of itself; sharing the page showed the generic
+    // city hero instead, which is the one thing that makes a shared link worth
+    // clicking.
+    images: d.photo ? [d.photo.url] : undefined,
   });
 }
 

@@ -53,6 +53,7 @@ export async function generateMetadata({
     path: areaHref(slug),
     title: `${name} — ${locale === "el" ? "Οδηγός Θεσσαλονίκης" : "Thessaloniki guide"}`,
     description: pick(area.blurb, locale),
+    images: area.photo ? [area.photo.url] : undefined,
   });
 }
 

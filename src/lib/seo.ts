@@ -51,7 +51,14 @@ export function buildMetadata({
     // (fullTitle already includes the site name where appropriate).
     title: { absolute: fullTitle },
     description,
-    alternates: { canonical, languages },
+    // Every page declares the feed. It has to live here rather than in the
+    // layout: a page's own `alternates` replaces the layout's wholesale, so a
+    // feed declared once at the root is dropped from every page below it.
+    alternates: {
+      canonical,
+      languages,
+      types: { "application/atom+xml": `${site.url}/feed.xml` },
+    },
     robots: index
       ? { index: true, follow: true }
       : { index: false, follow: true },
