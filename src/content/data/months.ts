@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/types";
+import type { Localized, Photo } from "@/lib/types";
 
 /**
  * "Thessaloniki in <month>" pages: weather, what's on, and what to do.
@@ -34,11 +34,27 @@ export interface CityMonth {
   long: Localized<string>;
   /** Recurring fixtures this month. No exact dates, they move each year. */
   highlights: Localized<string>[];
+  /**
+   * The city in this month, as one image.
+   *
+   * The twelve are a single view — the White Tower and the Nea Paralia — seen
+   * through the year, so the set reads as one idea rather than twelve stock
+   * pictures. The current set is generated rather than photographed; the site
+   * owner's decision was to carry no credit line for it.
+   */
+  photo?: Photo;
 }
 
 export const cityMonths: CityMonth[] = [
   {
     slug: "january",
+    photo: {
+      url: "/photos/month-january.webp",
+      alt: {
+        el: "Ο Λευκός Πύργος και η Νέα Παραλία έναν συννεφιασμένο χειμωνιάτικο απόγευμα, με βρεγμένο πεζόδρομο, γυμνά δέντρα και περαστικούς με χοντρά παλτά και ομπρέλες",
+        en: "The White Tower and the Nea Paralia on an overcast winter afternoon, wet pavement, bare trees and passers-by in heavy coats with umbrellas",
+      },
+    },
     number: 1,
     name: { el: "Ιανουάριος", en: "January" },
     nameAcc: { el: "Ιανουάριο", en: "January" },
@@ -84,6 +100,13 @@ A winter coat, a scarf and waterproof shoes. The pavements get slippery in the r
   },
   {
     slug: "february",
+    photo: {
+      url: "/photos/month-february.webp",
+      alt: {
+        el: "Χιόνι στα δέντρα και στον πεζόδρομο μπροστά από τον Λευκό Πύργο, με γκρίζο ουρανό και ελάχιστο κόσμο στη Νέα Παραλία",
+        en: "Snow on the trees and the promenade in front of the White Tower, a grey sky and almost no one on the Nea Paralia",
+      },
+    },
     number: 2,
     name: { el: "Φεβρουάριος", en: "February" },
     nameAcc: { el: "Φεβρουάριο", en: "February" },
@@ -128,6 +151,13 @@ Warm layers: days can start freezing and end mild.`,
   },
   {
     slug: "march",
+    photo: {
+      url: "/photos/month-march.webp",
+      alt: {
+        el: "Οι πρώτες ροζ ανθισμένες κερασιές στη Νέα Παραλία με τον Λευκό Πύργο πίσω, απαλός ανοιξιάτικος ουρανός και κόσμος που περπατά",
+        en: "The first pink blossom on the Nea Paralia with the White Tower behind, a soft spring sky and people out walking",
+      },
+    },
     number: 3,
     name: { el: "Μάρτιος", en: "March" },
     nameAcc: { el: "Μάρτιο", en: "March" },
@@ -173,6 +203,13 @@ A raincoat and layers. March changes its mind within a single day.`,
   },
   {
     slug: "april",
+    photo: {
+      url: "/photos/month-april.webp",
+      alt: {
+        el: "Ανθισμένες κερασιές και παρτέρια με τουλίπες στη Νέα Παραλία, ο Λευκός Πύργος και ο Θερμαϊκός κάτω από καθαρό γαλάζιο ουρανό",
+        en: "Cherry blossom and tulip beds on the Nea Paralia, the White Tower and the Thermaic Gulf under a clear blue sky",
+      },
+    },
     number: 4,
     name: { el: "Απρίλιος", en: "April" },
     nameAcc: { el: "Απρίλιο", en: "April" },
@@ -217,6 +254,13 @@ Light clothes and a jacket for the evening. If you're travelling over Easter, bo
   },
   {
     slug: "may",
+    photo: {
+      url: "/photos/month-may.webp",
+      alt: {
+        el: "Καταπράσινη Νέα Παραλία με ανθισμένα παρτέρια, ιστιοπλοϊκά στον Θερμαϊκό και κόσμο σε παγκάκια μπροστά από τον Λευκό Πύργο",
+        en: "The Nea Paralia in full green with flower beds, sailing boats on the Thermaic Gulf and people on benches before the White Tower",
+      },
+    },
     number: 5,
     name: { el: "Μάιος", en: "May" },
     nameAcc: { el: "Μάιο", en: "May" },
@@ -261,6 +305,13 @@ Sunscreen and a hat. The May sun strengthens abruptly.`,
   },
   {
     slug: "june",
+    photo: {
+      url: "/photos/month-june.webp",
+      alt: {
+        el: "Έντονο γαλάζιο πρωινού καλοκαιριού στη Νέα Παραλία, ιστιοπλοϊκά στο νερό και ποδηλάτες στον πεζόδρομο δίπλα στον Λευκό Πύργο",
+        en: "Deep early-summer blue over the Nea Paralia, sailing boats on the water and cyclists on the promenade beside the White Tower",
+      },
+    },
     number: 6,
     name: { el: "Ιούνιος", en: "June" },
     nameAcc: { el: "Ιούνιο", en: "June" },
@@ -305,6 +356,13 @@ Swimwear, sunscreen and a water bottle. The centre has fountains, but the sun at
   },
   {
     slug: "july",
+    photo: {
+      url: "/photos/month-july.webp",
+      alt: {
+        el: "Καλοκαίρι στη Νέα Παραλία: ομπρέλες, καλοκαιρινά ρούχα και πολύς κόσμος στον πεζόδρομο, με τον Λευκό Πύργο και τη θάλασσα",
+        en: "Summer on the Nea Paralia: parasols, summer clothes and a busy promenade, with the White Tower and the sea",
+      },
+    },
     number: 7,
     name: { el: "Ιούλιος", en: "July" },
     nameAcc: { el: "Ιούλιο", en: "July" },
@@ -349,6 +407,13 @@ A hat, sunscreen, water and cotton or linen. Avoid black.`,
   },
   {
     slug: "august",
+    photo: {
+      url: "/photos/month-august.webp",
+      alt: {
+        el: "Κορύφωση του καλοκαιριού μπροστά από τον Λευκό Πύργο, με πλήθος σε καλοκαιρινά ρούχα, ομπρέλες και βάρκες στον Θερμαϊκό",
+        en: "The peak of summer in front of the White Tower, crowds in summer clothes, parasols and boats on the Thermaic Gulf",
+      },
+    },
     number: 8,
     name: { el: "Αύγουστος", en: "August" },
     nameAcc: { el: "Αύγουστο", en: "August" },
@@ -393,6 +458,13 @@ Everything you'd bring in July, plus patience for closed shops around the 15th.`
   },
   {
     slug: "september",
+    photo: {
+      url: "/photos/month-september.webp",
+      alt: {
+        el: "Τέλη καλοκαιριού στη Νέα Παραλία, με τα πρώτα χρυσά φυλλώματα, ζεστό φως και κόσμο που βολτάρει μπροστά από τον Λευκό Πύργο",
+        en: "Late summer on the Nea Paralia, the first golden foliage, warm light and people strolling in front of the White Tower",
+      },
+    },
     number: 9,
     name: { el: "Σεπτέμβριος", en: "September" },
     nameAcc: { el: "Σεπτέμβριο", en: "September" },
@@ -438,6 +510,13 @@ Summer clothes plus something light for the first cool evenings. **Book early**,
   },
   {
     slug: "october",
+    photo: {
+      url: "/photos/month-october.webp",
+      alt: {
+        el: "Φθινοπωρινά χρώματα στα δέντρα της Νέας Παραλίας, πάγκος με λουλούδια και κόσμος με ελαφριά μπουφάν κοντά στον Λευκό Πύργο",
+        en: "Autumn colour in the trees of the Nea Paralia, a flower stall and people in light jackets near the White Tower",
+      },
+    },
     number: 10,
     name: { el: "Οκτώβριος", en: "October" },
     nameAcc: { el: "Οκτώβριο", en: "October" },
@@ -484,6 +563,13 @@ A light jacket and an umbrella. If you're coming for the parade, the seafront cl
   },
   {
     slug: "november",
+    photo: {
+      url: "/photos/month-november.webp",
+      alt: {
+        el: "Έντονο φθινόπωρο στη Νέα Παραλία, με πορτοκαλί φυλλώματα, κολοκύθες σε πάγκο της αγοράς και κόσμο με παλτά μπροστά από τον Λευκό Πύργο",
+        en: "Deep autumn on the Nea Paralia, orange foliage, pumpkins on a market stall and people in coats before the White Tower",
+      },
+    },
     number: 11,
     name: { el: "Νοέμβριος", en: "November" },
     nameAcc: { el: "Νοέμβριο", en: "November" },
@@ -528,6 +614,13 @@ A raincoat, an umbrella and shoes that survive water.`,
   },
   {
     slug: "december",
+    photo: {
+      url: "/photos/month-december.webp",
+      alt: {
+        el: "Χειμωνιάτικη Νέα Παραλία με γυμνά δέντρα, εορταστικό πάγκο αγοράς και κόσμο με χειμωνιάτικα ρούχα μπροστά από τον Λευκό Πύργο",
+        en: "The Nea Paralia in winter, bare trees, a festive market stall and people in winter clothes in front of the White Tower",
+      },
+    },
     number: 12,
     name: { el: "Δεκέμβριος", en: "December" },
     nameAcc: { el: "Δεκέμβριο", en: "December" },

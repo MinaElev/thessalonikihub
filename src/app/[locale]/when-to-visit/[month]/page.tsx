@@ -14,7 +14,9 @@ import {
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { pick } from "@/lib/types";
+import Image from "next/image";
 import { Container } from "@/components/ui";
+import { PhotoCredit } from "@/components/PhotoCredit";
 import { EventCard } from "@/components/EventCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
@@ -48,6 +50,7 @@ export async function generateMetadata({
         ? `Θεσσαλονίκη τον ${acc} — καιρός, εκδηλώσεις, τι να κάνεις`
         : `Thessaloniki in ${name} — weather, events and what to do`,
     description: pick(m.blurb, locale),
+    images: m.photo ? [m.photo.url] : undefined,
   });
 }
 
@@ -160,6 +163,25 @@ export default async function MonthPage({
         </h1>
         <p className="mt-3 text-lg text-muted">{pick(m.blurb, locale)}</p>
       </header>
+
+      {m.photo ? (
+        <figure className="mb-8">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-slate-100">
+            <Image
+              src={m.photo.url}
+              alt={pick(m.photo.alt, locale)}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
+          </div>
+          {/* Renders nothing unless the entry names an author, a licence or
+              a credit — so a Creative Commons photograph added later is
+              attributed without touching this file again. */}
+          <PhotoCredit photo={m.photo} className="mt-2" />
+        </figure>
+      ) : null}
 
       <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat
