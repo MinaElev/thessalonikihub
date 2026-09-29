@@ -10,7 +10,7 @@ import { Container } from "@/components/ui";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { RelatedLinks } from "@/components/RelatedLinks";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, composeDescription } from "@/lib/seo";
 import { dayTripHref } from "@/lib/links";
 import { dayTrips, getDayTrip } from "@/content/data/daytrips";
 
@@ -30,7 +30,10 @@ export async function generateMetadata({
     locale,
     path: dayTripHref(slug),
     title: `${pick(d.name, locale)} — ${locale === "el" ? "Εκδρομή από Θεσσαλονίκη" : "Day trip from Thessaloniki"}`,
-    description: pick(d.summary, locale),
+    description: composeDescription([
+      pick(d.summary, locale),
+      pick(d.description, locale),
+    ]),
     images: d.photos[0] ? [d.photos[0].url] : undefined,
     type: "article",
   });

@@ -36,8 +36,23 @@ export function buildMetadata({
   for (const l of site.locales) languages[l] = absoluteUrl(l, path);
   languages["x-default"] = absoluteUrl(site.defaultLocale, path);
 
-  const fullTitle =
-    title === site.name ? site.name : `${title} | ${site.name}`;
+  /*
+   * The brand suffix is a nicety; the page's own words are the point.
+   *
+   * Google renders about 60 characters of a title and drops the rest, so on
+   * a long one "| ThessalonikiHub" was spending seventeen of them on a name
+   * that got truncated away anyway — the film festival page read
+   * "Thessaloniki International Film Festival — what it is, when and where |
+   * Thessalo". Append it only when it fits.
+   *
+   * A title that already opens with the site name never gets it twice: the
+   * homepage carries its own tagline after the name.
+   */
+  const fullTitle = title.startsWith(site.name)
+    ? title
+    : `${title} | ${site.name}`.length <= 60
+      ? `${title} | ${site.name}`
+      : title;
 
   // Fall back to the site's default social image when a page has none. This
   // stays a JPEG on purpose — several social scrapers still refuse WebP, while
@@ -78,6 +93,93 @@ export function buildMetadata({
       images: ogImages,
     },
   };
+}
+
+/**
+ * A meta description of a useful length, built from text the page already
+ * shows.
+ *
+ * Google renders about 155 characters of it and a search result is often the
+ * only sentence anyone reads before deciding whether to click. Ninety-seven
+ * pages here were handing it a fragment — `/for/families` offered the whole
+ * of "Θεσσαλονίκη με παιδιά.", twenty-two characters, and the rest of the
+ * snippet was filled by Google with whatever it scraped.
+ *
+ * The first part is always kept whole, even when it is long; later parts are
+ * added only while they fit, and a part that would overflow is cut at the
+ * last sentence that fits rather than mid-word. Nothing is invented to pad
+ * the length — a short description is better than a padded one, so a page
+ * with only a short line to give keeps it.
+ */
+export function composeDescription(
+  parts: (string | null | undefined)[],
+  max = 155,
+): string {
+  const clean = (s: string) =>
+    s
+      // Strip the markdown these intros are written in: ** for bold, [text](href)
+      // for links. A description is plain text and renders the asterisks
+      // literally otherwise.
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+      .replace(/[*_`#>]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const usable = parts.filter((p): p is string => Boolean(p?.trim())).map(clean);
+  if (!usable.length) return "";
+
+  // Compare on letters and digits alone, so a blurb ending in "." and an
+  // intro opening with the same words still count as the same sentence.
+  const norm = (s: string) =>
+    s.toLowerCase().replace(/[^\p{L}\p{N} ]/gu, "").replace(/\s+/g, " ").trim();
+  // ";" is the Greek question mark, so it ends a sentence here.
+  const firstSentence = (s: string) => {
+    const m = /^[\s\S]*?[.!?;](\s|$)/.exec(s);
+    return m ? m[0].trim() : s;
+  };
+
+  let out = usable[0];
+  for (let part of usable.slice(1)) {
+    if (out.length >= max) break;
+    /*
+     * Several of these intros open by restating the blurb above them, word
+     * for word — "Πρώτη φορά στη Θεσσαλονίκη;" then "Πρώτη φορά στη
+     * Θεσσαλονίκη; Ξεκίνα από…" — which produced a description that said the
+     * same sentence twice. Drop what has already been said and keep the rest.
+     */
+    const opener = firstSentence(part);
+    if (norm(opener) === norm(out)) part = part.slice(opener.length).trimStart();
+    if (!part) continue;
+    const room = max - out.length - 1;
+    if (room < 30) break;
+    if (part.length <= room) {
+      out = `${out} ${part}`;
+      continue;
+    }
+    /*
+     * Prefer to end on a finished sentence. Greek ends a question with ";"
+     * and separates clauses with "·", and several of these intros open with
+     * a question — checking only for "." left those pages with nothing
+     * appended at all, which was the whole problem.
+     *
+     * Where no sentence ends in the space available, cut at a word boundary
+     * and mark it. A description that runs past the limit is truncated by
+     * the search engine anyway; the one thing not to do is leave the slot
+     * almost empty.
+     */
+    const head = part.slice(0, room);
+    const stop = Math.max(
+      ...[". ", "? ", "! ", "; "].map((e) => head.lastIndexOf(e)),
+    );
+    if (stop > 40) {
+      out = `${out} ${head.slice(0, stop + 1).trim()}`;
+    } else {
+      const word = head.lastIndexOf(" ");
+      if (word > 40) out = `${out} ${head.slice(0, word).trim()}…`;
+    }
+    break;
+  }
+  return out;
 }
 
 /** Serialise a JSON-LD object for injection via a <script> tag. */

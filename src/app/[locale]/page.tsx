@@ -16,7 +16,7 @@ import {
   DishesRow,
 } from "@/components/HomeSections";
 import { pillars, site } from "@/lib/site";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, composeDescription } from "@/lib/seo";
 import {
   areasHref,
   cityHref,
@@ -44,8 +44,13 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     path: "/",
-    title: site.name,
-    description: t("heroSubtitle"),
+    // The most-linked page on the site was titled with one word. buildMetadata
+    // leaves `site.name` alone rather than appending it twice, so the tagline
+    // has to be part of the title here — it is what a search result shows,
+    // and "ThessalonikiHub" on its own says nothing to anyone who has not
+    // already heard of it.
+    title: `${site.name} — ${t("heroTagline")}`,
+    description: composeDescription([t("heroSubtitle")]),
   });
 }
 

@@ -14,7 +14,10 @@ export const collections: Collection[] = [
     pillar: "discover",
     facet: "intent",
     match: "unesco",
-    title: { el: "Τα Μνημεία UNESCO της Θεσσαλονίκης", en: "UNESCO Monuments of Thessaloniki" },
+    // Shared, word for word, with the guide at /guides/unesco-monuments-of-
+    // thessaloniki, which left two Greek URLs competing for one query. This
+    // page is the list; the guide is the article.
+    title: { el: "Μνημεία UNESCO Θεσσαλονίκης: ο πλήρης κατάλογος", en: "UNESCO Monuments of Thessaloniki: the full list" },
     heading: { el: "Μνημεία UNESCO", en: "UNESCO Monuments" },
     intro: {
       el: "Το 1988 η UNESCO ενέταξε **15 Παλαιοχριστιανικά και Βυζαντινά Μνημεία** της Θεσσαλονίκης στον Κατάλογο Μνημείων Παγκόσμιας Κληρονομιάς. Ναοί με ψηφιδωτά, ένα μοναστήρι, ένα λουτρό και τα τείχη της πόλης συνθέτουν μια αδιάσπαστη ιστορία **έντεκα αιώνων**, από τον 4ο ως τον 15ο.\n\nΤο μοναδικό αυτό σύνολο κάνει τη Θεσσαλονίκη υπαίθριο μουσείο βυζαντινής τέχνης. Παρακάτω θα βρεις τα σημαντικότερα μνημεία που μπορείς να επισκεφθείς. Τα περισσότερα με ελεύθερη είσοδο και σε απόσταση περιπάτου.",
@@ -146,7 +149,8 @@ export const collections: Collection[] = [
     pillar: "discover",
     facet: "intent",
     match: "family",
-    title: { el: "Θεσσαλονίκη με Παιδιά", en: "Thessaloniki with Kids" },
+    // Shared with the guide at /guides/thessaloniki-with-kids; same reason.
+    title: { el: "Θεσσαλονίκη με παιδιά: αξιοθέατα και μέρη", en: "Thessaloniki with kids: sights and places" },
     heading: { el: "Για οικογένειες", en: "For Families" },
     intro: {
       el: "Η Θεσσαλονίκη είναι φιλική για οικογένειες: ανοιχτοί χώροι, η παραλία για βόλτα με ποδήλατο και μουσεία που κρατούν το ενδιαφέρον των μικρών.\n\nΟ **Λευκός Πύργος** με τη θέα, η **Νέα Παραλία** με τις Ομπρέλες και το **Αρχαιολογικό Μουσείο** είναι ιδανικά σημεία για επίσκεψη με παιδιά. Παρακάτω οι καλύτερες προτάσεις.",

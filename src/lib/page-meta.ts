@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import type { Pillar } from "@/lib/types";
 import { pick } from "@/lib/types";
 import { pillars } from "@/lib/site";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, composeDescription } from "@/lib/seo";
 import { cityHref, collectionHref, pillarHref, placeHref } from "@/lib/links";
 import { getCollection, getPlace, getPlaces } from "@/lib/repo";
 import { getArea } from "@/content/data/areas";
@@ -20,8 +20,16 @@ export async function pillarIndexMetadata(
   return buildMetadata({
     locale,
     path: pillarHref(pillar),
-    title: `${label} — Θεσσαλονίκη`,
-    description: t(`pillars.${pillar}Desc`),
+    // The city name was hardcoded in Greek, so every English pillar page
+    // read "Stay — Θεσσαλονίκη" in the search results.
+    title: `${label} — ${t("common.city")}`,
+    // The one-line label plus the opening of the intro the page already
+    // shows. On its own the label was a 42-character fragment in a slot that
+    // renders 155.
+    description: composeDescription([
+      t(`pillars.${pillar}Desc`),
+      t(`pillarIntro.${pillar}`),
+    ]),
     // Don't index a pillar with no content yet.
     index: (await getPlaces(pillar)).length > 0,
   });
@@ -33,12 +41,19 @@ export async function cityMetadata(
 ): Promise<Metadata> {
   const t = await getTranslations({ locale });
   const label = pick(pillars[pillar].label, locale);
+  const count = (await getPlaces(pillar)).length;
   return buildMetadata({
     locale,
     path: cityHref(pillar),
     title: `${label} — ${t("listing.allIn")}`,
-    description: t(`pillars.${pillar}Desc`),
-    index: (await getPlaces(pillar)).length > 0,
+    // Deliberately not the same sentence as the pillar index above. The two
+    // pages sat in the search results with identical descriptions, competing
+    // to answer the same query; this one is the full list, and says so.
+    description: composeDescription([
+      t("listing.cityDesc", { label: label.toLowerCase(), count }),
+      t(`pillars.${pillar}Desc`),
+    ]),
+    index: count > 0,
   });
 }
 
@@ -53,7 +68,10 @@ export async function collectionMetadata(
     locale,
     path: collectionHref(collection),
     title: pick(collection.title, locale),
-    description: pick(collection.metaDescription, locale),
+    description: composeDescription([
+      pick(collection.metaDescription, locale),
+      pick(collection.intro, locale),
+    ]),
   });
 }
 

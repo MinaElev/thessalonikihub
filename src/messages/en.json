@@ -101,7 +101,8 @@
     "errorTitle": "Something went wrong",
     "errorBody": "The page failed to load. Try again: if it keeps happening, head back to the homepage.",
     "tryAgain": "Try again",
-    "popularPages": "Popular pages"
+    "popularPages": "Popular pages",
+    "city": "Thessaloniki"
   },
   "home": {
     "heroKicker": "Thessaloniki's digital guide",
@@ -146,7 +147,8 @@
     "intentMetro": "By metro",
     "intentEat": "What to eat",
     "intentSee": "UNESCO monuments",
-    "intentWeekend": "This weekend"
+    "intentWeekend": "This weekend",
+    "heroTagline": "the city guide"
   },
   "pillars": {
     "stayDesc": "Hotels, apartments and boutique stays.",
@@ -182,7 +184,8 @@
     "filterNote": "Hand-picked recommendations from our editorial team.",
     "emptyTitle": "Nothing listed here yet",
     "emptyBody": "We build this category from real, verified businesses rather than filler. Know one that belongs here?",
-    "emptyCta": "Add a business"
+    "emptyCta": "Add a business",
+    "cityDesc": "The full list: {count} {label} listings in Thessaloniki, filtered by neighbourhood and category."
   },
   "place": {
     "about": "About",

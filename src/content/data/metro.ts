@@ -569,6 +569,13 @@ The station has **one central platform** serving both directions, so you cannot 
     platforms: { el: "Μία κεντρική αποβάθρα, δύο τροχιές", en: "One central platform serving two tracks" },
     stepFree: true,
     busLines: ["33", "33Α", "39Β"],
+    photo: {
+      url: "/photos/metro-analipsi.webp",
+      alt: {
+        el: "Το επίπεδο αναμονής του σταθμού, με τις κυλιόμενες σκάλες προς την επιφάνεια και τις οθόνες πληροφόρησης πάνω από τις αποβάθρες",
+        en: "The station concourse, with the escalators up to street level and the information screens above the platforms",
+      },
+    },
     center: { lat: 40.612, lng: 22.97 },
   },
   {
@@ -868,6 +875,13 @@ Kalamaria's local line **07T** and the Chalkidiki KTEL line **04B** both call he
     platforms: { el: "Μία κεντρική αποβάθρα, δύο τροχιές", en: "One central platform serving two tracks" },
     stepFree: true,
     busLines: ["04Β", "07Τ"],
+    photo: {
+      url: "/photos/metro-aretsou.webp",
+      alt: {
+        el: "Αποβάθρα του μετρό με γυάλινες θύρες ασφαλείας, πινακίδες «Προς Μίκρα» και «Προς Νέο Σιδ. Σταθμό», και τον ανελκυστήρα στο κέντρο",
+        en: "A metro platform with glass screen doors, signs reading “To Mikra” and “To New Railway Station”, and the lift in the middle",
+      },
+    },
     center: { lat: 40.576, lng: 22.949 },
     area: "aretsou",
     featured: true,

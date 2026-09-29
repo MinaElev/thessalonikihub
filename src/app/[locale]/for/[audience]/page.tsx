@@ -11,7 +11,7 @@ import { PlaceCard } from "@/components/PlaceCard";
 import { GuideCard } from "@/components/GuideCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, composeDescription } from "@/lib/seo";
 import { audienceHref, collectionHref } from "@/lib/links";
 import { audiences, getAudience } from "@/content/data/audiences";
 import { getCollection, getGuide, getPlacesByTags } from "@/lib/repo";
@@ -32,7 +32,10 @@ export async function generateMetadata({
     locale,
     path: audienceHref(audience),
     title: `${pick(a.name, locale)} — ${locale === "el" ? "Θεσσαλονίκη" : "Thessaloniki"}`,
-    description: pick(a.blurb, locale),
+    // The blurb alone is a headline, not a description: "Θεσσαλονίκη με
+    // παιδιά." is twenty-two characters in a slot that renders 155. The
+    // intro below it on the page says what the visit is actually like.
+    description: composeDescription([pick(a.blurb, locale), pick(a.intro, locale)]),
   });
 }
 
