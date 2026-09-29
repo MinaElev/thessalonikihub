@@ -249,6 +249,10 @@ In the heart of the centre. From here almost everything is walkable: markets, mo
 ## Good to know
 It's the handiest station for shopping in the centre, because it leaves you between Egnatia and Tsimiski, the two great parallel axes.`,
     },
+    photo: {
+      url: "/photos/metro-agias-sofias.webp",
+      alt: { el: "Η είσοδος του σταθμού Αγία Σοφία στην Εγνατία, με κόσμο να περνά και τον βυζαντινό ναό με τον τρούλο του δίπλα", en: "The Agia Sofia station entrance on Egnatia, people passing, and the domed Byzantine church beside it" },
+    },
     center: { lat: 40.6355, lng: 22.9455 },
     area: "center",
     nearbyPlaces: ["hagia-sophia", "acheiropoietos"],
@@ -330,6 +334,10 @@ The area is lively every day of the week, not just at weekends; this is a studen
       { el: "Αγγελάκη, προς τη ΔΕΘ", en: "Angelaki, toward the trade fair grounds" },
     ],
     busLines: ["01Χ", "02Κ", "11", "14", "17", "27", "28", "32Ν", "37", "43Υ", "45", "83"],
+    photo: {
+      url: "/photos/metro-sintrivani.webp",
+      alt: { el: "Η είσοδος του σταθμού Σιντριβάνι με την πινακίδα «ΣΤΑΘΜΟΣ ΣΙΝΤΡΙΒΑΝΙ / ΕΚΘΕΣΗ» και τις κυλιόμενες σκάλες, με τη Ροτόντα στο βάθος", en: "The entrance to Sintrivani station, its sign reading «ΣΤΑΘΜΟΣ ΣΙΝΤΡΙΒΑΝΙ / ΕΚΘΕΣΗ», the escalators, and the Rotunda behind" },
+    },
     center: { lat: 40.633, lng: 22.952 },
     area: "navarinou",
     nearbyPlaces: ["rotunda", "arch-of-galerius"],
@@ -413,6 +421,10 @@ In a typical Thessaloniki neighbourhood: apartment blocks, bakeries, grill house
 
 ## Good to know
 This isn't a stop for sights. It is useful, though, if you're staying to the east or want to see what the city looks like beyond its shop window.`,
+    },
+    photo: {
+      url: "/photos/metro-papafi.webp",
+      alt: { el: "Η στεγασμένη είσοδος του σταθμού Παπάφη με την πινακίδα «ΣΤΑΣΗ ΠΑΠΑΦΗ», κυλιόμενη σκάλα και λεωφορείο να περνά στον δρόμο", en: "The covered entrance to Papafi station, its sign reading «ΣΤΑΣΗ ΠΑΠΑΦΗ», an escalator, and a bus passing on the street" },
     },
     center: { lat: 40.622, lng: 22.96 },
   },

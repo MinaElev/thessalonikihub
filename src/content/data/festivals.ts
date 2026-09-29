@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/types";
+import type { Localized, Photo } from "@/lib/types";
 
 /**
  * Thessaloniki's institutional festivals, permanent anchor pages.
@@ -31,6 +31,8 @@ export interface Festival {
   /** Slug of the month page this festival belongs to. */
   monthSlug: string;
   featured?: boolean;
+  /** The festival as one image. */
+  photo?: Photo;
 }
 
 export const festivals: Festival[] = [
@@ -44,6 +46,10 @@ export const festivals: Festival[] = [
     month: 9,
     monthLabel: { el: "Σεπτέμβριος", en: "September" },
     founded: 1926,
+    photo: {
+      url: "/photos/festival-deth-diethnis-ekthesi.webp",
+      alt: { el: "Το εκθεσιακό κέντρο της ΔΕΘ από ψηλά, με τα περίπτερα, τα πλήθη στους διαδρόμους και τον Πύργο του ΟΤΕ να ξεχωρίζει", en: "The trade fair grounds from above, the pavilions, crowds in the avenues between them and the OTE Tower standing over it" },
+    },
     monthSlug: "september",
     area: "waterfront",
     metroStation: "panepistimio",
@@ -181,6 +187,10 @@ Beyond the screenings, the festival brings masterclasses, retrospectives, conver
     month: 10,
     monthLabel: { el: "Οκτώβριος", en: "October" },
     founded: 1966,
+    photo: {
+      url: "/photos/festival-dimitria.webp",
+      alt: { el: "Συναυλία στην πλατεία μπροστά από τον Λευκό Πύργο, με φωτισμένη σκηνή, πλήθος κόσμου και τον πύργο λουσμένο σε χρωματιστό φωτισμό το σούρουπο", en: "A concert on the square in front of the White Tower, a lit stage, a large crowd and the tower washed in coloured light at dusk" },
+    },
     monthSlug: "october",
     area: "center",
     metroStation: "agias-sofias",
@@ -247,6 +257,10 @@ The Dimitria falls in the most Thessalonian month of the year. On **26 October**
     month: 3,
     monthLabel: { el: "Μάρτιος", en: "March" },
     founded: 1999,
+    photo: {
+      url: "/photos/festival-ntokimanter.webp",
+      alt: { el: "Ο κινηματογράφος Ολύμπιον με πανό του φεστιβάλ, και υπαίθρια προβολή σε οθόνη στην παραλία με τον Λευκό Πύργο στο βάθος", en: "The Olympion cinema hung with festival banners, and an open-air screening on the waterfront with the White Tower behind" },
+    },
     monthSlug: "march",
     area: "limani",
     metroStation: "venizelou",

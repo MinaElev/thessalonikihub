@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import {
@@ -53,6 +54,7 @@ export async function generateMetadata({
         ? `${name} — τι είναι, πότε γίνεται, πού`
         : `${name} — what it is, when and where`,
     description: pick(f.blurb, locale),
+    images: f.photo ? [f.photo.url] : undefined,
   });
 }
 
@@ -88,6 +90,7 @@ export default async function FestivalPage({
           "@type": "Festival",
           name,
           description: pick(f.blurb, locale),
+          ...(f.photo ? { image: f.photo.url } : {}),
           // `url` was the organiser's own site, which handed the entity to
           // them; that belongs in `sameAs`. This page is the url.
           url: absoluteUrl(locale, festivalHref(f.slug)),
@@ -141,6 +144,21 @@ export default async function FestivalPage({
         </h1>
         <p className="mt-3 text-lg text-muted">{pick(f.blurb, locale)}</p>
       </header>
+
+      {f.photo ? (
+        <figure className="mb-8">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-slate-100">
+            <Image
+              src={f.photo.url}
+              alt={pick(f.photo.alt, locale)}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
+          </div>
+        </figure>
+      ) : null}
 
       <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
         <div className="min-w-0">
