@@ -66,7 +66,7 @@
     "subtitle": "Search the whole site: places, events, guides, areas, metro stations, dishes and walks.",
     "placeholder": "What are you looking for?",
     "button": "Search",
-    "resultsFor": "{count} results for \"{q}\"",
+    "resultsFor": "{count, plural, one {# result} other {# results}} for “{q}”",
     "places": "Places",
     "events": "Events",
     "guides": "Guides",
@@ -78,7 +78,8 @@
     "dishes": "Dishes",
     "routes": "Walks",
     "daytrips": "Day trips",
-    "audiences": "For you"
+    "audiences": "For you",
+    "startHere": "Start here"
   },
   "common": {
     "skipToContent": "Skip to content",

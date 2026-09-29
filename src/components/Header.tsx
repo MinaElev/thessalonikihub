@@ -1,5 +1,5 @@
-import { useTranslations } from "next-intl";
-import { User, ChevronDown, Menu } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { User, ChevronDown, Menu, Search } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { MenuAutoClose } from "@/components/MenuAutoClose";
 import { Container } from "@/components/ui";
@@ -63,6 +63,11 @@ const exploreGroups = [
 
 export function Header() {
   const t = useTranslations("nav");
+  const ts = useTranslations("search");
+  const locale = useLocale();
+  // A plain GET form, so search works with JavaScript switched off and the
+  // result is a shareable URL. `Link` cannot express a form action.
+  const searchAction = locale === "el" ? "/search" : `/${locale}/search`;
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur">
@@ -122,6 +127,16 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
+          {/* Desktop only: the phone gets a real field in the row below.
+              There is about 145px of slack in the bar at 1440 and less as it
+              narrows, which is not enough for an input anyone could type in. */}
+          <Link
+            href="/search"
+            aria-label={t("search")}
+            className="hidden rounded-full border border-slate-200 p-2 text-slate-600 transition hover:border-brand-300 hover:text-brand-700 lg:inline-flex"
+          >
+            <Search className="h-4 w-4" />
+          </Link>
           <Link
             href="/submit"
             className="hidden whitespace-nowrap rounded-full bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700 sm:inline-block"
@@ -139,67 +154,90 @@ export function Header() {
         </div>
       </Container>
 
-      {/* Mobile / tablet: one button opening the same grouped structure,
-          instead of a long horizontal scroll of every link. */}
-      <details data-menu className="group border-t border-slate-100 lg:hidden [&_summary::-webkit-details-marker]:hidden">
-        {/* <summary> must be the first child of <details>, otherwise the
-            browser ignores it and renders its own "Details" marker. */}
-        <summary className="cursor-pointer list-none">
-          <Container className="flex items-center gap-2 py-3 text-sm font-semibold text-slate-700">
-            <Menu className="h-5 w-5 text-brand-600" />
-            {t("menu")}
-            <ChevronDown className="ml-auto h-4 w-4 transition group-open:rotate-180" />
-          </Container>
-        </summary>
-        <nav
-          aria-label="Primary mobile"
-          className="border-t border-slate-100 bg-slate-50"
-        >
-          <Container className="py-4">
-            <ul className="grid grid-cols-2 gap-1 sm:grid-cols-3">
-              {primaryNav.map((item) => (
-                <li key={item.key}>
-                  <Link
-                    href={item.href}
-                    className="block rounded-xl bg-white px-3 py-2.5 text-sm font-semibold text-brand-700 shadow-sm transition hover:bg-brand-50"
-                  >
-                    {t(item.key)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+      {/* Mobile / tablet: search and one menu button, side by side.
+          Search used to live only in the homepage hero, which meant that from
+          every other page on a phone there was no way to search at all. */}
+      <div className="border-t border-slate-100 lg:hidden">
+        <Container className="flex items-center gap-2 py-2">
+          <form
+            action={searchAction}
+            role="search"
+            className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 focus-within:border-brand-300"
+          >
+            <Search className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+            <input
+              type="search"
+              name="q"
+              placeholder={ts("placeholder")}
+              aria-label={ts("placeholder")}
+              className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-slate-400"
+            />
+          </form>
 
-            <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              {exploreGroups.map((group) => (
-                <div key={group.key}>
-                  <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-muted">
-                    {t(group.key)}
-                  </p>
-                  <ul className="grid grid-cols-2 gap-0.5">
-                    {group.items.map((item) => (
-                      <li key={item.key}>
-                        <Link
-                          href={item.href}
-                          className="block rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-white hover:text-brand-700"
-                        >
-                          {t(item.key)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <Link
-              href="/submit"
-              className="mt-5 block rounded-full bg-accent-600 px-4 py-2.5 text-center text-sm font-semibold text-white sm:hidden"
+          <details data-menu className="group shrink-0 [&_summary::-webkit-details-marker]:hidden">
+            {/* <summary> must be the first child of <details>, otherwise the
+                browser ignores it and renders its own "Details" marker. */}
+            <summary className="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 group-open:border-brand-300 group-open:text-brand-700">
+              <Menu className="h-4 w-4 text-brand-600" />
+              {t("menu")}
+              <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
+            </summary>
+            <nav
+              aria-label="Primary mobile"
+              /* Anchored to the header itself, which is `sticky` and so a
+                 containing block, so the panel spans the full width rather
+                 than the width of this button. Capped and scrollable because
+                 the full menu is taller than a phone screen, and a sticky
+                 header taller than the viewport traps the page. */
+              className="absolute inset-x-0 top-full max-h-[70vh] overflow-y-auto border-y border-slate-100 bg-slate-50 shadow-lg"
             >
-              + {t("submit")}
-            </Link>
-          </Container>
-        </nav>
-      </details>
+              <Container className="py-4">
+                <ul className="grid grid-cols-2 gap-1 sm:grid-cols-3">
+                  {primaryNav.map((item) => (
+                    <li key={item.key}>
+                      <Link
+                        href={item.href}
+                        className="block rounded-xl bg-white px-3 py-2.5 text-sm font-semibold text-brand-700 shadow-sm transition hover:bg-brand-50"
+                      >
+                        {t(item.key)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                  {exploreGroups.map((group) => (
+                    <div key={group.key}>
+                      <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-muted">
+                        {t(group.key)}
+                      </p>
+                      <ul className="grid grid-cols-2 gap-0.5">
+                        {group.items.map((item) => (
+                          <li key={item.key}>
+                            <Link
+                              href={item.href}
+                              className="block rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-white hover:text-brand-700"
+                            >
+                              {t(item.key)}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/submit"
+                  className="mt-5 block rounded-full bg-accent-600 px-4 py-2.5 text-center text-sm font-semibold text-white sm:hidden"
+                >
+                  + {t("submit")}
+                </Link>
+              </Container>
+            </nav>
+          </details>
+        </Container>
+      </div>
     </header>
   );
 }

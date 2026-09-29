@@ -28,7 +28,7 @@ const LABEL: Record<string, { el: string; en: string }> = {
   workshop: { el: "Εργαστήρι", en: "Workshop" },
   sport: { el: "Αθλητικά", en: "Sport" },
   market: { el: "Αγορά", en: "Market" },
-  family: { el: "Για οικογένειες", en: "For families" },
+  family: { el: "Οικογένεια", en: "Family" },
   other: { el: "Εκδήλωση", en: "Event" },
 };
 

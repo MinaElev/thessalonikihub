@@ -11,6 +11,12 @@
  *
  * Writes 1200x630 WebP to public/photos/event-<category>.webp — the size
  * Facebook, X and LinkedIn all crop from without letterboxing.
+ *
+ * Everything that has to be read is CENTRED, and lives inside the middle
+ * 630x630 square. The event cards crop these to a square thumbnail, and a
+ * left-aligned label lost its first two thirds to that crop: "Προβολή"
+ * arrived on the homepage as "ολή". Anything placed outside the safe square
+ * is decoration that may legitimately be cropped away.
  */
 import sharp from "sharp";
 import { mkdir } from "node:fs/promises";
@@ -38,57 +44,64 @@ const CATEGORIES = {
   workshop: { label: "Εργαστήρι", hue: 64, mark: "grid" },
   sport: { label: "Αθλητικά", hue: -34, mark: "track" },
   market: { label: "Αγορά", hue: 20, mark: "grid" },
-  family: { label: "Για οικογένειες", hue: 46, mark: "arcs" },
+  // "Για οικογένειες" is too wide for the safe square; the card is a
+  // category marker, not a sentence, so the short form is the right one.
+  family: { label: "Οικογένεια", hue: 46, mark: "arcs" },
   other: { label: "Εκδήλωση", hue: 8, mark: "lines" },
 };
 
-/** The decorative mark, drawn large and low-contrast so the label stays first. */
+/**
+ * The decorative mark, drawn large and low-contrast so the label stays first.
+ *
+ * Drawn around the canvas centre (600, 315) rather than off to one side, so a
+ * square crop keeps it rather than a blank corner.
+ */
 function mark(kind) {
   const stroke = 'stroke="#ffffff" fill="none" stroke-linecap="round" stroke-opacity="0.16"';
   switch (kind) {
     case "waves":
       return Array.from({ length: 7 }, (_, i) => {
         const y = 120 + i * 62;
-        return `<path d="M760 ${y} q60 -44 120 0 t120 0 t120 0" ${stroke} stroke-width="14"/>`;
+        return `<path d="M420 ${y} q60 -44 120 0 t120 0 t120 0" ${stroke} stroke-width="14"/>`;
       }).join("");
     case "curtain":
       return Array.from({ length: 6 }, (_, i) => {
-        const x = 780 + i * 72;
+        const x = 420 + i * 72;
         return `<path d="M${x} 70 q26 250 0 500" ${stroke} stroke-width="18"/>`;
       }).join("");
     case "arcs":
       return Array.from({ length: 5 }, (_, i) => {
         const r = 90 + i * 68;
-        return `<circle cx="1010" cy="330" r="${r}" ${stroke} stroke-width="12"/>`;
+        return `<circle cx="600" cy="315" r="${r}" ${stroke} stroke-width="12"/>`;
       }).join("");
     case "bunting":
       return Array.from({ length: 8 }, (_, i) => {
-        const x = 750 + i * 62;
+        const x = 405 + i * 62;
         return `<path d="M${x} 130 l31 78 l31 -78" ${stroke} stroke-width="12"/>`;
-      }).join("") + `<path d="M750 130 h496" ${stroke} stroke-width="10"/>`;
+      }).join("") + `<path d="M405 130 h434" ${stroke} stroke-width="10"/>`;
     case "beam":
-      return `<path d="M760 315 L1240 90 L1240 540 Z" ${stroke} stroke-width="14"/>
-              <circle cx="740" cy="315" r="52" ${stroke} stroke-width="14"/>`;
+      return `<path d="M420 315 L900 90 L900 540 Z" ${stroke} stroke-width="14"/>
+              <circle cx="400" cy="315" r="52" ${stroke} stroke-width="14"/>`;
     case "frames":
       return Array.from({ length: 3 }, (_, i) => {
-        const x = 770 + i * 150;
+        const x = 405 + i * 150;
         return `<rect x="${x}" y="${170 + (i % 2) * 60}" width="120" height="170" rx="8" ${stroke} stroke-width="12"/>`;
       }).join("");
     case "track":
       return Array.from({ length: 4 }, (_, i) => {
         const inset = i * 40;
-        return `<rect x="${740 + inset}" y="${150 + inset}" width="${460 - inset * 2}" height="${330 - inset * 2}" rx="${165 - inset}" ${stroke} stroke-width="12"/>`;
+        return `<rect x="${400 + inset}" y="${150 + inset}" width="${460 - inset * 2}" height="${330 - inset * 2}" rx="${165 - inset}" ${stroke} stroke-width="12"/>`;
       }).join("");
     case "grid":
       return Array.from({ length: 4 }, (_, r) =>
         Array.from({ length: 4 }, (_, c) =>
-          `<rect x="${770 + c * 110}" y="${120 + r * 110}" width="76" height="76" rx="10" ${stroke} stroke-width="10"/>`,
+          `<rect x="${415 + c * 110}" y="${120 + r * 110}" width="76" height="76" rx="10" ${stroke} stroke-width="10"/>`,
         ).join(""),
       ).join("");
     default:
       return Array.from({ length: 6 }, (_, i) => {
         const y = 150 + i * 66;
-        return `<path d="M770 ${y} h${200 + (i % 3) * 120}" ${stroke} stroke-width="16"/>`;
+        return `<path d="M410 ${y} h${200 + (i % 3) * 120}" ${stroke} stroke-width="16"/>`;
       }).join("");
   }
 }
@@ -134,12 +147,12 @@ function svg({ label, hue, mark: markKind }) {
   <rect width="${W}" height="${H}" fill="url(#g)"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
   ${mark(markKind)}
-  <rect x="80" y="238" width="64" height="7" rx="3.5" fill="${ACCENT}"/>
-  <text x="80" y="330" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
-        font-size="76" font-weight="800" letter-spacing="-1.6" fill="#ffffff">${label}</text>
-  <text x="80" y="386" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
+  <rect x="568" y="228" width="64" height="7" rx="3.5" fill="${ACCENT}"/>
+  <text x="600" y="322" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="64" font-weight="800" letter-spacing="-1.4" fill="#ffffff">${label}</text>
+  <text x="600" y="372" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
         font-size="26" font-weight="500" fill="#ffffff" fill-opacity="0.72">στη Θεσσαλονίκη</text>
-  <text x="80" y="556" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
+  <text x="600" y="556" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
         font-size="23" font-weight="700" letter-spacing="0.4" fill="#ffffff" fill-opacity="0.86">ThessalonikiHub</text>
 </svg>`;
 }

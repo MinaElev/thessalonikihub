@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { EventItem } from "@/lib/types";
 import { pick } from "@/lib/types";
-import { eventBlurb } from "@/lib/event-blurb";
+import { eventSummary } from "@/lib/event-blurb";
 import { eventCover } from "@/lib/event-cover";
 import { eventHref } from "@/lib/links";
 import { formatEventWhen } from "@/lib/format";
@@ -26,6 +26,7 @@ export function EventCard({
   locale: Locale;
 }) {
   const photo = eventCover(event);
+  const summary = eventSummary(event, locale);
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
   return (
@@ -43,12 +44,19 @@ export function EventCard({
         />
       </div>
       <div className="min-w-0 flex-1">
-        <Heading className="truncate font-bold text-ink group-hover:text-brand-700">
+        {/* Two lines, not one. Imported titles are long — "Προβολή 'Love me
+            tender'" arrived truncated to "Προβολή \"Love me tend…" — and a
+            card whose heading is cut mid-word tells the reader nothing. */}
+        <Heading className="line-clamp-2 font-bold leading-snug text-ink group-hover:text-brand-700">
           {pick(event.name, locale)}
         </Heading>
-        <p className="mt-0.5 line-clamp-2 text-sm text-muted">
-          {eventBlurb(event, locale)}
-        </p>
+        {/* Only the event's own words. Where a feed gave none, eventBlurb
+            falls back to the venue and date — which is exactly what the row
+            below already shows, so the card printed the date twice and spent
+            a line on "An event in Thessaloniki". */}
+        {summary ? (
+          <p className="mt-0.5 line-clamp-2 text-sm text-muted">{summary}</p>
+        ) : null}
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
           <span className="inline-flex items-center gap-1">
             <CalendarDays className="h-3.5 w-3.5" />

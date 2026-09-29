@@ -76,6 +76,51 @@
   a {
     color: inherit;
   }
+
+  /*
+    One visible focus ring, brand-coloured, for whoever is navigating by
+    keyboard.
+
+    The browser default is a thin outline that the eye loses against the cards
+    and photographs this site is mostly made of, and several components set
+    `outline-none` on focus so they can draw their own — which left a keyboard
+    user with nothing at all on the rest. :focus-visible means a mouse click
+    never draws it; only keyboard focus does.
+  */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /*
+    Anchored jumps must clear the sticky header, or the thing you jumped to
+    is sitting underneath it. The header is 64px on desktop and carries a
+    second row on mobile, so this is generous on purpose.
+  */
+  :target,
+  #main {
+    scroll-margin-top: 7rem;
+  }
+}
+
+/*
+  Honour the system setting for reduced motion.
+
+  Vestibular disorders make the entrance animation and the card zooms
+  genuinely unpleasant, and the operating system already knows who has asked
+  not to see them. Transitions are cut to near-zero rather than removed, so
+  anything relying on a transitionend event still fires.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Rich text (markdown-rendered guide/description bodies). */

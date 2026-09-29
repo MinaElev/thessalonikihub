@@ -66,7 +66,7 @@
     "subtitle": "Αναζήτησε σε όλο το site: μέρη, events, οδηγούς, περιοχές, στάσεις μετρό, πιάτα και διαδρομές.",
     "placeholder": "Τι ψάχνεις;",
     "button": "Αναζήτηση",
-    "resultsFor": "{count} αποτελέσματα για «{q}»",
+    "resultsFor": "{count, plural, one {# αποτέλεσμα} other {# αποτελέσματα}} για «{q}»",
     "places": "Μέρη",
     "events": "Events",
     "guides": "Οδηγοί",
@@ -78,7 +78,8 @@
     "dishes": "Πιάτα",
     "routes": "Διαδρομές",
     "daytrips": "Εκδρομές",
-    "audiences": "Για σένα"
+    "audiences": "Για σένα",
+    "startHere": "Ξεκίνα από εδώ"
   },
   "common": {
     "skipToContent": "Μετάβαση στο περιεχόμενο",

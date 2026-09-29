@@ -57,6 +57,30 @@ const GROUP_LABEL: Record<SearchKind, string> = {
   audience: "audiences",
 };
 
+/**
+ * Where to send someone who opened search with nothing in mind.
+ *
+ * Deliberately the site's own sections rather than invented "popular"
+ * searches: these are real destinations, and every label already exists in
+ * the navigation, so the words here and in the menu stay the same words.
+ */
+const BROWSE = [
+  { href: "/today", key: "home.intentToday" },
+  { href: "/this-weekend", key: "home.intentWeekend" },
+  { href: "/eat", key: "nav.eat" },
+  { href: "/drink", key: "nav.drink" },
+  { href: "/stay", key: "nav.stay" },
+  { href: "/discover", key: "nav.discover" },
+  { href: "/events", key: "nav.events" },
+  { href: "/areas", key: "nav.areas" },
+  { href: "/metro", key: "nav.metro" },
+  { href: "/what-to-eat", key: "nav.whatToEat" },
+  { href: "/guides", key: "nav.guides" },
+  { href: "/routes", key: "nav.routes" },
+  { href: "/day-trips", key: "nav.dayTrips" },
+  { href: "/map", key: "nav.map" },
+] as const;
+
 /** A compact row for content types that have no card component of their own. */
 function HitRow({ hit }: { hit: SearchHit }) {
   return (
@@ -124,7 +148,33 @@ export default async function SearchPage({
 
       {q ? (
         <p className="mb-8 text-muted">{t("search.resultsFor", { count: total, q })}</p>
-      ) : null}
+      ) : (
+        /*
+         * Arriving here with no query used to mean a heading, a box and empty
+         * space. Now that search is reachable from the header on every page,
+         * that empty state is somewhere people land often — so it offers the
+         * questions they actually arrive with, and a way into each kind of
+         * thing the site holds.
+         */
+        <div className="mb-8">
+          <p className="mb-3 text-muted">{t("search.subtitle")}</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">
+            {t("search.startHere")}
+          </p>
+          <ul className="flex flex-wrap gap-2">
+            {BROWSE.map(({ href, key }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="inline-block rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-brand-300 hover:text-brand-700"
+                >
+                  {t(key)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {GROUP_ORDER.filter((kind) => groups.has(kind)).map((kind) => {
         const list = groups.get(kind)!;
