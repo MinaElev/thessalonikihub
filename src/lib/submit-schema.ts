@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Localized } from "@/lib/types";
+import { typeOptions } from "@/content/data/place-types";
 
 /** Categories a registered user can submit (DISCOVER is editorial-only). */
 export type SubmitCategory =
@@ -39,8 +40,6 @@ export interface CategoryConfig {
   types?: { key: string; label: Localized<string> }[];
 }
 
-const t = (key: string, el: string, en: string) => ({ key, label: { el, en } });
-
 export const submitCategories: CategoryConfig[] = [
   {
     key: "stay",
@@ -53,64 +52,27 @@ export const submitCategories: CategoryConfig[] = [
     label: { el: "Φαγητό", en: "Food" },
     blurb: { el: "Εστιατόριο, μεζεδοπωλείο, brunch, καφέ…", en: "Restaurant, meze, brunch, café…" },
     sections: { amenities: true, priceRange: true, location: true, bookingUrl: true },
-    types: [
-      t("taverna", "Ταβέρνα", "Taverna"),
-      t("mezedopoleio", "Μεζεδοπωλείο", "Mezedopoleio"),
-      t("tsipouradiko", "Τσιπουράδικο", "Tsipouradiko"),
-      t("ouzeri", "Ουζερί", "Ouzeri"),
-      t("psarotaverna", "Ψαροταβέρνα", "Fish taverna"),
-      t("restaurant", "Εστιατόριο", "Restaurant"),
-      t("psistaria", "Ψησταριά", "Grill house"),
-      t("souvlaki", "Σουβλατζίδικο", "Souvlaki"),
-      t("bougatsadiko", "Μπουγατσάδικο", "Bougatsa shop"),
-      t("bakery", "Φούρνος / Αρτοποιείο", "Bakery"),
-      t("patisserie", "Ζαχαροπλαστείο", "Patisserie"),
-      t("brunch", "Brunch", "Brunch"),
-      t("cafe", "Καφέ", "Café"),
-      t("street-food", "Street food", "Street food"),
-      t("pizzeria", "Πιτσαρία", "Pizzeria"),
-      t("ethnic", "Εθνική κουζίνα", "World cuisine"),
-      t("vegan", "Vegan / χορτοφαγικό", "Vegan / vegetarian"),
-      t("fine-dining", "Fine dining", "Fine dining"),
-      t("other", "Άλλο", "Other"),
-    ],
+    types: typeOptions([
+      "taverna", "mezedopoleio", "tsipouradiko", "ouzeri", "psarotaverna", "restaurant", "psistaria", "souvlaki", "bougatsadiko", "bakery", "patisserie", "brunch", "cafe", "street-food", "pizzeria", "ethnic", "vegan", "fine-dining", "other",
+    ]),
   },
   {
     key: "drink",
     label: { el: "Ποτό", en: "Drink" },
     blurb: { el: "Bar, cocktail bar, rooftop, live…", en: "Bar, cocktail bar, rooftop, live…" },
     sections: { amenities: true, priceRange: true, location: true, bookingUrl: true },
-    types: [
-      t("bar", "Μπαρ", "Bar"),
-      t("cocktail-bar", "Cocktail bar", "Cocktail bar"),
-      t("rooftop-bar", "Rooftop bar", "Rooftop bar"),
-      t("wine-bar", "Wine bar", "Wine bar"),
-      t("brewery", "Μπυραρία", "Brewery / beer bar"),
-      t("cafe-bar", "Καφέ-μπαρ", "Café-bar"),
-      t("live-venue", "Μαγαζί με ζωντανή μουσική", "Live music venue"),
-      t("club", "Club", "Club"),
-      t("beach-bar", "Beach bar", "Beach bar"),
-      t("other", "Άλλο", "Other"),
-    ],
+    types: typeOptions([
+      "bar", "cocktail-bar", "rooftop-bar", "wine-bar", "brewery", "cafe-bar", "live-venue", "club", "beach-bar", "other",
+    ]),
   },
   {
     key: "experiences",
     label: { el: "Εμπειρία", en: "Experience" },
     blurb: { el: "Ξενάγηση, food tour, δραστηριότητα…", en: "Tour, food tour, activity…" },
     sections: { amenities: true, priceRange: true, location: true, bookingUrl: true },
-    types: [
-      t("guided-tour", "Ξενάγηση", "Guided tour"),
-      t("walking-tour", "Περιπατητική ξενάγηση", "Walking tour"),
-      t("food-tour", "Food tour", "Food tour"),
-      t("boat-trip", "Βόλτα με σκάφος", "Boat trip"),
-      t("cooking-class", "Μάθημα μαγειρικής", "Cooking class"),
-      t("wine-tasting", "Οινογνωσία", "Wine tasting"),
-      t("workshop", "Εργαστήριο", "Workshop"),
-      t("bike-tour", "Ποδηλατική βόλτα", "Bike tour"),
-      t("photo-tour", "Φωτογραφικός περίπατος", "Photo walk"),
-      t("day-trip", "Ημερήσια εκδρομή", "Day trip"),
-      t("other", "Άλλο", "Other"),
-    ],
+    types: typeOptions([
+      "guided-tour", "walking-tour", "food-tour", "boat-trip", "cooking-class", "wine-tasting", "workshop", "bike-tour", "photo-tour", "day-trip", "other",
+    ]),
   },
   {
     key: "services",
@@ -125,20 +87,9 @@ export const submitCategories: CategoryConfig[] = [
     label: { el: "Event", en: "Event" },
     blurb: { el: "Συναυλία, φεστιβάλ, έκθεση…", en: "Concert, festival, exhibition…" },
     sections: { event: true, location: true, bookingUrl: true },
-    types: [
-      t("concert", "Συναυλία", "Concert"),
-      t("theatre", "Θέατρο", "Theatre"),
-      t("festival", "Φεστιβάλ", "Festival"),
-      t("exhibition", "Έκθεση", "Exhibition"),
-      t("cinema", "Προβολή ταινίας", "Film screening"),
-      t("dance", "Χορός / παράσταση", "Dance / performance"),
-      t("sports", "Αθλητικό", "Sports"),
-      t("kids", "Παιδικό", "For children"),
-      t("talk", "Ομιλία / σεμινάριο", "Talk / seminar"),
-      t("market", "Bazaar / αγορά", "Market / bazaar"),
-      t("party", "Πάρτι / clubbing", "Party / clubbing"),
-      t("other", "Άλλο", "Other"),
-    ],
+    types: typeOptions([
+      "concert", "theatre", "festival", "exhibition", "screening", "dance", "sport", "family", "talk", "workshop", "market", "party", "other",
+    ]),
   },
 ];
 

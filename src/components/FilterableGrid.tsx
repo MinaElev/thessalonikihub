@@ -7,6 +7,7 @@ import type { Place } from "@/lib/types";
 import { pick } from "@/lib/types";
 import { PlaceCard } from "@/components/PlaceCard";
 import { getArea } from "@/content/data/areas";
+import { placeTypeLabel } from "@/content/data/place-types";
 
 function Chip({
   active,
@@ -72,7 +73,9 @@ export function FilterableGrid({
           </Chip>
           {types.map((tp) => (
             <Chip key={tp} active={type === tp} onClick={() => setType(tp)}>
-              {tp}
+              {/* The slug, not a label, used to end up here: a Greek reader
+                  browsing the monuments was offered "landmark" and "church". */}
+              {pick(placeTypeLabel(tp), locale)}
             </Chip>
           ))}
         </div>
