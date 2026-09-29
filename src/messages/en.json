@@ -38,7 +38,8 @@
     "subtitle": "Each neighbourhood with its own character: where to stay, eat and what to see.",
     "nearby": "Nearby areas",
     "metroTitle": "Getting here by metro",
-    "metroNote": "The stations serving this neighbourhood."
+    "metroNote": "The stations serving this neighbourhood.",
+    "listedHere": "{count, plural, one {# listing} other {# listings}}"
   },
   "daytrips": {
     "title": "Day Trips from Thessaloniki",

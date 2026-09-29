@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, TrainFront } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { pick } from "@/lib/types";
@@ -9,6 +9,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
 import { areaHref } from "@/lib/links";
 import { areas } from "@/content/data/areas";
+import { getStationsForArea } from "@/content/data/metro";
+import { getAllPlaces } from "@/lib/repo";
 
 export async function generateMetadata({
   params,
@@ -34,6 +36,21 @@ export default async function AreasPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 
+  /*
+   * Sixteen cards of one line of prose each, in a fixed order, gave a reader
+   * nothing to choose on. These are the two facts that decide a neighbourhood
+   * for a visitor — can I get there on the metro, and is there anything there
+   * — and both are already in the data.
+   *
+   * Counted once here rather than per card: getAllPlaces() is cached per
+   * request, but grouping once is clearer than sixteen filters.
+   */
+  const places = await getAllPlaces();
+  const countByArea = new Map<string, number>();
+  for (const p of places) {
+    countByArea.set(p.geo.area, (countByArea.get(p.geo.area) ?? 0) + 1);
+  }
+
   return (
     <Container className="py-8">
       <Breadcrumbs
@@ -47,6 +64,8 @@ export default async function AreasPage({
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {areas.map((a) => {
+          const stations = getStationsForArea(a.slug);
+          const listed = countByArea.get(a.slug) ?? 0;
           return (
             <Link
               key={a.slug}
@@ -59,6 +78,28 @@ export default async function AreasPage({
               <span className="mt-2 flex-1 text-sm text-muted">
                 {pick(a.blurb, locale)}
               </span>
+              {/* Only what is true of this area: an area with no station and
+                  nothing listed yet shows neither, rather than a zero. */}
+              {stations.length || listed ? (
+                <span className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+                  {stations.length ? (
+                    <span className="inline-flex items-center gap-1">
+                      <TrainFront className="h-3.5 w-3.5 text-brand-600" />
+                      {stations
+                        .slice(0, 2)
+                        .map((st) => pick(st.name, locale))
+                        .join(", ")}
+                      {stations.length > 2 ? ` +${stations.length - 2}` : ""}
+                    </span>
+                  ) : null}
+                  {listed ? (
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="h-3.5 w-3.5 text-brand-600" />
+                      {t("areas.listedHere", { count: listed })}
+                    </span>
+                  ) : null}
+                </span>
+              ) : null}
               <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
                 {t("common.readMore")} <ArrowRight className="h-4 w-4" />
               </span>

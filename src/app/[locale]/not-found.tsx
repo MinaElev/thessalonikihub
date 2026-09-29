@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Search as SearchIcon, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui";
@@ -9,6 +9,7 @@ import { Container } from "@/components/ui";
  */
 export default async function NotFound() {
   const t = await getTranslations();
+  const locale = await getLocale();
 
   const shortcuts = [
     { href: "/discover", label: t("nav.discover") },
@@ -23,13 +24,20 @@ export default async function NotFound() {
 
   return (
     <Container className="py-20">
+      {/* not-found.tsx cannot export generateMetadata, so the tab and the
+          browser history showed the site's English default title over a
+          Greek page. React hoists a <title> rendered anywhere in the tree. */}
+      <title>{`${t("common.notFoundTitle")} | ThessalonikiHub`}</title>
+      <meta name="robots" content="noindex" />
       <div className="mx-auto max-w-xl text-center">
         <p className="text-6xl font-extrabold text-brand-600">404</p>
         <h1 className="mt-4 text-2xl font-bold sm:text-3xl">{t("common.notFoundTitle")}</h1>
         <p className="mt-3 text-muted">{t("common.notFoundBody")}</p>
 
         <form
-          action="/search"
+          /* Hardcoded "/search" sent an English visitor to the Greek search
+             page. The locale prefix is only omitted for the default one. */
+          action={locale === "el" ? "/search" : `/${locale}/search`}
           className="mx-auto mt-7 flex max-w-md items-center gap-2 rounded-full border border-slate-200 bg-white p-2 shadow-sm"
         >
           <SearchIcon className="ml-2 h-5 w-5 shrink-0 text-slate-400" />
