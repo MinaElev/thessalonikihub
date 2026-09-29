@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { EventItem } from "@/lib/types";
 import { pick } from "@/lib/types";
+import { eventBlurb } from "@/lib/event-blurb";
 import { eventCover } from "@/lib/event-cover";
 import { eventHref } from "@/lib/links";
 import { formatEventWhen } from "@/lib/format";
@@ -46,7 +47,7 @@ export function EventCard({
           {pick(event.name, locale)}
         </Heading>
         <p className="mt-0.5 line-clamp-2 text-sm text-muted">
-          {pick(event.summary, locale)}
+          {eventBlurb(event, locale)}
         </p>
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
           <span className="inline-flex items-center gap-1">

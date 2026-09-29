@@ -2,6 +2,7 @@ import { cache } from "react";
 import type { Locale } from "@/i18n/routing";
 import type { EventItem, Guide, Localized, Place } from "@/lib/types";
 import { pick } from "@/lib/types";
+import { eventBlurb } from "@/lib/event-blurb";
 import { getAllPlaces, getEvents, getGuides } from "@/lib/repo";
 import { areas } from "@/content/data/areas";
 import { dayTrips } from "@/content/data/daytrips";
@@ -125,7 +126,8 @@ const buildIndex = cache(async (locale: Locale): Promise<Indexed[]> => {
         kind: "event",
         id: `event-${e.slug}`,
         title: pick(e.name, locale),
-        summary: pick(e.summary, locale),
+        // Same rule as the cards: a summary that repeats the title is not one.
+        summary: eventBlurb(e, locale),
         href: eventHref(e),
         event: e,
       },

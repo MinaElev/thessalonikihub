@@ -6,6 +6,7 @@ import { CalendarDays, MapPin, Ticket } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { pick } from "@/lib/types";
+import { eventBlurb, eventBody, eventSummary } from "@/lib/event-blurb";
 import { Container } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -41,7 +42,7 @@ export async function generateMetadata({
     locale,
     path: eventHref(event),
     title: pick(event.name, locale),
-    description: pick(event.summary, locale),
+    description: eventBlurb(event, locale),
     // Always an image: an imported event with no photograph still gets its
     // category card, so a shared link never previews blank.
     images: [eventCover(event).url],
@@ -65,6 +66,8 @@ export default async function EventPage({
 
   const photo = eventCover(event);
   const share = await shareProps(locale, eventHref(event));
+  const lede = eventSummary(event, locale);
+  const body = eventBody(event, locale);
   const venueName = pick(event.venue, locale);
   const nearbyStay = event.geo ? getNearbyPlaces(event.geo, "stay", { limit: 4 }) : [];
   const nearbyEat = event.geo ? getNearbyPlaces(event.geo, "eat", { limit: 4 }) : [];
@@ -76,7 +79,7 @@ export default async function EventPage({
           "@context": "https://schema.org",
           "@type": "Event",
           name: pick(event.name, locale),
-          description: pick(event.summary, locale),
+          description: eventBlurb(event, locale),
           // schema.org accepts a bare date; sending a start time we never knew
           // would put an invented hour into Google's event rich results.
           startDate: event.timeKnown === false
@@ -134,7 +137,7 @@ export default async function EventPage({
             <h1 className="text-3xl font-extrabold sm:text-4xl">
               {pick(event.name, locale)}
             </h1>
-            <p className="mt-3 text-lg text-muted">{pick(event.summary, locale)}</p>
+            {lede ? <p className="mt-3 text-lg text-muted">{lede}</p> : null}
             <div className="mt-4">
               <ShareButton
                 url={share.url}
@@ -144,9 +147,11 @@ export default async function EventPage({
                 labels={share.labels}
               />
             </div>
-            <div className="mt-6">
-              <MarkdownBody>{pick(event.description, locale)}</MarkdownBody>
-            </div>
+            {body ? (
+              <div className="mt-6">
+                <MarkdownBody>{body}</MarkdownBody>
+              </div>
+            ) : null}
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
