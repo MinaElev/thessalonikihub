@@ -24,9 +24,17 @@ export default async function NotFound() {
 
   return (
     <Container className="py-20">
-      {/* not-found.tsx cannot export generateMetadata, so the tab and the
-          browser history showed the site's English default title over a
-          Greek page. React hoists a <title> rendered anywhere in the tree. */}
+      {/*
+        not-found.tsx cannot export generateMetadata, so the tab showed the
+        site's English default title over a Greek page. React hoists a <title>
+        rendered anywhere in the tree — but on hydration, not in the server
+        response, which still carries the layout's default for a moment.
+
+        The complete fix would be to render this content from the catch-all
+        route, which can export metadata; that route would then answer 200
+        where it now answers 404, and a soft 404 costs more than a title that
+        settles a beat late. The noindex below is server-rendered either way.
+      */}
       <title>{`${t("common.notFoundTitle")} | ThessalonikiHub`}</title>
       <meta name="robots" content="noindex" />
       <div className="mx-auto max-w-xl text-center">
