@@ -94,13 +94,21 @@
   }
 
   /*
-    Anchored jumps must clear the sticky header, or the thing you jumped to
-    is sitting underneath it. The header is 64px on desktop and carries a
-    second row on mobile, so this is generous on purpose.
+    Anchored jumps must clear the sticky header, or the heading you jumped to
+    sits underneath it. Measured, not guessed: the header is 120px on a phone
+    — the logo row plus the search row — and 64px from `lg` up, where the
+    second row is hidden. 7rem was eight pixels short on mobile.
   */
   :target,
   #main {
-    scroll-margin-top: 7rem;
+    scroll-margin-top: 8.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    :target,
+    #main {
+      scroll-margin-top: 6rem;
+    }
   }
 }
 

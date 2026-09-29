@@ -10,6 +10,7 @@ import { Container } from "@/components/ui";
 import { PlaceCard } from "@/components/PlaceCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { TableOfContents } from "@/components/TableOfContents";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
@@ -121,6 +122,7 @@ export default async function GuidePage({
           </div>
           <PhotoCredit photo={guide.cover} className="-mt-4 mb-6 text-right" />
           <p className="mb-6 text-lg text-muted">{pick(guide.excerpt, locale)}</p>
+          <TableOfContents body={pick(guide.body, locale)} label={t("guides.contents")} />
           <MarkdownBody locale={locale}>{pick(guide.body, locale)}</MarkdownBody>
         </article>
 

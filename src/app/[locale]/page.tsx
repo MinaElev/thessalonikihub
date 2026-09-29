@@ -129,8 +129,19 @@ export default async function HomePage({
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Brand overlay for legible white text over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-950/90 via-brand-900/75 to-brand-800/55" />
+        {/*
+          Brand overlay for legible white text over the photo.
+
+          Two directions, because the text block changes shape. On a wide
+          screen it occupies the left half, so the diagonal darkens that side
+          and leaves the waterfront visible on the right. On a phone the text
+          runs the full width, and that same diagonal put the darkest corner
+          and the lightest corner both behind type — the hero read as a flat
+          teal panel with the White Tower barely showing through. Vertical
+          instead: dark where the words are, clearing towards the bottom so
+          the photograph is actually in the picture.
+        */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/92 via-brand-900/78 to-brand-900/35 sm:bg-gradient-to-br sm:from-brand-950/90 sm:via-brand-900/75 sm:to-brand-800/55" />
         <Container className="relative py-16 sm:py-28">
           <div className="max-w-2xl animate-fade-up">
             <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-200">
