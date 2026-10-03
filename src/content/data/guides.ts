@@ -184,7 +184,7 @@ The feast is one day; the church stands on all the others. On a weekday it is ne
 
 - **Απόσταση:** περίπου 4 χλμ συνολικά, με μία ανηφόρα στο κομμάτι προς τον Άγιο Δημήτριο.
 - **Μουσεία και αρχαιολογικοί χώροι** έχουν ημέρα αργίας και εποχικό ωράριο που αλλάζει. Επιβεβαίωσε την ημέρα που θα πας· δεν δημοσιεύουμε ώρες που δεν ισχύουν όλο τον χρόνο.
-- **Μετρό:** αν φτάνεις με τρένο, η στάση **Νέος Σιδηροδρομικός Σταθμός** σε βάζει στη γραμμή· για το κέντρο κατέβα **Βενιζέλου** ή **Αγία Σοφία**.
+- **Μετρό:** αν φτάνεις με τρένο, η στάση **Νέος Σιδηροδρομικός Σταθμός** σε βάζει στη γραμμή· για το κέντρο κατέβα [Βενιζέλου](/metro/venizelou) ή [Αγία Σοφία](/metro/agias-sofias).
 - **Αποσκευές:** αν είσαι περαστικός για μία μέρα, άφησέ τες στον σταθμό πριν ξεκινήσεις. Η διαδρομή έχει σκάλες και ανηφόρα.
 
 ## Αν έχεις μία μέρα παραπάνω
@@ -224,7 +224,7 @@ If you must add one of the two, choose the Upper Town and give up the markets: t
 
 - **Distance:** roughly 4 km in total, with one climb on the stretch up to Saint Demetrios.
 - **Museums and archaeological sites** have a weekly closing day and seasonal hours that change. Check on the day you go; we do not publish times that are not true all year.
-- **Metro:** arriving by train, the **New Railway Station** stop puts you on the line; for the centre get off at **Venizelou** or **Agia Sofia**.
+- **Metro:** arriving by train, the **New Railway Station** stop puts you on the line; for the centre get off at [Venizelou](/en/metro/venizelou) or [Agia Sofia](/en/metro/agias-sofias).
 - **Luggage:** if you are passing through for the day, leave it at the station first. The route has steps and a hill.
 
 ## If you have one more day
