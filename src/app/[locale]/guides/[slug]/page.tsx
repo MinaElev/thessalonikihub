@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 import { pick } from "@/lib/types";
 import { PhotoCredit } from "@/components/PhotoCredit";
 import { Container } from "@/components/ui";
@@ -16,7 +17,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { guideHref } from "@/lib/links";
 import { formatDate } from "@/lib/format";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import { getGuide, getGuides, getPlaceBySlug } from "@/lib/repo";
 import { ShareButton } from "@/components/ShareButton";
 import { shareProps } from "@/lib/share";
@@ -80,8 +81,11 @@ export default async function GuidePage({
           image: guide.cover.url,
           datePublished: guide.publishedAt,
           dateModified: guide.updatedAt,
-          author: { "@type": "Organization", name: guide.author },
-          publisher: { "@type": "Organization", name: "ThessalonikiHub" },
+          // Both point at the Organization declared once in the layout, so a
+          // crawler reads one publisher across 22 guides rather than 22
+          // unconnected names.
+          author: { "@id": `${site.url}/#organization` },
+          publisher: { "@id": `${site.url}/#organization` },
           mainEntityOfPage: absoluteUrl(locale, guideHref(guide)),
           inLanguage: locale,
         }}
@@ -100,9 +104,32 @@ export default async function GuidePage({
             {pick(guide.title, locale)}
           </h1>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-3">
+            {/*
+              `<time>` rather than a bare string, and the revision date shown
+              whenever there is one: for a guide that says which museums are
+              free and where the metro reaches, when it was last checked is
+              part of whether to believe it. The byline links to the rule the
+              piece was written under.
+            */}
             <p className="text-sm text-muted">
-              {t("guides.publishedOn")} {formatDate(guide.publishedAt, locale)} ·{" "}
-              {t("guides.by")} {guide.author}
+              {t("guides.publishedOn")}{" "}
+              <time dateTime={guide.publishedAt}>
+                {formatDate(guide.publishedAt, locale)}
+              </time>
+              {guide.updatedAt && guide.updatedAt !== guide.publishedAt ? (
+                <>
+                  {" · "}
+                  {t("guides.updatedOn")}{" "}
+                  <time dateTime={guide.updatedAt}>
+                    {formatDate(guide.updatedAt, locale)}
+                  </time>
+                </>
+              ) : null}
+              {" · "}
+              {t("guides.by")}{" "}
+              <Link href="/info/about" className="underline-offset-4 hover:underline">
+                {guide.author}
+              </Link>
             </p>
             <ShareButton
               url={share.url}

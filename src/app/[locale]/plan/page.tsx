@@ -44,7 +44,17 @@ export default async function PlanPage({
    * badly — and the ones that got cut were the longer stays, which are the
    * readers who have not booked yet.
    */
-  const itineraries = getGuides().filter((g) => g.category === "itinerary");
+  /*
+   * Ordered by length, shortest first, with the themed ones after.
+   *
+   * The day count comes from the slug — "1-day-in-…", "4-days-in-…" — which
+   * is the only place it exists as a number. Source order put them 1, 2, 4,
+   * 5, romantic weekend, 3, which reads like a mistake because it is one.
+   */
+  const days = (slug: string) => Number(/^(\d+)-days?-/.exec(slug)?.[1] ?? Infinity);
+  const itineraries = getGuides()
+    .filter((g) => g.category === "itinerary")
+    .sort((a, b) => days(a.slug) - days(b.slug));
 
   return (
     <>

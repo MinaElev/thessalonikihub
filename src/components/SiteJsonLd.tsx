@@ -13,9 +13,20 @@ export function SiteJsonLd() {
         data={{
           "@context": "https://schema.org",
           "@type": "Organization",
+          // A stable identifier, so the Article author and publisher on every
+          // guide resolve to this one entity rather than to a loose name.
+          "@id": `${site.url}/#organization`,
           name: site.name,
           url: site.url,
           logo: `${site.url}/icon.svg`,
+          /*
+           * The editorial rule is written out on the About page, and this is
+           * the property that says so in a form a machine can follow. It is
+           * not decoration: the one claim this site makes about itself is
+           * that it publishes only what it can verify, and a reader — or a
+           * ranking system — should be able to go and read that claim.
+           */
+          publishingPrinciples: `${site.url}/info/about`,
           description:
             "Ανεξάρτητος ψηφιακός οδηγός για τη Θεσσαλονίκη: γειτονιές, " +
             "αξιοθέατα, φαγητό, μετρό, διαδρομές και εκδηλώσεις.",
