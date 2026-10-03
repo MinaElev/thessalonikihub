@@ -56,7 +56,8 @@
   "plan": {
     "title": "Plan Your Trip",
     "subtitle": "Everything you need to know before you come to Thessaloniki.",
-    "itineraries": "Suggested itineraries"
+    "itineraries": "Suggested itineraries",
+    "itinerariesHint": "Pick by the days you have. Each plan also says what it leaves out."
   },
   "map": {
     "title": "Thessaloniki Map",

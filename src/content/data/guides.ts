@@ -143,6 +143,209 @@ The feast is one day; the church stands on all the others. On a weekday it is ne
     featured: true,
   },
   {
+    slug: "1-day-in-thessaloniki",
+    title: { el: "Μία Μέρα στη Θεσσαλονίκη", en: "One Day in Thessaloniki" },
+    excerpt: {
+      el: "Μία διαδρομή με τα πόδια, από την Αριστοτέλους ως τη θάλασσα — και τι αφήνεις πίσω.",
+      en: "A single walk, from Aristotelous to the sea — and what you leave out.",
+    },
+    body: {
+      el: `Μία μέρα στη Θεσσαλονίκη σημαίνει ότι θα διαλέξεις. Η πόλη έχει δεκαεπτά αιώνες μνημείων μέσα σε λίγα τετραγωνικά χιλιόμετρα και δεν χωράνε σε οκτώ ώρες.
+
+Το καλό είναι ότι τα περισσότερα βρίσκονται πάνω σε **μία γραμμή**: από το κέντρο προς τη θάλασσα, με ανηφόρα στη μέση. Η διαδρομή παρακάτω είναι περίπου **τέσσερα χιλιόμετρα** και γίνεται ολόκληρη με τα πόδια. Δεν χρειάζεσαι αυτοκίνητο και δεν θα το ήθελες.
+
+## Πρωί: η καρδιά του κέντρου
+
+Ξεκίνα με **μπουγάτσα**. Δεν είναι τουριστική ατάκα: είναι το πρωινό της πόλης, τρώγεται όρθιος και κόβεται με ψαλίδι.
+
+Από εκεί, η **Πλατεία Αριστοτέλους** είναι η φυσική αφετηρία — ο άξονας που ο Ernest Hébrard άνοιξε μετά τη φωτιά του 1917 για να βλέπει στη θάλασσα. Ανέβα προς τα βόρεια και σε δέκα λεπτά είσαι στην **Αρχαία Αγορά**, το ρωμαϊκό φόρουμ της πόλης, και αμέσως μετά στον **Ναό Αγίου Δημητρίου**.
+
+Ο Άγιος Δημήτριος αξίζει τον χρόνο που θα του δώσεις. Είναι ο μεγαλύτερος ναός της πόλης, μνημείο UNESCO, και από κάτω του βρίσκεται η **κρύπτη** με τα ρωμαϊκά λουτρά όπου κατά την παράδοση μαρτύρησε ο άγιος. Η είσοδος και στα δύο είναι δωρεάν.
+
+## Μεσημέρι: οι αγορές
+
+Κατέβα στις σκεπαστές αγορές, **Μοδιάνο** και **Καπάνι**. Είναι η κοιλιά της πόλης και το πιο εύκολο μεσημεριανό που θα φας: μεζέδες στον πάγκο, **τσίπουρο** αν η μέρα το σηκώνει, χωρίς κράτηση και χωρίς μενού σε τέσσερις γλώσσες.
+
+Αν προτιμάς κάτι γρήγορο, το **κουλούρι** πωλείται σε κάθε γωνία και κοστίζει όσο ένα εισιτήριο.
+
+## Απόγευμα: η ρωμαϊκή πόλη και η θάλασσα
+
+Ανατολικά περιμένει το ρωμαϊκό συγκρότημα του 4ου αιώνα: η **Αψίδα του Γαλερίου**, που όλοι λένε Καμάρα, και εκατό μέτρα πιο πάνω η **Ροτόντα** — το αρχαιότερο κτίριο της πόλης που στέκει ακόμη όρθιο, και κατά σειρά ρωμαϊκό μαυσωλείο, χριστιανικός ναός, τζαμί και ξανά ναός.
+
+Από την Καμάρα κατεβαίνεις ευθεία στη θάλασσα και στον **Λευκό Πύργο**. Κλείσε με περπάτημα στη **Νέα Παραλία** προς τις «Ομπρέλες» του Ζογγολόπουλου. Αν η μέρα σου είναι καλοκαιρινή, φτάνεις εκεί γύρω στο ηλιοβασίλεμα, που είναι και ο λόγος που ο κόσμος κάνει αυτή τη βόλτα.
+
+## Τι αφήνεις πίσω
+
+Με μία μέρα δεν προλαβαίνεις την **Άνω Πόλη** και δεν προλαβαίνεις μουσείο. Αυτό δεν είναι αποτυχία του προγράμματος, είναι η αριθμητική του.
+
+Αν πρέπει οπωσδήποτε να προσθέσεις ένα από τα δύο, διάλεξε την Άνω Πόλη και θυσίασε τις αγορές: τα **βυζαντινά τείχη** και η θέα από ψηλά είναι κάτι που δεν θα δεις αλλού, ενώ μεζέδες θα φας και σε άλλη πόλη. Το **Αρχαιολογικό Μουσείο** και το **Μουσείο Βυζαντινού Πολιτισμού** στέκουν δίπλα-δίπλα κοντά στον Λευκό Πύργο και περιμένουν την επόμενη φορά.
+
+## Πρακτικά
+
+- **Απόσταση:** περίπου 4 χλμ συνολικά, με μία ανηφόρα στο κομμάτι προς τον Άγιο Δημήτριο.
+- **Μουσεία και αρχαιολογικοί χώροι** έχουν ημέρα αργίας και εποχικό ωράριο που αλλάζει. Επιβεβαίωσε την ημέρα που θα πας· δεν δημοσιεύουμε ώρες που δεν ισχύουν όλο τον χρόνο.
+- **Μετρό:** αν φτάνεις με τρένο, η στάση **Νέος Σιδηροδρομικός Σταθμός** σε βάζει στη γραμμή· για το κέντρο κατέβα **Βενιζέλου** ή **Αγία Σοφία**.
+- **Αποσκευές:** αν είσαι περαστικός για μία μέρα, άφησέ τες στον σταθμό πριν ξεκινήσεις. Η διαδρομή έχει σκάλες και ανηφόρα.
+
+## Αν έχεις μία μέρα παραπάνω
+
+Τότε δεν χρειάζεται να θυσιάσεις τίποτα: δες το [δίμερο πρόγραμμα](/guides/2-days-in-thessaloniki), που βάζει την Άνω Πόλη και ένα μουσείο στη δεύτερη μέρα.`,
+      en: `One day in Thessaloniki means choosing. The city holds seventeen centuries of monuments in a few square kilometres, and they do not fit into eight hours.
+
+The good news is that most of them sit on **one line**: from the centre down to the sea, with a climb in the middle. The route below is about **four kilometres** and is walked end to end. You will not need a car, and you would not want one.
+
+## Morning: the heart of the centre
+
+Start with **bougatsa**. This is not a tourist line: it is what the city has for breakfast, eaten standing up and cut with scissors.
+
+From there, **Aristotelous Square** is the natural starting point — the axis Ernest Hébrard opened after the fire of 1917 so the city would face the water. Walk north and ten minutes later you are at the **Roman Forum**, and immediately after at the **Church of Saint Demetrios**.
+
+Saint Demetrios earns whatever time you give it. It is the largest church in the city, a UNESCO monument, and underneath it lies the **crypt** with the Roman baths where tradition places the saint's martyrdom. Entry to both is free.
+
+## Midday: the markets
+
+Head down to the covered markets, **Modiano** and **Kapani**. They are the belly of the city and the easiest lunch you will eat here: meze at the counter, **tsipouro** if the day allows it, no reservation and no menu in four languages.
+
+If you want something faster, a **koulouri** is sold on every corner and costs about as much as a bus ticket.
+
+## Afternoon: the Roman city and the sea
+
+East of the centre stands the fourth-century Roman complex: the **Arch of Galerius**, which everyone calls Kamara, and a hundred metres above it the **Rotunda** — the oldest building in the city still standing, and in turn a Roman mausoleum, a church, a mosque and a church again.
+
+From Kamara you walk straight down to the sea and the **White Tower**. Finish along the **waterfront** towards Zongolopoulos's "Umbrellas". In summer you reach them around sunset, which is why locals make this walk at all.
+
+## What you are leaving out
+
+In one day you will not manage the **Upper Town**, and you will not manage a museum. That is not a failure of the plan; it is its arithmetic.
+
+If you must add one of the two, choose the Upper Town and give up the markets: the **Byzantine walls** and the view from up there are not something you will find elsewhere, whereas meze you can eat in another city. The **Archaeological Museum** and the **Museum of Byzantine Culture** stand side by side near the White Tower and will wait for next time.
+
+## Practical
+
+- **Distance:** roughly 4 km in total, with one climb on the stretch up to Saint Demetrios.
+- **Museums and archaeological sites** have a weekly closing day and seasonal hours that change. Check on the day you go; we do not publish times that are not true all year.
+- **Metro:** arriving by train, the **New Railway Station** stop puts you on the line; for the centre get off at **Venizelou** or **Agia Sofia**.
+- **Luggage:** if you are passing through for the day, leave it at the station first. The route has steps and a hill.
+
+## If you have one more day
+
+Then you do not have to give anything up: see the [two-day plan](/en/guides/2-days-in-thessaloniki), which puts the Upper Town and a museum on the second day.`,
+    },
+    category: "itinerary",
+    cover: {
+      url: "/photos/hagia-sophia.webp",
+      alt: {
+        el: "Η Αγία Σοφία Θεσσαλονίκης, ένα από τα μνημεία που προλαβαίνεις σε μία μέρα στο κέντρο",
+        en: "Hagia Sophia in Thessaloniki, one of the monuments a single day in the centre can reach",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    relatedPlaces: ["aristotelous-square", "agios-dimitrios", "rotunda", "white-tower"],
+  },
+  {
+    slug: "2-days-in-thessaloniki",
+    title: { el: "2 Ημέρες στη Θεσσαλονίκη", en: "2 Days in Thessaloniki" },
+    excerpt: {
+      el: "Η πρώτη μέρα κάτω, η δεύτερη πάνω από τα τείχη. Το πιο συνηθισμένο σαββατοκύριακο στην πόλη.",
+      en: "Day one below the walls, day two above them. The city's most common weekend.",
+    },
+    body: {
+      el: `Δύο μέρες είναι ό,τι έχει ο περισσότερος κόσμος, γιατί η Θεσσαλονίκη είναι κατεξοχήν προορισμός σαββατοκύριακου. Είναι και αρκετές: φτάνουν για να δεις τις δύο πόλεις που συνυπάρχουν εδώ, την κάτω και την πάνω.
+
+Το πρόγραμμα χωρίζεται ακριβώς έτσι. Πρώτη μέρα το κέντρο και η θάλασσα, δεύτερη η **Άνω Πόλη**. Και οι δύο γίνονται με τα πόδια.
+
+## Ημέρα 1: το κέντρο, οι αγορές, η θάλασσα
+
+Πρωινό με **μπουγάτσα** και ξεκίνημα από την **Πλατεία Αριστοτέλους**.
+
+Ανέβα προς την **Αρχαία Αγορά** και τον **Ναό Αγίου Δημητρίου** με την κρύπτη του — και τα δύο δωρεάν. Γύρνα ανατολικά για τη **Ροτόντα** και την **Αψίδα του Γαλερίου**, το ρωμαϊκό συγκρότημα του 4ου αιώνα.
+
+Μεσημέρι στις αγορές **Μοδιάνο** και **Καπάνι**: μεζέδες και **τσίπουρο** στον πάγκο.
+
+Το απόγευμα κατέβα στον **Λευκό Πύργο** και περπάτησε τη **Νέα Παραλία** ως τις «Ομπρέλες». Αν σου μείνει ενέργεια, το **Μουσείο Βυζαντινού Πολιτισμού** είναι εκεί δίπλα και είναι από τα καλύτερα της χώρας στο είδος του.
+
+Το βράδυ διάλεξε ανάμεσα σε δύο χαρακτήρες: τα **Λαδάδικα** για φαγητό σε πλακόστρωτα, ή η **Βαλαωρίτου** για ποτό σε παλιές αποθήκες που έγιναν μπαρ.
+
+## Ημέρα 2: πάνω από τα τείχη
+
+Η **Άνω Πόλη** είναι η μόνη συνοικία που γλίτωσε από τη μεγάλη πυρκαγιά του 1917, και φαίνεται: στενά σοκάκια, ξύλινα σαχνισιά, αυλές.
+
+Ανέβα — με ταξί αν δεν σηκώνεις την ανηφόρα, είναι σύντομη διαδρομή — και περπάτησε τα **Βυζαντινά Τείχη** προς τη **Μονή Βλατάδων** και το **Επταπύργιο**, τη φυλακή που έγινε μνημείο. Η θέα στον Θερμαϊκό από ψηλά είναι ο λόγος που ανέβηκες.
+
+Μεσημεριανό σε ταβέρνα της γειτονιάς με θέα, και κατέβασμα με την ησυχία σου.
+
+Το απόγευμα μένει ελεύθερο για αυτό που δεν πρόλαβες: το **Αρχαιολογικό Μουσείο**, την **Αγία Σοφία** και την **Αχειροποίητο** στο κέντρο, ή απλώς καφέ στην παραλία. Αν είσαι λάτρης του περπατήματος, η [διαδρομή της Άνω Πόλης στο ηλιοβασίλεμα](/routes/ano-poli-iliovasilema) κάνει τη δεύτερη μέρα πιο συγκεκριμένη.
+
+## Πού να μείνεις για δύο μέρες
+
+Στο **κέντρο**. Με δύο μέρες η απόσταση είναι χρόνος που δεν έχεις, και σχεδόν όλα όσα θα δεις είναι εκεί. Αν θες περισσότερη λεπτομέρεια, υπάρχει [οδηγός ανά περιοχή](/guides/where-to-stay-in-thessaloniki).
+
+## Πρακτικά
+
+- **Μετρό:** λειτουργεί από τον Νοέμβριο του 2024 και καλύπτει τον άξονα του κέντρου. Για την Άνω Πόλη δεν υπάρχει στάση — ανεβαίνεις με λεωφορείο, ταξί ή με τα πόδια.
+- **Μουσεία:** έχουν εποχικό ωράριο και ημέρα αργίας. Επιβεβαίωσέ τα πριν προγραμματίσεις τη δεύτερη μέρα γύρω τους.
+- **Παπούτσια:** η Άνω Πόλη έχει καλντερίμι και κλίση. Δεν είναι βόλτα για καινούργια παπούτσια.
+
+## Αν έχεις τρίτη μέρα
+
+Το [τριήμερο πρόγραμμα](/guides/3-days-in-thessaloniki) ξεχωρίζει τα μουσεία σε δική τους μέρα, χωρίς να στριμώχνεις τίποτα.`,
+      en: `Two days is what most people have, because Thessaloniki is above all a weekend destination. It is also enough: enough to see the two cities that live here side by side, the lower one and the upper one.
+
+The plan splits exactly that way. Day one is the centre and the sea, day two is the **Upper Town**. Both are walked.
+
+## Day 1: the centre, the markets, the sea
+
+Breakfast on **bougatsa**, starting from **Aristotelous Square**.
+
+Walk up to the **Roman Forum** and the **Church of Saint Demetrios** with its crypt — both free. Turn east for the **Rotunda** and the **Arch of Galerius**, the fourth-century Roman complex.
+
+Lunch in the **Modiano** and **Kapani** markets: meze and **tsipouro** at the counter.
+
+In the afternoon head down to the **White Tower** and walk the **waterfront** to the "Umbrellas". If you still have energy, the **Museum of Byzantine Culture** is right there and is among the best of its kind in the country.
+
+In the evening choose between two characters: **Ladadika** for dinner on cobbles, or **Valaoritou** for drinks in old warehouses turned into bars.
+
+## Day 2: above the walls
+
+The **Upper Town** is the only quarter that survived the great fire of 1917, and it shows: narrow lanes, timber-framed overhangs, courtyards.
+
+Go up — by taxi if the hill is not for you, it is a short ride — and walk the **Byzantine walls** towards **Vlatades Monastery** and the **Heptapyrgion**, the fortress that became a prison and then a monument. The view over the gulf is why you climbed.
+
+Lunch at a neighbourhood taverna with that view, then come down at your own pace.
+
+The afternoon is left for whatever you missed: the **Archaeological Museum**, **Hagia Sophia** and the **Acheiropoietos** in the centre, or simply coffee by the sea. If you like your walks mapped, the [Ano Poli at sunset route](/en/routes/ano-poli-iliovasilema) gives the second day a shape.
+
+## Where to stay for two days
+
+In the **centre**. With two days, distance is time you do not have, and nearly everything you will see is there. For more detail there is a [neighbourhood-by-neighbourhood guide](/en/guides/where-to-stay-in-thessaloniki).
+
+## Practical
+
+- **Metro:** running since November 2024, along the spine of the centre. There is no station for the Upper Town — you go up by bus, taxi or on foot.
+- **Museums:** seasonal hours and a weekly closing day. Check before you build the second afternoon around one.
+- **Shoes:** the Upper Town is cobbles and gradient. Not a walk for new shoes.
+
+## If you have a third day
+
+The [three-day plan](/en/guides/3-days-in-thessaloniki) gives the museums a day of their own, so nothing has to be squeezed.`,
+    },
+    category: "itinerary",
+    cover: {
+      url: "/photos/ano-poli.webp",
+      alt: {
+        el: "Σοκάκι της Άνω Πόλης με θέα στον Θερμαϊκό, η δεύτερη μέρα του προγράμματος",
+        en: "An Upper Town lane looking over the gulf, the second day of the plan",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    relatedPlaces: ["byzantine-walls", "vlatadon-monastery", "heptapyrgion", "white-tower"],
+    featured: true,
+  },
+  {
     slug: "3-days-in-thessaloniki",
     title: { el: "3 Ημέρες στη Θεσσαλονίκη", en: "3 Days in Thessaloniki" },
     excerpt: {
@@ -166,6 +369,194 @@ The feast is one day; the church stands on all the others. On a weekday it is ne
     updatedAt: "2026-09-08",
     relatedPlaces: ["aristotelous-square", "white-tower", "byzantine-walls", "archaeological-museum"],
     featured: true,
+  },
+  {
+    slug: "4-days-in-thessaloniki",
+    title: { el: "4 Ημέρες στη Θεσσαλονίκη", en: "4 Days in Thessaloniki" },
+    excerpt: {
+      el: "Τρεις μέρες πόλη και μία έξω από αυτήν — ή τέσσερις μέρες πόλη, αν σε ενδιαφέρει η ιστορία της.",
+      en: "Three days in the city and one outside it — or four inside, if its history is what you came for.",
+    },
+    body: {
+      el: `Στις τέσσερις μέρες η Θεσσαλονίκη αλλάζει χαρακτήρα ως προορισμός. Μέχρι τις τρεις βλέπεις τα κυριότερα· από την τέταρτη και πάνω αρχίζεις να διαλέγεις **τι σε ενδιαφέρει**, και η πόλη έχει αρκετό βάθος για να σε ανταμείψει.
+
+Οι τρεις πρώτες μέρες είναι το [τριήμερο πρόγραμμα](/guides/3-days-in-thessaloniki) όπως είναι: κέντρο και ρωμαϊκά-βυζαντινά, Άνω Πόλη, θάλασσα και μουσεία. Η τέταρτη είναι η επιλογή σου, και υπάρχουν τρεις καλές.
+
+## Επιλογή Α: η άλλη ιστορία της πόλης
+
+Η Θεσσαλονίκη δεν ήταν πάντα ελληνική πόλη με χριστιανικά μνημεία. Για πέντε αιώνες ήταν οθωμανική, και για τέσσερις ήταν η μεγαλύτερη σεφαραδίτικη πόλη της Ευρώπης — τη λέγανε «Μητέρα του Ισραήλ».
+
+Και οι δύο ιστορίες έχουν τη δική τους διαδρομή με τα πόδια: [η εβραϊκή Θεσσαλονίκη](/routes/jewish-thessaloniki-walk) και [η οθωμανική Θεσσαλονίκη](/routes/ottoman-thessaloniki-walk). Καθεμιά παίρνει ένα πρωινό και αλλάζει τον τρόπο που βλέπεις όσα είδες τις προηγούμενες μέρες.
+
+Είναι η επιλογή για όποιον κατάλαβε, κάπου στη δεύτερη μέρα, ότι αυτή η πόλη είναι πιο περίπλοκη απ' όσο έδειχνε.
+
+## Επιλογή Β: μία εκδρομή
+
+Σε λιγότερο από μιάμιση ώρα από την πόλη υπάρχουν πράγματα που δικαιολογούν τη μέρα:
+
+- **Βεργίνα**, οι βασιλικοί τάφοι των Μακεδόνων και ο τάφος του Φιλίππου Β΄. Μνημείο UNESCO, και το μουσείο είναι μέσα στον ίδιο τον ταφικό τύμβο.
+- **Όλυμπος**, για όποιον θέλει βουνό και όχι θέα βουνού.
+- **Έδεσσα**, με τους καταρράκτες, αν ταξιδεύεις με παιδιά.
+
+Η **Βεργίνα** είναι η πιο ασφαλής επιλογή αν έχεις μόνο μία μέρα για εκδρομή: είναι κοντά, είναι σκεπαστή, και δεν εξαρτάται από τον καιρό.
+
+## Επιλογή Γ: θάλασσα
+
+Από τον Μάιο ως τον Σεπτέμβριο, η τέταρτη μέρα μπορεί να είναι μέρα για μπάνιο. Μέσα στην πόλη δεν κολυμπάς — δες [πού είναι οι κοντινές παραλίες](/guides/beaches-near-thessaloniki) και πόσο μακριά είναι πραγματικά.
+
+## Πώς να μοιράσεις τη μέρα
+
+Αν διαλέξεις εκδρομή, βάλ' την **τρίτη** και όχι τέταρτη. Η τελευταία μέρα ενός ταξιδιού είναι συνήθως μισή, με αποσκευές και ώρα πτήσης, και δεν σηκώνει δύο ώρες δρόμο.
+
+Κράτα για το τέλος τα πράγματα που γίνονται μέσα στην πόλη και διακόπτονται εύκολα: ένα μουσείο, μια αγορά, έναν καφέ στην παραλία.
+
+## Πρακτικά
+
+- **Αυτοκίνητο:** το χρειάζεσαι μόνο αν κάνεις την εκδρομή και δεν σε βολεύει το ΚΤΕΛ. Για τις υπόλοιπες τρεις μέρες είναι βάρος — δες και τον [οδηγό για το πάρκινγκ](/guides/parking-in-thessaloniki).
+- **Οι δύο ιστορικές διαδρομές** περνούν από το ίδιο κομμάτι του κέντρου. Μη τις βάλεις την ίδια μέρα: είναι η ίδια περιοχή με δύο διαφορετικά βλέμματα, και το δεύτερο χάνεται.`,
+      en: `At four days Thessaloniki changes character as a destination. Up to three you are seeing the essentials; from the fourth onwards you start choosing **what interests you**, and the city has enough depth to repay that.
+
+The first three days are the [three-day plan](/en/guides/3-days-in-thessaloniki) as it stands: the centre and the Roman-Byzantine city, the Upper Town, the sea and the museums. The fourth is yours, and there are three good ways to spend it.
+
+## Option A: the city's other history
+
+Thessaloniki was not always a Greek city of Christian monuments. For five centuries it was Ottoman, and for four it was the largest Sephardic city in Europe — they called it the "Mother of Israel".
+
+Both histories have a walk of their own: [Jewish Thessaloniki](/en/routes/jewish-thessaloniki-walk) and [Ottoman Thessaloniki](/en/routes/ottoman-thessaloniki-walk). Each takes a morning and changes how you read everything you saw on the days before.
+
+This is the option for anyone who realised, somewhere around day two, that this city is more complicated than it first looked.
+
+## Option B: a day trip
+
+Within an hour and a half of the city there are places that justify the day:
+
+- **Vergina**, the royal Macedonian tombs and the tomb of Philip II. A UNESCO monument, with the museum built inside the burial mound itself.
+- **Mount Olympus**, for anyone who wants a mountain rather than a view of one.
+- **Edessa** and its waterfalls, if you are travelling with children.
+
+**Vergina** is the safest choice if you only have one day for a trip: it is close, it is indoors, and it does not depend on the weather.
+
+## Option C: the sea
+
+From May to September the fourth day can be a swimming day. You do not swim in the city itself — see [where the nearest beaches are](/en/guides/beaches-near-thessaloniki) and how far away they actually are.
+
+## Where to place the day
+
+If you choose a day trip, make it the **third** day, not the fourth. The last day of a trip is usually half a day, with luggage and a flight time, and it will not take two hours of road.
+
+Keep for the end the things that happen inside the city and are easy to interrupt: a museum, a market, a coffee by the sea.
+
+## Practical
+
+- **A car:** you need one only for the day trip, and only if the intercity buses do not suit you. For the other three days it is a liability — see the [parking guide](/en/guides/parking-in-thessaloniki).
+- **The two historical walks** cross the same part of the centre. Do not put them on the same day: it is one neighbourhood seen through two different eyes, and the second pair is wasted.`,
+    },
+    category: "itinerary",
+    cover: {
+      url: "/photos/heptapyrgion.webp",
+      alt: {
+        el: "Το Επταπύργιο πάνω από την πόλη, στην άκρη του τετραήμερου προγράμματος",
+        en: "The Heptapyrgion above the city, at the far end of the four-day plan",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    relatedPlaces: ["heptapyrgion", "archaeological-museum", "roman-forum", "hagia-sophia"],
+  },
+  {
+    slug: "5-days-in-thessaloniki",
+    title: { el: "5 Ημέρες στη Θεσσαλονίκη", en: "5 Days in Thessaloniki" },
+    excerpt: {
+      el: "Η πόλη ως βάση: τρεις μέρες μέσα της και δύο εκδρομές, χωρίς να αλλάξεις ξενοδοχείο.",
+      en: "The city as a base: three days in it and two trips out, without changing hotel.",
+    },
+    body: {
+      el: `Με πέντε μέρες σταματάς να είσαι επισκέπτης της Θεσσαλονίκης και γίνεσαι επισκέπτης της **Μακεδονίας**, με τη Θεσσαλονίκη ως βάση.
+
+Αυτό είναι και το ατού της πόλης: ό,τι αξίζει να δεις γύρω της είναι μέσα σε ακτίνα μιάμισης ώρας, οπότε δεν χρειάζεται να αλλάζεις ξενοδοχείο κάθε δύο βράδια.
+
+## Μέρες 1-3: η πόλη
+
+Το [τριήμερο πρόγραμμα](/guides/3-days-in-thessaloniki) όπως είναι. Κέντρο και ρωμαϊκά-βυζαντινά μνημεία, **Άνω Πόλη** και τείχη, θάλασσα και μουσεία.
+
+Αν σε τραβάει η ιστορία, αντικατέστησε ένα απόγευμα με [την εβραϊκή](/routes/jewish-thessaloniki-walk) ή [την οθωμανική διαδρομή](/routes/ottoman-thessaloniki-walk).
+
+## Μέρα 4: Βεργίνα
+
+Η **Βεργίνα** — η αρχαία **Αιγές**, πρώτη πρωτεύουσα του μακεδονικού βασιλείου — είναι η εκδρομή που κάνει το υπόλοιπο ταξίδι να βγάζει νόημα. Έχεις περάσει τρεις μέρες σε μια πόλη που ίδρυσε ο Κάσσανδρος το 315 π.Χ. και την ονόμασε από τη γυναίκα του, ετεροθαλή αδελφή του Μεγάλου Αλεξάνδρου· εδώ είναι θαμμένος ο πατέρας του Αλεξάνδρου.
+
+Το μουσείο είναι χτισμένο μέσα στον ίδιο τον ταφικό τύμβο, υπόγειο και σκοτεινό, και είναι από τα ελάχιστα μουσεία όπου τα ευρήματα βρίσκονται ακριβώς εκεί όπου βρέθηκαν.
+
+## Μέρα 5: διάλεξε τοπίο
+
+Η τελευταία εκδρομή είναι θέμα διάθεσης και εποχής:
+
+- **Όλυμπος**, αν θέλεις βουνό. Το Λιτόχωρο είναι η βάση· δεν χρειάζεται να ανέβεις κορυφή για να καταλάβεις γιατί εκεί έβαλαν τους θεούς.
+- **Έδεσσα**, για καταρράκτες μέσα στην πόλη. Η πιο εύκολη με παιδιά.
+- **Χαλκιδική**, από τον Μάιο ως τον Σεπτέμβριο. Η **Κασσάνδρα** ξεκινά περίπου 70-100 χλμ από τη Θεσσαλονίκη.
+- **Μετέωρα**, αν δεν σε πειράζει μεγάλη μέρα. Είναι η πιο μακρινή από τις πέντε και θέλει νωρίς ξεκίνημα.
+
+## Γιατί να μην αλλάξεις βάση
+
+Ο πειρασμός με πέντε μέρες είναι να κάνεις δύο νύχτες Χαλκιδική. Συνήθως δεν αξίζει: χάνεις μισή μέρα στο πακετάρισμα και στις μετακινήσεις, πληρώνεις δύο check-in, και η Χαλκιδική με δύο νύχτες δεν προλαβαίνει να γίνει διακοπές.
+
+Είτε μένεις στη Θεσσαλονίκη και πας μονοήμερες, είτε κάνεις ξεχωριστό ταξίδι. Αν γέρνεις προς το δεύτερο, υπάρχει [οδηγός για τον συνδυασμό των δύο](/thessaloniki-and-chalkidiki).
+
+## Πρακτικά
+
+- **Αυτοκίνητο:** με δύο εκδρομές πλέον συμφέρει. Νοίκιασέ το για τις μέρες 4 και 5 και όχι για όλο το ταξίδι — στο κέντρο θα το πληρώνεις χωρίς να το χρησιμοποιείς.
+- **ΚΤΕΛ:** Βεργίνα, Έδεσσα και Χαλκιδική εξυπηρετούνται από υπεραστικά λεωφορεία. Τα δρομολόγια αλλάζουν εποχικά· δες τα την προηγούμενη μέρα.
+- **Εποχή:** από Νοέμβριο ως Μάρτιο κόψε τη Χαλκιδική από τη λίστα. Τα περισσότερα είναι κλειστά, και παραλία χωρίς μπάνιο είναι απλώς κρύα παραλία.`,
+      en: `With five days you stop being a visitor to Thessaloniki and become a visitor to **Macedonia**, with Thessaloniki as your base.
+
+That is the city's advantage: everything worth seeing around it sits within an hour and a half, so you never have to change hotel every second night.
+
+## Days 1-3: the city
+
+The [three-day plan](/en/guides/3-days-in-thessaloniki) as it stands. The centre and the Roman-Byzantine monuments, the **Upper Town** and the walls, the sea and the museums.
+
+If history is what pulls you, swap one afternoon for [the Jewish](/en/routes/jewish-thessaloniki-walk) or [the Ottoman walk](/en/routes/ottoman-thessaloniki-walk).
+
+## Day 4: Vergina
+
+**Vergina** — ancient **Aigai**, the first capital of the Macedonian kingdom — is the trip that makes the rest of the week make sense. You have spent three days in a city founded by Kassandros in 315 BC and named after his wife, Alexander the Great's half-sister; this is where Alexander's father is buried.
+
+The museum is built inside the burial mound itself, underground and dark, and is one of very few museums anywhere where the finds sit exactly where they were found.
+
+## Day 5: pick a landscape
+
+The last trip is a question of mood and season:
+
+- **Mount Olympus**, if you want a mountain. Litochoro is the base; you do not have to reach a summit to understand why they put the gods up there.
+- **Edessa**, for waterfalls running through the middle of a town. The easiest with children.
+- **Chalkidiki**, from May to September. **Kassandra** starts about 70-100 km from Thessaloniki.
+- **Meteora**, if a long day does not put you off. It is the furthest of the five and needs an early start.
+
+## Why not to move base
+
+The temptation at five days is to spend two nights in Chalkidiki. It usually is not worth it: you lose half a day to packing and driving, you pay for two check-ins, and two nights is not long enough for Chalkidiki to become a holiday.
+
+Either stay in Thessaloniki and take day trips, or make it a separate trip. If you lean towards the second, there is a [guide to combining the two](/en/thessaloniki-and-chalkidiki).
+
+## Practical
+
+- **A car:** with two day trips it now pays for itself. Rent it for days 4 and 5 rather than the whole week — in the centre you will be paying for something you are not using.
+- **Intercity buses:** Vergina, Edessa and Chalkidiki are all served. Timetables change by season; check them the day before.
+- **Season:** from November to March, cross Chalkidiki off the list. Most of it is shut, and a beach you cannot swim at is just a cold beach.`,
+    },
+    category: "itinerary",
+    cover: {
+      url: "/photos/mount-olympus.webp",
+      alt: {
+        el: "Ο Όλυμπος νότια της Θεσσαλονίκης, μία από τις εκδρομές του πενθήμερου",
+        en: "Mount Olympus south of Thessaloniki, one of the trips in the five-day plan",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    relatedPlaces: ["aristotelous-square", "byzantine-walls", "archaeological-museum"],
   },
   {
     slug: "roman-thessaloniki-walk",
@@ -192,6 +583,148 @@ The feast is one day; the church stands on all the others. On a weekday it is ne
     relatedPlaces: ["arch-of-galerius", "rotunda", "roman-forum"],
   },
   {
+    slug: "where-to-stay-in-thessaloniki",
+    title: {
+      el: "Πού να Μείνεις στη Θεσσαλονίκη: οδηγός ανά περιοχή",
+      en: "Where to Stay in Thessaloniki: a neighbourhood guide",
+    },
+    excerpt: {
+      el: "Η σύντομη απάντηση είναι «στο κέντρο». Η μακρά εξηγεί πότε δεν είναι, και ποια γειτονιά ταιριάζει σε τι.",
+      en: "The short answer is the centre. The long one explains when it is not, and which neighbourhood suits what.",
+    },
+    body: {
+      el: `Η σύντομη απάντηση: **στο κέντρο**, εκτός αν έχεις συγκεκριμένο λόγο να μην είσαι εκεί.
+
+Η Θεσσαλονίκη είναι μικρή και πυκνή. Σχεδόν όλα όσα θα δεις — τα ρωμαϊκά, τα βυζαντινά, οι αγορές, η παραλία — χωράνε σε μια περιοχή που διασχίζεται με τα πόδια σε μισή ώρα. Αν μένεις μέσα σε αυτήν, δεν θα χρειαστείς σχεδόν ποτέ μεταφορικό μέσο.
+
+Η μακρά απάντηση είναι ότι «κέντρο» σημαίνει τέσσερις πολύ διαφορετικές γειτονιές, και ότι υπάρχουν τρεις-τέσσερις καλοί λόγοι να μείνεις αλλού.
+
+## Αν είσαι πρώτη φορά
+
+**[Κέντρο](/areas/center).** Γύρω από την Αριστοτέλους και την Τσιμισκή. Είναι η επιλογή χωρίς ρίσκο: τα πάντα δίπλα, μετρό, καταστήματα, και η θάλασσα δέκα λεπτά με τα πόδια.
+
+Το μειονέκτημα είναι ο θόρυβος. Η Τσιμισκή και η Εγνατία είναι μεγάλοι άξονες με κίνηση όλο το εικοσιτετράωρο· αν έχεις ελαφρύ ύπνο, ζήτα δωμάτιο σε εσωτερική πλευρά.
+
+## Αν ήρθες για το φαγητό και το ποτό
+
+**[Λαδάδικα](/areas/ladadika).** Πλακόστρωτα, παλιά εμπορικά κτίρια, ταβέρνες και μπαρ δίπλα στο λιμάνι. Η ατμόσφαιρα είναι το ζητούμενο και υπάρχει.
+
+**[Βαλαωρίτου](/areas/valaoritou).** Πρώην βιοτεχνική ζώνη που έγινε το επίκεντρο της εναλλακτικής νυχτερινής ζωής. Νεότερο κοινό, φθηνότερο ποτό, περισσότερος θόρυβος μέχρι αργά.
+
+Και οι δύο είναι εξαιρετικές γειτονιές για να βγεις και μέτριες γειτονιές για να κοιμηθείς. Αν σκοπεύεις να γυρνάς στις τρεις το πρωί, είναι ιδανικές. Αν θες να ξυπνάς στις οκτώ, μείνε δύο δρόμους πιο πέρα.
+
+## Αν ήρθες για την ιστορία
+
+**[Ναυαρίνου & Ροτόντα](/areas/navarinou).** Η φοιτητική καρδιά της πόλης, χτισμένη κυριολεκτικά πάνω στο ρωμαϊκό ανάκτορο. Η **Ροτόντα** και η **Αψίδα του Γαλερίου** είναι στον δρόμο σου, το φαγητό είναι φθηνό και ο κόσμος νέος.
+
+**[Άνω Πόλη](/areas/ano-poli).** Η μόνη συνοικία που γλίτωσε από τη φωτιά του 1917: σοκάκια, σαχνισιά, τείχη και η καλύτερη θέα της πόλης.
+
+Για την Άνω Πόλη να ξέρεις δύο πράγματα πριν κλείσεις. Πρώτον, είναι **ανηφόρα** — κάθε επιστροφή είναι ανάβαση. Δεύτερον, δεν έχει μετρό. Είναι υπέροχη αν περπατάς άνετα και θες ησυχία· είναι κουραστική αν όχι.
+
+## Αν ταξιδεύεις με οικογένεια
+
+**[Καλαμαριά](/areas/kalamaria)** ή **[Αρετσού](/areas/aretsou)**. Παραθαλάσσιες συνοικίες στα ανατολικά, με μαρίνα, πεζόδρομο δίπλα στο νερό, ήσυχη ατμόσφαιρα και καλό ψάρι. Από τον Αύγουστο του 2026 συνδέονται με το κέντρο με **μετρό**, που άλλαξε εντελώς τα δεδομένα: μέχρι τότε ήταν «μακριά», τώρα είναι μια διαδρομή.
+
+Είναι η επιλογή αν θες χώρο, ησυχία το βράδυ και θάλασσα μπροστά σου — αλλά δέξου ότι θα κάνεις μια διαδρομή κάθε φορά που θες να δεις μνημείο.
+
+## Αν ήρθες για δουλειά ή πετάς νωρίς
+
+**[Πυλαία](/areas/pylaia)** για επαγγελματικά: εμπορικά κέντρα, συνεδριακά ξενοδοχεία, άμεση πρόσβαση στον περιφερειακό.
+
+**[Θέρμη](/areas/thermi)** ή **[Περαία](/areas/peraia)** για το αεροδρόμιο. Η Περαία έχει και θάλασσα, που η πόλη δεν έχει — είναι καλή επιλογή για την τελευταία νύχτα πριν από πρωινή πτήση.
+
+## Αν φτάνεις με τρένο ή λεωφορείο
+
+**[Βαρδάρης](/areas/vardaris)**, γύρω από τον σιδηροδρομικό σταθμό. Είναι η φθηνότερη περιοχή του κέντρου και η πιο τραχιά: πολυπολιτισμική, ζωντανή, και χωρίς καμία προσπάθεια να φανεί ωραία.
+
+Με τη στάση **Νέος Σιδηροδρομικός Σταθμός** στο μετρό, η απόσταση έπαψε να είναι θέμα. Αν σε απασχολεί η εικόνα της γειτονιάς, δες την πρώτα· αν σε απασχολεί η τιμή, είναι εδώ.
+
+## Τι να μη διαλέξεις κατά λάθος
+
+Η **[Νέα Παραλία](/areas/waterfront)** είναι ο πιο ωραίος περίπατος της πόλης, αλλά ως διεύθυνση σημαίνει συνήθως «στην άλλη πλευρά του πολύ πλατιού δρόμου», δηλαδή σε έναν άξονα με κίνηση. Διάβασε τη διεύθυνση, όχι μόνο το όνομα.
+
+Το **[Πανόραμα](/areas/panorama)** έχει πράγματι την καλύτερη θέα στον Θερμαϊκό. Είναι όμως προάστιο στον λόφο, χωρίς μετρό, και χωρίς αυτοκίνητο θα το μετανιώσεις.
+
+## Πρακτικά
+
+- **Μετρό:** λειτουργεί από τον Νοέμβριο του 2024 στον άξονα του κέντρου, και από τον Αύγουστο του 2026 φτάνει στην Καλαμαριά και τη Μίκρα. Αν ένα κατάλυμα διαφημίζεται ως «κοντά στο μετρό», δες [ποια στάση](/metro) και τι υπάρχει γύρω της.
+- **Αυτοκίνητο:** στο κέντρο είναι πρόβλημα, όχι λύση. Αν έρχεσαι οδικώς, κοίτα αν το κατάλυμα έχει δικό του πάρκινγκ πριν κλείσεις — δες και τον [οδηγό για το πάρκινγκ](/guides/parking-in-thessaloniki).
+- **Εποχή:** η πόλη γεμίζει στη **ΔΕΘ** τον Σεπτέμβριο, στο **Φεστιβάλ Κινηματογράφου** τον Νοέμβριο και γύρω στις **26 Οκτωβρίου**, που είναι υποχρεωτική αργία. Σε αυτές τις ημερομηνίες οι τιμές ανεβαίνουν και η διαθεσιμότητα πέφτει.
+- **Προσβασιμότητα:** το κέντρο έχει πεζοδρόμια σε κακή κατάσταση και πολλά παλιά κτίρια χωρίς ασανσέρ. Υπάρχει ξεχωριστός [οδηγός προσβασιμότητας](/guides/accessible-thessaloniki).`,
+      en: `The short answer: **the centre**, unless you have a specific reason not to be there.
+
+Thessaloniki is small and dense. Almost everything you will see — the Roman city, the Byzantine churches, the markets, the seafront — fits inside an area you can cross on foot in half an hour. Stay inside it and you will barely use transport at all.
+
+The long answer is that "the centre" means four quite different neighbourhoods, and that there are three or four good reasons to stay somewhere else.
+
+## If it is your first time
+
+**[The centre](/en/areas/center).** Around Aristotelous and Tsimiski. This is the no-risk choice: everything within reach, the metro, the shops, and the sea ten minutes away on foot.
+
+The drawback is noise. Tsimiski and Egnatia are major axes with traffic around the clock; if you sleep lightly, ask for a room on the inner side of the building.
+
+## If you came for the food and the drinking
+
+**[Ladadika](/en/areas/ladadika).** Cobbles, old merchant buildings, tavernas and bars beside the port. Atmosphere is the point, and it delivers.
+
+**[Valaoritou](/en/areas/valaoritou).** A former workshop district that became the centre of the city's alternative nightlife. Younger crowd, cheaper drinks, more noise until late.
+
+Both are excellent neighbourhoods to go out in and mediocre neighbourhoods to sleep in. If you intend to come home at three, they are ideal. If you want to wake at eight, stay two streets away.
+
+## If you came for the history
+
+**[Navarinou & the Rotunda](/en/areas/navarinou).** The student heart of the city, built literally on top of the Roman palace. The **Rotunda** and the **Arch of Galerius** are on your way out of the door, the food is cheap and the crowd is young.
+
+**[Ano Poli](/en/areas/ano-poli).** The only quarter that survived the fire of 1917: lanes, timber overhangs, walls, and the best view in the city.
+
+Two things to know about Ano Poli before you book. First, it is **uphill** — every return journey is a climb. Second, there is no metro. It is wonderful if you walk easily and want quiet; it is tiring if you do not.
+
+## If you are travelling with family
+
+**[Kalamaria](/en/areas/kalamaria)** or **[Aretsou](/en/areas/aretsou).** Seaside districts to the east, with a marina, a promenade along the water, a quiet atmosphere and good fish. Since August 2026 they are linked to the centre by **metro**, which changed everything: until then they were "far away", now they are a ride.
+
+This is the choice if you want space, quiet evenings and the sea in front of you — but accept that you will take a ride every time you want to see a monument.
+
+## If you are here for work, or flying early
+
+**[Pylaia](/en/areas/pylaia)** for business: shopping centres, conference hotels, direct access to the ring road.
+
+**[Thermi](/en/areas/thermi)** or **[Peraia](/en/areas/peraia)** for the airport. Peraia also has a beach, which the city does not — a good choice for the last night before a morning flight.
+
+## If you arrive by train or coach
+
+**[Vardaris](/en/areas/vardaris)**, around the railway station. It is the cheapest part of the centre and the roughest: multicultural, alive, and making no attempt to look pretty.
+
+With the **New Railway Station** metro stop, distance stopped being the issue. If the look of a neighbourhood matters to you, see it first; if the price matters, it is here.
+
+## What not to pick by accident
+
+The **[waterfront](/en/areas/waterfront)** is the finest walk in the city, but as an address it usually means "on the far side of a very wide road" — that is, on a traffic axis. Read the street, not just the name.
+
+**[Panorama](/en/areas/panorama)** genuinely does have the best view over the gulf. It is also a hillside suburb with no metro, and without a car you will regret it.
+
+## Practical
+
+- **Metro:** running since November 2024 along the spine of the centre, and since August 2026 out to Kalamaria and Mikra. If a place advertises itself as "near the metro", check [which stop](/en/metro) and what is around it.
+- **A car:** in the centre it is a problem, not a solution. If you are driving in, check whether the place has its own parking before you book — see also the [parking guide](/en/guides/parking-in-thessaloniki).
+- **Season:** the city fills up for the **International Fair** in September, the **Film Festival** in November, and around **26 October**, which is a compulsory public holiday here. On those dates prices rise and availability falls.
+- **Accessibility:** the centre has pavements in poor condition and many older buildings without lifts. There is a separate [accessibility guide](/en/guides/accessible-thessaloniki).`,
+    },
+    category: "areas",
+    cover: {
+      url: "/photos/aristotelous-square.webp",
+      alt: {
+        el: "Η Πλατεία Αριστοτέλους, στην καρδιά της περιοχής που είναι η προεπιλογή για διαμονή",
+        en: "Aristotelous Square, at the heart of the district that is the default place to stay",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    relatedPlaces: ["aristotelous-square", "white-tower", "rotunda"],
+    featured: true,
+  },
+  {
     slug: "thessaloniki-neighbourhoods",
     title: { el: "Οι Γειτονιές της Θεσσαλονίκης", en: "The Neighbourhoods of Thessaloniki" },
     excerpt: {
@@ -214,6 +747,141 @@ The feast is one day; the church stands on all the others. On a weekday it is ne
     publishedAt: "2026-09-02",
     updatedAt: "2026-09-08",
     relatedPlaces: ["byzantine-walls", "aristotelous-square", "nea-paralia"],
+  },
+  {
+    slug: "beaches-near-thessaloniki",
+    title: {
+      el: "Παραλίες κοντά στη Θεσσαλονίκη: πού πηγαίνουν οι ντόπιοι",
+      en: "Beaches near Thessaloniki: where locals actually swim",
+    },
+    excerpt: {
+      el: "Στην πόλη δεν κολυμπάς. Πόσο μακριά είναι πραγματικά η πρώτη θάλασσα, και τι βρίσκεις σε κάθε απόσταση.",
+      en: "You do not swim in the city. How far the first real sea actually is, and what you get at each distance.",
+    },
+    body: {
+      el: `Ας το πούμε από την αρχή, γιατί είναι η πιο συχνή παρεξήγηση: **μέσα στη Θεσσαλονίκη δεν κολυμπάς**.
+
+Η πόλη είναι χτισμένη στον μυχό του Θερμαϊκού, στο πιο κλειστό του σημείο, και το μέτωπό της είναι λιμάνι και προκυμαία. Η **Νέα Παραλία** είναι ο ωραιότερος περίπατος της πόλης και κανείς δεν μπαίνει στο νερό εκεί. Ούτε θα δεις ντόπιο να το κάνει.
+
+Η καλή είδηση είναι ότι η θάλασσα για μπάνιο αρχίζει νωρίς — μισή ώρα δρόμο — και ότι υπάρχουν τρεις ξεκάθαρες «ζώνες» ανάλογα με το πόσο χρόνο έχεις.
+
+## Ζώνη 1: η «Παραλία», 20-30 χλμ
+
+Νοτιοανατολικά της πόλης, στην απέναντι πλευρά του κόλπου, υπάρχει μια σειρά παραθαλάσσιων οικισμών που οι Θεσσαλονικείς λένε συλλογικά «**η Παραλία**»: **Περαία**, **Νέοι Επιβάτες**, **Αγία Τριάδα**.
+
+Είναι η πιο κοντινή πραγματική θάλασσα και η πιο εύκολη μονοήμερη. Μισή ώρα με αυτοκίνητο εκτός αιχμής, παραλιακός πεζόδρομος με καφέ και beach bar, ψαροταβέρνες που κοιτάζουν πίσω προς τη Θεσσαλονίκη — το βράδυ βλέπεις τα φώτα της πόλης πάνω στο νερό.
+
+Η [Περαία](/areas/peraia) είναι και δίπλα στο αεροδρόμιο, που την κάνει λογική επιλογή για την τελευταία νύχτα ενός ταξιδιού.
+
+**Το καλοκαίρι υπάρχει και θαλάσσια σύνδεση** από το κέντρο, που είναι σαφώς ο ωραιότερος τρόπος να πας. Τα δρομολόγια είναι εποχικά και αλλάζουν από χρονιά σε χρονιά — δεν δημοσιεύουμε ώρες που δεν ισχύουν όλο τον χρόνο, οπότε δες τα πριν ξεκινήσεις.
+
+## Ζώνη 2: πιο κάτω στην ίδια ακτή, 30-40 χλμ
+
+Συνεχίζοντας νότια, η ακτή ανοίγει και το νερό καθαρίζει: **Νέα Μηχανιώνα**, **Αγγελοχώρι**, και παρακάτω η **Επανομή** με τον **Ποταμό**.
+
+Εδώ αλλάζει ο χαρακτήρας. Λιγότερη δόμηση, περισσότερη άμμος, πιο ανοιχτός ορίζοντας. Η περιοχή της Επανομής έχει και υγρότοπο, που σημαίνει ότι δεν είναι μόνο παραλία.
+
+Είναι η επιλογή αν έχεις αυτοκίνητο και θες πραγματικό μπάνιο χωρίς να κάνεις μία ώρα δρόμο.
+
+## Ζώνη 3: Χαλκιδική, από 45 χλμ και πάνω
+
+Από τη **Νέα Καλλικράτεια** και τα **Νέα Μουδανιά** αρχίζει η Χαλκιδική, και από εκεί και κάτω μιλάμε για άλλη κατηγορία θάλασσας.
+
+Η **[Κασσάνδρα](/day-trips/chalkidiki)**, η πρώτη από τις τρεις χερσονήσους, ξεκινά περίπου **70-100 χλμ** από τη Θεσσαλονίκη, δηλαδή γύρω στη μία ώρα. Η **Σιθωνία** είναι πιο μακριά, πιο άγρια και — κατά γενική ομολογία — ομορφότερη.
+
+Για μονοήμερη, η Κασσάνδρα βγαίνει άνετα. Για τη Σιθωνία θέλεις διανυκτέρευση, αλλιώς θα περάσεις τη μισή μέρα στο αυτοκίνητο.
+
+## Ποια ζώνη να διαλέξεις
+
+| Έχεις | Πήγαινε |
+| --- | --- |
+| Μισή μέρα, χωρίς αυτοκίνητο | Περαία — και το καλοκαίρι με το καραβάκι |
+| Μία μέρα με αυτοκίνητο | Επανομή ή Αγγελοχώρι |
+| Μία γεμάτη μέρα | Κασσάνδρα |
+| Δύο μέρες και πάνω | Σιθωνία, και όχι βιαστικά |
+
+## Πότε
+
+Η σεζόν για μπάνιο είναι χονδρικά από τα μέσα **Μαΐου** ως τα μέσα **Σεπτεμβρίου**. Τον Ιούλιο και τον Αύγουστο ο καιρός είναι βέβαιος αλλά και ο κόσμος· τον **Ιούνιο** και τον **Σεπτέμβριο** έχεις την ίδια θάλασσα με λιγότερη ουρά.
+
+Από Νοέμβριο ως Μάρτιο, όλη αυτή η ακτή είναι κλειστή ή σχεδόν. Η βόλτα στέκει, το μπάνιο όχι.
+
+## Πρακτικά
+
+- **Αποστάσεις:** όλες οι παραπάνω είναι οδικές και κατά προσέγγιση, από το κέντρο της πόλης. Το καλοκαιρινό σαββατοκύριακο η έξοδος προς τα νότια έχει κίνηση — υπολόγισε παραπάνω.
+- **Λεωφορεία:** η «Παραλία» και η Χαλκιδική εξυπηρετούνται από υπεραστικά λεωφορεία, με εποχικά δρομολόγια. Επιβεβαίωσε τα την προηγούμενη μέρα· δεν είναι πυκνά όπως στην πόλη.
+- **Οργανωμένο ή όχι:** στη ζώνη 1 θα βρεις ομπρέλες και beach bar σχεδόν παντού. Στις ζώνες 2 και 3 υπάρχουν και ελεύθερες παραλίες — πάρε νερό και σκιά μαζί σου.
+- **Αν δεν έχεις αυτοκίνητο και είναι χειμώνας:** μείνε στη [Νέα Παραλία](/discover/nea-paralia). Είναι περίπατος, όχι παραλία, αλλά είναι ο λόγος που η πόλη αγαπά τη θάλασσά της χωρίς να κολυμπά σε αυτήν.
+
+Για τα πάντα παρακάτω από τα Μουδανιά υπάρχει ξεχωριστός οδηγός: **[chalkidikihub.gr](https://chalkidikihub.gr)**, το αδελφό site του ThessalonikiHub.`,
+      en: `Let us start with the most common misunderstanding: **you do not swim in Thessaloniki**.
+
+The city sits at the head of the Thermaic Gulf, at its most enclosed point, and its waterfront is a working port and a promenade. The **Nea Paralia** seafront is the finest walk in the city and nobody gets into the water there. You will not see a local do it either.
+
+The good news is that swimmable sea starts early — half an hour's drive — and that there are three clear zones depending on how much time you have.
+
+## Zone 1: "Paralia", 20-30 km
+
+South-east of the city, on the far side of the bay, runs a string of seaside settlements that locals collectively call "**Paralia**": **Peraia**, **Nei Epivates**, **Agia Triada**.
+
+This is the nearest real sea and the easiest day out. Half an hour by car outside rush hour, a seafront promenade of cafés and beach bars, fish tavernas looking back at Thessaloniki — at night you see the city lights lying on the water.
+
+[Peraia](/en/areas/peraia) is also next to the airport, which makes it a sensible choice for the last night of a trip.
+
+**In summer there is a boat connection** from the centre, which is plainly the nicest way to go. Sailings are seasonal and change from year to year — we do not publish times that are not true all year, so check before you set off.
+
+## Zone 2: further down the same coast, 30-40 km
+
+Carry on south and the coast opens out and the water clears: **Nea Michaniona**, **Angelochori**, and beyond them **Epanomi** and **Potamos**.
+
+The character changes here. Less building, more sand, a wider horizon. The Epanomi area also has a wetland, so it is not only a beach.
+
+This is the choice if you have a car and want a real swim without an hour of driving.
+
+## Zone 3: Chalkidiki, from 45 km
+
+Chalkidiki begins at **Nea Kallikratia** and **Nea Moudania**, and from there on you are talking about a different category of sea altogether.
+
+**[Kassandra](/en/day-trips/chalkidiki)**, the first of the three peninsulas, starts roughly **70-100 km** from Thessaloniki — about an hour. **Sithonia** is further, wilder and, by common agreement, more beautiful.
+
+For a day trip, Kassandra works comfortably. Sithonia wants an overnight, or you will spend half the day in the car.
+
+## Which zone to choose
+
+| You have | Go to |
+| --- | --- |
+| Half a day, no car | Peraia — and in summer, by boat |
+| A day with a car | Epanomi or Angelochori |
+| A full day | Kassandra |
+| Two days or more | Sithonia, unhurried |
+
+## When
+
+The swimming season runs roughly from mid-**May** to mid-**September**. July and August guarantee the weather and also the crowds; **June** and **September** give you the same sea with less of a queue.
+
+From November to March this entire coast is shut or nearly so. The walk still stands up; the swim does not.
+
+## Practical
+
+- **Distances** above are by road and approximate, measured from the city centre. On a summer weekend the road south is busy — allow more.
+- **Buses:** both "Paralia" and Chalkidiki are served by intercity coaches on seasonal timetables. Check them the day before; they are not frequent the way city buses are.
+- **Organised or not:** in zone 1 you will find loungers and a beach bar almost everywhere. Zones 2 and 3 include unorganised beaches — bring water and shade.
+- **If you have no car and it is winter:** stay on the [Nea Paralia](/en/discover/nea-paralia). It is a promenade, not a beach, but it is why this city loves a sea it never swims in.
+
+For everything south of Moudania there is a separate guide: **[chalkidikihub.gr](https://chalkidikihub.gr)**, ThessalonikiHub's sister site.`,
+    },
+    category: "seasonal",
+    cover: {
+      url: "/photos/chalkidiki.webp",
+      alt: {
+        el: "Παραλία της Χαλκιδικής, η τρίτη και πιο μακρινή ζώνη για μπάνιο από τη Θεσσαλονίκη",
+        en: "A Chalkidiki beach, the third and furthest swimming zone from Thessaloniki",
+      },
+    },
+    author: "ThessalonikiHub",
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    relatedPlaces: ["nea-paralia"],
   },
   {
     slug: "getting-around-thessaloniki",

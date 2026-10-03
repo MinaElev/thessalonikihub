@@ -45,6 +45,13 @@ export function MarkdownBody({
         components={{
           h2: ({ children: c }) => <h2 id={headingSlug(textOf(c))}>{c}</h2>,
           h3: ({ children: c }) => <h3 id={headingSlug(textOf(c))}>{c}</h3>,
+          // A comparison table is wider than a phone. It scrolls inside its
+          // own box, so the page body never scrolls sideways.
+          table: ({ children: c }) => (
+            <div className="table-scroll">
+              <table>{c}</table>
+            </div>
+          ),
         }}
       >
         {body}

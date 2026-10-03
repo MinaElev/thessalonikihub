@@ -158,6 +158,42 @@
   color: var(--color-brand-800);
 }
 
+/*
+  Tables in editorial prose.
+
+  The markdown renderer has always supported them and nothing ever styled
+  them, so the first guide to use one rendered its rows as unspaced,
+  unseparated text. The wrapper around each table is added in MarkdownBody:
+  a comparison table is wider than a phone, and it has to scroll inside its
+  own box rather than pushing the whole page sideways.
+*/
+.prose-content .table-scroll {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+}
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose-content th,
+.prose-content td {
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-content thead th {
+  background: #f8fafc;
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+.prose-content tbody tr + tr td {
+  border-top: 1px solid #e2e8f0;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;

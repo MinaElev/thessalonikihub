@@ -35,7 +35,16 @@ export default async function PlanPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
-  const itineraries = getGuides().filter((g) => g.category === "itinerary").slice(0, 3);
+  /*
+   * Every itinerary, not the first three.
+   *
+   * "How many days do I need in Thessaloniki" is the question this page
+   * exists to answer, and the site now has a plan for one, two, three, four
+   * and five days. Showing three of them and hiding the rest answered it
+   * badly — and the ones that got cut were the longer stays, which are the
+   * readers who have not booked yet.
+   */
+  const itineraries = getGuides().filter((g) => g.category === "itinerary");
 
   return (
     <>
@@ -73,15 +82,24 @@ export default async function PlanPage({
 
         {itineraries.length ? (
           <section className="mt-10">
-            <h2 className="mb-4 text-xl font-bold">{t("plan.itineraries")}</h2>
-            <ul className="space-y-2">
+            <h2 className="mb-1 text-xl font-bold">{t("plan.itineraries")}</h2>
+            <p className="mb-4 text-sm text-muted">{t("plan.itinerariesHint")}</p>
+            <ul className="grid gap-3 sm:grid-cols-2">
               {itineraries.map((g) => (
                 <li key={g.slug}>
                   <Link
                     href={guideHref(g)}
-                    className="inline-flex items-center gap-1 font-medium text-brand-700 hover:gap-2"
+                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md"
                   >
-                    {pick(g.title, locale)} <ArrowRight className="h-4 w-4" />
+                    <span className="font-bold text-ink group-hover:text-brand-700">
+                      {pick(g.title, locale)}
+                    </span>
+                    <span className="mt-1 flex-1 text-sm text-muted">
+                      {pick(g.excerpt, locale)}
+                    </span>
+                    <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+                      {t("common.readMore")} <ArrowRight className="h-4 w-4" />
+                    </span>
                   </Link>
                 </li>
               ))}
